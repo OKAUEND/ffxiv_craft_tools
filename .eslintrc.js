@@ -2,14 +2,13 @@ module.exports = {
   root: true,
   env: {
     es6: true,
-    node: true,
+    node: true
   },
   extends: [
     "eslint:recommended",
     "plugin:vue/essential",
-    "prettier",
     "plugin:prettier/recommended",
-    "@vue/prettier",
+    "@vue/prettier"
   ],
   plugins: ["prettier"],
   rules: {
@@ -19,19 +18,19 @@ module.exports = {
     "prettier/prettier": [
       "error",
       {
-        trailingComma: "es5",
-      },
-    ],
+        trailingComma: "none"
+      }
+    ]
   },
   parserOptions: {
-    parser: "babel-eslint",
+    parser: "babel-eslint"
   },
   overrides: [
     {
       files: ["**/__tests__/*.{j,t}s?(x)"],
       env: {
-        jest: true,
-      },
-    },
-  ],
+        jest: true
+      }
+    }
+  ]
 };
