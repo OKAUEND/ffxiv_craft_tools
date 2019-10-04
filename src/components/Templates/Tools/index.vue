@@ -37,6 +37,10 @@ export default {
   grid-template-columns: auto 1fr;
   grid-template-rows: 40px 1fr 1fr;
 }
+@media screen and (max-width: 896px) {
+}
+
+@media screen and (min-width: 897px) {
   .main {
     width: 80vw;
     grid-column: 1;
@@ -52,4 +56,5 @@ export default {
     grid-column: 2;
     grid-row: 2 / 4;
   }
+}
 </style>
