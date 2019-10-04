@@ -53,8 +53,11 @@ export default {
     grid-column: 1;
     grid-row: 2 / 4;
     visibility: hidden;
+    animation: right_fadeout 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     &.__wide {
       visibility: visible;
+      animation: right_fadein 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+}
 }
 }
 
@@ -75,4 +78,25 @@ export default {
     grid-row: 2 / 4;
   }
 }
+@keyframes right_fadein {
+  from {
+    visibility: hidden;
+    transform: translate3d(100vw, 0, 0);
+  }
+  to {
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes right_fadeout {
+  from {
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(100vw, 0, 0);
+}
+  }
 </style>
