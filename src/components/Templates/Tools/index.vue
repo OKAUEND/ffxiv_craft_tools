@@ -11,7 +11,18 @@
 <script>
 export default {
   name: "Template_ToolsIndex",
+  data() {
+    return {
+      isButtonClick: false
+    };
+  },
+  computed: {
+    isNarrow: function() {
+      return {
+        __Narrowly: this.isButtonClick
 };
+    }
+  },
 </script>
 
 <style lang="scss" scoped>
@@ -26,6 +37,10 @@ export default {
     grid-column: 1;
     grid-row: 2 / 4;
     transition: 0.5s;
+    &.__Narrowly {
+      width: 45vw;
+      transition: 0.5s;
+}
 }
 
   .side_detail {
