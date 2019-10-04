@@ -7,8 +7,12 @@
 </template>
 
 <script>
+import ToolsIndex from "@/components/Templates/Tools/index.vue";
 export default {
   name: "Template_ffxiv_index",
+  components: {
+    ToolsIndex
+  }
 };
 </script>
 
