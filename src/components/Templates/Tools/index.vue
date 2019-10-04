@@ -48,6 +48,7 @@ export default {
     grid-row: 2 / 4;
     visibility: hidden;
 }
+}
 
 @media screen and (min-width: 897px) {
   .main {
