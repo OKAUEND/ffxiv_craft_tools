@@ -23,6 +23,11 @@ export default {
 };
     }
   },
+  methods: {
+    switchDisplayRegion() {
+      this.isButtonClick = !this.isButtonClick;
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
