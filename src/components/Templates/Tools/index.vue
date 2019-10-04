@@ -38,6 +38,15 @@ export default {
   grid-template-rows: 40px 1fr 1fr;
 }
 @media screen and (max-width: 896px) {
+  .main {
+    width: 100vw;
+    grid-column: 1;
+    grid-row: 2 / 4;
+  }
+  .side_detail {
+    grid-column: 1;
+    grid-row: 2 / 4;
+    visibility: hidden;
 }
 
 @media screen and (min-width: 897px) {
