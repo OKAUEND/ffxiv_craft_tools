@@ -20,7 +20,7 @@ export default {
     isNarrow: function() {
       return {
         __Narrowly: this.isButtonClick
-};
+      };
     },
     isWide: function() {
       return {
@@ -43,6 +43,11 @@ export default {
   grid-template-columns: auto 1fr;
   grid-template-rows: 40px 1fr 1fr;
 }
+
+.sub_header {
+  grid-column: 1 / end;
+  grid-row: 1;
+}
 @media screen and (max-width: 896px) {
   .main {
     width: 100vw;
@@ -57,7 +62,7 @@ export default {
     &.__wide {
       visibility: visible;
       animation: right_fadein 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-}
+  }
 }
 }
 
@@ -70,7 +75,7 @@ export default {
     &.__Narrowly {
       width: 45vw;
       transition: 0.5s;
-}
+  }
 }
 
   .side_detail {
@@ -78,6 +83,7 @@ export default {
     grid-row: 2 / 4;
   }
 }
+
 @keyframes right_fadein {
   from {
     visibility: hidden;
