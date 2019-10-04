@@ -62,8 +62,8 @@ export default {
     &.__wide {
       visibility: visible;
       animation: right_fadein 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    }
   }
-}
 }
 
 @media screen and (min-width: 897px) {
@@ -103,6 +103,6 @@ export default {
   to {
     visibility: hidden;
     transform: translate3d(100vw, 0, 0);
-}
   }
+}
 </style>
