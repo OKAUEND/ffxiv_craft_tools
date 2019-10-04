@@ -75,8 +75,9 @@ export default {
     &.__Narrowly {
       width: 45vw;
       transition: 0.5s;
+    }
   }
-}
+  
 
   .side_detail {
     grid-column: 2;
