@@ -21,6 +21,11 @@ export default {
       return {
         __Narrowly: this.isButtonClick
 };
+    },
+    isWide: function() {
+      return {
+        __wide: this.isButtonClick
+      };
     }
   },
   methods: {
@@ -28,6 +33,7 @@ export default {
       this.isButtonClick = !this.isButtonClick;
     }
   }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -47,6 +53,8 @@ export default {
     grid-column: 1;
     grid-row: 2 / 4;
     visibility: hidden;
+    &.__wide {
+      visibility: visible;
 }
 }
 
