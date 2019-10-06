@@ -20,4 +20,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.Recipewarapper {
+}
+.Recipe-container {
+}
+.Expansion {
+}
+.ChoiceDetail {
+}
+
+.filter-container {
+}
 </style>
