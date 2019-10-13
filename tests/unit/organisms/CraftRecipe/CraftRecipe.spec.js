@@ -5,11 +5,11 @@ const Level = {
   name: "LEVEL",
   type: "Level",
   List: [
-    { lowerLevel: 1, upperLevel: 10 },
-    { lowerLevel: 11, upperLevel: 20 },
-    { lowerLevel: 21, upperLevel: 30 },
-    { lowerLevel: 31, upperLevel: 40 },
-    { lowerLevel: 41, upperLevel: 50 }
+    { ID: 1, lowerLevel: 1, upperLevel: 10 },
+    { ID: 2, lowerLevel: 11, upperLevel: 20 },
+    { ID: 3, lowerLevel: 21, upperLevel: 30 },
+    { ID: 4, lowerLevel: 31, upperLevel: 40 },
+    { ID: 5, lowerLevel: 41, upperLevel: 50 }
   ]
 };
 
@@ -18,10 +18,10 @@ const other = {
   type: "other",
   list: [
     { name: "戦闘", ID: 1 },
-    { name: "戦闘", ID: 2 },
-    { name: "戦闘", ID: 3 },
-    { name: "戦闘", ID: 4 },
-    { name: "戦闘", ID: 5 }
+    { name: "非戦闘", ID: 2 },
+    { name: "おしゃれ", ID: 3 },
+    { name: "家具", ID: 4 },
+    { name: "庭具", ID: 5 }
   ]
 };
 
