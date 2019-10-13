@@ -53,4 +53,8 @@ describe("CategoriesList", () => {
     });
     expect(OtherWarapper.find("h2").text()).toBe(other.name);
   });
+  it("typeがLEVELの場合、リストレンダリングされているか", () => {});
+  it("typeがLEVELの場合、下限Levelと上限Levelを文字列結合して文字列が表示されてるか", () => {});
+  it("typeがotherの場合、リストレンダリングされているか", () => {});
+  it("typeがotherの場合、nameの文字列が表示されてるか", () => {});
 });
