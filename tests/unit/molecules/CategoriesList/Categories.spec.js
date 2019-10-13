@@ -25,7 +25,32 @@ const other = {
   ]
 };
 describe("CategoriesList", () => {
-  it("Propでデータを受け取れているか", () => {});
-  it("H2タグにタイトルが表示されているか", () => {});
-  it("propで渡されたデータ分のリストレンダリングが行われているか", () => {});
+  it("propでデータを渡されるか", () => {
+    const LevelWarapper = shallowMount(CategoriesList, {
+      propsData: {
+        category: Level
+      }
+    });
+    expect(LevelWarapper.props().category).toEqual(Level);
+    const OtherWarapper = shallowMount(CategoriesList, {
+      propsData: {
+        category: other
+      }
+    });
+    expect(OtherWarapper.props().category).toEqual(other);
+  });
+  it("H2に文字が表示されるか", () => {
+    const LevelWarapper = shallowMount(CategoriesList, {
+      propsData: {
+        category: Level
+      }
+    });
+    expect(LevelWarapper.find("h2").text()).toBe(Level.name);
+    const OtherWarapper = shallowMount(CategoriesList, {
+      propsData: {
+        category: other
+      }
+    });
+    expect(OtherWarapper.find("h2").text()).toBe(other.name);
+  });
 });
