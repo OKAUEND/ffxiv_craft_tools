@@ -15,6 +15,18 @@ export default {
       required: true
     }
   },
+  computed: {
+    isLevel() {
+      return this.typecode === "Level";
+    },
+    HeadText() {
+      if (this.isLevel) {
+        return this.value.lowerLevel + "~" + this.value.upperLevel;
+      } else {
+        return this.value.name;
+      }
+    }
+  }
 };
 </script>
 
