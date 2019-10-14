@@ -4,7 +4,17 @@
 
 <script>
 export default {
-  name: "RadioClickable"
+  name: "RadioClickable",
+  props: {
+    typecode: {
+      type: String,
+      required: true
+    },
+    value: {
+      type: Object,
+      required: true
+    }
+  },
 };
 </script>
 
