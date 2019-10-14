@@ -1,4 +1,6 @@
-<template></template>
+<template>
+  <div class="button-design">{{ HeadText }}</div>
+</template>
 
 <script>
 export default {
