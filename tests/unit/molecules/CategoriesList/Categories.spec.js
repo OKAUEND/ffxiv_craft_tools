@@ -24,6 +24,7 @@ const other = {
     { name: "庭具", ID: 5 }
   ]
 };
+
 describe("CategoriesList", () => {
   it("propでデータを渡されるか", () => {
     const LevelWarapper = shallowMount(CategoriesList, {
@@ -53,8 +54,15 @@ describe("CategoriesList", () => {
     });
     expect(OtherWarapper.find("h2").text()).toBe(other.name);
   });
-  it("typeがLEVELの場合、リストレンダリングされているか", () => {});
-  it("typeがLEVELの場合、下限Levelと上限Levelを文字列結合して文字列が表示されてるか", () => {});
+  it("typeがLEVELの場合、配列数分のリストレンダリングされているか", () => {
+    const LevelWarapper = shallowMount(CategoriesList, {
+      propsData: {
+        category: Level
+      }
+    });
+    expect(LevelWarapper.findAll(".button-design").length).toBe(
+      Level.List.length
+    );
+  });
   it("typeがotherの場合、リストレンダリングされているか", () => {});
-  it("typeがotherの場合、nameの文字列が表示されてるか", () => {});
 });
