@@ -8,4 +8,5 @@ const LevelData = { ID: 1, lowerLevel: 1, upperLevel: 10 };
 const OtherData = { ID: 1, lowerLevel: 1, upperLevel: 10 };
 
 describe("RadioClickable", () => {
+  it("propのTypeがLevelのときに、下限レベルと上限レベルを文字列結合して表示しているか", () => {});
 });
