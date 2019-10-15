@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "RadioClickable",
+  name: "RadioLabel",
   props: {
     typecode: {
       type: String,
