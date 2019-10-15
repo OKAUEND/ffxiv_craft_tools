@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import RadioClickable from "@/components/molecules/RadioClickable/index.vue";
+import RadioButtomLabel from "@/components/molecules/RadioButtomLabel/index.vue";
 
 const LevelType = "Level";
 const OtherType = "other";
@@ -9,7 +9,7 @@ const OtherData = { ID: 1, name: "戦闘" };
 
 describe("RadioClickable", () => {
   it("propのTypeがLevelのときに、下限レベルと上限レベルを文字列結合して表示しているか", () => {
-    const Warapper = shallowMount(RadioClickable, {
+    const Warapper = shallowMount(RadioButtomLabel, {
       propsData: {
         typecode: LevelType,
         value: LevelData
@@ -19,7 +19,7 @@ describe("RadioClickable", () => {
     expect(Warapper.find(".button-design").text()).toBe(LabelText);
   });
   it("propのTypeがotherのときに、nameの値を表示できるか", () => {
-    const Warapper = shallowMount(RadioClickable, {
+    const Warapper = shallowMount(RadioButtomLabel, {
       propsData: {
         typecode: OtherType,
         value: OtherData
