@@ -2,7 +2,7 @@ import { shallowMount } from "@vue/test-utils";
 import RadioButtomLabel from "@/components/molecules/RadioButtomLabel/index.vue";
 
 const LevelType = "Level";
-const OtherType = "other";
+const OtherType = "Equipment";
 
 const LevelData = { ID: 1, lowerLevel: 1, upperLevel: 10 };
 const OtherData = { ID: 1, name: "戦闘" };
