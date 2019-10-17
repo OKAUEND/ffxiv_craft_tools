@@ -27,4 +27,18 @@ describe("RadioClickable", () => {
     });
     expect(Warapper.find(".button-design").text()).toBe(OtherData.name);
   });
+  it("INPUTのIDタグとLabelのforタグが同じ値で紐付けられるか", () => {
+    const Warapper = shallowMount(RadioButtomLabel, {
+      propsData: {
+        typecode: LevelType,
+        value: LevelData
+      }
+    });
+    const BindTags = LevelType + LevelData.ID;
+    expect(Warapper.find("input").attributes().id).toBe(BindTags);
+    expect(Warapper.find("label").attributes().for).toBe(BindTags);
+    expect(Warapper.find("input").attributes().id).toBe(
+      Warapper.find("label").attributes().for
+    );
+  });
 });
