@@ -1,7 +1,7 @@
 <template>
   <div class="button-design">
     <input type="radio" v-bind:id="createLabelForTags" />
-    <label v-bind:for="createLabelForTags">{{ LabelText }}</label>
+    <label v-bind:for="createLabelForTags" v-on:click="emitData">{{ LabelText }}</label>
   </div>
 </template>
 
@@ -31,6 +31,11 @@ export default {
     },
     createLabelForTags() {
       return this.typecode + this.value.ID;
+    }
+  },
+  methods: {
+    emitData() {
+      return this.$emit("select-buttom-click", this.value);
     }
   }
 };
