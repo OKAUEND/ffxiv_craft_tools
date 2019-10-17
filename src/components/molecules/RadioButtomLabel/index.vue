@@ -8,6 +8,16 @@
 <script>
 export default {
   name: "RadioButtomLabel",
+  props: {
+    typecode: {
+      type: String,
+      required: true
+    },
+    value: {
+      type: Object,
+      required: true
+    }
+  },
 };
 </script>
 
