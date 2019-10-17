@@ -15,7 +15,7 @@ const Level = {
 
 const other = {
   name: "TYPE",
-  type: "other",
+  type: "Equipment",
   list: [
     { name: "戦闘", ID: 1 },
     { name: "非戦闘", ID: 2 },
@@ -54,15 +54,15 @@ describe("CategoriesList", () => {
     });
     expect(OtherWarapper.find("h2").text()).toBe(other.name);
   });
-  it("typeがLEVELの場合、配列数分のリストレンダリングされているか", () => {
-    const LevelWarapper = shallowMount(CategoriesList, {
-      propsData: {
-        category: Level
-      }
-    });
-    expect(LevelWarapper.findAll(".button-design").length).toBe(
-      Level.List.length
-    );
-  });
+  // it("typeがLEVELの場合、配列数分のリストレンダリングされているか", () => {
+  //   const LevelWarapper = shallowMount(CategoriesList, {
+  //     propsData: {
+  //       category: Level
+  //     }
+  //   });
+  //   expect(LevelWarapper.findAll(".button-design").length).toBe(
+  //     Level.List.length
+  //   );
+  // });
   it("typeがotherの場合、リストレンダリングされているか", () => {});
 });
