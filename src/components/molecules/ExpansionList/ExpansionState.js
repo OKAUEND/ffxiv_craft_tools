@@ -1,6 +1,16 @@
-export class ARealReborn {
+class Expansion {
   constructor(ExpansionName) {
     this.ExpansionName = ExpansionName;
+  }
+
+  get name() {
+    return this.ExpansionName;
+  }
+}
+
+export class ARealReborn extends Expansion {
+  constructor(ExpansionName) {
+    super(ExpansionName);
   }
   static create() {
     return new ARealReborn();
@@ -9,11 +19,15 @@ export class ARealReborn {
   get style() {
     return {};
   }
+
+  get name() {
+    return super();
+  }
 }
 
-export class Heavensward {
+export class Heavensward extends Expansion {
   constructor(ExpansionName) {
-    this.ExpansionName = ExpansionName;
+    super(ExpansionName);
   }
   static create() {
     return new Heavensward();
@@ -22,11 +36,15 @@ export class Heavensward {
   get style() {
     return {};
   }
+
+  get name() {
+    return super();
+  }
 }
 
-export class Stormblood {
+export class Stormblood extends Expansion {
   constructor(ExpansionName) {
-    this.ExpansionName = ExpansionName;
+    super(ExpansionName);
   }
   static create() {
     return new Stormblood();
@@ -35,11 +53,15 @@ export class Stormblood {
   get style() {
     return {};
   }
+
+  get name() {
+    return super();
+  }
 }
 
-export class Shadowbringers {
+export class Shadowbringers extends Expansion {
   constructor(ExpansionName) {
-    this.ExpansionName = ExpansionName;
+    super(ExpansionName);
   }
   static create() {
     return new Shadowbringers();
@@ -47,5 +69,9 @@ export class Shadowbringers {
 
   get style() {
     return {};
+  }
+
+  get name() {
+    return super();
   }
 }
