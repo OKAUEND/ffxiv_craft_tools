@@ -1,6 +1,6 @@
 class Expansion {
-  constructor(ExpansionName) {
-    this.ExpansionName = ExpansionName;
+  constructor(Expansion) {
+    this.ExpansionName = Expansion.name;
   }
 
   get name() {
@@ -9,8 +9,8 @@ class Expansion {
 }
 
 export class ARealReborn extends Expansion {
-  constructor(ExpansionName) {
-    super(ExpansionName);
+  constructor(Expansion) {
+    super(Expansion);
   }
   static create() {
     return new ARealReborn();
@@ -26,8 +26,8 @@ export class ARealReborn extends Expansion {
 }
 
 export class Heavensward extends Expansion {
-  constructor(ExpansionName) {
-    super(ExpansionName);
+  constructor(Expansion) {
+    super(Expansion);
   }
   static create() {
     return new Heavensward();
@@ -43,8 +43,8 @@ export class Heavensward extends Expansion {
 }
 
 export class Stormblood extends Expansion {
-  constructor(ExpansionName) {
-    super(ExpansionName);
+  constructor(Expansion) {
+    super(Expansion);
   }
   static create() {
     return new Stormblood();
@@ -60,8 +60,8 @@ export class Stormblood extends Expansion {
 }
 
 export class Shadowbringers extends Expansion {
-  constructor(ExpansionName) {
-    super(ExpansionName);
+  constructor(Expansion) {
+    super(Expansion);
   }
   static create() {
     return new Shadowbringers();
