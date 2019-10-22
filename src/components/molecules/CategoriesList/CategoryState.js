@@ -1,6 +1,8 @@
 class Category {
   constructor(value) {
-    this.category = value;
+    this.ID = value.ID;
+    this.name = value.name;
+    this.type = value.type;
   }
 }
 
@@ -9,6 +11,10 @@ export class IconState extends Category {
     return new IconState(value);
   }
 
+  constructor(value) {
+    super(value);
+    this.Image = value.Image;
+  }
   get Label() {
     return this.category.Image;
   }
@@ -27,6 +33,12 @@ export class StringState extends Category {
 export class LevelState extends Category {
   static create(value) {
     return new LevelState(value);
+  }
+
+  constructor(value) {
+    super(value);
+    this.lowerLevel = value.lowerLevel;
+    this.upperLevel = value.upperLevel;
   }
 
   get Label() {
