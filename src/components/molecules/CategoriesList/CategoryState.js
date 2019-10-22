@@ -1,17 +1,17 @@
 class Category {
   constructor(value) {
     this.category = value;
-}
+  }
 }
 
 export class IconState extends Category {
   static create(value) {
     return new IconState(value);
-}
+  }
 
   get Label() {
     return this.category.Image;
-}
+  }
 }
 
 export class StringState extends Category {
