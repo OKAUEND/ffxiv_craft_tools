@@ -1,7 +1,8 @@
 <template>
   <div class="button-design">
-    <input type="radio" v-bind:id="createLabelForTags" />
-    <label v-bind:for="createLabelForTags" v-on:click="emitData">{{ LabelText }}</label>
+    <input type="radio" v-bind:id="classState.formID" />
+    <label v-bind:for="classState.formID" v-on:click="emitData">
+    </label>
   </div>
 </template>
 
