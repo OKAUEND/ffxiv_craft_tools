@@ -30,6 +30,23 @@ export default {
       required: true
     }
   },
+  computed: {
+    CategoryState: {
+      get() {
+        switch (this.typecode) {
+          case "Level":
+            return LevelState.create(this.category);
+          case "job":
+          case "Equipped":
+            return IconState.create(this.category);
+          case "Secretbook":
+            return StringState.create(this.category);
+          default:
+            break;
+        }
+      }
+    }
+  },
 };
 </script>
 
