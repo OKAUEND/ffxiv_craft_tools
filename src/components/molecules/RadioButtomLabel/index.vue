@@ -10,11 +10,7 @@
 export default {
   name: "RadioButtomLabel",
   props: {
-    typecode: {
-      type: String,
-      required: true
-    },
-    value: {
+    ClassStateObject: {
       type: Object,
       required: true
     }
