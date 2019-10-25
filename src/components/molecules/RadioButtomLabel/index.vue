@@ -16,18 +16,10 @@ export default {
     }
   },
   computed: {
-    isLevel() {
-      return this.typecode === "Level";
-    },
-    LabelText() {
-      if (this.isLevel) {
-        return this.value.lowerLevel + "~" + this.value.upperLevel;
-      } else {
-        return this.value.name;
+    classState: {
+      get() {
+        return this.ClassStateObject;
       }
-    },
-    createLabelForTags() {
-      return this.typecode + this.value.ID;
     }
   },
   methods: {
