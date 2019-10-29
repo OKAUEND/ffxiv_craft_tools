@@ -2,6 +2,10 @@
   <div class="button-design">
     <input type="radio" v-bind:id="classState.formID" />
     <label v-bind:for="classState.formID" v-on:click="emitData">
+      <template v-if="classState.isIcon">
+        <img v-bind:src="imagePath" />
+      </template>
+      <template v-else>{{ classState.Label }}</template>
     </label>
   </div>
 </template>
@@ -19,6 +23,11 @@ export default {
     classState: {
       get() {
         return this.ClassStateObject;
+      }
+    },
+    imagePath: {
+      get() {
+        return this.classState.Label;
       }
     }
   },
