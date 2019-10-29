@@ -1,13 +1,12 @@
 export class IconState {
   constructor(value) {
     this.ID = value.ID;
-    this.name = value.name;
     this.type = value.type;
     this.image = value.image;
   }
   static create(category) {
     return new IconState(category);
-}
+  }
 
   get isIcon() {
     return this.type === "Icon";
@@ -50,12 +49,12 @@ export class StringState {
       category_area_default: true,
       category_default_buttom: true
     };
-}
+  }
 
   get Label() {
     return this.name;
-}
   }
+}
 
 export class LevelState {
   constructor(value) {
