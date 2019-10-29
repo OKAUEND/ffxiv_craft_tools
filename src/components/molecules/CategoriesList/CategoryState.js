@@ -15,10 +15,15 @@ export class IconState {
       category_image_buttom: true
     };
   }
+}
+
+export class JobState extends IconState {
+  static create(category) {
+    return new JobState(category);
+  }
 
   get Label() {
-    const img_path = "@/assets/CRAFTER/" + this.image;
-    return require(img_path);
+    return "static/CRAFTER/" + this.image;
   }
 }
 
