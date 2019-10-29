@@ -9,6 +9,14 @@ export class IconState {
     return new IconState(category);
 }
 
+  get isIcon() {
+    return this.type === "Icon";
+  }
+
+  get formID() {
+    return this.type + this.ID;
+  }
+
   get Style() {
     return {
       category_area_image: true,
