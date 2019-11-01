@@ -39,7 +39,7 @@ export default {
           case "Level":
             return LevelState.create(this.category);
           case "job":
-            return JobIcon.create(this.category);
+            return JobState.create(this.category);
           case "Equipped":
             return IconState.create(this.category);
           case "Secretbook":
