@@ -26,6 +26,10 @@ export default {
     category: {
       type: Object,
       required: true
+    },
+    value: {
+      type: String,
+      required: true
     }
   },
   computed: {
