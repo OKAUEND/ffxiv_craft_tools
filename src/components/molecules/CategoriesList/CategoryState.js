@@ -86,4 +86,13 @@ export class LevelState {
   get Label() {
     return this.lowerLevel + "~" + this.upperLevel;
   }
+
+  get fromSelectedData() {
+    const LevelName = this.type + this.code;
+    return {
+      name: LevelName,
+      lowerLevel: this.lowerLevel,
+      upperLevel: this.upperLevel
+    };
+  }
 }
