@@ -3,10 +3,17 @@
     <section class="Recipe-container">
       <section class="Expansion"></section>
       <section class="ChoiceDetail">
-        <div class="job filter-container"></div>
-        <div class="Equippedjob filter-container"></div>
-        <div class="level filter-container"></div>
-        <div class="Secretbook filter-container"></div>
+        <div class="job filter-container">
+          <h2>CLASS</h2>
+          <categories-list
+            v-for="(item, key) in CrafterJob"
+            v-bind:key="key"
+            v-bind:category="item"
+            v-bind:typecode="'job'"
+            v-bind:value="SelectedJob"
+            v-on:change="updateJob"
+          ></categories-list>
+        </div>
       </section>
     </section>
     <section class="RecipeLists"></section>
