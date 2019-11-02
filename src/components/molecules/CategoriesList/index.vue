@@ -51,6 +51,11 @@ export default {
       }
     }
   },
+  methods: {
+    emitMethod(value) {
+      return this.$emit("change", value);
+    }
+  }
 };
 </script>
 
