@@ -18,12 +18,13 @@ export class IconState {
     return this.type + this.ID;
   }
 
-  get Style() {
+  get fromSelectedData() {
     return {
-      category_area_image: true,
-      category_image_buttom: true
+      name: this.name,
+      job: this.name
     };
   }
+
   LabelStyle(value) {
     return {
       "category-area-image": true,
