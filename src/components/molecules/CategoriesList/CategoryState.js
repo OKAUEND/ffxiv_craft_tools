@@ -61,6 +61,14 @@ export class StringState {
   get formID() {
     return this.type + this.ID;
   }
+
+  get isIcon() {
+    return this.type === "Icon";
+  }
+
+  get Name() {
+    return this.name;
+  }
     return {
       category_area_default: true,
       category_default_buttom: true
