@@ -79,18 +79,7 @@ export class LevelState {
     return new LevelState(category);
   }
 
-  get Style() {
-    return {
-      category_area_Level: true,
-      category_default_buttom: true
-    };
-  }
-
-  get isIcon() {
-    return this.type === "Icon";
-  }
-
-  get formID() {
+  get Name() {
     return this.type + this.ID;
   }
 
