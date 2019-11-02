@@ -14,6 +14,17 @@
             v-on:change="updateJob"
           ></categories-list>
         </div>
+        <div class="level filter-container">
+          <h2>LEVEL</h2>
+          <categories-list
+            v-for="(item, key) in Levels"
+            v-bind:key="key"
+            v-bind:category="item"
+            v-bind:typecode="`Level`"
+            v-bind:value="SelectedLevelband"
+            v-on:change="updateLevelband"
+          ></categories-list>
+        </div>
       </section>
     </section>
     <section class="RecipeLists"></section>
