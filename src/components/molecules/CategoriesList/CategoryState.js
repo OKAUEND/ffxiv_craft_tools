@@ -58,7 +58,9 @@ export class StringState {
     return new StringState(category);
   }
 
-  get Style() {
+  get formID() {
+    return this.type + this.ID;
+  }
     return {
       category_area_default: true,
       category_default_buttom: true
