@@ -18,6 +18,10 @@ export class IconState {
     return this.type + this.ID;
   }
 
+  get Name() {
+    return this.name;
+  }
+
   get fromSelectedData() {
     return {
       name: this.name,
