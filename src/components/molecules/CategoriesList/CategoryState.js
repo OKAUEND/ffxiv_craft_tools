@@ -69,7 +69,7 @@ export class StringState {
   }
 }
 
-export class LevelState {
+export class LevelState extends StringState {
   constructor(value) {
     super(value);
     this.lowerLevel = value.lowerLevel;
