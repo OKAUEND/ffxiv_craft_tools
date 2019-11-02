@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import CategoriesList from "@/components/molecules/CategoriesList/index.vue";
+import { Icons, LevelArray } from "@/testData.js";
 export default {
   name: "Oraganisms_CraftRecipe"
 };
