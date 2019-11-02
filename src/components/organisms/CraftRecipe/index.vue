@@ -74,11 +74,15 @@ export default {
     updateLevelband(value) {
       this.SelectedLevelband = value;
     },
+    isExistsData(value) {
+      if (value) {
+        return value;
+      } else {
+        return "";
 }
-.Expansion {
 }
-.ChoiceDetail {
 }
+};
 
 .filter-container {
 }
