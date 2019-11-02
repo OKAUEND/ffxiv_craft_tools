@@ -71,8 +71,7 @@ export class StringState {
 
 export class LevelState {
   constructor(value) {
-    this.ID = value.ID;
-    this.type = value.type;
+    super(value);
     this.lowerLevel = value.lowerLevel;
     this.upperLevel = value.upperLevel;
   }
