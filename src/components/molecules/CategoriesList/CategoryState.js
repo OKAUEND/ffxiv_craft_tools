@@ -50,6 +50,7 @@ export class JobState extends IconState {
 export class StringState {
   constructor(value) {
     this.ID = value.ID;
+    this.code = value.code;
     this.name = value.name;
     this.type = value.type;
   }
