@@ -50,6 +50,21 @@ export default {
         return this.LevelList;
       }
     },
+    SelectedJob: {
+      set(value) {
+        this.SelectJob = value;
+      },
+      get() {
+        return this.isExistsData(this.SelectJob.name);
+      }
+    },
+    SelectedLevelband: {
+      set(value) {
+        this.SelectLevelband = value;
+      },
+      get() {
+        return this.isExistsData(this.SelectLevelband.name);
+      }
 }
 .Recipe-container {
 }
