@@ -69,9 +69,12 @@ export class StringState {
   get Name() {
     return this.name;
   }
+
+  LabelStyle(value) {
+    const LevelID = this.type + this.ID;
     return {
-      category_area_default: true,
-      category_default_buttom: true
+      "category-area-Normal": true,
+      "Normal-radio-checkmark": LevelID === value
     };
   }
 
