@@ -34,7 +34,7 @@ export class IconState {
       "category-area-image": true,
       "Icon-radio-checkmark": this.name === value
     };
-}
+  }
 }
 
 export class JobState extends IconState {
