@@ -66,7 +66,14 @@ export default {
         return this.isExistsData(this.SelectLevelband.name);
       }
 }
-.Recipe-container {
+  },
+  methods: {
+    updateJob(value) {
+      this.SelectedJob = value;
+    },
+    updateLevelband(value) {
+      this.SelectedLevelband = value;
+    },
 }
 .Expansion {
 }
