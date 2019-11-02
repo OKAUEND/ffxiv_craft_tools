@@ -29,6 +29,10 @@ export default {
       SelectLevelband: {}
 };
   },
+  created() {
+    this.CrafterJob = Icons;
+    this.Levels = LevelArray;
+  },
 }
 .Recipe-container {
 }
