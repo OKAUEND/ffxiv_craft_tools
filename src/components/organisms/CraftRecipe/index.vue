@@ -83,7 +83,7 @@ export default {
 }
 }
 };
+</script>
 
-.filter-container {
-}
+<style lang="scss" scoped>
 </style>
