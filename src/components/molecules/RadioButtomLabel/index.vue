@@ -1,15 +1,10 @@
 <template>
-  <div class="button-design">
-    <input type="radio" v-bind:id="classState.formID" />
-    <label v-bind:for="classState.formID" v-on:click="emitData">
-      <template v-if="classState.isIcon">
-        <img v-bind:src="imagePath" />
+  <label v-bind:for="CategoryState.formID" v-bind:class="Stylies">
+    <template v-if="CategoryState.isIcon">
       </template>
       <template v-else>{{ classState.Label }}</template>
     </label>
-  </div>
 </template>
-
 <script>
 export default {
   name: "RadioButtomLabel",
