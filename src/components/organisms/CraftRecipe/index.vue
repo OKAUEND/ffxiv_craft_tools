@@ -17,7 +17,10 @@
 import CategoriesList from "@/components/molecules/CategoriesList/index.vue";
 import { Icons, LevelArray } from "@/testData.js";
 export default {
-  name: "Oraganisms_CraftRecipe"
+  name: "Oraganisms_CraftRecipe",
+  components: {
+    CategoriesList
+  },
 };
 </script>
 
