@@ -33,6 +33,23 @@ export default {
     this.CrafterJob = Icons;
     this.Levels = LevelArray;
   },
+  computed: {
+    CrafterJob: {
+      set(value) {
+        this.CrafterJobList = value;
+      },
+      get() {
+        return this.CrafterJobList;
+      }
+    },
+    Levels: {
+      set(value) {
+        this.LevelList = value;
+      },
+      get() {
+        return this.LevelList;
+      }
+    },
 }
 .Recipe-container {
 }
