@@ -24,6 +24,12 @@ export class IconState {
       category_image_buttom: true
     };
   }
+  LabelStyle(value) {
+    return {
+      "category-area-image": true,
+      "Icon-radio-checkmark": this.name === value
+    };
+}
 }
 
 export class JobState extends IconState {
