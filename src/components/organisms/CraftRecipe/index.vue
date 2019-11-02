@@ -21,11 +21,14 @@ export default {
   components: {
     CategoriesList
   },
+  data() {
+    return {
+      CrafterJobList: [],
+      LevelList: [],
+      SelectJob: {},
+      SelectLevelband: {}
 };
-</script>
-
-<style lang="scss" scoped>
-.Recipewarapper {
+  },
 }
 .Recipe-container {
 }
