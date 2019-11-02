@@ -2,6 +2,8 @@ export class IconState {
   constructor(value) {
     this.ID = value.ID;
     this.type = value.type;
+    this.name = value.name;
+    this.code = value.jobcode;
     this.image = value.image;
   }
   static create(category) {
