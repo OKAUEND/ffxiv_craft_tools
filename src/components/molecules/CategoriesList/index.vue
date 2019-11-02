@@ -10,6 +10,7 @@
 import RadioButtomLabel from "@/components/molecules/RadioButtomLabel/index.vue";
 import {
   IconState,
+  JobState,
   StringState,
   LevelState
 } from "@/components/molecules/CategoriesList/CategoryState.js";
