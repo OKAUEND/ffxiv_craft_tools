@@ -2,7 +2,7 @@
   <label v-bind:for="CategoryState.formID" v-bind:class="Stylies">
     <template v-if="CategoryState.isIcon">
       <img v-bind:src="CategoryImagePath" />
-      </template>
+    </template>
     <template v-else>{{ CategoryState.Label }}</template>
     <input
       class="radio-hidden"
@@ -11,7 +11,7 @@
       v-bind:value="CategoryState.Name"
       v-model="radioButtonValue"
     />
-    </label>
+  </label>
 </template>
 <script>
 export default {
@@ -43,8 +43,8 @@ export default {
       },
       get() {
         return this.value;
-    }
-  },
+      }
+    },
     Stylies: {
       get() {
         return this.CategoryState.LabelStyle(this.value);
