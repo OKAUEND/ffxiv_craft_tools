@@ -15,12 +15,12 @@ export default {
     }
   },
   computed: {
-    classState: {
+    CategoryState: {
       get() {
         return this.ClassStateObject;
       }
     },
-    imagePath: {
+    CategoryImagePath: {
       get() {
         return this.classState.Label;
       }
