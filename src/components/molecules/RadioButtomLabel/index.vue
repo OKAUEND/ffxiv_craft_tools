@@ -2,7 +2,13 @@
   <label v-bind:for="CategoryState.formID" v-bind:class="Stylies">
     <template v-if="CategoryState.isIcon">
       </template>
-      <template v-else>{{ classState.Label }}</template>
+    <input
+      class="radio-hidden"
+      type="radio"
+      v-bind:id="CategoryState.formID"
+      v-bind:value="CategoryState.Name"
+      v-model="radioButtonValue"
+    />
     </label>
 </template>
 <script>
@@ -11,6 +17,10 @@ export default {
   props: {
     ClassStateObject: {
       type: Object,
+      required: true
+    },
+    value: {
+      type: String,
       required: true
     }
   },
@@ -24,6 +34,13 @@ export default {
       get() {
         return this.classState.Label;
       }
+    },
+    radioButtonValue: {
+      set() {
+        return this.$emit("change", this.CategoryState.fromSelectedData);
+      },
+      get() {
+        return this.value;
     }
   },
   methods: {
