@@ -3,6 +3,7 @@
     <template v-if="CategoryState.isIcon">
       <img v-bind:src="CategoryImagePath" />
       </template>
+    <template v-else>{{ CategoryState.Label }}</template>
     <input
       class="radio-hidden"
       type="radio"
