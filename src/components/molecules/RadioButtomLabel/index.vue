@@ -45,10 +45,11 @@ export default {
         return this.value;
     }
   },
-  methods: {
-    emitData() {
-      return this.$emit("select-buttom-click", this.value);
+    Stylies: {
+      get() {
+        return this.CategoryState.LabelStyle(this.value);
     }
+  }
   }
 };
 </script>
