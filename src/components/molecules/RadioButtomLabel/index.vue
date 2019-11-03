@@ -48,8 +48,8 @@ export default {
     Stylies: {
       get() {
         return this.CategoryState.LabelStyle(this.value);
+      }
     }
-  }
   }
 };
 </script>
