@@ -55,4 +55,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.radio-hidden {
+  display: none;
+}
+.category-area-image {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+
+}
+
+.category-area-Normal {
+  position: relative;
+  display: inline-block;
+  height: 30px;
+  width: 55px;
+  text-align: center;
+  line-height: 30px;
+  background-color: #272727;
+  color: #faebd7;
+  border-radius: 2px;
+
+}
 </style>
