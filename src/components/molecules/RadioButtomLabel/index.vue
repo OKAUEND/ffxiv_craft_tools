@@ -1,6 +1,7 @@
 <template>
   <label v-bind:for="CategoryState.formID" v-bind:class="Stylies">
     <template v-if="CategoryState.isIcon">
+      <img v-bind:src="CategoryImagePath" />
       </template>
     <input
       class="radio-hidden"
@@ -32,7 +33,7 @@ export default {
     },
     CategoryImagePath: {
       get() {
-        return this.classState.Label;
+        return this.CategoryState.Label;
       }
     },
     radioButtonValue: {
