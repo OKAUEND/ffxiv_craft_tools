@@ -31,12 +31,37 @@ const IconsWarapper = shallowMount(CategoriesList, {
     value: ""
   }
 });
+
+describe("CategoriesList", () => {
+  it("Propsが受け取れているか", () => {
+    expect(LevelWarapper.props().category).toBe(Level);
+    expect(IconsWarapper.props().category).toBe(Icon);
+  });
+  it("算出プロパティでタイプ毎にクラスのインスタンスが作成されているか", () => {
+    const LevelThis = {
+      typecode: LevelType,
+      category: Level
+};
+    expect(CategoriesList.computed.CategoryState.get.call(LevelThis)).toEqual(
+      LevelClass
+    );
+
+    const IconThis = {
+      typecode: IconType,
+      category: Icon
 };
 
-const other = {
-  name: "戦闘",
-  ID: 1,
-  type: "Battle",
-};
+    expect(CategoriesList.computed.CategoryState.get.call(IconThis)).toEqual(
+      IconClass
+    );
+  });
+  it("子からのemit通知を受け取れているか", () => {
+    const returnLevelData = LevelClass.fromSelectedData;
+    LevelWarapper.find(RadioChild).vm.$emit("change", returnLevelData);
+    expect(LevelWarapper.emitted().change[0][0]).toEqual(returnLevelData);
 
-describe("CategoriesList", () => {});
+    const returnIconData = IconClass.fromSelectedData;
+    IconsWarapper.find(RadioChild).vm.$emit("change", returnIconData);
+    expect(IconsWarapper.emitted().change[0][0]).toEqual(returnIconData);
+  });
+});
