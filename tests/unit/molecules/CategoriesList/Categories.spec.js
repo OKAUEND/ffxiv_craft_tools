@@ -1,5 +1,11 @@
 import { shallowMount } from "@vue/test-utils";
 import CategoriesList from "@/components/molecules/CategoriesList/index.vue";
+import RadioChild from "@/components/molecules/RadioButtomLabel/index.vue";
+import { LevelArray, Icons } from "@/testData.js";
+import {
+  IconState,
+  LevelState
+} from "@/components/molecules/CategoriesList/CategoryState.js";
 
 const LevelType = "Level";
 const StringType = "Secretbook";
