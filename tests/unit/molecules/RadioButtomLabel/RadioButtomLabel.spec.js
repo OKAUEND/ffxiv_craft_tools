@@ -1,5 +1,10 @@
 import { shallowMount } from "@vue/test-utils";
 import RadioButtomLabel from "@/components/molecules/RadioButtomLabel/index.vue";
+import {
+  LevelState,
+  JobState
+} from "@/components/molecules/CategoriesList/CategoryState.js";
+import { LevelArray, Icons } from "@/testData.js";
 
 const LevelType = "Level";
 const OtherType = "Equipment";
