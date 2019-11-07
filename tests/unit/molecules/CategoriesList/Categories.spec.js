@@ -7,8 +7,7 @@ import {
   LevelState
 } from "@/components/molecules/CategoriesList/CategoryState.js";
 
-const LevelType = "Level";
-const StringType = "Secretbook";
+const IconType = "job";
 const LevelType = "Level";
 
 const Level = LevelArray[2];
