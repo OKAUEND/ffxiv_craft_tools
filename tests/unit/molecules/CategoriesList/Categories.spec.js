@@ -11,10 +11,27 @@ const LevelType = "Level";
 const StringType = "Secretbook";
 const LevelType = "Level";
 
-const Level = {
-  ID: 1,
-  lowerLevel: 1,
-  upperLevel: 10,
+const Level = LevelArray[2];
+const Icon = Icons[1];
+
+const LevelClass = LevelState.create(Level);
+const IconClass = IconState.create(Icon);
+
+const LevelWarapper = shallowMount(CategoriesList, {
+  propsData: {
+    typecode: LevelType,
+    category: Level,
+    value: ""
+  }
+});
+
+const IconsWarapper = shallowMount(CategoriesList, {
+  propsData: {
+    typecode: IconType,
+    category: Icon,
+    value: ""
+  }
+});
 };
 
 const other = {
