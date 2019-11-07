@@ -41,7 +41,7 @@ describe("CategoriesList", () => {
     const LevelThis = {
       typecode: LevelType,
       category: Level
-};
+    };
     expect(CategoriesList.computed.CategoryState.get.call(LevelThis)).toEqual(
       LevelClass
     );
@@ -49,7 +49,7 @@ describe("CategoriesList", () => {
     const IconThis = {
       typecode: IconType,
       category: Icon
-};
+    };
 
     expect(CategoriesList.computed.CategoryState.get.call(IconThis)).toEqual(
       IconClass
