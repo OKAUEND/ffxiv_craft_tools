@@ -93,7 +93,7 @@ export default {
   position: relative;
   display: inline-block;
   height: 30px;
-  width: 55px;
+  width: 65px;
   text-align: center;
   line-height: 30px;
   background-color: #272727;
@@ -107,8 +107,7 @@ export default {
       position: absolute;
       background: #33333380;
       height: 30px;
-      width: 55px;
-
+      width: 65px;
       border-radius: 5px;
     }
     &::after {
