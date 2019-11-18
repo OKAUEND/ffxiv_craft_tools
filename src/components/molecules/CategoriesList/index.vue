@@ -60,4 +60,70 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.category-area-image {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+
+  &.Icon-radio-checkmark {
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      background: #33333380;
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+    }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 10px;
+      height: 22px;
+      top: 2px;
+      left: 30%;
+      border: solid #3f74b1;
+      border-width: 0 7px 7px 0;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.category-area-Normal {
+  position: relative;
+  display: inline-block;
+  height: 30px;
+  width: 65px;
+  text-align: center;
+  line-height: 30px;
+  background-color: #131212;
+  color: #faebd7;
+  border-radius: 2px;
+
+  &.Normal-radio-checkmark {
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      background: #5a5a5a3a;
+      height: 30px;
+      width: 65px;
+      border-radius: 5px;
+    }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 10px;
+      height: 18px;
+      top: -1px;
+      left: 30%;
+      border: solid #3f74b1;
+      border-width: 0 7px 7px 0;
+      transform: rotate(45deg);
+    }
+  }
+}
 </style>
