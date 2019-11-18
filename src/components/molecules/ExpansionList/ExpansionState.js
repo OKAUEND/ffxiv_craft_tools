@@ -12,7 +12,7 @@ class Expansion {
 
   get IsIcon() {
     return false;
-}
+  }
 
   get Label() {
     return this.name;
