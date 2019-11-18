@@ -32,14 +32,14 @@ export default {
   computed: {
     CategoryState: {
       get() {
-        switch (this.typecode) {
+        switch (this.category.type) {
           case "Level":
             return LevelState.create(this.category);
-          case "job":
+          case "Job":
             return JobState.create(this.category);
           case "Equipped":
             return IconState.create(this.category);
-          case "Secretbook":
+          case "Master":
             return StringState.create(this.category);
           default:
             break;
