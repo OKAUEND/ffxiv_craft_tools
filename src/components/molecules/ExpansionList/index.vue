@@ -12,6 +12,7 @@ import {
   Heavensward,
   Stormblood,
   Shadowbringers
+} from "@/components/molecules/ExpansionList/ExpansionState.js";
 import RadioButtomLabel from "@/components/molecules/RadioButtomLabel/index.vue";
 export default {
   name: "ExpansionItem",
