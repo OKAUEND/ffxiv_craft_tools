@@ -20,10 +20,6 @@ export default {
     RadioButtomLabel
   },
   props: {
-    typecode: {
-      type: String,
-      required: true
-    },
     category: {
       type: Object,
       required: true
