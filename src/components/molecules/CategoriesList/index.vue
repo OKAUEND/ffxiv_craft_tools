@@ -1,9 +1,9 @@
 <template>
-    <radio-buttom-label
-      v-bind:ClassStateObject="CategoryState"
+  <radio-buttom-label
+    v-bind:ClassStateObject="CategoryState"
     v-bind:value="value"
     v-on:change="emitMethod"
-    ></radio-buttom-label>
+  ></radio-buttom-label>
 </template>
 
 <script>
