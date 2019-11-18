@@ -12,7 +12,8 @@ import {
   IconState,
   JobState,
   StringState,
-  LevelState
+  LevelState,
+  ErrorState
 } from "@/components/molecules/CategoriesList/CategoryState.js";
 export default {
   name: "CategoriesList",
@@ -42,7 +43,7 @@ export default {
           case "Master":
             return StringState.create(this.category);
           default:
-            break;
+            return ErrorState.create();
         }
       }
     }

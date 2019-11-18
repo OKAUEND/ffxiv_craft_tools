@@ -110,3 +110,17 @@ export class LevelState extends StringState {
     };
   }
 }
+
+export class ErrorState extends StringState {
+  constructor() {
+    super({
+      ID: 1,
+      code: 1,
+      name: "Error",
+      type: "Error"
+    });
+  }
+  static create() {
+    return new ErrorState();
+  }
+}
