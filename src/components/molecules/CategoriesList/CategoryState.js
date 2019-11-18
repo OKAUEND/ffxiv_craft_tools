@@ -11,7 +11,7 @@ export class IconState {
   }
 
   get isIcon() {
-    return this.type === "Icon";
+    return true;
   }
 
   get formID() {
@@ -25,7 +25,8 @@ export class IconState {
   get fromSelectedData() {
     return {
       name: this.name,
-      job: this.name
+      job: this.name,
+      code: this.code
     };
   }
 
@@ -75,6 +76,13 @@ export class StringState {
     return {
       "category-area-Normal": true,
       "Normal-radio-checkmark": LevelID === value
+    };
+  }
+
+  get fromSelectedData() {
+    return {
+      name: this.name,
+      code: this.code
     };
   }
 
