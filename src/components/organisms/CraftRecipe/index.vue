@@ -3,8 +3,15 @@
       <section class="CategoryDetail">
         <category-group v-bind:Categories="CrafterJobs">CLASS</category-group>
         <category-group v-bind:Categories="Equippeds">Equipped</category-group>
-        <category-group v-bind:Categories="Levels" v-bind:isStoreUse="true">LEVEL</category-group>
-        <category-group v-bind:Categories="MasterRecipes" v-bind:isStoreUse="true">Master</category-group>
+        <category-group v-bind:Categories="Levels" v-bind:isStoreUse="true">
+          LEVEL
+        </category-group>
+        <category-group
+          v-bind:Categories="MasterRecipes"
+          v-bind:isStoreUse="true"
+        >
+          Master
+        </category-group>
       </section>
     </section>
     <section class="RecipeLists"></section>
