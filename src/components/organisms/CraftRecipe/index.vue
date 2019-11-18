@@ -1,30 +1,10 @@
 <template>
   <article class="Recipewarapper">
-    <section class="Recipe-container">
-      <section class="Expansion"></section>
-      <section class="ChoiceDetail">
-        <div class="job filter-container">
-          <h2>CLASS</h2>
-          <categories-list
-            v-for="(item, key) in CrafterJob"
-            v-bind:key="key"
-            v-bind:category="item"
-            v-bind:typecode="'job'"
-            v-bind:value="SelectedJob"
-            v-on:change="updateJob"
-          ></categories-list>
-        </div>
-        <div class="level filter-container">
-          <h2>LEVEL</h2>
-          <categories-list
-            v-for="(item, key) in Levels"
-            v-bind:key="key"
-            v-bind:category="item"
-            v-bind:typecode="`Level`"
-            v-bind:value="SelectedLevelband"
-            v-on:change="updateLevelband"
-          ></categories-list>
-        </div>
+      <section class="CategoryDetail">
+        <category-group v-bind:Categories="CrafterJobs">CLASS</category-group>
+        <category-group v-bind:Categories="Equippeds">Equipped</category-group>
+        <category-group v-bind:Categories="Levels" v-bind:isStoreUse="true">LEVEL</category-group>
+        <category-group v-bind:Categories="MasterRecipes" v-bind:isStoreUse="true">Master</category-group>
       </section>
     </section>
     <section class="RecipeLists"></section>
@@ -32,76 +12,45 @@
 </template>
 
 <script>
-import CategoriesList from "@/components/molecules/CategoriesList/index.vue";
-import { Icons, LevelArray } from "@/testData.js";
+import CategoryGroup from "@/components/molecules/CategoryGroup/index.vue";
 export default {
   name: "Oraganisms_CraftRecipe",
   components: {
-    CategoriesList
-  },
-  data() {
-    return {
-      CrafterJobList: [],
-      LevelList: [],
-      SelectJob: {},
-      SelectLevelband: {}
-};
-  },
-  created() {
-    this.CrafterJob = Icons;
-    this.Levels = LevelArray;
+    CategoryGroup
   },
   computed: {
-    CrafterJob: {
-      set(value) {
-        this.CrafterJobList = value;
-      },
+    CrafterJobs: {
       get() {
-        return this.CrafterJobList;
+        return Icons;
       }
     },
     Levels: {
-      set(value) {
-        this.LevelList = value;
-      },
       get() {
-        return this.LevelList;
+        return LevelArray;
       }
     },
-    SelectedJob: {
-      set(value) {
-        this.SelectJob = value;
-      },
+    MasterRecipes: {
       get() {
-        return this.isExistsData(this.SelectJob.name);
+        return Masterbook;
       }
     },
-    SelectedLevelband: {
-      set(value) {
-        this.SelectLevelband = value;
-      },
+    Equippeds: {
       get() {
-        return this.isExistsData(this.SelectLevelband.name);
+        return EquippedData;
       }
-}
-  },
-  methods: {
-    updateJob(value) {
-      this.SelectedJob = value;
     },
-    updateLevelband(value) {
-      this.SelectedLevelband = value;
-    },
-    isExistsData(value) {
-      if (value) {
-        return value;
-      } else {
-        return "";
-}
-}
-}
+    Expansions: {
+      get() {
+        return ExpansionData;
+      }
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+.CategoryDetail {
+  background-color: #202020;
+  padding: 5px;
+}
 </style>
