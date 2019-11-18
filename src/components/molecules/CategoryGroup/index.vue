@@ -14,6 +14,7 @@
 
 <script>
 import CategoriesList from "@/components/molecules/CategoriesList/index.vue";
+import { Store } from "../CategoryGroup/CategoryStore.js";
 export default {
   components: {
     CategoriesList
@@ -38,6 +39,7 @@ export default {
     SelectedValue: {
       set(value) {
         if (this.isStoreUse) {
+          Store.storeRadioSelectValue(value.name);
         } else {
           this.SelectRadioValue = value.name;
         }
@@ -45,6 +47,7 @@ export default {
       get() {
         let returnValue;
         if (this.isStoreUse) {
+          returnValue = Store.loadSelectValue();
         } else {
           returnValue = this.SelectRadioValue;
         }
