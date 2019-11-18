@@ -11,7 +11,8 @@ import {
   ARealReborn,
   Heavensward,
   Stormblood,
-  Shadowbringers
+  Shadowbringers,
+  ErrorExpansion
 } from "@/components/molecules/ExpansionList/ExpansionState.js";
 import RadioButtomLabel from "@/components/molecules/RadioButtomLabel/index.vue";
 export default {
@@ -42,6 +43,7 @@ export default {
           case 5:
             return Shadowbringers.create(this.Expansion);
           default:
+            return ErrorExpansion.create();
         }
       }
     }

@@ -85,3 +85,25 @@ export class Shadowbringers extends Expansion {
     };
   }
 }
+
+export class ErrorExpansion extends Expansion {
+  constructor() {
+    super({
+      ID: 1,
+      version: 99,
+      name: "Error",
+      type: "Error"
+    });
+  }
+  static create() {
+    return new ErrorExpansion();
+  }
+
+  LabelStyle(value) {
+    return {
+      Expansion_area: true,
+      "Expansion_radio--checkmark": this.ExpansionCode === value,
+      _ERR: true
+    };
+  }
+}
