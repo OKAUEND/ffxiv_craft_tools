@@ -95,8 +95,8 @@ export default {
   width: 65px;
   text-align: center;
   line-height: 30px;
-  background-color: #131212;
-  color: #faebd7;
+  color: #f8f9fa;
+  background-color: #2b2b2b;
   border-radius: 2px;
 
   &.Normal-radio-checkmark {
@@ -104,7 +104,7 @@ export default {
       content: "";
       display: block;
       position: absolute;
-      background: #5a5a5a3a;
+      background: #27272771;
       height: 30px;
       width: 65px;
       border-radius: 5px;
