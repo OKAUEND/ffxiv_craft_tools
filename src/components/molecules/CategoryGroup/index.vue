@@ -2,6 +2,8 @@
   <div class="Category_Group">
     <h3
       class="Category_HeadText"
+      v-on:click="switchLabelClicked"
+      v-bind:class="isOpen"
     >
       <slot></slot>
     </h3>
@@ -38,7 +40,8 @@ export default {
   data() {
     return {
       StoreObject: Store.state,
-      SelectRadioValue: ""
+      SelectRadioValue: "",
+      isLabelClick: false
     };
   },
   computed: {
@@ -59,12 +62,20 @@ export default {
         }
         return returnValue;
       }
+    },
+    isOpen() {
+      return {
+        isOpen: this.isLabelClick
+      };
     }
   },
   methods: {
     onExpasionButtomClick(value) {
       this.SelectedValue = value;
       return this.$emit("change", value);
+    },
+    switchLabelClicked() {
+      this.isLabelClick = !this.isLabelClick;
     }
   }
 };
