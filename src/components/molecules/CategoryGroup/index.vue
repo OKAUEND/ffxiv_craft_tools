@@ -103,11 +103,28 @@ h3 {
     transition: max-height 0.25s ease-in;
   }
 }
-.Category_HeadText {
-}
 
 .Category_HeadText {
+  position: relative;
+  &::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 25%;
+    right: 10%;
+    border-right: 2px solid #f8f9fa;
+    border-bottom: 2px solid #f8f9fa;
+    transition: all 300ms 0s ease;
+    transform: rotate(-45deg);
+  }
+
+  &.isOpen::after {
+    transform: rotate(45deg);
+  }
 }
+
 .Category_Area {
   margin-right: 5px;
 }
