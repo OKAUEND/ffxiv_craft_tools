@@ -1,7 +1,10 @@
 <template>
   <article class="Recipewarapper">
     <section class="select-container">
-      <expansion-group v-bind:Expansions="Expansions"></expansion-group>
+      <expansion-group
+        v-bind:Expansions="Expansions"
+        v-on:change="storeSelectExpansion"
+      ></expansion-group>
       <section class="CategoryDetail">
         <category-group v-bind:Categories="CrafterJobs">CLASS</category-group>
         <category-group v-bind:Categories="Equippeds">Equipped</category-group>
@@ -29,6 +32,11 @@ export default {
     ExpansionGroup,
     CategoryGroup
   },
+  data() {
+    return {
+      SelectExpansion: {}
+    };
+  },
   computed: {
     CrafterJobs: {
       get() {
@@ -55,6 +63,11 @@ export default {
         return ExpansionData;
       }
     }
+  },
+  methods: {
+    storeSelectExpansion(value) {
+      this.SelectExpansion = value;
+    },
   }
 };
 </script>
