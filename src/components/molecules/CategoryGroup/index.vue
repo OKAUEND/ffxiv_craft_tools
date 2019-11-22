@@ -1,5 +1,10 @@
 <template>
   <div class="Category_Group">
+    <h3
+      class="Category_HeadText"
+    >
+      <slot></slot>
+    </h3>
     <div class="Category_List" v-bind:class="isOpen">
       <categories-list
         v-for="(item, key) in Categories"
