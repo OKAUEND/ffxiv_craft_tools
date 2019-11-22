@@ -7,9 +7,6 @@ import {
   LevelState
 } from "@/components/molecules/CategoriesList/CategoryState.js";
 
-const IconType = "job";
-const LevelType = "Level";
-
 const Level = LevelArray[2];
 const Icon = Icons[1];
 
@@ -18,17 +15,13 @@ const IconClass = IconState.create(Icon);
 
 const LevelWarapper = shallowMount(CategoriesList, {
   propsData: {
-    typecode: LevelType,
-    category: Level,
-    value: ""
+    category: Level
   }
 });
 
 const IconsWarapper = shallowMount(CategoriesList, {
   propsData: {
-    typecode: IconType,
-    category: Icon,
-    value: ""
+    category: Icon
   }
 });
 
@@ -39,7 +32,6 @@ describe("CategoriesList", () => {
   });
   it("算出プロパティでタイプ毎にクラスのインスタンスが作成されているか", () => {
     const LevelThis = {
-      typecode: LevelType,
       category: Level
     };
     expect(CategoriesList.computed.CategoryState.get.call(LevelThis)).toEqual(
@@ -47,7 +39,6 @@ describe("CategoriesList", () => {
     );
 
     const IconThis = {
-      typecode: IconType,
       category: Icon
     };
 
