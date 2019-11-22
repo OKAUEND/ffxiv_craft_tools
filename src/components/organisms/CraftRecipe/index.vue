@@ -26,6 +26,13 @@
 <script>
 import CategoryGroup from "@/components/molecules/CategoryGroup/index.vue";
 import ExpansionGroup from "@/components/molecules/ExpansionGroup/index.vue";
+import {
+  ExpansionData,
+  LevelArray,
+  Icons,
+  Masterbook,
+  EquippedData
+} from "@/FFXIV.js";
 export default {
   name: "Oraganisms_CraftRecipe",
   components: {
