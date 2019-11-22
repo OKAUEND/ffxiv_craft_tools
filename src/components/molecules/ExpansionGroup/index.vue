@@ -26,7 +26,7 @@ export default {
   },
   data() {
     return {
-      SelectRadioValue: ""
+      SelectRadioValue: "Expansion2"
     };
   },
   computed: {
