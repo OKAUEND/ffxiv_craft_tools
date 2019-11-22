@@ -4,7 +4,7 @@ import {
   LevelState,
   JobState
 } from "@/components/molecules/CategoriesList/CategoryState.js";
-import { LevelArray, Icons } from "@/testData.js";
+import { LevelArray, Icons } from "@/FFXIV.js";
 
 const LevelData = LevelArray[1];
 const ImgsData = Icons[1];
