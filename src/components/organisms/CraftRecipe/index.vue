@@ -45,12 +45,12 @@ export default {
     },
     Levels: {
       get() {
-        return LevelArray;
+        return this.filteringArray(LevelArray);
       }
     },
     MasterRecipes: {
       get() {
-        return Masterbook;
+        return this.filteringArray(Masterbook);
       }
     },
     Equippeds: {
@@ -68,6 +68,14 @@ export default {
     storeSelectExpansion(value) {
       this.SelectExpansion = value;
     },
+    filteringArray(array) {
+      return array.filter(element => {
+        return (
+          element.versionCode ===
+          (this.SelectExpansion.version ? this.SelectExpansion.version : 2)
+        );
+      });
+    }
   }
 };
 </script>
