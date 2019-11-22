@@ -95,6 +95,15 @@ h3 {
 }
 
 .Category_List {
+  max-height: 0;
+  transition: max-height 0.15s ease-out;
+  overflow: hidden;
+  &.isOpen {
+    max-height: 150px;
+    transition: max-height 0.25s ease-in;
+  }
+}
+.Category_HeadText {
 }
 
 .Category_HeadText {
