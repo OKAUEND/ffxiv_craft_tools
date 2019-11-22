@@ -1,15 +1,15 @@
 <template>
   <div>
     <h3><slot></slot></h3>
-    <categories-list
-      v-for="(item, key) in Categories"
-      v-bind:key="key"
-      v-bind:category="item"
-      v-bind:value="SelectedValue"
-      v-on:change="onExpasionButtomClick"
-      class="category_area"
-    ></categories-list>
-  </div>
+      <categories-list
+        v-for="(item, key) in Categories"
+        v-bind:key="key"
+        v-bind:category="item"
+        v-bind:value="SelectedValue"
+        v-on:change="onExpasionButtomClick"
+        class="Category_Area"
+      ></categories-list>
+    </div>
 </template>
 
 <script>
@@ -69,8 +69,7 @@ h3 {
   margin: 0;
   color: #f8f9fa;
 }
-
-.category_area {
+.Category_Area {
   margin-right: 5px;
 }
 </style>
