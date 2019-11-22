@@ -85,6 +85,9 @@ h3 {
 
 .Category_List {
 }
+
+.Category_HeadText {
+}
 .Category_Area {
   margin-right: 5px;
 }
