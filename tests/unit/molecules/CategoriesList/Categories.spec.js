@@ -1,7 +1,7 @@
-import { shallowMount } from "@vue/test-utils";
+import { shallowMount, mount } from "@vue/test-utils";
 import CategoriesList from "@/components/molecules/CategoriesList/index.vue";
 import RadioChild from "@/components/molecules/RadioButtomLabel/index.vue";
-import { LevelArray, Icons } from "@/testData.js";
+import { LevelArray, Icons } from "@/FFXIV.js";
 import {
   IconState,
   LevelState
@@ -15,13 +15,15 @@ const IconClass = IconState.create(Icon);
 
 const LevelWarapper = shallowMount(CategoriesList, {
   propsData: {
-    category: Level
+    category: Level,
+    value: ""
   }
 });
 
 const IconsWarapper = shallowMount(CategoriesList, {
   propsData: {
-    category: Icon
+    category: Icon,
+    value: ""
   }
 });
 
@@ -32,14 +34,16 @@ describe("CategoriesList", () => {
   });
   it("算出プロパティでタイプ毎にクラスのインスタンスが作成されているか", () => {
     const LevelThis = {
-      category: Level
+      category: Level,
+      value: ""
     };
     expect(CategoriesList.computed.CategoryState.get.call(LevelThis)).toEqual(
       LevelClass
     );
 
     const IconThis = {
-      category: Icon
+      category: Icon,
+      value: ""
     };
 
     expect(CategoriesList.computed.CategoryState.get.call(IconThis)).toEqual(
@@ -54,5 +58,24 @@ describe("CategoriesList", () => {
     const returnIconData = IconClass.fromSelectedData;
     IconsWarapper.find(RadioChild).vm.$emit("change", returnIconData);
     expect(IconsWarapper.emitted().change[0][0]).toEqual(returnIconData);
+  });
+  it("状態クラスで作成したクラスオブジェクトがv-bind:classに紐付けられてるか", () => {
+    const LevelWarapper = mount(CategoriesList, {
+      propsData: {
+        category: Level,
+        value: ""
+      }
+    });
+    expect(LevelWarapper.classes().length).toBe(1);
+    expect(LevelWarapper.classes()).toContain("category-area-Normal");
+  });
+  it("propsのvalueに値があった場合、クラスが2つになっているか", () => {
+    const LevelWarapper = mount(CategoriesList, {
+      propsData: {
+        category: Level,
+        value: "Level3"
+      }
+    });
+    expect(LevelWarapper.classes().length).toBe(2);
   });
 });
