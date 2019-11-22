@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h3><slot></slot></h3>
+  <div class="Category_Group">
+    <div class="Category_List" v-bind:class="isOpen">
       <categories-list
         v-for="(item, key) in Categories"
         v-bind:key="key"
@@ -10,6 +10,7 @@
         class="Category_Area"
       ></categories-list>
     </div>
+  </div>
 </template>
 
 <script>
@@ -68,6 +69,16 @@ export default {
 h3 {
   margin: 0;
   color: #f8f9fa;
+}
+
+.Category_Group {
+  width: 40%;
+  background-color: #131212;
+  margin: 5px 0 5px 0;
+  padding: 5px 0 5px 10px;
+}
+
+.Category_List {
 }
 .Category_Area {
   margin-right: 5px;
