@@ -76,7 +76,7 @@ export default {
     height: 60px;
     top: 0px;
     left: 0px;
-    transition: all 300ms 0s ease;
+    transition: opacity all 300ms 0s ease;
     opacity: 0;
   }
   &._AAR::after {
