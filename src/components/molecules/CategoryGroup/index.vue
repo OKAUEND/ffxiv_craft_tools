@@ -54,13 +54,11 @@ export default {
         }
       },
       get() {
-        let returnValue;
         if (this.isStoreUse) {
-          returnValue = Store.loadSelectValue();
+          return Store.loadSelectValue();
         } else {
-          returnValue = this.SelectRadioValue;
+          return this.SelectRadioValue;
         }
-        return returnValue;
       }
     },
     isOpen() {
