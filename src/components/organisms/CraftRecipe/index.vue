@@ -76,10 +76,13 @@ export default {
       this.SelectExpansion = value;
     },
     filteringArray(array) {
+      const AAR_Ver = 2;
       return array.filter(element => {
         return (
           element.versionCode ===
-          (this.SelectExpansion.version ? this.SelectExpansion.version : 2)
+          (this.SelectExpansion.version
+            ? this.SelectExpansion.version
+            : AAR_Ver)
         );
       });
     }
