@@ -1,5 +1,5 @@
-import { shallowMount, mount } from "@vue/test-utils";
-import CategoryGroup from "@/components/molecules/CategoryGroup/index.vue";
+import { shallowMount } from "@vue/test-utils";
+import CategoryGroup from "@/components/organisms/CategoryGroup/index.vue";
 import CategoriesList from "@/components/molecules/CategoriesList/index.vue";
 import { Icons } from "@/FFXIV.js";
 
