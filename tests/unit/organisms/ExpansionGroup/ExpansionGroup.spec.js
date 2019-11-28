@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import ExpansionGroup from "@/components/molecules/ExpansionGroup/index.vue";
+import ExpansionGroup from "@/components/organisms/ExpansionGroup/index.vue";
 import ExpansionItem from "@/components/molecules/ExpansionList/index.vue";
 import { ExpansionData } from "@/FFXIV.js";
 
