@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import CategoryGroup from "@/components/molecules/CategoryGroup/index.vue";
-import ExpansionGroup from "@/components/molecules/ExpansionGroup/index.vue";
+import CategoryGroup from "@/components/organisms/CategoryGroup/index.vue";
+import ExpansionGroup from "@/components/organisms/ExpansionGroup/index.vue";
 import {
   ExpansionData,
   LevelArray,
