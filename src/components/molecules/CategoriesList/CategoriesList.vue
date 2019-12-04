@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import CategoriesListBase from "./CategoriesListBase.js";
 import RadioButtomLabel from "@/components/molecules/RadioButtomLabel/index.vue";
 import {
   IconState,
@@ -17,18 +18,9 @@ import {
 } from "@/components/molecules/CategoriesList/CategoryState.js";
 export default {
   name: "CategoriesList",
+  mixins: [CategoriesListBase],
   components: {
     RadioButtomLabel
-  },
-  props: {
-    category: {
-      type: Object,
-      required: true
-    },
-    value: {
-      type: String,
-      required: true
-    }
   },
   computed: {
     CategoryState: {
@@ -46,11 +38,6 @@ export default {
             return ErrorState.create();
         }
       }
-    }
-  },
-  methods: {
-    emitMethod(value) {
-      return this.$emit("change", value);
     }
   }
 };

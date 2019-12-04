@@ -1,56 +1,43 @@
 <template>
   <radio-buttom-label
-    v-bind:ClassStateObject="ExpansionState"
-    v-bind:value="SelectValue"
-    v-on:change="emitFunc"
+    v-bind:ClassStateObject="CategoryState"
+    v-bind:value="value"
+    v-on:change="emitMethod"
   ></radio-buttom-label>
 </template>
 
 <script>
+import CategoriesListBase from "./CategoriesListBase.js";
 import {
   ARealReborn,
   Heavensward,
   Stormblood,
   Shadowbringers,
   ErrorExpansion
-} from "@/components/molecules/ExpansionList/ExpansionState.js";
+} from "./ExpansionState.js";
 import RadioButtomLabel from "@/components/molecules/RadioButtomLabel/index.vue";
 export default {
   name: "ExpansionItem",
+  mixins: [CategoriesListBase],
   components: {
     RadioButtomLabel
   },
-  props: {
-    Expansion: {
-      type: Object,
-      required: true
-    },
-    SelectValue: {
-      type: String,
-      required: true
-    }
-  },
   computed: {
-    ExpansionState: {
+    CategoryState: {
       get() {
-        switch (this.Expansion.version) {
+        switch (this.category.version) {
           case 2:
-            return ARealReborn.create(this.Expansion);
+            return ARealReborn.create(this.category);
           case 3:
-            return Heavensward.create(this.Expansion);
+            return Heavensward.create(this.category);
           case 4:
-            return Stormblood.create(this.Expansion);
+            return Stormblood.create(this.category);
           case 5:
-            return Shadowbringers.create(this.Expansion);
+            return Shadowbringers.create(this.category);
           default:
             return ErrorExpansion.create();
         }
       }
-    }
-  },
-  methods: {
-    emitFunc(value) {
-      return this.$emit("change", value);
     }
   }
 };
