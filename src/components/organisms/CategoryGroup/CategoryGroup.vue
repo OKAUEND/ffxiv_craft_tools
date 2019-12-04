@@ -1,10 +1,6 @@
 <template>
   <div class="Category_Group">
-    <h3
-      class="Category_HeadText"
-      v-on:click="switchLabelClicked"
-      v-bind:class="isOpen"
-    >
+    <h3 class="Category_HeadText" v-on:click="switchLabelClicked" v-bind:class="isOpen">
       <slot></slot>
     </h3>
     <div class="Category_List" v-bind:class="isOpen">
@@ -21,17 +17,15 @@
 </template>
 
 <script>
-import CategoriesList from "@/components/molecules/CategoriesList/index.vue";
+import CategoriesList from "@/components/molecules/CategoriesList/CategoriesList.vue";
+import CategoryGroupBase from "./CategoryGroupBase.js";
 import { Store } from "../CategoryGroup/CategoryStore.js";
 export default {
   components: {
     CategoriesList
   },
+  mixins: [CategoryGroupBase],
   props: {
-    Categories: {
-      type: Array,
-      required: true
-    },
     isStoreUse: {
       type: Boolean,
       default: false
@@ -39,9 +33,7 @@ export default {
   },
   data() {
     return {
-      StoreObject: Store.state,
-      SelectRadioValue: "",
-      isLabelClick: false
+      StoreObject: Store.state
     };
   },
   computed: {
@@ -60,20 +52,6 @@ export default {
           return this.SelectRadioValue;
         }
       }
-    },
-    isOpen() {
-      return {
-        isOpen: this.isLabelClick
-      };
-    }
-  },
-  methods: {
-    onExpasionButtomClick(value) {
-      this.SelectedValue = value;
-      return this.$emit("change", value);
-    },
-    switchLabelClicked() {
-      this.isLabelClick = !this.isLabelClick;
     }
   }
 };
@@ -86,7 +64,7 @@ h3 {
 }
 
 .Category_Group {
-  width: 40%;
+  // width: 40%;
   background-color: #131212;
   margin: 5px 0 5px 0;
   padding: 5px 0 5px 10px;
