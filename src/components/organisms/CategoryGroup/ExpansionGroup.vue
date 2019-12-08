@@ -56,8 +56,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.Expansion {
-  background-color: #202020;
+.Expansion_Group {
+  box-sizing: border-box;
+  margin: 5px 0 0px 0;
+  padding: 5px 0 5px 10px;
+  @media screen and (min-width: 481px) {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .Expansion_HeadText {
@@ -65,6 +71,8 @@ export default {
     display: none;
   }
   position: relative;
+  color: #f8f9fa;
+  font-size: 20px;
   &::after {
     content: "";
     display: inline-block;
@@ -81,6 +89,10 @@ export default {
 
   &.isOpen::after {
     transform: rotate(45deg);
+  }
+
+  @media screen and (min-width: 481px) {
+    display: none;
   }
 }
 
