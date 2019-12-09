@@ -56,13 +56,14 @@ export default {
   text-align: center;
   margin-bottom: 5px;
   color: #faebd7;
-  background-color: #131212;
+  background: #33333380;
 
   @media screen and (min-width: 481px) {
     height: 60px;
     width: 90px;
     line-height: 60px;
     font-size: 25px;
+    background-color: #131212;
   }
 
   &::after {
