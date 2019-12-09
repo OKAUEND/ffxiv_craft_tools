@@ -1,7 +1,13 @@
 <template>
   <section class="Expansion">
-    <atom-button class="Expansion__HeadText" v-on:click="switchLabelClicked" v-bind:class="isOpen">
-      <template v-slot:text>Expansion</template>
+    <atom-button
+      class="Expansion__HeadText"
+      v-on:click="switchLabelClicked"
+      v-bind:class="isOpen"
+    >
+      <template v-slot:text>
+        Expansion
+      </template>
     </atom-button>
     <div class="Expansion__List" v-bind:class="isOpen">
       <expansion-item
@@ -10,7 +16,8 @@
         v-bind:category="item"
         v-bind:value="SelectedValue"
         v-on:change="onExpasionButtomClick"
-      ></expansion-item>
+      >
+      </expansion-item>
     </div>
   </section>
 </template>
