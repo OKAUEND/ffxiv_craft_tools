@@ -82,7 +82,7 @@ export default {
     transform: rotate(-45deg);
   }
 
-  &.isOpen::after {
+    &.--Opend::after {
     transform: rotate(45deg);
   }
 
@@ -96,8 +96,7 @@ export default {
     max-height: 0;
     transition: max-height 0.15s ease-out;
     overflow: hidden;
-    &.isOpen {
-      max-height: 150px;
+      &.--Opend {
       transition: max-height 0.25s ease-in;
     }
   }

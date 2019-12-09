@@ -14,7 +14,7 @@ export default {
   computed: {
     isOpen() {
       return {
-        isOpen: this.isLabelClick
+        "--Opend": this.isLabelClick
       };
     }
   },

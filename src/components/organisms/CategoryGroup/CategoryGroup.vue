@@ -71,7 +71,7 @@ h3 {
     max-height: 0;
     transition: max-height 0.15s ease-out;
     overflow: hidden;
-    &.isOpen {
+    &.--Opend {
       max-height: 150px;
       transition: max-height 0.25s ease-in;
     }
@@ -93,7 +93,7 @@ h3 {
       transform: rotate(-45deg);
     }
 
-    &.isOpen::after {
+    &.--Opend::after {
       transform: rotate(45deg);
     }
   }
