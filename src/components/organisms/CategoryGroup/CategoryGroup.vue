@@ -1,8 +1,14 @@
 <template>
   <div class="Category">
-    <h3 class="Category__HeadText" v-on:click="switchLabelClicked" v-bind:class="isOpen">
+    <atom-button
+      class="Category__HeadText --LabelStyle"
+      v-on:click="switchLabelClicked"
+      v-bind:class="isOpen"
+    >
+      <template v-slot:text>
       <slot></slot>
-    </h3>
+      </template>
+    </atom-button>
     <div class="Category__List" v-bind:class="isOpen">
       <categories-list
         v-for="(item, key) in Categories"
@@ -16,11 +22,13 @@
 </template>
 
 <script>
+import AtomButton from "@/components/atoms/Button/Button.vue";
 import CategoriesList from "@/components/molecules/CategoriesList/CategoriesList.vue";
 import CategoryGroupBase from "./CategoryGroupBase.js";
 import { Store } from "../CategoryGroup/CategoryStore.js";
 export default {
   components: {
+    AtomButton,
     CategoriesList
   },
   mixins: [CategoryGroupBase],
