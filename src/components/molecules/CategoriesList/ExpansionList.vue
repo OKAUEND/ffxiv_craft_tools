@@ -1,5 +1,6 @@
 <template>
   <radio-buttom-label
+    class="ExpansionItem"
     v-bind:ClassStateObject="CategoryState"
     v-bind:value="value"
     v-on:change="emitMethod"
@@ -45,7 +46,7 @@ export default {
 
 <style lang="scss" scoped>
 //拡張パックを示すボタンは独自デザインにしたいので、ここで指定する
-.Expansion_area {
+.ExpansionItem {
   position: relative;
   display: inline-block;
   height: 60px;
@@ -66,19 +67,19 @@ export default {
     transition: opacity all 300ms 0s ease;
     opacity: 0;
   }
-  &._AAR::after {
+  &.--AAR::after {
     border-left: 5px solid #85d2ff;
   }
-  &._HEV::after {
+  &.--HEV::after {
     border-left: 5px solid #325ccf;
   }
-  &._STB::after {
+  &.--STB::after {
     border-left: 5px solid #cf3232;
   }
-  &._SHB::after {
+  &.--SHB::after {
     border-left: 5px solid #6c2fce;
   }
-  &.Expansion_radio--checkmark {
+  &.--checked {
     &::after {
       opacity: 1;
     }

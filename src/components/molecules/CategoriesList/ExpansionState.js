@@ -37,9 +37,8 @@ export class ARealReborn extends Expansion {
 
   LabelStyle(value) {
     return {
-      Expansion_area: true,
-      "Expansion_radio--checkmark": this.ExpansionCode === value,
-      _AAR: true
+      "--AAR": true,
+      "--checked": this.ExpansionCode === value
     };
   }
 }
@@ -51,9 +50,8 @@ export class Heavensward extends Expansion {
 
   LabelStyle(value) {
     return {
-      Expansion_area: true,
-      _HEV: true,
-      "Expansion_radio--checkmark": this.ExpansionCode === value
+      "--HEV": true,
+      "--checked": this.ExpansionCode === value
     };
   }
 }
@@ -65,9 +63,8 @@ export class Stormblood extends Expansion {
 
   LabelStyle(value) {
     return {
-      Expansion_area: true,
-      _STB: true,
-      "Expansion_radio--checkmark": this.ExpansionCode === value
+      "--STB": true,
+      "--checked": this.ExpansionCode === value
     };
   }
 }
@@ -79,9 +76,8 @@ export class Shadowbringers extends Expansion {
 
   LabelStyle(value) {
     return {
-      Expansion_area: true,
-      _SHB: true,
-      "Expansion_radio--checkmark": this.ExpansionCode === value
+      "--SHB": true,
+      "--checked": this.ExpansionCode === value
     };
   }
 }
@@ -101,9 +97,8 @@ export class ErrorExpansion extends Expansion {
 
   LabelStyle(value) {
     return {
-      Expansion_area: true,
-      "Expansion_radio--checkmark": this.ExpansionCode === value,
-      _ERR: true
+      "--ERR": true,
+      "--checked": this.ExpansionCode === value
     };
   }
 }

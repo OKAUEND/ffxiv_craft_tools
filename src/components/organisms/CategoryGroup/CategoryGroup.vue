@@ -1,16 +1,15 @@
 <template>
-  <div class="Category_Group">
-    <h3 class="Category_HeadText" v-on:click="switchLabelClicked" v-bind:class="isOpen">
+  <div class="Category">
+    <h3 class="Category__HeadText" v-on:click="switchLabelClicked" v-bind:class="isOpen">
       <slot></slot>
     </h3>
-    <div class="Category_List" v-bind:class="isOpen">
+    <div class="Category__List" v-bind:class="isOpen">
       <categories-list
         v-for="(item, key) in Categories"
         v-bind:key="key"
         v-bind:category="item"
         v-bind:value="SelectedValue"
         v-on:change="onExpasionButtomClick"
-        class="Category_Area"
       ></categories-list>
     </div>
   </div>
@@ -63,45 +62,40 @@ h3 {
   color: #f8f9fa;
 }
 
-.Category_Group {
-  // width: 40%;
+.Category {
   background-color: #131212;
   margin: 5px 0 5px 0;
   padding: 5px 0 5px 10px;
-}
 
-.Category_List {
-  max-height: 0;
-  transition: max-height 0.15s ease-out;
-  overflow: hidden;
-  &.isOpen {
-    max-height: 150px;
-    transition: max-height 0.25s ease-in;
-  }
-}
-
-.Category_HeadText {
-  position: relative;
-  &::after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    top: 25%;
-    right: 10%;
-    border-right: 2px solid #f8f9fa;
-    border-bottom: 2px solid #f8f9fa;
-    transition: all 300ms 0s ease;
-    transform: rotate(-45deg);
+  &__List {
+    max-height: 0;
+    transition: max-height 0.15s ease-out;
+    overflow: hidden;
+    &.isOpen {
+      max-height: 150px;
+      transition: max-height 0.25s ease-in;
+    }
   }
 
-  &.isOpen::after {
-    transform: rotate(45deg);
-  }
-}
+  &__HeadText {
+    position: relative;
+    &::after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      top: 25%;
+      right: 10%;
+      border-right: 2px solid #f8f9fa;
+      border-bottom: 2px solid #f8f9fa;
+      transition: all 300ms 0s ease;
+      transform: rotate(-45deg);
+    }
 
-.Category_Area {
-  margin-right: 5px;
+    &.isOpen::after {
+      transform: rotate(45deg);
+    }
+  }
 }
 </style>

@@ -1,16 +1,15 @@
 <template>
   <section class="Expansion">
-    <span class="Expansion_HeadText" v-on:click="switchLabelClicked" v-bind:class="isOpen">
-      <slot>テスト</slot>
+    <span class="Expansion__HeadText" v-on:click="switchLabelClicked" v-bind:class="isOpen">
+      <!-- <template v-slot:text>拡張</template> -->
     </span>
-    <div class="Expansion_List" v-bind:class="isOpen">
+    <div class="Expansion__List" v-bind:class="isOpen">
       <expansion-item
         v-for="(item, key) in Categories"
         v-bind:key="key"
         v-bind:category="item"
         v-bind:value="SelectedValue"
         v-on:change="onExpasionButtomClick"
-        class="Expansion_area"
       ></expansion-item>
     </div>
   </section>
@@ -56,7 +55,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.Expansion_Group {
+.Expansion {
   box-sizing: border-box;
   margin: 5px 0 0px 0;
   padding: 5px 0 5px 10px;
@@ -64,12 +63,8 @@ export default {
     margin: 0;
     padding: 0;
   }
-}
 
-.Expansion_HeadText {
-  @media screen and (min-width: 481px) {
-    display: none;
-  }
+  &__HeadText {
   position: relative;
   color: #f8f9fa;
   font-size: 20px;
@@ -96,7 +91,7 @@ export default {
   }
 }
 
-.Expansion_List {
+  &__List {
   @media screen and (max-width: 480px) {
     max-height: 0;
     transition: max-height 0.15s ease-out;
@@ -107,8 +102,5 @@ export default {
     }
   }
 }
-
-.Expansion_area {
-  margin-right: 5px;
 }
 </style>
