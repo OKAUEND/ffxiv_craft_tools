@@ -49,23 +49,36 @@ export default {
 .ExpansionItem {
   position: relative;
   display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 5px;
+  color: #faebd7;
+  background-color: #131212;
+
+  @media screen and (min-width: 481px) {
   height: 60px;
   width: 90px;
   line-height: 60px;
-  text-align: center;
   font-size: 25px;
-  color: #faebd7;
-  background-color: #131212;
+  }
+
   &::after {
     content: "";
     display: inline-block;
     position: absolute;
-    width: 90px;
-    height: 60px;
+    height: 30px;
+    width: 100%;
     top: 0px;
     left: 0px;
     transition: opacity all 300ms 0s ease;
     opacity: 0;
+    @media screen and (min-width: 481px) {
+      height: 60px;
+      width: 90px;
+    }
   }
   &.--AAR::after {
     border-left: 5px solid #85d2ff;
