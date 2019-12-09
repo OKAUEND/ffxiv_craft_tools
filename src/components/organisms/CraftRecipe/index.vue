@@ -1,11 +1,15 @@
 <template>
-  <article class="Recipewarapper">
-    <section class="select-container">
+  <article class="CraftRecipe">
+    <div class="CraftRecipe__Container">
+      <div class="CraftRecipe__Expansion">
       <expansion-group
-        v-bind:Expansions="Expansions"
+          v-bind:Categories="Expansions"
         v-on:change="storeSelectExpansion"
       ></expansion-group>
-      <section class="CategoryDetail">
+      </div>
+    </div>
+    <div class="CraftRecipe__Container">
+      <section class="CraftRecipe__CategoryDetail">
         <category-group v-bind:Categories="CrafterJobs">CLASS</category-group>
         <category-group v-bind:Categories="Equippeds">Equipped</category-group>
         <category-group v-bind:Categories="Levels" v-bind:isStoreUse="true">
@@ -18,8 +22,10 @@
           Master
         </category-group>
       </section>
+      <section class="CraftRecipe__RecipeDetail">
+        <recipe-list></recipe-list>
     </section>
-    <section class="RecipeLists"></section>
+    </div>
   </article>
 </template>
 
@@ -91,8 +97,49 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.CategoryDetail {
+.CraftRecipe {
+  box-sizing: border-box;
   background-color: #202020;
-  padding: 5px;
+  margin: 0 auto;
+  width: 100vw;
+  box-sizing: border-box;
+  @media screen and (min-width: 481px) {
+    width: 60vw;
+  }
+
+  &__Container {
+    display: flex;
+    flex-flow: column nowrap;
+    @media screen and (min-width: 481px) {
+      flex-flow: row nowrap;
+    }
+  }
+
+  %__CategoryDetail {
+    box-sizing: border-box;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 100vw;
+    @media screen and (min-width: 481px) {
+      padding: 5px;
+      width: 25vw;
+    }
+  }
+
+  &__Expansion {
+    @extend %__CategoryDetail;
+  }
+
+  &__CategoryDetail {
+    @extend %__CategoryDetail;
+  }
+
+  &__RecipeDetail {
+    padding: 10px 5px 10px 5px;
+    width: 70vw;
+    @media screen and (min-width: 481px) {
+      width: 100vw;
+    }
+  }
 }
 </style>
