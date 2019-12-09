@@ -58,7 +58,8 @@ export default {
 .Expansion {
   box-sizing: border-box;
   margin: 5px 0 0px 0;
-  padding: 5px 0 5px 10px;
+  padding: 5px 10px 5px 10px;
+  background-color: #131212;
   @media screen and (min-width: 481px) {
     margin: 0;
     padding: 0;
@@ -67,7 +68,11 @@ export default {
   &__HeadText {
   position: relative;
   color: #f8f9fa;
+    background-color: transparent;
   font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
   &::after {
     content: "";
     display: inline-block;

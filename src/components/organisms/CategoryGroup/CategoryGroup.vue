@@ -57,15 +57,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h3 {
-  margin: 0;
-  color: #f8f9fa;
-}
-
 .Category {
   background-color: #131212;
   margin: 5px 0 5px 0;
-  padding: 5px 0 5px 10px;
+  padding: 5px 10px 5px 10px;
 
   &__List {
     max-height: 0;
@@ -79,6 +74,11 @@ h3 {
 
   &__HeadText {
     position: relative;
+    color: #f8f9fa;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
     &::after {
       content: "";
       display: inline-block;
