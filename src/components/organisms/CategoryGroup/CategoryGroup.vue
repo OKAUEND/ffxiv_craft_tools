@@ -6,7 +6,7 @@
       v-bind:class="isOpen"
     >
       <template v-slot:text>
-      <slot></slot>
+        <slot></slot>
       </template>
     </atom-button>
     <div class="Category__List" v-bind:class="isOpen">
