@@ -59,10 +59,10 @@ export default {
   background-color: #131212;
 
   @media screen and (min-width: 481px) {
-  height: 60px;
-  width: 90px;
-  line-height: 60px;
-  font-size: 25px;
+    height: 60px;
+    width: 90px;
+    line-height: 60px;
+    font-size: 25px;
   }
 
   &::after {
