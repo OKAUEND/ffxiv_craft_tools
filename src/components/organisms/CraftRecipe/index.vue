@@ -24,7 +24,7 @@
       </section>
       <section class="CraftRecipe__RecipeDetail">
         <recipe-list></recipe-list>
-    </section>
+      </section>
     </div>
   </article>
 </template>
@@ -138,6 +138,8 @@ export default {
 
   &__RecipeDetail {
     padding: 10px 5px 10px 5px;
+    width: 100vw;
+    @media screen and (min-width: 481px) {
     width: 70vw;
     @media screen and (min-width: 481px) {
       width: 100vw;
