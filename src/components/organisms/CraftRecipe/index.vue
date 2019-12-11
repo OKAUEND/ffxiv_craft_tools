@@ -32,6 +32,7 @@
 <script>
 import CategoryGroup from "@/components/organisms/CategoryGroup/CategoryGroup.vue";
 import ExpansionGroup from "@/components/organisms/CategoryGroup/ExpansionGroup.vue";
+import RecipeList from "@/components/organisms/RecipeList/index.vue";
 import {
   ExpansionData,
   LevelArray,
@@ -43,7 +44,8 @@ export default {
   name: "Oraganisms_CraftRecipe",
   components: {
     ExpansionGroup,
-    CategoryGroup
+    CategoryGroup,
+    RecipeList
   },
   data() {
     return {
