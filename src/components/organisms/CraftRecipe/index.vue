@@ -131,8 +131,6 @@ export default {
     width: 100vw;
     @media screen and (min-width: 481px) {
     width: 70vw;
-    @media screen and (min-width: 481px) {
-      width: 100vw;
     }
   }
 }
