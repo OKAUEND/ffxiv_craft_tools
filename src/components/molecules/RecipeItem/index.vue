@@ -2,9 +2,11 @@
   <div class="RecipeItem">
     <div class="RecipeItem__image">
       <!-- 製作物のアイコン -->
-      <!-- <item-image v-bind:img_path="ItemData.ImagePath" class="--medium"></item-image> -->
-      <div class="kariimg"></div>
-      <!-- <span class="__text">IL470</span> -->
+      <atom-image
+        :path="`static/CRAFTER/Alchemist.png`"
+        :comment="`ItemIcon`"
+        class="--Medium"
+      ></atom-image>
     </div>
     <!-- レベルとアイテム名と素材 -->
     <div class="RecipeItem__title">
@@ -15,30 +17,17 @@
     </div>
     <div class="RecipeItem__childlist">
       <!-- 素材の種類と素材数 -->
-      <!-- <div v-for="item of ItemData.ChildItem" :key="item.id" class="childitems"></div> -->
-      <div class="RecipeItem__childItems">
-        <div class="miniimg"></div>
-        <span>×5</span>
-      </div>
-      <div class="RecipeItem__childItems">
-        <div class="miniimg"></div>
-        <span>×5</span>
-      </div>
-      <div class="RecipeItem__childItems">
-        <div class="miniimg"></div>
-        <span>×5</span>
-      </div>
-      <div class="RecipeItem__childItems">
-        <div class="miniimg"></div>
-        <span>×5</span>
-      </div>
-      <div class="RecipeItem__childItems">
-        <div class="miniimg"></div>
-        <span>×5</span>
-      </div>
-      <div class="RecipeItem__childItems">
-        <div class="miniimg"></div>
-        <span>×5</span>
+      <div
+        v-for="ChildRecipe of RecipeState.childs"
+        :key="ChildRecipe.id"
+        class="RecipeItem__childItems"
+      >
+        <atom-image
+          :path="ChildRecipe.ImagePath"
+          :comment="`ItemIcon`"
+          class="--Small"
+        ></atom-image>
+        <atom-span :text="ChildRecipe.value"></atom-span>
       </div>
     </div>
     <div class="RecipeItem__form">
@@ -55,6 +44,9 @@
 </template>
 
 <script>
+// Atom
+import AtomSpan from "@/components/atoms//Text/Span.vue";
+import AtomImage from "@/components/atoms//Image/Image.vue";
 import AtomButton from "@/components/atoms/Button/Button.vue";
 import AtomInputtext from "@/components/atoms/Input/Text.vue";
 // State Class
