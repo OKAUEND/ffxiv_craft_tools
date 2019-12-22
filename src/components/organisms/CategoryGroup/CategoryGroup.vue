@@ -1,11 +1,11 @@
 <template>
   <div class="Category">
     <atom-button
-      class="Category__HeadText --LabelStyle"
+      class="Category__HeadText"
       v-on:click="switchLabelClicked"
       v-bind:class="isOpen"
     >
-      <template v-slot:text>
+      <template>
         <slot></slot>
       </template>
     </atom-button>
@@ -81,6 +81,9 @@ export default {
   }
 
   &__HeadText {
+    width: 100%;
+    height: 100%;
+    text-align: left;
     position: relative;
     color: #f8f9fa;
     background-color: transparent;

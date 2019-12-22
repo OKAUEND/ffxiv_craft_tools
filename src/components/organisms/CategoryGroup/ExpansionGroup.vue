@@ -5,7 +5,7 @@
       v-on:click="switchLabelClicked"
       v-bind:class="isOpen"
     >
-      <template v-slot:text>
+      <template>
         Expansion
       </template>
     </atom-button>
@@ -75,6 +75,9 @@ export default {
   }
 
   &__HeadText {
+    width: 100%;
+    height: 100%;
+    text-align: left;
     position: relative;
     color: #f8f9fa;
     background-color: transparent;

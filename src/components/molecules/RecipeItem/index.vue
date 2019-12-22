@@ -34,10 +34,9 @@
       <div class="RecipeItem__block">
         <!-- 個数ボタン 
         対応1~999までとする-->
-        <atom-button class="button --Left">-</atom-button>
-        <!-- <atom-inputtext></atom-inputtext> -->
-        <input type="text" class="kari" />
-        <atom-button class="button --Right">+</atom-button>
+        <atom-button class="Atom-Button__Counter--Left">-</atom-button>
+        <atom-inputtext class="Input-Text__Counter"></atom-inputtext>
+        <atom-button class="Atom-Button__Counter--Right">+</atom-button>
       </div>
     </div>
   </div>
