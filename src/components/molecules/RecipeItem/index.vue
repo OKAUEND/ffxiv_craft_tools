@@ -34,9 +34,17 @@
       <div class="RecipeItem__block">
         <!-- 個数ボタン 
         対応1~999までとする-->
-        <atom-button class="Atom-Button__Counter--Left">-</atom-button>
-        <atom-inputtext class="Input-Text__Counter"></atom-inputtext>
-        <atom-button class="Atom-Button__Counter--Right">+</atom-button>
+        <atom-button class="Atom-Button__Counter--Left" @click="Decrement()">
+          -
+        </atom-button>
+        <atom-number
+          class="Input-Number__Counter"
+          :value="ProductValue"
+          @input="Update"
+        ></atom-number>
+        <atom-button class="Atom-Button__Counter--Right" @click="Increment()">
+          +
+        </atom-button>
       </div>
     </div>
   </div>
@@ -47,26 +55,51 @@
 import AtomSpan from "@/components/atoms//Text/Span.vue";
 import AtomImage from "@/components/atoms//Image/Image.vue";
 import AtomButton from "@/components/atoms/Button/Button.vue";
-import AtomInputtext from "@/components/atoms/Input/Text.vue";
+import AtomNumber from "@/components/atoms/Input/Number.vue";
 // State Class
 import RecipeState from "./RecipeState.js";
 export default {
   name: "mole-productioncontent",
   components: {
     AtomButton,
-    AtomInputtext
+    AtomNumber
   },
-  // props: {
-  //   Recipe: {
-  //     type: Object,
-  //     required: true
-  //   }
-  // },
+  data() {
+    return {
+      Count: 1
+    };
+  },
   computed: {
     RecipeState: {
       get() {
         return RecipeState.create(this.Recipe);
       }
+    },
+    ProductValue: {
+      get() {
+        return this.Count;
+      },
+      set(value) {
+        if (this.isValid(value)) {
+          this.Count = value;
+        }
+      }
+    }
+  },
+  methods: {
+    Increment() {
+      this.ProductValue++;
+    },
+    Decrement() {
+      this.ProductValue--;
+    },
+    Update(inputValue) {
+      this.ProductValue = inputValue;
+    },
+    isValid(value) {
+      const MinValue = 1;
+      const MaxValue = 999;
+      return value >= MinValue && MaxValue >= value;
     }
   }
 };
