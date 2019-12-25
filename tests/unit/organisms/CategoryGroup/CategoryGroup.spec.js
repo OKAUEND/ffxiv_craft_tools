@@ -1,10 +1,10 @@
-import { shallowMount } from "@vue/test-utils";
-import CategoryGroup from "@/components/organisms/CategoryGroup/index.vue";
-import CategoriesList from "@/components/molecules/CategoriesList/index.vue";
+import { mount, shallowMount } from "@vue/test-utils";
+import CategoryGroup from "@/components/organisms/CategoryGroup/CategoryGroup.vue";
+import CategoriesList from "@/components/molecules/CategoriesList/CategoriesList.vue";
 import { Icons } from "@/FFXIV.js";
 
 const IconFactory = propsData => {
-  return shallowMount(CategoryGroup, {
+  return mount(CategoryGroup, {
     propsData: {
       Categories: Icons,
       isStoreUse: false,
@@ -43,9 +43,10 @@ describe("CategoryGroup", () => {
   it("HeadTextをクリックしたら真偽値の値が切り替わるか", () => {
     const wrapper = IconFactory();
     expect(wrapper.vm.isLabelClick).toBe(false);
-    const HeadText = wrapper.find(".Category_HeadText");
+    const HeadText = wrapper.find(".Category__HeadText");
     HeadText.trigger("click");
     expect(wrapper.vm.isLabelClick).toBe(true);
+    console.log(wrapper.vm.isLabelClick);
   });
   //   it("LevelとMasterBookの場合、インスタンス変数を使わずにStoreパターンを使うか", () => {});
 });
