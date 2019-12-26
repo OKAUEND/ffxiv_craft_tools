@@ -1,4 +1,4 @@
-import { mount, shallowMount } from "@vue/test-utils";
+import { mount } from "@vue/test-utils";
 import RecipeItem from "@/components/molecules/RecipeItem/index.vue";
 
 const ObjectData = {
@@ -65,8 +65,26 @@ describe("ProductionContent.vue", () => {
     expect(wrapper.vm.Count).not.toEqual(initvalue + 1);
     expect(wrapper.vm.Count).toEqual(initvalue);
   });
-  it("アイテム名が表示されるか", () => {});
-  it("画像コンポーネントが表示されるか", () => {});
-  it("必要素材が配列分をループで要素を描画しているか", () => {});
-  it("追加ボタンクリック時に情報をオブジェクトでemitするか", () => {});
+  it("アイテム名が表示されるか", () => {
+    const wrapper = RecipeItemMountFactory();
+    expect(wrapper.text()).toContain(ObjectData.name);
+  });
+  it("画像コンポーネントが表示されるか", () => {
+    const wrapper = RecipeItemMountFactory();
+    const img = wrapper.find(".Atom-Img__Icon--Medium");
+    expect(img.attributes().src).toEqual(ObjectData.icon);
+  });
+  it("必要素材が配列分をループで要素を描画しているか", () => {
+    const wrapper = RecipeItemMountFactory();
+    const imgArray = wrapper.findAll(".Atom-Img__Icon--Small");
+    expect(imgArray.length).toBe(ObjectData.childs.length);
+    const spanArray = wrapper.findAll("span");
+    expect(spanArray.length - 1).toBe(ObjectData.childs.length);
+  });
+  it("追加ボタンクリック時に情報をオブジェクトでemitするか", () => {
+    const wrapper = RecipeItemMountFactory();
+    const AddButton = wrapper.find(".Atom-Button__Add");
+    AddButton.trigger("click");
+    expect(wrapper.emitted().Add).toBeTruthy();
+  });
 });
