@@ -1,10 +1,12 @@
 export class RecipeState {
   constructor(value) {
     this.ID = value.ID;
-    this.code = value.code;
+    this.job = value.job;
     this.name = value.name;
     this.type = value.type;
-    this.Count = 1;
+    this.childs = value.childs.map(element => {
+      return RecipeChild.create(element);
+    });
   }
   static create(category) {
     return new RecipeState(category);
@@ -14,21 +16,38 @@ export class RecipeState {
     return this.name;
   }
 
-  LabelStyle() {}
-
-  get RecipeDetail() {
-    return {};
-  }
-
-  get ProductCount() {
-    return this.Count;
+  get createRecipeObject() {
+    return {
+      ID: this.ID,
+      name: this.name
+    };
   }
 
   get Label() {
     return this.name;
   }
 
-  Increment() {
-    this.Count += 1;
+  get ChildList() {
+    return this.childs;
+  }
+}
+
+class RecipeChild {
+  constructor(ChildRecipe) {
+    this.ID = ChildRecipe.ID;
+    this.icon = ChildRecipe.icon;
+    this.MaterialValue = ChildRecipe.value;
+  }
+
+  static create(category) {
+    return new RecipeChild(category);
+  }
+
+  get ImagePath() {
+    return this.icon;
+  }
+
+  get fromRequiredMaterialValue() {
+    return `×${this.MaterialValue}`;
   }
 }

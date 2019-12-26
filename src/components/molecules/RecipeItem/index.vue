@@ -5,29 +5,27 @@
       <atom-image
         :path="`static/CRAFTER/Alchemist.png`"
         :comment="`ItemIcon`"
-        class="--Medium"
+        class="Atom-Img__Icon--Medium"
       ></atom-image>
     </div>
     <!-- レベルとアイテム名と素材 -->
     <div class="RecipeItem__title">
       <!-- レベルとアイテム名 -->
-      <!-- <head-string v-bind:Text="ItemData.Name" Level="2"></head-string>
-      <span-text v-bind:Text="CreatingItemLevel()" class="--bottom"></span-text>-->
-      <span>ミーンストライカースピア</span>
+      <span>{{ RecipeStates.Name }}</span>
     </div>
     <div class="RecipeItem__childlist">
       <!-- 素材の種類と素材数 -->
       <div
-        v-for="ChildRecipe of RecipeState.childs"
+        v-for="ChildRecipe of RecipeStates.ChildList"
         :key="ChildRecipe.id"
         class="RecipeItem__childItems"
       >
         <atom-image
           :path="ChildRecipe.ImagePath"
           :comment="`ItemIcon`"
-          class="--Small"
+          class="Atom-Img__Icon--Small"
         ></atom-image>
-        <atom-span :text="ChildRecipe.value"></atom-span>
+        <atom-span :text="ChildRecipe.fromRequiredMaterialValue"></atom-span>
       </div>
     </div>
     <div class="RecipeItem__form">
@@ -47,6 +45,11 @@
         </atom-button>
       </div>
     </div>
+    <div class="RecipeItem__Add">
+      <atom-button class="Atom-Button__Add" @click="emitRecipeDetail()">
+        Add
+      </atom-button>
+    </div>
   </div>
 </template>
 
@@ -61,6 +64,8 @@ import RecipeState from "./RecipeState.js";
 export default {
   name: "mole-productioncontent",
   components: {
+    AtomSpan,
+    AtomImage,
     AtomButton,
     AtomNumber
   },
@@ -69,8 +74,14 @@ export default {
       Count: 1
     };
   },
+  props: {
+    Recipe: {
+      type: Object,
+      required: true
+    }
+  },
   computed: {
-    RecipeState: {
+    RecipeStates: {
       get() {
         return RecipeState.create(this.Recipe);
       }
@@ -100,6 +111,11 @@ export default {
       const MinValue = 1;
       const MaxValue = 999;
       return value >= MinValue && MaxValue >= value;
+    },
+    emitRecipeDetail() {
+      const RecipeDetail = this.RecipeStates.createRecipeObject;
+      RecipeDetail["Count"] = this.ProductValue;
+      return this.$emit("Add", RecipeDetail);
     }
   }
 };
