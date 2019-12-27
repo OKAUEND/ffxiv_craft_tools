@@ -45,9 +45,9 @@
         </atom-button>
       </div>
     </div>
-    <div class="RecipeItem__Add">
-      <atom-button class="Atom-Button__Add" @click="emitRecipeDetail()">
-        Add
+    <div class="RecipeItem__AddBlock">
+      <atom-button class="Atom-Button__Addtional" @click="emitRecipeDetail()">
+        ADD
       </atom-button>
     </div>
   </div>
@@ -203,6 +203,16 @@ export default {
   &__block {
     display: flex;
     flex-flow: row nowrap;
+  }
+  &__AddBlock {
+    @extend %--flexCenter;
+    grid-column: 3/4;
+    grid-row: 2/3;
+    padding: 3px 0px 3px 0px;
+    @media screen and (min-width: 481px) {
+      grid-column: 3/4;
+      grid-row: 2/3;
+    }
   }
 }
 </style>
