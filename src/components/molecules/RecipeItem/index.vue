@@ -63,7 +63,7 @@ import AtomImage from "@/components/atoms//Image/Image.vue";
 import AtomButton from "@/components/atoms/Button/Button.vue";
 import AtomNumber from "@/components/atoms/Input/Number.vue";
 // State Class
-import RecipeState from "./RecipeState.js";
+import { RecipeState } from "./RecipeState.js";
 export default {
   name: "mole-productioncontent",
   components: {
