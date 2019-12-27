@@ -128,6 +128,8 @@ export default {
   grid-template-rows: 1.5fr 1fr;
   height: 125px;
   width: 100%;
+  background-color: #131212;
+  color: #fffffe;
 
   @media screen and (min-width: 481px) {
     grid-template-columns: 0.5fr 2fr 0.75fr;
@@ -143,7 +145,6 @@ export default {
     @extend %--flexCenter;
     grid-column: 1 / 2;
     grid-row: 1 / 3;
-    background-color: brown;
     flex-flow: column nowrap;
 
     @media screen and (min-width: 481px) {
@@ -165,7 +166,6 @@ export default {
 
   &__childlist {
     display: none;
-    background-color: greenyellow;
     @media screen and (min-width: 481px) {
       display: inline-flex;
       justify-content: center;
