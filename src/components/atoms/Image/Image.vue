@@ -1,5 +1,5 @@
 <template>
-  <img :src="path" :alt="comment" class="AtomImage" />
+  <img :src="path" :alt="comment" />
 </template>
 
 <script>
@@ -18,15 +18,17 @@ export default {
 </script>
 
 <style lang="scss">
-.AtomImage {
-  &.--Medium {
-    width: 50px;
-    height: 50px;
-  }
+.Atom-Image {
+  &__Icon {
+    &--Medium {
+      width: 50px;
+      height: 50px;
+    }
 
-  &.--Small {
-    width: 30px;
-    height: 30px;
+    &--Small {
+      width: 30px;
+      height: 30px;
+    }
   }
 }
 </style>
