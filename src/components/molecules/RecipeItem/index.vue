@@ -124,13 +124,13 @@ export default {
 <style lang="scss" scoped>
 .RecipeItem {
   display: grid;
-  grid-template-columns: 0.5fr 2fr 0.75fr;
+  grid-template-columns: 0.5fr 2fr 1fr;
   grid-template-rows: 1.5fr 1fr;
   height: 125px;
   width: 100%;
 
-  @media screen and (max-width: 480px) {
-    grid-template-columns: 0.5fr 2fr;
+  @media screen and (min-width: 481px) {
+    grid-template-columns: 0.5fr 2fr 0.75fr;
     grid-template-rows: 1.5fr 1fr;
   }
 
@@ -146,18 +146,21 @@ export default {
     background-color: brown;
     flex-flow: column nowrap;
 
-    @media screen and (max-width: 480px) {
+    @media screen and (min-width: 481px) {
       grid-column: 1 / 2;
-      grid-row: 1 / 2;
+      grid-row: 1 / 3;
     }
   }
 
-  &__title {
+  &__itemName {
     @extend %--flexCenter;
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
+    flex-direction: row;
+    @media screen and (min-width: 481px) {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
-    background-color: cornflowerblue;
-    flex-direction: row;
+    }
   }
 
   &__childlist {
@@ -186,12 +189,13 @@ export default {
 
   &__form {
     @extend %--flexCenter;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    @media screen and (min-width: 481px) {
     grid-column: 3/4;
-    grid-row: 1/3;
-    background-color: olive;
-    @media screen and (max-width: 480px) {
-      grid-column: 1/3;
-      grid-row: 2/3;
+      grid-row: 1/2;
+      width: 100%;
+      height: 100%;
     }
   }
   &__block {
