@@ -164,8 +164,8 @@ export default {
     grid-row: 1 / 2;
     flex-direction: row;
     @media screen and (min-width: 481px) {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
     }
   }
 
@@ -197,7 +197,7 @@ export default {
     grid-column: 2/3;
     grid-row: 2/3;
     @media screen and (min-width: 481px) {
-    grid-column: 3/4;
+      grid-column: 3/4;
       grid-row: 1/2;
       width: 100%;
       height: 100%;
