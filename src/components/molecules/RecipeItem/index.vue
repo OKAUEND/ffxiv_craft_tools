@@ -5,13 +5,16 @@
       <atom-image
         :path="`static/CRAFTER/Alchemist.png`"
         :comment="`ItemIcon`"
-        class="Atom-Img__Icon--Medium"
+        class="Atom-Image__Icon--Medium"
       ></atom-image>
     </div>
     <!-- レベルとアイテム名と素材 -->
-    <div class="RecipeItem__title">
+    <div class="RecipeItem__itemName">
       <!-- レベルとアイテム名 -->
-      <span>{{ RecipeStates.Name }}</span>
+      <atom-span
+        class="Atom-span__Name--Medium"
+        :text="RecipeStates.Name"
+      ></atom-span>
     </div>
     <div class="RecipeItem__childlist">
       <!-- 素材の種類と素材数 -->
@@ -23,7 +26,7 @@
         <atom-image
           :path="ChildRecipe.ImagePath"
           :comment="`ItemIcon`"
-          class="Atom-Img__Icon--Small"
+          class="Atom-Image__Icon--Small"
         ></atom-image>
         <atom-span :text="ChildRecipe.fromRequiredMaterialValue"></atom-span>
       </div>
