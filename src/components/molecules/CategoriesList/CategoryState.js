@@ -3,7 +3,7 @@ export class IconState {
     this.ID = value.ID;
     this.type = value.type;
     this.name = value.name;
-    this.code = value.jobcode;
+    this.code = value.code;
     this.image = value.image;
   }
   static create(category) {
@@ -31,8 +31,8 @@ export class IconState {
 
   LabelStyle(value) {
     return {
-      "category-area-image": true,
-      "Icon-radio-checkmark": this.name === value
+      "category-area__image": true,
+      "Radio__Icon--checkmark": this.name === value
     };
   }
 }
@@ -81,8 +81,8 @@ export class StringState {
   LabelStyle(value) {
     const LevelID = this.type + this.ID;
     return {
-      "category-area-Normal": true,
-      "Normal-radio-checkmark": LevelID === value
+      "category-area__Normal": true,
+      "Radio__Normal--checkmark": LevelID === value
     };
   }
 

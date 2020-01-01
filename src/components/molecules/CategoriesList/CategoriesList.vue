@@ -42,13 +42,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.category-area-image {
+.category-area__image {
   position: relative;
   display: inline-block;
   height: 40px;
   width: 40px;
 
-  &.Icon-radio-checkmark {
+  &.Radio__Icon--checkmark {
     &::before {
       content: "";
       display: block;
@@ -73,7 +73,7 @@ export default {
   }
 }
 
-.category-area-Normal {
+.category-area__Normal {
   position: relative;
   display: inline-block;
   height: 30px;
@@ -84,7 +84,7 @@ export default {
   background-color: #2b2b2b;
   border-radius: 2px;
 
-  &.Normal-radio-checkmark {
+  &.Radio__Normal--checkmark {
     &::before {
       content: "";
       display: block;
