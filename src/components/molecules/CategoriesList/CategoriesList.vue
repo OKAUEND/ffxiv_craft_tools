@@ -12,7 +12,6 @@ import RadioButtomLabel from "@/components/molecules/RadioButtomLabel/index.vue"
 import {
   IconState,
   JobState,
-  StringState,
   LevelState,
   ErrorState
 } from "@/components/molecules/CategoriesList/CategoryState.js";
@@ -27,13 +26,12 @@ export default {
       get() {
         switch (this.category.type) {
           case "Level":
+          case "Master":
             return LevelState.create(this.category);
           case "Job":
             return JobState.create(this.category);
           case "Equipped":
             return IconState.create(this.category);
-          case "Master":
-            return StringState.create(this.category);
           default:
             return ErrorState.create();
         }

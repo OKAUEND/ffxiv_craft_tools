@@ -94,8 +94,9 @@ export class StringState {
 export class LevelState extends StringState {
   constructor(value) {
     super(value);
-    this.lowerLevel = value.lowerLevel;
-    this.upperLevel = value.upperLevel;
+    this.lowerLevel = value.lowerLevel ? value.lowerLevel : 0;
+    this.upperLevel = value.upperLevel ? value.upperLevel : 0;
+    this.MasterBand = value.type === "Master" ? value.code : 0;
   }
   static create(category) {
     return new LevelState(category);
@@ -106,15 +107,21 @@ export class LevelState extends StringState {
   }
 
   get Label() {
-    return this.lowerLevel + "~" + this.upperLevel;
+    if (this.type === "Level") {
+      return this.lowerLevel + "~" + this.upperLevel;
+    } else {
+      return this.name;
+    }
   }
 
   get fromSelectedData() {
     const LevelName = this.type + this.code;
     return {
       name: LevelName,
-      lowerLevel: this.lowerLevel,
-      upperLevel: this.upperLevel
+      Bandtype: this.type,
+      lowerLevelBand: this.lowerLevel,
+      upperLevelBand: this.upperLevel,
+      MasterBand: this.MasterBand
     };
   }
 }
