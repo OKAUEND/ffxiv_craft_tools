@@ -46,6 +46,14 @@ export class JobState extends IconState {
   get Label() {
     return "static/CRAFTER/" + this.image;
   }
+
+  get fromSelectedData() {
+    return {
+      name: this.name,
+      JobName: this.name,
+      JobCode: this.code
+    };
+  }
 }
 
 export class StringState {
