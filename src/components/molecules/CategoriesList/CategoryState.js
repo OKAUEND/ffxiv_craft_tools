@@ -25,8 +25,7 @@ export class IconState {
   get fromSelectedData() {
     return {
       name: this.name,
-      job: this.name,
-      code: this.code
+      Iconcode: this.code
     };
   }
 
