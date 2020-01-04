@@ -154,30 +154,28 @@ export default {
     }
   }
 
-  %__CategoryDetail {
+  %Detail {
     box-sizing: border-box;
     padding-top: 0px;
     padding-bottom: 0px;
-    width: 100vw;
+  }
+
+  &__CategoryDetail {
+    @extend %Detail;
+    width: 55%;
     @media screen and (min-width: 481px) {
       padding: 5px;
-      width: 25vw;
     }
   }
 
   &__Expansion {
-    @extend %__CategoryDetail;
-  }
-
-  &__CategoryDetail {
-    @extend %__CategoryDetail;
+    @extend %Detail;
   }
 
   &__RecipeDetail {
     padding: 10px 5px 10px 5px;
-    width: 100vw;
     @media screen and (min-width: 481px) {
-    width: 70vw;
+      width: 70vw;
     }
   }
 }
