@@ -32,6 +32,9 @@
           Master
         </category-group>
       </article>
+      <article class="CraftRecipe__RecipeDetail">
+        <recipe-list :Condition="createSelectedCondition"></recipe-list>
+      </article>
     </div>
   </article>
 </template>
@@ -86,6 +89,15 @@ export default {
     Expansions: {
       get() {
         return ExpansionData;
+      }
+    },
+    createSelectedCondition: {
+      get() {
+        return {
+          ...this.SelectJobClass,
+          ...this.SelectLevelBand,
+          ...this.SelectEquipped
+        };
       }
     }
   },
