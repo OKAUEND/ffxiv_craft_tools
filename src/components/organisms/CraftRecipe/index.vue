@@ -10,15 +10,28 @@
       </div>
     </div>
     <div class="CraftRecipe__Container">
-      <section class="CraftRecipe__CategoryDetail">
-        <category-group v-bind:Categories="CrafterJobs">CLASS</category-group>
-        <category-group v-bind:Categories="Equippeds">Equipped</category-group>
-        <category-group v-bind:Categories="Levels" v-bind:isStoreUse="true">LEVEL</category-group>
-        <category-group v-bind:Categories="MasterRecipes" v-bind:isStoreUse="true">Master</category-group>
-      </section>
-      <section class="CraftRecipe__RecipeDetail">
-        <recipe-list></recipe-list>
-      </section>
+      <article class="CraftRecipe__CategoryDetail">
+        <category-group v-bind:Categories="CrafterJobs" @change="storeJobClass">
+          CLASS
+        </category-group>
+        <category-group v-bind:Categories="Equippeds" @change="storeEquippeds">
+          Equipped
+        </category-group>
+        <category-group
+          v-bind:Categories="Levels"
+          v-bind:isStoreUse="true"
+          @change="storeSelectLevelBand"
+        >
+          LEVEL
+        </category-group>
+        <category-group
+          v-bind:Categories="MasterRecipes"
+          v-bind:isStoreUse="true"
+          @change="storeSelectLevelBand"
+        >
+          Master
+        </category-group>
+      </article>
     </div>
   </article>
 </template>
@@ -43,7 +56,10 @@ export default {
   },
   data() {
     return {
-      SelectExpansion: {}
+      SelectExpansion: {},
+      SelectLevelBand: {},
+      SelectJobClass: {},
+      SelectEquipped: {}
     };
   },
   computed: {
@@ -77,6 +93,18 @@ export default {
     storeSelectExpansion(value) {
       this.SelectExpansion = value;
     },
+    storeSelectLevelBand(value) {
+      this.removeNameKey(value);
+      this.SelectLevelBand = value;
+    },
+    storeEquippeds(value) {
+      this.removeNameKey(value);
+      this.SelectEquipped = value;
+    },
+    storeJobClass(value) {
+      this.removeNameKey(value);
+      this.SelectJobClass = value;
+    },
     filteringArray(array) {
       const AAR_Ver = 2;
       return array.filter(element => {
@@ -87,6 +115,9 @@ export default {
             : AAR_Ver)
         );
       });
+    },
+    removeNameKey(object) {
+      delete object.name;
     }
   }
 };
