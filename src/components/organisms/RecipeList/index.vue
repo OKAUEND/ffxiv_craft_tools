@@ -1,32 +1,43 @@
 <template>
-  <section class="RecipeList">
-    <recipe-item></recipe-item>
-  </section>
+  <div class="CraftRecipe__RecipeList">
+    <recipe-item
+      v-for="(Item, key) of Recipes"
+      :key="key"
+      :Recipe="Item"
+      @Add="emitRecipeDetail()"
+    ></recipe-item>
+  </div>
 </template>
 
 <script>
-import axios from "axios";
 import RecipeItem from "@/components/molecules/RecipeItem/index.vue";
 export default {
   components: {
     RecipeItem
+  },
+  props: {
+    Condition: {
+      type: Object,
+      required: true
+    }
   },
   data() {
     return {
       Recipes: []
     };
   },
-  async created() {
-    try {
-    } catch (e) {
-      console.error(e);
+  //Firebaseと通信をしDBからデータを取得（したい場所）
+  async created() {},
+  methods: {
+    emitRecipeDetail(RecipeObject) {
+      return this.$emit("Add", RecipeObject);
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.RecipeList {
+.CraftRecipe__RecipeList {
   display: flex;
   align-items: center;
   flex-flow: column nowrap;
