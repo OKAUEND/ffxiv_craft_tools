@@ -1,12 +1,12 @@
 import { shallowMount } from "@vue/test-utils";
-import ExpansionGroup from "@/components/organisms/ExpansionGroup/index.vue";
-import ExpansionItem from "@/components/molecules/ExpansionList/index.vue";
+import ExpansionGroup from "@/components/organisms/CategoryGroup/ExpansionGroup.vue";
+import ExpansionItem from "@/components/molecules/CategoriesList/ExpansionList.vue";
 import { ExpansionData } from "@/FFXIV.js";
 
 const ExpansionGroupFactory = propsData => {
   return shallowMount(ExpansionGroup, {
     propsData: {
-      Expansions: ExpansionData,
+      Categories: ExpansionData,
       ...propsData
     }
   });
@@ -15,7 +15,7 @@ const ExpansionGroupFactory = propsData => {
 describe("ExpansionGroup", () => {
   it("propsを受け取れいているか", () => {
     const wrapper = ExpansionGroupFactory();
-    expect(wrapper.props().Expansions.length).toBe(ExpansionData.length);
+    expect(wrapper.props().Categories.length).toBe(ExpansionData.length);
   });
   it("初期データはpropsを受け取って変更されていないか", () => {
     const wrapper = ExpansionGroupFactory();

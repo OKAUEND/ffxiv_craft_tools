@@ -7,63 +7,48 @@
 </template>
 
 <script>
+import CategoriesListBase from "./CategoriesListBase.js";
 import RadioButtomLabel from "@/components/molecules/RadioButtomLabel/index.vue";
 import {
   IconState,
   JobState,
-  StringState,
   LevelState,
   ErrorState
 } from "@/components/molecules/CategoriesList/CategoryState.js";
 export default {
   name: "CategoriesList",
+  mixins: [CategoriesListBase],
   components: {
     RadioButtomLabel
-  },
-  props: {
-    category: {
-      type: Object,
-      required: true
-    },
-    value: {
-      type: String,
-      required: true
-    }
   },
   computed: {
     CategoryState: {
       get() {
         switch (this.category.type) {
           case "Level":
+          case "Master":
             return LevelState.create(this.category);
           case "Job":
             return JobState.create(this.category);
           case "Equipped":
             return IconState.create(this.category);
-          case "Master":
-            return StringState.create(this.category);
           default:
             return ErrorState.create();
         }
       }
-    }
-  },
-  methods: {
-    emitMethod(value) {
-      return this.$emit("change", value);
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.category-area-image {
+.category-area__image {
   position: relative;
   display: inline-block;
   height: 40px;
   width: 40px;
 
-  &.Icon-radio-checkmark {
+  &.Radio__Icon--checkmark {
     &::before {
       content: "";
       display: block;
@@ -88,7 +73,7 @@ export default {
   }
 }
 
-.category-area-Normal {
+.category-area__Normal {
   position: relative;
   display: inline-block;
   height: 30px;
@@ -99,7 +84,7 @@ export default {
   background-color: #2b2b2b;
   border-radius: 2px;
 
-  &.Normal-radio-checkmark {
+  &.Radio__Normal--checkmark {
     &::before {
       content: "";
       display: block;

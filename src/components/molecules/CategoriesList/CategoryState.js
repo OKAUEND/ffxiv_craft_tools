@@ -3,7 +3,7 @@ export class IconState {
     this.ID = value.ID;
     this.type = value.type;
     this.name = value.name;
-    this.code = value.jobcode;
+    this.code = value.code;
     this.image = value.image;
   }
   static create(category) {
@@ -25,15 +25,14 @@ export class IconState {
   get fromSelectedData() {
     return {
       name: this.name,
-      job: this.name,
-      code: this.code
+      Iconcode: this.code
     };
   }
 
   LabelStyle(value) {
     return {
-      "category-area-image": true,
-      "Icon-radio-checkmark": this.name === value
+      "category-area__image": true,
+      "Radio__Icon--checkmark": this.name === value
     };
   }
 }
@@ -45,6 +44,14 @@ export class JobState extends IconState {
 
   get Label() {
     return "static/CRAFTER/" + this.image;
+  }
+
+  get fromSelectedData() {
+    return {
+      name: this.name,
+      JobName: this.name,
+      JobCode: this.code
+    };
   }
 }
 
@@ -74,8 +81,8 @@ export class StringState {
   LabelStyle(value) {
     const LevelID = this.type + this.ID;
     return {
-      "category-area-Normal": true,
-      "Normal-radio-checkmark": LevelID === value
+      "category-area__Normal": true,
+      "Radio__Normal--checkmark": LevelID === value
     };
   }
 
@@ -94,8 +101,9 @@ export class StringState {
 export class LevelState extends StringState {
   constructor(value) {
     super(value);
-    this.lowerLevel = value.lowerLevel;
-    this.upperLevel = value.upperLevel;
+    this.lowerLevel = value.lowerLevel ? value.lowerLevel : 0;
+    this.upperLevel = value.upperLevel ? value.upperLevel : 0;
+    this.MasterBand = value.type === "Master" ? value.code : 0;
   }
   static create(category) {
     return new LevelState(category);
@@ -106,15 +114,21 @@ export class LevelState extends StringState {
   }
 
   get Label() {
-    return this.lowerLevel + "~" + this.upperLevel;
+    if (this.type === "Level") {
+      return this.lowerLevel + "~" + this.upperLevel;
+    } else {
+      return this.name;
+    }
   }
 
   get fromSelectedData() {
     const LevelName = this.type + this.code;
     return {
       name: LevelName,
-      lowerLevel: this.lowerLevel,
-      upperLevel: this.upperLevel
+      Bandtype: this.type,
+      lowerLevelBand: this.lowerLevel,
+      upperLevelBand: this.upperLevel,
+      MasterBand: this.MasterBand
     };
   }
 }

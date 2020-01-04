@@ -4,18 +4,21 @@
       <img v-bind:src="CategoryImagePath" />
     </template>
     <template v-else>{{ CategoryState.Label }}</template>
-    <input
-      class="radio-hidden"
-      type="radio"
-      v-bind:id="CategoryState.formID"
-      v-bind:value="CategoryState.Name"
-      v-model="radioButtonValue"
-    />
+    <input-radio
+      class="input-Radio--hidden"
+      :id="CategoryState.formID"
+      :value="CategoryState.Name"
+      @input="radioButtonValue"
+    ></input-radio>
   </label>
 </template>
 <script>
+import InputRadio from "@/components/atoms/Input/Radio.vue";
 export default {
   name: "RadioButtomLabel",
+  components: {
+    InputRadio
+  },
   props: {
     ClassStateObject: {
       type: Object,
@@ -53,9 +56,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.radio-hidden {
-  display: none;
-}
-</style>

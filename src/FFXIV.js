@@ -116,56 +116,56 @@ export const Icons = [
     ID: 1,
     type: "Job",
     name: "Carpenter",
-    jobcode: 1,
+    code: 1,
     image: "Carpenter.png"
   },
   {
     ID: 2,
     type: "Job",
     name: "Blacksmith",
-    jobcode: 2,
+    code: 2,
     image: "Blacksmith.png"
   },
   {
     ID: 3,
     type: "Job",
     name: "Armorer",
-    jobcode: 3,
+    code: 3,
     image: "Armorer.png"
   },
   {
     ID: 4,
     type: "Job",
     name: "Goldsmith",
-    jobcode: 4,
+    code: 4,
     image: "Goldsmith.png"
   },
   {
     ID: 5,
     type: "Job",
     name: "Weaver",
-    jobcode: 5,
+    code: 5,
     image: "Weaver.png"
   },
   {
     ID: 6,
     type: "Job",
     name: "Leatherworker",
-    jobcode: 6,
+    code: 6,
     image: "Leatherworker.png"
   },
   {
     ID: 7,
     type: "Job",
     name: "Alchemist",
-    jobcode: 7,
+    code: 7,
     image: "Alchemist.png"
   },
   {
     ID: 8,
     type: "Job",
     name: "Culinarian",
-    jobcode: 8,
+    code: 8,
     image: "Culinarian.png"
   }
 ];

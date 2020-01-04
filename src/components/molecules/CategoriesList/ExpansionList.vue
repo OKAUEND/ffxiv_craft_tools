@@ -1,56 +1,44 @@
 <template>
   <radio-buttom-label
-    v-bind:ClassStateObject="ExpansionState"
-    v-bind:value="SelectValue"
-    v-on:change="emitFunc"
+    class="ExpansionItem"
+    v-bind:ClassStateObject="CategoryState"
+    v-bind:value="value"
+    v-on:change="emitMethod"
   ></radio-buttom-label>
 </template>
 
 <script>
+import CategoriesListBase from "./CategoriesListBase.js";
 import {
   ARealReborn,
   Heavensward,
   Stormblood,
   Shadowbringers,
   ErrorExpansion
-} from "@/components/molecules/ExpansionList/ExpansionState.js";
+} from "./ExpansionState.js";
 import RadioButtomLabel from "@/components/molecules/RadioButtomLabel/index.vue";
 export default {
   name: "ExpansionItem",
+  mixins: [CategoriesListBase],
   components: {
     RadioButtomLabel
   },
-  props: {
-    Expansion: {
-      type: Object,
-      required: true
-    },
-    SelectValue: {
-      type: String,
-      required: true
-    }
-  },
   computed: {
-    ExpansionState: {
+    CategoryState: {
       get() {
-        switch (this.Expansion.version) {
+        switch (this.category.version) {
           case 2:
-            return ARealReborn.create(this.Expansion);
+            return ARealReborn.create(this.category);
           case 3:
-            return Heavensward.create(this.Expansion);
+            return Heavensward.create(this.category);
           case 4:
-            return Stormblood.create(this.Expansion);
+            return Stormblood.create(this.category);
           case 5:
-            return Shadowbringers.create(this.Expansion);
+            return Shadowbringers.create(this.category);
           default:
             return ErrorExpansion.create();
         }
       }
-    }
-  },
-  methods: {
-    emitFunc(value) {
-      return this.$emit("change", value);
     }
   }
 };
@@ -58,40 +46,54 @@ export default {
 
 <style lang="scss" scoped>
 //拡張パックを示すボタンは独自デザインにしたいので、ここで指定する
-.Expansion_area {
+.ExpansionItem {
   position: relative;
   display: inline-block;
-  height: 60px;
-  width: 90px;
-  line-height: 60px;
+  height: 30px;
+  line-height: 30px;
+  width: 100%;
+  font-size: 20px;
   text-align: center;
-  font-size: 25px;
+  margin-bottom: 5px;
   color: #faebd7;
-  background-color: #131212;
+  background: #33333380;
+
+  @media screen and (min-width: 481px) {
+    height: 60px;
+    width: 90px;
+    line-height: 60px;
+    font-size: 25px;
+    background-color: #131212;
+  }
+
   &::after {
     content: "";
     display: inline-block;
     position: absolute;
-    width: 90px;
-    height: 60px;
+    height: 30px;
+    width: 100%;
     top: 0px;
     left: 0px;
     transition: opacity all 300ms 0s ease;
     opacity: 0;
+    @media screen and (min-width: 481px) {
+      height: 60px;
+      width: 90px;
+    }
   }
-  &._AAR::after {
+  &.--AAR::after {
     border-left: 5px solid #85d2ff;
   }
-  &._HEV::after {
+  &.--HEV::after {
     border-left: 5px solid #325ccf;
   }
-  &._STB::after {
+  &.--STB::after {
     border-left: 5px solid #cf3232;
   }
-  &._SHB::after {
+  &.--SHB::after {
     border-left: 5px solid #6c2fce;
   }
-  &.Expansion_radio--checkmark {
+  &.--checked {
     &::after {
       opacity: 1;
     }

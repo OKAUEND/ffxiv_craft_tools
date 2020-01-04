@@ -1,31 +1,48 @@
 <template>
-  <article class="Recipewarapper">
-    <section class="select-container">
-      <expansion-group
-        v-bind:Expansions="Expansions"
-        v-on:change="storeSelectExpansion"
-      ></expansion-group>
-      <section class="CategoryDetail">
-        <category-group v-bind:Categories="CrafterJobs">CLASS</category-group>
-        <category-group v-bind:Categories="Equippeds">Equipped</category-group>
-        <category-group v-bind:Categories="Levels" v-bind:isStoreUse="true">
+  <article class="CraftRecipe">
+    <div class="CraftRecipe__Container">
+      <div class="CraftRecipe__Expansion">
+        <expansion-group
+          v-bind:Categories="Expansions"
+          v-on:change="storeSelectExpansion"
+        >
+        </expansion-group>
+      </div>
+    </div>
+    <div class="CraftRecipe__Container">
+      <article class="CraftRecipe__CategoryDetail">
+        <category-group v-bind:Categories="CrafterJobs" @change="storeJobClass">
+          CLASS
+        </category-group>
+        <category-group v-bind:Categories="Equippeds" @change="storeEquippeds">
+          Equipped
+        </category-group>
+        <category-group
+          v-bind:Categories="Levels"
+          v-bind:isStoreUse="true"
+          @change="storeSelectLevelBand"
+        >
           LEVEL
         </category-group>
         <category-group
           v-bind:Categories="MasterRecipes"
           v-bind:isStoreUse="true"
+          @change="storeSelectLevelBand"
         >
           Master
         </category-group>
-      </section>
-    </section>
-    <section class="RecipeLists"></section>
+      </article>
+      <article class="CraftRecipe__RecipeDetail">
+        <recipe-list :Condition="createSelectedCondition"></recipe-list>
+      </article>
+    </div>
   </article>
 </template>
 
 <script>
-import CategoryGroup from "@/components/organisms/CategoryGroup/index.vue";
-import ExpansionGroup from "@/components/organisms/ExpansionGroup/index.vue";
+import CategoryGroup from "@/components/organisms/CategoryGroup/CategoryGroup.vue";
+import ExpansionGroup from "@/components/organisms/CategoryGroup/ExpansionGroup.vue";
+import RecipeList from "@/components/organisms/RecipeList/index.vue";
 import {
   ExpansionData,
   LevelArray,
@@ -37,11 +54,15 @@ export default {
   name: "Oraganisms_CraftRecipe",
   components: {
     ExpansionGroup,
-    CategoryGroup
+    CategoryGroup,
+    RecipeList
   },
   data() {
     return {
-      SelectExpansion: {}
+      SelectExpansion: {},
+      SelectLevelBand: {},
+      SelectJobClass: {},
+      SelectEquipped: {}
     };
   },
   computed: {
@@ -69,11 +90,32 @@ export default {
       get() {
         return ExpansionData;
       }
+    },
+    createSelectedCondition: {
+      get() {
+        return {
+          ...this.SelectJobClass,
+          ...this.SelectLevelBand,
+          ...this.SelectEquipped
+        };
+      }
     }
   },
   methods: {
     storeSelectExpansion(value) {
       this.SelectExpansion = value;
+    },
+    storeSelectLevelBand(value) {
+      this.removeNameKey(value);
+      this.SelectLevelBand = value;
+    },
+    storeEquippeds(value) {
+      this.removeNameKey(value);
+      this.SelectEquipped = value;
+    },
+    storeJobClass(value) {
+      this.removeNameKey(value);
+      this.SelectJobClass = value;
     },
     filteringArray(array) {
       const AAR_Ver = 2;
@@ -85,14 +127,56 @@ export default {
             : AAR_Ver)
         );
       });
+    },
+    removeNameKey(object) {
+      delete object.name;
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.CategoryDetail {
+.CraftRecipe {
+  box-sizing: border-box;
   background-color: #202020;
-  padding: 5px;
+  margin: 0 auto;
+  width: 100vw;
+  box-sizing: border-box;
+  @media screen and (min-width: 481px) {
+    width: 60vw;
+  }
+
+  &__Container {
+    display: flex;
+    flex-flow: column nowrap;
+    @media screen and (min-width: 481px) {
+      flex-flow: row nowrap;
+    }
+  }
+
+  %Detail {
+    box-sizing: border-box;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  &__CategoryDetail {
+    @extend %Detail;
+    width: 55%;
+    @media screen and (min-width: 481px) {
+      padding: 5px;
+    }
+  }
+
+  &__Expansion {
+    @extend %Detail;
+  }
+
+  &__RecipeDetail {
+    padding: 10px 5px 10px 5px;
+    @media screen and (min-width: 481px) {
+      width: 70vw;
+    }
+  }
 }
 </style>

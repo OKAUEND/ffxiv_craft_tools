@@ -1,5 +1,5 @@
 import { shallowMount, mount } from "@vue/test-utils";
-import CategoriesList from "@/components/molecules/CategoriesList/index.vue";
+import CategoriesList from "@/components/molecules/CategoriesList/CategoriesList.vue";
 import RadioChild from "@/components/molecules/RadioButtomLabel/index.vue";
 import { LevelArray, Icons } from "@/FFXIV.js";
 import {

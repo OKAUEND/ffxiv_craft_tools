@@ -1,14 +1,14 @@
 import { shallowMount, mount } from "@vue/test-utils";
-import ExpansionList from "@/components/molecules/ExpansionList/index.vue";
+import ExpansionList from "@/components/molecules/CategoriesList/ExpansionList.vue";
 import RadioChild from "@/components/molecules/RadioButtomLabel/index.vue";
-import { Heavensward } from "@/components/molecules/ExpansionList/ExpansionState.js";
+import { Heavensward } from "@/components/molecules/CategoriesList/ExpansionState.js";
 import { ExpansionData } from "@/FFXIV.js";
 
 const ExpansionFactory = propsData => {
   return shallowMount(ExpansionList, {
     propsData: {
-      Expansion: ExpansionData[1],
-      SelectValue: "",
+      category: ExpansionData[1],
+      value: "",
       ...propsData
     }
   });
@@ -17,8 +17,8 @@ const ExpansionFactory = propsData => {
 const ExpansionMountFactory = propsData => {
   return mount(ExpansionList, {
     propsData: {
-      Expansion: ExpansionData[1],
-      SelectValue: "",
+      category: ExpansionData[1],
+      value: "",
       ...propsData
     }
   });
@@ -27,19 +27,19 @@ const ExpansionMountFactory = propsData => {
 describe("ExpansionList", () => {
   it("Propsが受け取れているか", () => {
     const wrapper = ExpansionFactory();
-    expect(wrapper.props().Expansion).toBe(ExpansionData[1]);
+    expect(wrapper.props().category).toBe(ExpansionData[1]);
     wrapper.setProps({
-      SelectValue: "Expansion3"
+      value: "Expansion3"
     });
-    expect(wrapper.props().SelectValue).toBe("Expansion3");
+    expect(wrapper.props().value).toBe("Expansion3");
   });
   it("算出プロパティでタイプ毎にクラスのインスタンスが作成されているか", () => {
     const Expansion = {
-      Expansion: ExpansionData[1],
-      SelectValue: ""
+      category: ExpansionData[1],
+      value: ""
     };
     const Ex3 = Heavensward.create(ExpansionData[1]);
-    expect(ExpansionList.computed.ExpansionState.get.call(Expansion)).toEqual(
+    expect(ExpansionList.computed.CategoryState.get.call(Expansion)).toEqual(
       Ex3
     );
   });
@@ -57,7 +57,7 @@ describe("ExpansionList", () => {
   it("propsのvalueに値があった場合、クラスが3つになっているか", () => {
     const wrapper = ExpansionMountFactory();
     wrapper.setProps({
-      SelectValue: "Expansion3"
+      value: "Expansion3"
     });
     expect(wrapper.classes().length).toBe(3);
   });
