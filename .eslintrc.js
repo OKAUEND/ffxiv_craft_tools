@@ -15,9 +15,11 @@ module.exports = {
     "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
     "vue/html-indent": ["error", 2],
+    jsxBracketSameLine: true,
     "prettier/prettier": [
       "error",
       {
+        jsxBracketSameLine: false,
         trailingComma: "none"
       }
     ]
