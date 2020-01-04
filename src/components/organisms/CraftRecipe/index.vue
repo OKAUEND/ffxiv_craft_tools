@@ -2,7 +2,11 @@
   <article class="CraftRecipe">
     <div class="CraftRecipe__Container">
       <div class="CraftRecipe__Expansion">
-        <expansion-group v-bind:Categories="Expansions" v-on:change="storeSelectExpansion"></expansion-group>
+        <expansion-group
+          v-bind:Categories="Expansions"
+          v-on:change="storeSelectExpansion"
+        >
+        </expansion-group>
       </div>
     </div>
     <div class="CraftRecipe__Container">
