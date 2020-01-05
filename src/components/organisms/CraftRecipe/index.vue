@@ -138,7 +138,6 @@ export default {
 <style lang="scss" scoped>
 .CraftRecipe {
   box-sizing: border-box;
-  background-color: #202020;
   margin: 0 auto;
   width: 100vw;
   box-sizing: border-box;
