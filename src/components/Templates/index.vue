@@ -1,16 +1,20 @@
 <template>
-  <div class="grid_container">
-    <div class="header"></div>
+  <div class="Grid_Container">
+    <header-component class="header"></header-component>
     <tools-index class="main"></tools-index>
-    <div class="footer"></div>
+    <footer-component class="footer"></footer-component>
   </div>
 </template>
 
 <script>
+import HeaderComponent from "@/components/Templates/header/header.vue";
+import FooterComponent from "@/components/Templates/footer/footer.vue";
 import ToolsIndex from "@/components/Templates/Tools/index.vue";
 export default {
   name: "Template_ffxiv_index",
   components: {
+    HeaderComponent,
+    FooterComponent,
     ToolsIndex
   }
 };
