@@ -21,23 +21,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.grid_container {
+.Grid_Container {
   width: 100vw;
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 50px 1fr 4fr 30px;
-}
+  grid-template-rows: 50px 1fr 4fr 40px;
+  background-color: #202020;
 
-.header {
-  width: 100%;
-  grid-column: 1;
-  grid-row: 1;
-}
+  > .header {
+    grid-column: 1;
+    grid-row: 1;
+  }
 
-.main {
-  width: 100%;
-  grid-column: 1;
-  grid-row: 2 / 4;
+  > .main {
+    width: 100%;
+    grid-column: 1;
+    grid-row: 2 / 4;
+  }
+
+  > .footer {
+    grid-column: 1;
+    grid-row: 4/5;
+  }
 }
 </style>
