@@ -1,38 +1,16 @@
 <template>
   <div class="wrapper">
     <div class="sub_header"></div>
-    <div class="main" v-bind:class="isNarrow"></div>
-    <div class="side_detail" v-bind:class="isWide">
-      <button v-on:click="switchDisplayRegion">テスト</button>
+    <div class="main"></div>
+    <div class="side_detail">
+      <button>テスト</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Template_ToolsIndex",
-  data() {
-    return {
-      isButtonClick: false
-    };
-  },
-  computed: {
-    isNarrow: function() {
-      return {
-        __Narrowly: this.isButtonClick
-      };
-    },
-    isWide: function() {
-      return {
-        __wide: this.isButtonClick
-      };
-    }
-  },
-  methods: {
-    switchDisplayRegion() {
-      this.isButtonClick = !this.isButtonClick;
-    }
-  }
+  name: "Template_ToolsIndex"
 };
 </script>
 
@@ -77,7 +55,6 @@ export default {
       transition: 0.5s;
     }
   }
-  
 
   .side_detail {
     grid-column: 2;
