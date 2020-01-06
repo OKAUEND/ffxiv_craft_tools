@@ -42,11 +42,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@mixin category_margin {
+  margin-right: 5px;
+  @media screen and(min-width: 481px) {
+    margin-bottom: 5px;
+  }
+}
+
 .category-area__image {
   position: relative;
   display: inline-block;
   height: 40px;
   width: 40px;
+  @include category_margin;
 
   &.Radio__Icon--checkmark {
     &::before {
@@ -83,6 +91,7 @@ export default {
   color: #f8f9fa;
   background-color: #2b2b2b;
   border-radius: 2px;
+  @include category_margin;
 
   &.Radio__Normal--checkmark {
     &::before {
