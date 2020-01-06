@@ -44,9 +44,7 @@ export default {
 <style lang="scss" scoped>
 @mixin category_margin {
   margin-right: 5px;
-  @media screen and(min-width: 481px) {
-    margin-bottom: 5px;
-  }
+  margin-bottom: 5px;
 }
 
 .category-area__image {
