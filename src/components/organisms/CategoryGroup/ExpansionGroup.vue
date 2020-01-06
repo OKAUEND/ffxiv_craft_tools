@@ -68,7 +68,7 @@ export default {
   box-sizing: border-box;
   margin: 5px 0 0px 0;
   padding: 5px 10px 5px 10px;
-  background-color: #131212;
+  background-color: #181818;
   @media screen and (min-width: 481px) {
     margin: 0;
     padding: 0;
