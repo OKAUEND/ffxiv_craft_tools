@@ -119,10 +119,10 @@ export default {
     position: fixed;
     background-color: #7e7e7e;
     opacity: 0.75;
-    top: 50px;
+    top: 62px;
     right: 0px;
-    height: 55px;
-    width: 35px;
+    height: 50px;
+    width: 30px;
     border-top-left-radius: 80px;
     border-bottom-left-radius: 80px;
     display: flex;
