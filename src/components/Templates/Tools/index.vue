@@ -81,6 +81,8 @@ export default {
     right: 0px;
     display: flex;
     flex-direction: row;
+    background-color: #2b2b2b;
+    box-shadow: -4px -4px 4px #202020;
     animation: right_fadeout 350ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     @media screen and(min-width: 481px) {
       grid-column: 2/3;
