@@ -164,7 +164,7 @@ export default {
     @extend %Detail;
     width: 100%;
     @media screen and (min-width: 481px) {
-      padding: 5px;
+      margin-right: 5px;
       max-width: 250px;
     }
   }
@@ -174,11 +174,11 @@ export default {
   }
 
   &__RecipeDetail {
-    padding: 10px 5px 10px 5px;
+    margin: 10px 5px 10px 5px;
     @media screen and (min-width: 481px) {
       width: 70vw;
       max-width: 700px;
-      padding: 5px 5px 10px 5px;
+      margin: 5px 5px 10px 5px;
     }
   }
 }
