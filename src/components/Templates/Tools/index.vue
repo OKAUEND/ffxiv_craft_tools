@@ -1,16 +1,47 @@
 <template>
-  <div class="wrapper">
-    <div class="sub_header"></div>
-    <div class="main"></div>
-    <div class="side_detail">
-      <button>テスト</button>
-    </div>
-  </div>
+  <article class="Tools">
+    <atom-button class="Tools__SideBarButton" @click="switchClickble()">
+    </atom-button>
+    <article class="Tools__SubHeader"></article>
+    <article class="Tools__Main">
+      <craft-recipe></craft-recipe>
+    </article>
+    <atom-button
+      class="Tools__SideBarOverlay"
+      :class="isOpend"
+      @click="switchClickble()"
+    ></atom-button>
+    <article class="Tools__SideDetailBar" :class="isOpend"></article>
+  </article>
 </template>
 
 <script>
+import AtomButton from "@/components/atoms/Button/Button.vue";
+import CraftRecipe from "@/components/organisms/CraftRecipe/index.vue";
 export default {
-  name: "Template_ToolsIndex"
+  name: "ToolsIndex",
+  components: {
+    AtomButton,
+    CraftRecipe
+  },
+  data() {
+    return {
+      isClickbed: false
+    };
+  },
+  computed: {
+    isOpend() {
+      return {
+        "--Opend": this.isClickbed
+      };
+    }
+  },
+  methods: {
+    switchClickble() {
+      console.log("click", "クリック");
+      this.isClickbed = !this.isClickbed;
+    }
+  }
 };
 </script>
 
