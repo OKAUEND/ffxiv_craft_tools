@@ -42,7 +42,9 @@ export default {
   align-items: center;
   flex-flow: column nowrap;
   width: 100%;
-  padding: 0 10px 0 10px;
   box-sizing: border-box;
+  @media screen and (min-width: 481px) {
+    padding: 0 10px 0 10px;
+  }
 }
 </style>
