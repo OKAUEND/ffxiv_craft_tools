@@ -53,7 +53,7 @@ button {
   &__Addtional {
     @include fontMedium;
     color: #0f0e17;
-    width: 100px;
+    width: 120px;
     height: 40px;
     border-radius: 5px;
     background-color: #ff8906;
