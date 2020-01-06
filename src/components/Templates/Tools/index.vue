@@ -1,6 +1,9 @@
 <template>
   <article class="Tools">
     <atom-button class="Tools__SideBarButton" @click="switchClickble()">
+      <div class="Tools__hamburgerParts"></div>
+      <div class="Tools__hamburgerParts"></div>
+      <div class="Tools__hamburgerParts"></div>
     </atom-button>
     <article class="Tools__SubHeader"></article>
     <article class="Tools__Main">
@@ -38,7 +41,6 @@ export default {
   },
   methods: {
     switchClickble() {
-      console.log("click", "クリック");
       this.isClickbed = !this.isClickbed;
     }
   }
@@ -116,13 +118,33 @@ export default {
     background-color: #7e7e7e;
     opacity: 0.75;
     top: 50px;
-    right: 1px;
-    height: 52.5px;
-    width: 32.5px;
+    right: 0px;
+    height: 55px;
+    width: 35px;
     border-top-left-radius: 80px;
     border-bottom-left-radius: 80px;
+    display: flex;
+    flex-direction: column;
     @media screen and (min-width: 481px) {
       display: none;
+    }
+  }
+
+  &__hamburgerParts {
+    position: absolute;
+    width: 20px;
+    height: 4px;
+    right: 5px;
+    top: 15px;
+    background-color: #d1d1d1;
+    border-radius: 4px;
+
+    &:nth-of-type(2) {
+      top: 25px;
+    }
+
+    &:nth-of-type(3) {
+      top: 35px;
     }
   }
 }
