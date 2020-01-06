@@ -138,11 +138,12 @@ export default {
 <style lang="scss" scoped>
 .CraftRecipe {
   box-sizing: border-box;
-  margin: 0 auto;
-  width: 100vw;
+  margin: 0 2%;
+  width: auto;
   box-sizing: border-box;
   @media screen and (min-width: 481px) {
     width: 60vw;
+    margin: 0 auto;
   }
 
   &__Container {
@@ -161,9 +162,10 @@ export default {
 
   &__CategoryDetail {
     @extend %Detail;
-    width: 55%;
+    width: 100%;
     @media screen and (min-width: 481px) {
       padding: 5px;
+      max-width: 250px;
     }
   }
 
@@ -175,6 +177,8 @@ export default {
     padding: 10px 5px 10px 5px;
     @media screen and (min-width: 481px) {
       width: 70vw;
+      max-width: 700px;
+      padding: 5px 5px 10px 5px;
     }
   }
 }
