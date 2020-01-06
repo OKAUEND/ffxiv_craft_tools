@@ -46,50 +46,84 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
+.Tools {
   height: 100%;
   display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: 40px 1fr 1fr;
-}
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr;
+  @media screen and(min-width: 481px) {
+    grid-template-columns: 2fr 1fr;
+  }
 
-.sub_header {
-  grid-column: 1 / end;
-  grid-row: 1;
-}
-@media screen and (max-width: 896px) {
-  .main {
+  &__SubHeader {
+    grid-column: 1 / end;
+    grid-row: 1;
+  }
+
+  &__Main {
     width: 100vw;
-    grid-column: 1;
-    grid-row: 2 / 4;
+    grid-column: 1 /2;
+    grid-row: 2 / 3;
+    @media screen and(min-width: 481px) {
+      width: 80vw;
+      grid-column: 1 / end;
+    }
   }
-  .side_detail {
-    grid-column: 1;
-    grid-row: 2 / 4;
+
+  &__SideDetailBar {
+    position: fixed;
     visibility: hidden;
-    animation: right_fadeout 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-    &.__wide {
+    height: 100%;
+    width: 290px;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    flex-direction: row;
+    animation: right_fadeout 350ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    @media screen and(min-width: 481px) {
+      grid-column: 2/3;
+    }
+
+    &.--Opend {
       visibility: visible;
-      animation: right_fadein 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-    }
-  }
-}
-
-@media screen and (min-width: 897px) {
-  .main {
-    width: 80vw;
-    grid-column: 1;
-    grid-row: 2 / 4;
-    transition: 0.5s;
-    &.__Narrowly {
-      width: 45vw;
-      transition: 0.5s;
+      z-index: 1;
+      animation: right_fadein 350ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     }
   }
 
-  .side_detail {
-    grid-column: 2;
-    grid-row: 2 / 4;
+  &__SideBarOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #272727a1;
+    pointer-events: none;
+    opacity: 0;
+    top: 0;
+    transition: opacity 500ms;
+    &.--Opend {
+      opacity: 1;
+      transition: opacity 500ms;
+      pointer-events: auto;
+    }
+
+    @media screen and (min-width: 481px) {
+      display: none;
+    }
+  }
+
+  &__SideBarButton {
+    position: fixed;
+    background-color: #7e7e7e;
+    opacity: 0.75;
+    top: 50px;
+    right: 1px;
+    height: 52.5px;
+    width: 32.5px;
+    border-top-left-radius: 80px;
+    border-bottom-left-radius: 80px;
+    @media screen and (min-width: 481px) {
+      display: none;
+    }
   }
 }
 
@@ -103,7 +137,6 @@ export default {
     transform: translate3d(0, 0, 0);
   }
 }
-
 @keyframes right_fadeout {
   from {
     visibility: visible;
