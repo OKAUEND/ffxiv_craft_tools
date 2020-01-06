@@ -171,6 +171,7 @@ export default {
 
   &__Expansion {
     @extend %Detail;
+    width: 100%;
   }
 
   &__RecipeDetail {

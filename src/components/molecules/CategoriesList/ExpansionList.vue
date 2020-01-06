@@ -54,7 +54,7 @@ export default {
   width: 100%;
   font-size: 20px;
   text-align: center;
-  margin-bottom: 5px;
+  margin: 0px 0px 5px 0px;
   color: #faebd7;
   background: #33333380;
 
@@ -63,6 +63,7 @@ export default {
     width: 90px;
     line-height: 60px;
     font-size: 25px;
+    margin: 0px 5px 0px 0px;
     background-color: #131212;
   }
 

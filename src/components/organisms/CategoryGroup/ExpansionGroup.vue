@@ -1,5 +1,5 @@
 <template>
-  <section class="Expansion">
+  <article class="Expansion">
     <atom-button
       class="Expansion__HeadText"
       v-on:click="switchLabelClicked"
@@ -19,7 +19,7 @@
       >
       </expansion-item>
     </div>
-  </section>
+  </article>
 </template>
 
 <script>

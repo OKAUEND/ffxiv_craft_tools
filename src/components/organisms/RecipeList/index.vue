@@ -44,7 +44,7 @@ export default {
   width: 100%;
   box-sizing: border-box;
   @media screen and (min-width: 481px) {
-    padding: 0 10px 0 10px;
+    padding: 0px 0px 0px 10px;
   }
 }
 </style>
