@@ -144,6 +144,7 @@ export default {
   @media screen and (min-width: 481px) {
     width: 60vw;
     margin: 0 auto;
+    max-width: 960px;
   }
 
   &__Container {
@@ -164,7 +165,10 @@ export default {
     @extend %Detail;
     width: 100%;
     @media screen and (min-width: 481px) {
+      position: sticky;
+      top: 10px;
       margin-right: 5px;
+      height: 300px;
       max-width: 250px;
     }
   }
