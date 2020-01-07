@@ -75,15 +75,16 @@ export default {
   &__SideDetailBar {
     position: fixed;
     visibility: hidden;
-    height: 100%;
-    width: 290px;
-    top: 0px;
-    right: 0px;
     display: flex;
     flex-direction: row;
+    height: 100%;
+    width: 70%;
+    top: 0px;
+    right: -300px;
     background-color: #2b2b2b;
     box-shadow: -4px -4px 4px #202020;
-    animation: right_fadeout 350ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    transition: 0.3s ease;
+    overflow-y: scroll;
     @media screen and(min-width: 481px) {
       grid-column: 2/3;
     }
@@ -91,7 +92,8 @@ export default {
     &.--Opend {
       visibility: visible;
       z-index: 1;
-      animation: right_fadein 350ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+      transition: 0.3s ease;
+      right: 0;
     }
   }
 
