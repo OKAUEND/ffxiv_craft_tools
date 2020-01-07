@@ -138,39 +138,18 @@ export default {
     position: absolute;
     width: 20px;
     height: 4px;
-    right: 5px;
-    top: 15px;
+    right: 3px;
+    top: 13px;
     background-color: #d1d1d1;
     border-radius: 4px;
 
     &:nth-of-type(2) {
-      top: 25px;
+      top: 23px;
     }
 
     &:nth-of-type(3) {
-      top: 35px;
+      top: 33px;
     }
-  }
-}
-
-@keyframes right_fadein {
-  from {
-    visibility: hidden;
-    transform: translate3d(100vw, 0, 0);
-  }
-  to {
-    visibility: visible;
-    transform: translate3d(0, 0, 0);
-  }
-}
-@keyframes right_fadeout {
-  from {
-    visibility: visible;
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    visibility: hidden;
-    transform: translate3d(100vw, 0, 0);
   }
 }
 </style>
