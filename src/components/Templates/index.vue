@@ -1,47 +1,44 @@
 <template>
-  <div class="Grid_Container">
+  <div class="Container">
     <header-component class="header"></header-component>
     <tools-index class="main"></tools-index>
-    <footer-component class="footer"></footer-component>
   </div>
 </template>
 
 <script>
 import HeaderComponent from "@/components/Templates/header/header.vue";
-import FooterComponent from "@/components/Templates/footer/footer.vue";
 import ToolsIndex from "@/components/Templates/Tools/index.vue";
 export default {
   name: "Template_ffxiv_index",
   components: {
     HeaderComponent,
-    FooterComponent,
     ToolsIndex
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.Grid_Container {
-  width: 100vw;
+.Container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 50px 1fr 4fr 40px;
+  grid-template-rows: 60px 1fr;
   background-color: #202020;
 
   > .header {
-    grid-column: 1;
-    grid-row: 1;
+    position: sticky;
+    top: 0;
+    grid-column: 1 /2;
+    grid-row: 1 / 2;
+    z-index: 1;
   }
 
   > .main {
     width: 100%;
     grid-column: 1;
     grid-row: 2 / 4;
-  }
-
-  > .footer {
-    grid-column: 1;
-    grid-row: 4/5;
+    @media screen and (min-width: 481px) {
+      grid-row: 2 / 5;
+    }
   }
 }
 </style>

@@ -50,16 +50,23 @@ export default {
 <style lang="scss" scoped>
 .Tools {
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 50px 1fr;
+  display: flex;
+  flex-direction: column;
   @media screen and(min-width: 481px) {
+    display: grid;
+    grid-template-rows: 50px 1fr;
     grid-template-columns: 2fr 1fr;
   }
 
   &__SubHeader {
-    grid-column: 1 / end;
-    grid-row: 1;
+    height: 60px;
+    width: 100%;
+    @media screen and(min-width: 481px) {
+      grid-column: 1 / 2;
+      grid-row: 1;
+      height: 50px;
+      width: 100%;
+    }
   }
 
   &__Main {
@@ -68,7 +75,7 @@ export default {
     grid-row: 2 / 3;
     @media screen and(min-width: 481px) {
       width: 80vw;
-      grid-column: 1 / end;
+      grid-column: 1 / 2;
     }
   }
 
@@ -121,7 +128,7 @@ export default {
     position: fixed;
     background-color: #7e7e7e;
     opacity: 0.75;
-    top: 62px;
+    top: 65px;
     right: 0px;
     height: 50px;
     width: 30px;
