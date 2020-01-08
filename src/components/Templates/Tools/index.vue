@@ -93,7 +93,16 @@ export default {
     transition: 0.3s ease;
     overflow-y: scroll;
     @media screen and(min-width: 481px) {
+      position: sticky;
+      visibility: visible;
       grid-column: 2/3;
+      grid-row: 1/3;
+      right: auto;
+      width: 100%;
+      top: 60px;
+      height: calc(100vh - 60px);
+      box-shadow: 0px 0px 0px;
+      scrollbar-width: none;
     }
 
     &.--Opend {
