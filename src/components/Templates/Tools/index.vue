@@ -121,6 +121,7 @@ export default {
     pointer-events: none;
     opacity: 0;
     top: 0;
+    z-index: 1;
     transition: opacity 500ms;
     &.--Opend {
       opacity: 1;
