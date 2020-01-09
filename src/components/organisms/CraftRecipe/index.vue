@@ -143,7 +143,7 @@ export default {
   box-sizing: border-box;
   @media screen and (min-width: 481px) {
     width: 60vw;
-    margin: 0 auto;
+    margin-left: 12.5%;
     max-width: 960px;
   }
 
