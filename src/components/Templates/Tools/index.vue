@@ -91,7 +91,7 @@ export default {
     background-color: #2b2b2b;
     box-shadow: -4px -4px 4px #202020;
     transition: 0.3s ease;
-    overflow-y: scroll;
+    z-index: 2;
     @media screen and(min-width: 481px) {
       position: sticky;
       visibility: visible;
@@ -107,7 +107,6 @@ export default {
 
     &.--Opend {
       visibility: visible;
-      z-index: 1;
       transition: 0.3s ease;
       right: 0;
     }
