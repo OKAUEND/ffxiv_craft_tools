@@ -39,6 +39,7 @@
         @onDecrement="Decrement()"
         @onIncrement="Increment()"
         @input="Update()"
+        class="NumberCounter"
       ></number-counter>
     </div>
     <div class="RecipeItem__AddBlock">
