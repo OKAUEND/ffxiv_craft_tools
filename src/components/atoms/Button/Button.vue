@@ -24,12 +24,6 @@ button {
 }
 //
 
-@mixin CounterBtn {
-  width: 30px;
-  height: 40px;
-  background-color: #8a8a8a;
-}
-
 @mixin fontLarge {
   font-size: 25px;
 }
@@ -39,17 +33,6 @@ button {
 }
 
 .Atom-Button {
-  &__Counter {
-    &--Left {
-      @include CounterBtn;
-      border-radius: 5px 0px 0px 5px;
-    }
-    &--Right {
-      @include CounterBtn;
-      border-radius: 0px 5px 5px 0px;
-    }
-  }
-
   &__Addtional {
     @include fontMedium;
     color: #0f0e17;
