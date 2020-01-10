@@ -32,21 +32,14 @@
       </div>
     </div>
     <div class="RecipeItem__form">
-      <div class="RecipeItem__block">
-        <!-- 個数ボタン 
+      <!-- 個数ボタン 
         対応1~999までとする-->
-        <atom-button class="Atom-Button__Counter--Left" @click="Decrement()">
-          -
-        </atom-button>
-        <atom-number
-          class="Input-Number__Counter"
-          :value="ProductValue"
-          @input="Update"
-        ></atom-number>
-        <atom-button class="Atom-Button__Counter--Right" @click="Increment()">
-          +
-        </atom-button>
-      </div>
+      <number-counter
+        :value="ProductValue"
+        @onDecrement="Decrement()"
+        @onIncrement="Increment()"
+        @input="Update()"
+      ></number-counter>
     </div>
     <div class="RecipeItem__AddBlock">
       <atom-button class="Atom-Button__Addtional" @click="emitRecipeDetail()">
@@ -61,7 +54,8 @@
 import AtomSpan from "@/components/atoms//Text/Span.vue";
 import AtomImage from "@/components/atoms//Image/Image.vue";
 import AtomButton from "@/components/atoms/Button/Button.vue";
-import AtomNumber from "@/components/atoms/Input/Number.vue";
+//Mole
+import NumberCounter from "@/components/molecules/NumberCounter/NumberCounter.vue";
 // State Class
 import { RecipeState } from "./RecipeState.js";
 export default {
@@ -70,7 +64,7 @@ export default {
     AtomSpan,
     AtomImage,
     AtomButton,
-    AtomNumber
+    NumberCounter
   },
   data() {
     return {
@@ -203,10 +197,6 @@ export default {
       width: 100%;
       height: 100%;
     }
-  }
-  &__block {
-    display: flex;
-    flex-flow: row nowrap;
   }
   &__AddBlock {
     @extend %--flexCenter;
