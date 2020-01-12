@@ -1,31 +1,35 @@
 <template>
   <article class="Tools">
-    <atom-button class="Tools__SideBarButton" @click="switchClickble()">
+    <atom-semicircular-button @click="switchClickble()">
       <div class="Tools__hamburgerParts"></div>
       <div class="Tools__hamburgerParts"></div>
       <div class="Tools__hamburgerParts"></div>
-    </atom-button>
+    </atom-semicircular-button>
     <article class="Tools__SubHeader"></article>
     <article class="Tools__Main">
       <craft-recipe></craft-recipe>
     </article>
-    <atom-button
-      class="Tools__SideBarOverlay"
-      :class="isOpend"
-      @click="switchClickble()"
-    ></atom-button>
-    <article class="Tools__SideDetailBar" :class="isOpend"></article>
+    <atom-overlay
+      :isOverlayShow="this.isClickbed"
+      @click="switchClickble"
+    ></atom-overlay>
+    <article class="Tools__SideDetailBar" :class="isOpend">
+    </article>
   </article>
 </template>
 
 <script>
-import AtomButton from "@/components/atoms/Button/Button.vue";
+import AtomOverlay from "@/components/atoms/Button/OverlayStyle.vue";
+import AtomSemicircularButton from "@/components/atoms/Button/SemiRadius.vue";
 import CraftRecipe from "@/components/organisms/CraftRecipe/index.vue";
+import CartItems from "@/components/molecules/CartItems/CartItems.vue";
 export default {
   name: "ToolsIndex",
   components: {
-    AtomButton,
-    CraftRecipe
+    AtomOverlay,
+    AtomSemicircularButton,
+    CraftRecipe,
+    CartItems
   },
   data() {
     return {
@@ -83,9 +87,9 @@ export default {
     position: fixed;
     visibility: hidden;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 100%;
-    width: 70%;
+    width: 80%;
     top: 0px;
     right: -300px;
     background-color: #2b2b2b;
@@ -112,39 +116,29 @@ export default {
     }
   }
 
-  &__SideBarOverlay {
-    position: fixed;
+  &__SidebarNav {
     width: 100%;
-    height: 100%;
-    background-color: #272727a1;
-    pointer-events: none;
-    opacity: 0;
-    top: 0;
-    z-index: 1;
-    transition: opacity 500ms;
-    &.--Opend {
-      opacity: 1;
-      transition: opacity 500ms;
-      pointer-events: auto;
-    }
-
+    height: 60px;
+    border-bottom: solid 2px #272727a1;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: flex-end;
+    box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 30px;
     @media screen and (min-width: 481px) {
       display: none;
     }
   }
 
-  &__SideBarButton {
-    position: fixed;
-    background-color: #7e7e7e;
-    opacity: 0.75;
-    top: 65px;
-    right: 0px;
-    height: 50px;
-    width: 30px;
-    border-top-left-radius: 80px;
-    border-bottom-left-radius: 80px;
-    display: flex;
-    flex-direction: column;
+  & > .Atom__ButtonOverlay {
+    @media screen and (min-width: 481px) {
+      display: none;
+    }
+  }
+
+  & > .Atom__Button--semicircular {
     @media screen and (min-width: 481px) {
       display: none;
     }

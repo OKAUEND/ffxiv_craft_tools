@@ -5,7 +5,6 @@
       <atom-image
         :path="`static/CRAFTER/Alchemist.png`"
         :comment="`ItemIcon`"
-        class="Atom-Image__Icon--Medium"
       ></atom-image>
     </div>
     <!-- レベルとアイテム名と素材 -->
@@ -23,11 +22,11 @@
         :key="ChildRecipe.id"
         class="RecipeItem__childItems"
       >
-        <atom-image
+        <atom-image-small
           :path="ChildRecipe.ImagePath"
           :comment="`ItemIcon`"
-          class="Atom-Image__Icon--Small"
-        ></atom-image>
+          class=""
+        ></atom-image-small>
         <atom-span :text="ChildRecipe.fromRequiredMaterialValue"></atom-span>
       </div>
     </div>
@@ -43,9 +42,9 @@
       ></number-counter>
     </div>
     <div class="RecipeItem__AddBlock">
-      <atom-button class="Atom-Button__Addtional" @click="emitRecipeDetail()">
+      <atom-button-orange @click="emitRecipeDetail()">
         ADD
-      </atom-button>
+      </atom-button-orange>
     </div>
   </div>
 </template>
@@ -53,8 +52,9 @@
 <script>
 // Atom
 import AtomSpan from "@/components/atoms//Text/Span.vue";
-import AtomImage from "@/components/atoms//Image/Image.vue";
-import AtomButton from "@/components/atoms/Button/Button.vue";
+import AtomImage from "@/components/atoms//Image/ImageMedium.vue";
+import AtomImageSmall from "@/components/atoms/Image/ImageSmall.vue";
+import AtomButtonOrange from "@/components/atoms/Button/ButtonOrange.vue";
 //Mole
 import NumberCounter from "@/components/molecules/NumberCounter/NumberCounter.vue";
 // State Class
@@ -64,7 +64,8 @@ export default {
   components: {
     AtomSpan,
     AtomImage,
-    AtomButton,
+    AtomImageSmall,
+    AtomButtonOrange,
     NumberCounter
   },
   data() {

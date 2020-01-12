@@ -1,6 +1,6 @@
 <template>
   <article class="Expansion">
-    <atom-button
+    <atom-label-style
       class="Expansion__HeadText"
       v-on:click="switchLabelClicked"
       v-bind:class="isOpen"
@@ -8,7 +8,7 @@
       <template>
         Expansion
       </template>
-    </atom-button>
+    </atom-label-style>
     <div class="Expansion__List" v-bind:class="isOpen">
       <expansion-item
         v-for="(item, key) in Categories"
@@ -23,13 +23,13 @@
 </template>
 
 <script>
-import AtomButton from "@/components/atoms/Button/Button.vue";
+import AtomLabelStyle from "@/components/atoms/Button/LabelStyleMedium.vue";
 import ExpansionItem from "@/components/molecules/CategoriesList/ExpansionList.vue";
 import CategoryGroupBase from "./CategoryGroupBase.js";
 export default {
   name: "ExpansionGroup",
   components: {
-    AtomButton,
+    AtomLabelStyle,
     ExpansionItem
   },
   mixins: [CategoryGroupBase],
