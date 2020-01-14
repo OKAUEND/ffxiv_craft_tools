@@ -5,13 +5,15 @@
         <slot></slot>
       </template>
       <template v-slot:Child>
-        <categories-list
-          v-for="(item, key) in Categories"
-          v-bind:key="key"
-          v-bind:category="item"
-          v-bind:value="SelectedValue"
-          v-on:change="onExpasionButtomClick"
-        ></categories-list>
+        <div class="Category__List">
+          <categories-list
+            v-for="(item, key) in Categories"
+            v-bind:key="key"
+            v-bind:category="item"
+            v-bind:value="SelectedValue"
+            v-on:change="onExpasionButtomClick"
+          ></categories-list>
+        </div>
       </template>
     </medium-accordion>
   </div>
@@ -67,13 +69,9 @@ export default {
   padding: 5px 10px 5px 10px;
 
   &__List {
-    max-height: 0;
-    transition: max-height 0.15s ease-out;
-    overflow: hidden;
-    &.--Opend {
-      max-height: 150px;
-      transition: max-height 0.25s ease-in;
-    }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 </style>

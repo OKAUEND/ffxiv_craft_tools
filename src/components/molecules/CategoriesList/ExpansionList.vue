@@ -1,13 +1,15 @@
 <template>
-  <radio-buttom-label
-    v-bind:ClassStateObject="CategoryState"
-    v-bind:value="value"
-    v-on:change="emitMethod"
-  >
-    <template v-slot:label>
-      {{ CategoryState.Label }}
-    </template>
-  </radio-buttom-label>
+  <div class="Expansion__Detail">
+    <radio-buttom-label
+      v-bind:ClassStateObject="CategoryState"
+      v-bind:value="value"
+      v-on:change="emitMethod"
+    >
+      <template v-slot:label>
+        {{ CategoryState.Label }}
+      </template>
+    </radio-buttom-label>
+  </div>
 </template>
 
 <script>
@@ -46,3 +48,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.Expansion__Detail {
+  margin-bottom: 5px;
+}
+</style>

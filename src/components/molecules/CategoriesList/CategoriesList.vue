@@ -1,18 +1,20 @@
 <template>
-  <radio-buttom-label
-    v-bind:ClassStateObject="CategoryState"
-    v-bind:value="value"
-    v-on:change="emitMethod"
-  >
-    <template v-slot:label>
-      <atom-image
-        v-if="CategoryState.isIcon"
-        :path="CategoryState.Label"
-        :comment="''"
-      />
-      <template v-else>{{ CategoryState.Label }}</template>
-    </template>
-  </radio-buttom-label>
+  <div class="CategoryList__Detail">
+    <radio-buttom-label
+      v-bind:ClassStateObject="CategoryState"
+      v-bind:value="value"
+      v-on:change="emitMethod"
+    >
+      <template v-slot:label>
+        <atom-image
+          v-if="CategoryState.isIcon"
+          :path="CategoryState.Label"
+          :comment="''"
+        />
+        <template v-else>{{ CategoryState.Label }}</template>
+      </template>
+    </radio-buttom-label>
+  </div>
 </template>
 
 <script>
@@ -51,3 +53,12 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.CategoryList__Detail {
+  max-width: 65px;
+  max-height: 40px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+</style>
