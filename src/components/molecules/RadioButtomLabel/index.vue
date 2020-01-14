@@ -1,25 +1,20 @@
 <template>
   <label v-bind:for="CategoryState.formID" v-bind:class="Stylies">
-    <template v-if="CategoryState.isIcon">
-      <atom-image v-bind:src="CategoryImagePath" />
-    </template>
-    <template v-else>{{ CategoryState.Label }}</template>
+    <slot name="label"></slot>
     <input-radio
-      class="input-Radio--hidden"
       :id="CategoryState.formID"
-      :value="CategoryState.Name"
-      @input="radioButtonValue"
+      :inputValue="CategoryState.Name"
+      :value="radioButtonValue"
+      @input="onRadioClick()"
     ></input-radio>
   </label>
 </template>
 
 <script>
-import AtomImage from "@/components/atoms/Image/ImageMedium.vue";
 import InputRadio from "@/components/atoms/Input/Radio.vue";
 export default {
   name: "RadioButtomLabel",
   components: {
-    AtomImage,
     InputRadio
   },
   props: {
@@ -55,6 +50,11 @@ export default {
       get() {
         return this.CategoryState.LabelStyle(this.value);
       }
+    }
+  },
+  methods: {
+    onRadioClick() {
+      return this.$emit("change", this.CategoryState.fromSelectedData);
     }
   }
 };
@@ -131,6 +131,74 @@ export default {
       border: solid #3f74b1;
       border-width: 0 7px 7px 0;
       transform: rotate(45deg);
+    }
+  }
+}
+
+@mixin ExpansionBase {
+  position: relative;
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  width: 100%;
+  font-size: $font_SecondaryMedium;
+  text-align: center;
+  color: $palette_white;
+  background: $palette_translucent-gray;
+
+  @media screen and (min-width: 481px) {
+    height: 60px;
+    width: 90px;
+    line-height: 60px;
+    font-size: $font_Large;
+    background-color: $Palette_black;
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    height: 30px;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    transition: opacity all 300ms 0s ease;
+    opacity: 0;
+    @media screen and (min-width: 481px) {
+      height: 60px;
+      width: 90px;
+    }
+  }
+}
+
+.Expansion {
+  &__ARealReborn {
+    @include ExpansionBase;
+    &::after {
+      border-left: 5px solid $palette_ARealReborn;
+    }
+  }
+  &__Heavensward {
+    @include ExpansionBase;
+    &::after {
+      border-left: 5px solid $palette_Heavensward;
+    }
+  }
+  &__Stormblood {
+    @include ExpansionBase;
+    &::after {
+      border-left: 5px solid $palette_Stormblood;
+    }
+  }
+  &__Shadowbringers {
+    @include ExpansionBase;
+    &::after {
+      border-left: 5px solid $palette_Shadowbringers;
+    }
+  }
+  &.--checked {
+    &::after {
+      opacity: 1;
     }
   }
 }

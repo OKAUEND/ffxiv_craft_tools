@@ -37,7 +37,7 @@ export class ARealReborn extends Expansion {
 
   LabelStyle(value) {
     return {
-      "--AAR": true,
+      Expansion__ARealReborn: true,
       "--checked": this.ExpansionCode === value
     };
   }
@@ -50,7 +50,7 @@ export class Heavensward extends Expansion {
 
   LabelStyle(value) {
     return {
-      "--HEV": true,
+      Expansion__Heavensward: true,
       "--checked": this.ExpansionCode === value
     };
   }
@@ -63,7 +63,7 @@ export class Stormblood extends Expansion {
 
   LabelStyle(value) {
     return {
-      "--STB": true,
+      Expansion__Stormblood: true,
       "--checked": this.ExpansionCode === value
     };
   }
@@ -76,7 +76,7 @@ export class Shadowbringers extends Expansion {
 
   LabelStyle(value) {
     return {
-      "--SHB": true,
+      Expansion__Shadowbringers: true,
       "--checked": this.ExpansionCode === value
     };
   }
@@ -97,7 +97,7 @@ export class ErrorExpansion extends Expansion {
 
   LabelStyle(value) {
     return {
-      "--ERR": true,
+      Expansion__Error: true,
       "--checked": this.ExpansionCode === value
     };
   }

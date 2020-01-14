@@ -15,7 +15,7 @@ export class IconState {
   }
 
   get formID() {
-    return this.type + this.ID;
+    return this.name;
   }
 
   get Name() {
