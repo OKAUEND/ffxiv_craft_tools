@@ -145,7 +145,6 @@ export default {
   text-align: center;
   color: $palette_white;
   background: $palette_translucent-gray;
-
   @media screen and (min-width: 481px) {
     height: 60px;
     width: 90px;
@@ -174,31 +173,34 @@ export default {
 .Expansion {
   &__ARealReborn {
     @include ExpansionBase;
-    &::after {
+    &.--checked::after {
+      opacity: 1;
       border-left: 5px solid $palette_ARealReborn;
+      transition: opacity 300ms 0s ease;
     }
   }
   &__Heavensward {
     @include ExpansionBase;
-    &::after {
+    &.--checked::after {
+      opacity: 1;
       border-left: 5px solid $palette_Heavensward;
+      transition: opacity 300ms 0s ease;
     }
   }
   &__Stormblood {
     @include ExpansionBase;
-    &::after {
+    &.--checked::after {
+      opacity: 1;
       border-left: 5px solid $palette_Stormblood;
+      transition: opacity 300ms 0s ease;
     }
   }
   &__Shadowbringers {
     @include ExpansionBase;
-    &::after {
-      border-left: 5px solid $palette_Shadowbringers;
-    }
-  }
-  &.--checked {
-    &::after {
+    &.--checked::after {
       opacity: 1;
+      border-left: 5px solid $palette_Shadowbringers;
+      transition: opacity 300ms 0s ease;
     }
   }
 }
