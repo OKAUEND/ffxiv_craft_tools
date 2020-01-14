@@ -1,35 +1,31 @@
 <template>
   <article class="Expansion">
-    <atom-label-style
-      class="Expansion__HeadText"
-      v-on:click="switchLabelClicked"
-      v-bind:class="isOpen"
-    >
-      <template>
+    <medium-accordion :isResponsiveMode="true">
+      <template v-slot:Text>
         Expansion
       </template>
-    </atom-label-style>
-    <div class="Expansion__List" v-bind:class="isOpen">
-      <expansion-item
-        v-for="(item, key) in Categories"
-        v-bind:key="key"
-        v-bind:category="item"
-        v-bind:value="SelectedValue"
-        v-on:change="onExpasionButtomClick"
-      >
-      </expansion-item>
-    </div>
+      <template v-slot:Child>
+        <expansion-item
+          v-for="(item, key) in Categories"
+          v-bind:key="key"
+          v-bind:category="item"
+          v-bind:value="SelectedValue"
+          v-on:change="onExpasionButtomClick"
+        >
+        </expansion-item>
+      </template>
+    </medium-accordion>
   </article>
 </template>
 
 <script>
-import AtomLabelStyle from "@/components/atoms/Button/LabelStyleMedium.vue";
+import MediumAccordion from "@/components/molecules/Accordion/Accordion.vue";
 import ExpansionItem from "@/components/molecules/CategoriesList/ExpansionList.vue";
 import CategoryGroupBase from "./CategoryGroupBase.js";
 export default {
   name: "ExpansionGroup",
   components: {
-    AtomLabelStyle,
+    MediumAccordion,
     ExpansionItem
   },
   mixins: [CategoryGroupBase],
@@ -72,52 +68,6 @@ export default {
   @media screen and (min-width: 481px) {
     margin: 0;
     padding: 0;
-  }
-
-  &__HeadText {
-    width: 100%;
-    height: 100%;
-    text-align: left;
-    position: relative;
-    color: #f8f9fa;
-    background-color: transparent;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: left;
-    width: 100%;
-    &::after {
-      content: "";
-      display: inline-block;
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      top: 25%;
-      right: 10%;
-      border-right: 2px solid #f8f9fa;
-      border-bottom: 2px solid #f8f9fa;
-      transition: all 300ms 0s ease;
-      transform: rotate(-45deg);
-    }
-
-    &.--Opend::after {
-      transform: rotate(45deg);
-    }
-
-    @media screen and (min-width: 481px) {
-      display: none;
-    }
-  }
-
-  &__List {
-    @media screen and (max-width: 480px) {
-      max-height: 0;
-      transition: max-height 0.15s ease-out;
-      overflow: hidden;
-      &.--Opend {
-        max-height: 200px;
-        transition: max-height 0.25s ease-in;
-      }
-    }
   }
 }
 </style>

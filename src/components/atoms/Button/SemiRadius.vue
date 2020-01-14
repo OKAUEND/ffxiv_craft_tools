@@ -24,5 +24,6 @@ export default {
   border-bottom-left-radius: 80px;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 </style>
