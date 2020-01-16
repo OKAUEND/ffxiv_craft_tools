@@ -22,22 +22,5 @@ export default {
   font-size: $font_Small;
   font-weight: bold;
   text-align: left;
-  &::after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    top: 25%;
-    right: 10%;
-    border-right: 2px solid $palette_white;
-    border-bottom: 2px solid $palette_white;
-    transition: all 300ms 0s ease;
-    transform: rotate(-45deg);
-  }
-
-  &.--Clickble::after {
-    transform: rotate(45deg);
-  }
 }
 </style>
