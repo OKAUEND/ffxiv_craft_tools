@@ -10,10 +10,7 @@
     <!-- レベルとアイテム名と素材 -->
     <div class="RecipeItem__itemName">
       <!-- レベルとアイテム名 -->
-      <atom-span
-        class="Atom-span__Name--Medium"
-        :text="RecipeStates.Name"
-      ></atom-span>
+      <atom-span>{{ RecipeStates.Name }}</atom-span>
     </div>
     <div class="RecipeItem__childlist">
       <!-- 素材の種類と素材数 -->
