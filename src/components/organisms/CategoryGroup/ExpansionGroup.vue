@@ -5,14 +5,16 @@
         Expansion
       </template>
       <template v-slot:Child>
-        <expansion-item
-          v-for="(item, key) in Categories"
-          v-bind:key="key"
-          v-bind:category="item"
-          v-bind:value="SelectedValue"
-          v-on:change="onExpasionButtomClick"
-        >
-        </expansion-item>
+        <div class="Expansion__List">
+          <expansion-item
+            v-for="(item, key) in Categories"
+            v-bind:key="key"
+            v-bind:category="item"
+            v-bind:value="SelectedValue"
+            v-on:change="onExpasionButtomClick"
+          >
+          </expansion-item>
+        </div>
       </template>
     </medium-accordion>
   </article>
@@ -68,6 +70,12 @@ export default {
   @media screen and (min-width: 481px) {
     margin: 0;
     padding: 0;
+  }
+
+  &__List {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 </style>

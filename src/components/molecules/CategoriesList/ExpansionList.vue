@@ -52,5 +52,9 @@ export default {
 <style lang="scss" scoped>
 .Expansion__Detail {
   margin-bottom: 5px;
+  @media screen and (min-width: 481px) {
+    margin-bottom: 0px;
+    margin-right: 5px;
+  }
 }
 </style>
