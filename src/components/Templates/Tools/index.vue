@@ -14,6 +14,8 @@
       @click="switchClickble"
     ></atom-overlay>
     <article class="Tools__SideDetailBar" :class="isOpend">
+      <nav class="Tools__SidebarNav"><cart-items></cart-items></nav>
+      <cart-list></cart-list>
     </article>
   </article>
 </template>
@@ -23,13 +25,15 @@ import AtomOverlay from "@/components/atoms/Button/OverlayStyle.vue";
 import AtomSemicircularButton from "@/components/atoms/Button/SemiRadius.vue";
 import CraftRecipe from "@/components/organisms/CraftRecipe/index.vue";
 import CartItems from "@/components/molecules/CartItems/CartItems.vue";
+import CartList from "@/components/molecules/CartList/CartList.vue";
 export default {
   name: "ToolsIndex",
   components: {
     AtomOverlay,
     AtomSemicircularButton,
     CraftRecipe,
-    CartItems
+    CartItems,
+    CartList
   },
   data() {
     return {
