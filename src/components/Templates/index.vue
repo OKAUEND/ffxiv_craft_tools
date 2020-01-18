@@ -23,6 +23,8 @@ export default {
   grid-template-columns: 1fr;
   grid-template-rows: 60px 1fr;
   background-color: #202020;
+  box-sizing: border-box;
+  min-height: 100vh;
 
   > .header {
     position: sticky;
@@ -34,6 +36,7 @@ export default {
 
   > .main {
     width: 100%;
+    height: 100%;
     grid-column: 1;
     grid-row: 2 / 4;
     @media screen and (min-width: 481px) {
