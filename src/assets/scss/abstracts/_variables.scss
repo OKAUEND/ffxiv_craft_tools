@@ -20,6 +20,10 @@ $palette_Shadowbringers: #6c2fce;
 
 //文字サイズ
 $font_Large: 25px;
-$font_SecondaryMedium: 20px;
+$font_SecondaryMedium: 17.5px;
 $font_Medium: 15px;
 $font_Small: 12px;
+
+//画面サイズ(メディアクエリ)
+$breakpoint_tab_lower_limit: 481px;
+$breakpoint_pc_lower_limit: 767px;
