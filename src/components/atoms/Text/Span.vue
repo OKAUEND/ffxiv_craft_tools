@@ -12,6 +12,6 @@ export default {
 
 <style lang="scss" scoped>
 .Atom__Span--Medium {
-  font-size: $font_Medium;
+  font-size: $font_SecondaryMedium;
 }
 </style>
