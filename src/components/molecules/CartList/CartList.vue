@@ -5,9 +5,7 @@
       <div class="CartList__Title">
         <atom-image :path="'static/CRAFTER/Alchemist.png'"></atom-image>
         <atom-span>リグナムバイタ・スピニングホイール</atom-span>
-        <atom-image-small
-          :path="'static/CRAFTER/Alchemist.png'"
-        ></atom-image-small>
+        <atom-delete-icon></atom-delete-icon>
       </div>
       <div class="CartList__Body">
         <accordion-samll>
@@ -39,6 +37,7 @@ import AtomImage from "@/components/atoms/Image/ImageMedium.vue";
 import AtomImageSmall from "@/components/atoms/Image/ImageSmall.vue";
 import AtomSpan from "@/components/atoms/Text/Span.vue";
 import AtomSpanSmall from "@/components/atoms/Text/SpanSmall.vue";
+import AtomDeleteIcon from "@/components/atoms/Icon/DeleteSmall.vue";
 import AccordionSamll from "@/components/molecules/Accordion/AccordionSmall.vue";
 export default {
   name: "CartList",
@@ -47,6 +46,7 @@ export default {
     AtomSpanSmall,
     AtomImage,
     AtomImageSmall,
+    AtomDeleteIcon,
     AccordionSamll
   }
 };

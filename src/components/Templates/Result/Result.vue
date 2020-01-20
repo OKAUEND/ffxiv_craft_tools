@@ -1,19 +1,23 @@
 <template>
   <div class="Result">
     <nav class="Result__Nav">
-      <atom-image></atom-image>
-      <atom-image> </atom-image>
+      <atom-list-icon></atom-list-icon>
+      <atom-list-all-icon />
     </nav>
     <div class="Result__Body"></div>
   </div>
 </template>
 
 <script>
-import AtomImage from "@/components/atoms/Image/ImageMedium.vue";
+import AtomListIcon from "@/components/atoms/Icon/List.vue";
+import AtomListAllIcon from "@/components/atoms/Icon/ListALL.vue";
+import IndividualDetail from "@/components/organisms/ResultDetail/IndividualDetail.vue";
 export default {
   name: "ResultIndex",
   components: {
-    AtomImage
+    AtomListIcon,
+    AtomListAllIcon,
+    IndividualDetail
   }
 };
 </script>

@@ -1,13 +1,19 @@
 <template>
   <div class="CartItems">
-    <div class="CartItems__Icon"></div>
+    <div class="CartItems__Icon">
+      <atom-list-icon />
+    </div>
     <span class="CartItems__Value --green">5</span>
   </div>
 </template>
 
 <script>
+import AtomListIcon from "@/components/atoms/Icon/ListALL.vue";
 export default {
-  name: "CartItems"
+  name: "CartItems",
+  components: {
+    AtomListIcon
+  }
 };
 </script>
 
@@ -26,8 +32,8 @@ export default {
   }
 
   &__Icon {
-    width: 20px;
-    height: 25px;
+    width: 25px;
+    height: 35px;
     @media screen and (min-width: 481px) {
       width: 25px;
       height: 30px;
