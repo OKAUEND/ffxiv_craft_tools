@@ -42,6 +42,9 @@ export default {
       text-align: left;
       min-width: 60px;
     }
+    @media screen and (min-width: $breakpoint_tab_lower_limit) {
+      min-width: 500px;
+    }
   }
 }
 </style>
