@@ -140,7 +140,6 @@ export default {
   box-sizing: border-box;
   margin: 0 2%;
   width: auto;
-  box-sizing: border-box;
   @media screen and (min-width: 481px) {
     width: 60vw;
     margin-left: 12.5%;
