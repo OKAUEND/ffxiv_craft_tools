@@ -76,8 +76,7 @@ export default {
   }
 
   &__List {
-    margin-right: 20%;
-    margin-left: 20%;
+    min-width: 70%;
     flex: 1;
     @media screen and (min-width: $breakpoint_tab_lower_limit) {
       margin-right: 0;
