@@ -1,8 +1,10 @@
 <template>
   <div class="Result">
     <nav class="Result__Nav">
-      <atom-list-icon></atom-list-icon>
-      <atom-list-all-icon />
+      <div class="Result__CenterNav">
+        <atom-list-icon />
+        <atom-list-all-icon />
+      </div>
     </nav>
     <div class="Result__Body"></div>
   </div>
@@ -36,6 +38,16 @@ export default {
     justify-content: space-evenly;
     align-items: center;
     box-shadow: 1px $Palette_black;
+  }
+
+  &__CenterNav {
+    min-width: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    @media screen and (min-width: $breakpoint_tab_lower_limit) {
+      min-width: 200px;
+    }
   }
 
   &__Body {
