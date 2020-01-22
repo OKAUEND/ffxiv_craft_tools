@@ -1,6 +1,9 @@
 <template>
   <div class="Result">
     <nav class="Result__Nav">
+      <div class="Result__LeftNav">
+        <atom-back-icon />
+      </div>
       <div class="Result__CenterNav">
         <atom-list-icon />
         <atom-list-all-icon />
@@ -19,7 +22,7 @@ export default {
   components: {
     AtomListIcon,
     AtomListAllIcon,
-    IndividualDetail
+    AtomBackIcon,
   }
 };
 </script>
@@ -35,9 +38,15 @@ export default {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
     align-items: center;
     box-shadow: 1px $Palette_black;
+    padding-left: 10px;
+    box-sizing: border-box;
+  }
+
+  &__LeftNav {
+    position: absolute;
+    width: 20px;
   }
 
   &__CenterNav {
@@ -45,6 +54,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 0 auto;
     @media screen and (min-width: $breakpoint_tab_lower_limit) {
       min-width: 200px;
     }
