@@ -32,7 +32,7 @@ export default {
 <style lang="scss" scoped>
 .header {
   width: 100%;
-  background-color: #333333;
+  background-color: $palette_bright-gray;
 
   &__Content {
     height: 100%;

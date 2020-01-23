@@ -16,13 +16,16 @@
 <script>
 import AtomListIcon from "@/components/atoms/Icon/List.vue";
 import AtomListAllIcon from "@/components/atoms/Icon/ListALL.vue";
+import AtomBackIcon from "@/components/atoms/Icon/Back.vue";
 import IndividualDetail from "@/components/organisms/ResultDetail/IndividualDetail.vue";
+import WholeDetail from "@/components/organisms/ResultDetail/WholeDetail.vue";
 export default {
   name: "ResultIndex",
   components: {
     AtomListIcon,
     AtomListAllIcon,
     AtomBackIcon,
+    WholeDetail
   }
 };
 </script>

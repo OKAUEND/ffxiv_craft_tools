@@ -16,6 +16,7 @@
     <article class="Tools__SideDetailBar" :class="isOpend">
       <nav class="Tools__SidebarNav"><cart-items></cart-items></nav>
       <cart-list></cart-list>
+      <div class="Tools__ToResultPage"></div>
     </article>
   </article>
 </template>
@@ -96,8 +97,8 @@ export default {
     width: 80%;
     top: 0px;
     right: -300px;
-    background-color: #2b2b2b;
-    box-shadow: -4px -4px 4px #202020;
+    background-color: $palette_bright-gray;
+    box-shadow: -4px -4px 4px $palette_gray;
     transition: 0.3s ease;
     z-index: 2;
     @media screen and(min-width: 481px) {
@@ -134,6 +135,12 @@ export default {
     @media screen and (min-width: 481px) {
       display: none;
     }
+  }
+
+  &__ToResultPage {
+    height: 40px;
+    width: 100%;
+    margin-top: auto;
   }
 
   & > .Atom__ButtonOverlay {

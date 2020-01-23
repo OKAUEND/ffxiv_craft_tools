@@ -12,11 +12,15 @@
 <script>
 import HeaderComponent from "@/components/Templates/header/header.vue";
 import ToolsIndex from "@/components/Templates/Tools/index.vue";
+import ResultIndex from "@/components/Templates/Result/Result.vue";
+import AboutIndex from "@/components/organisms/About/About.vue";
 export default {
   name: "Template_ffxiv_index",
   components: {
     HeaderComponent,
-    ToolsIndex
+    ToolsIndex,
+    ResultIndex,
+    AboutIndex
   }
 };
 </script>
