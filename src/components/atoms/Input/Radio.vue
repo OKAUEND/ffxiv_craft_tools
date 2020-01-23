@@ -1,5 +1,11 @@
 <template>
-  <input type="radio" :id="id" :value="propsValue" @change="propsValue" />
+  <input
+    class="Atom__Radio--hidden"
+    type="radio"
+    :id="id"
+    :value="inputValue"
+    v-model="propsValue"
+  />
 </template>
 
 <script>
@@ -11,15 +17,31 @@ export default {
     id: {
       type: [String, Number],
       required: true
+    },
+    inputValue: {
+      type: String,
+      required: true
+    }
+  },
+  model: {
+    prop: "model",
+    event: "change"
+  },
+  computed: {
+    isChecked() {
+      return this.value === this.model;
+    }
+  },
+  methods: {
+    onRadioClick() {
+      this.propsValue = "";
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.input-Radio {
-  &--hidden {
-    display: none;
-  }
+.Atom__Radio--hidden {
+  display: none;
 }
 </style>

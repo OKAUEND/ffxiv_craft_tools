@@ -3,6 +3,7 @@ export class RecipeState {
     this.ID = value.ID;
     this.job = value.job;
     this.name = value.name;
+    this.icon = value.icon;
     this.type = value.type;
     this.childs = value.childs.map(element => {
       return RecipeChild.create(element);

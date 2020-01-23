@@ -1,13 +1,25 @@
 <template>
-  <radio-buttom-label
-    v-bind:ClassStateObject="CategoryState"
-    v-bind:value="value"
-    v-on:change="emitMethod"
-  ></radio-buttom-label>
+  <div class="CategoryList__Detail">
+    <radio-buttom-label
+      v-bind:ClassStateObject="CategoryState"
+      v-bind:value="value"
+      v-on:change="emitMethod"
+    >
+      <template v-slot:label>
+        <atom-image
+          v-if="CategoryState.isIcon"
+          :path="CategoryState.Label"
+          :comment="''"
+        />
+        <template v-else>{{ CategoryState.Label }}</template>
+      </template>
+    </radio-buttom-label>
+  </div>
 </template>
 
 <script>
 import CategoriesListBase from "./CategoriesListBase.js";
+import AtomImage from "@/components/atoms/Image/ImageMedium.vue";
 import RadioButtomLabel from "@/components/molecules/RadioButtomLabel/index.vue";
 import {
   IconState,
@@ -19,6 +31,7 @@ export default {
   name: "CategoriesList",
   mixins: [CategoriesListBase],
   components: {
+    AtomImage,
     RadioButtomLabel
   },
   computed: {
@@ -42,70 +55,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.category-area__image {
-  position: relative;
-  display: inline-block;
-  height: 40px;
-  width: 40px;
-
-  &.Radio__Icon--checkmark {
-    &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      background: #33333380;
-      width: 40px;
-      height: 40px;
-      border-radius: 5px;
-    }
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 10px;
-      height: 22px;
-      top: 2px;
-      left: 30%;
-      border: solid #3f74b1;
-      border-width: 0 7px 7px 0;
-      transform: rotate(45deg);
-    }
-  }
-}
-
-.category-area__Normal {
-  position: relative;
-  display: inline-block;
-  height: 30px;
-  width: 65px;
-  text-align: center;
-  line-height: 30px;
-  color: #f8f9fa;
-  background-color: #2b2b2b;
-  border-radius: 2px;
-
-  &.Radio__Normal--checkmark {
-    &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      background: #27272771;
-      height: 30px;
-      width: 65px;
-      border-radius: 5px;
-    }
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 10px;
-      height: 18px;
-      top: -1px;
-      left: 30%;
-      border: solid #3f74b1;
-      border-width: 0 7px 7px 0;
-      transform: rotate(45deg);
-    }
-  }
+.CategoryList__Detail {
+  max-width: 65px;
+  max-height: 40px;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 </style>

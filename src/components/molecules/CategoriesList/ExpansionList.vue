@@ -1,10 +1,15 @@
 <template>
-  <radio-buttom-label
-    class="ExpansionItem"
-    v-bind:ClassStateObject="CategoryState"
-    v-bind:value="value"
-    v-on:change="emitMethod"
-  ></radio-buttom-label>
+  <div class="Expansion__Detail">
+    <radio-buttom-label
+      v-bind:ClassStateObject="CategoryState"
+      v-bind:value="value"
+      v-on:change="emitMethod"
+    >
+      <template v-slot:label>
+        {{ CategoryState.Label }}
+      </template>
+    </radio-buttom-label>
+  </div>
 </template>
 
 <script>
@@ -45,58 +50,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-//拡張パックを示すボタンは独自デザインにしたいので、ここで指定する
-.ExpansionItem {
-  position: relative;
-  display: inline-block;
-  height: 30px;
-  line-height: 30px;
-  width: 100%;
-  font-size: 20px;
-  text-align: center;
+.Expansion__Detail {
   margin-bottom: 5px;
-  color: #faebd7;
-  background: #33333380;
-
+  width: 100%;
   @media screen and (min-width: 481px) {
-    height: 60px;
-    width: 90px;
-    line-height: 60px;
-    font-size: 25px;
-    background-color: #131212;
-  }
-
-  &::after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    height: 30px;
-    width: 100%;
-    top: 0px;
-    left: 0px;
-    transition: opacity all 300ms 0s ease;
-    opacity: 0;
-    @media screen and (min-width: 481px) {
-      height: 60px;
-      width: 90px;
-    }
-  }
-  &.--AAR::after {
-    border-left: 5px solid #85d2ff;
-  }
-  &.--HEV::after {
-    border-left: 5px solid #325ccf;
-  }
-  &.--STB::after {
-    border-left: 5px solid #cf3232;
-  }
-  &.--SHB::after {
-    border-left: 5px solid #6c2fce;
-  }
-  &.--checked {
-    &::after {
-      opacity: 1;
-    }
+    margin-bottom: 0px;
+    margin-right: 5px;
   }
 }
 </style>

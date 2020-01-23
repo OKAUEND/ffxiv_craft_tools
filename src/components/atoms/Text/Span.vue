@@ -1,32 +1,17 @@
 <template>
-  <span>
-    {{ this.text }}
+  <span class="Atom__Span--Medium">
+    <slot></slot>
   </span>
 </template>
 
 <script>
-import TextBase from "./TextBase.js";
 export default {
-  mixins: [TextBase]
+  name: "SpanMedium"
 };
 </script>
 
 <style lang="scss" scoped>
-.Atom-span__Name {
-  &--Large {
-    font-size: 20px;
-    @media screen and(min-width: 481px) {
-      font-size: 25px;
-    }
-  }
-  &--Medium {
-    font-size: 16px;
-    @media screen and(min-width: 481px) {
-      font-size: 20px;
-    }
-  }
-  &--Small {
-    font-size: 15px;
-  }
+.Atom__Span--Medium {
+  font-size: $font_SecondaryMedium;
 }
 </style>

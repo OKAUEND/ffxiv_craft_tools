@@ -22,8 +22,9 @@ export default {
 input {
   border: none;
   margin: 0;
-  padding: 3px 4px 3px 4px;
+  padding: 3px 5px 3px 5px;
   outline: 0;
+  text-align: center;
 }
 //
 .Input-Number {
