@@ -5,13 +5,14 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faTimes,
   faClipboardList,
-  faClipboard
+  faClipboard,
+  faChevronLeft
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 require("@/assets/scss/main.scss");
 
 Vue.config.productionTip = false;
-library.add(faTimes, faClipboardList, faClipboard);
+library.add(faTimes, faClipboardList, faClipboard, faChevronLeft);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 new Vue({
