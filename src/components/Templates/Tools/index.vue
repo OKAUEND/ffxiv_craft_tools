@@ -14,7 +14,11 @@
       @click="switchClickble"
     ></atom-overlay>
     <article class="Tools__SideDetailBar" :class="isOpend">
-      <nav class="Tools__SidebarNav"><cart-items></cart-items></nav>
+      <nav class="Tools__SidebarNav">
+        <router-link to="/result">
+          <cart-items></cart-items>
+        </router-link>
+      </nav>
       <cart-list></cart-list>
       <div class="Tools__ToResultPage"></div>
     </article>

@@ -2,6 +2,9 @@
   <div class="Container">
     <header-component class="header"></header-component>
     <article class="main">
+      <transition mode="out-in">
+        <router-view />
+      </transition>
     </article>
     <article class="footer">
       記載されている会社名・製品名・システム名などは、各社の商標、または登録商標です。
@@ -11,16 +14,10 @@
 
 <script>
 import HeaderComponent from "@/components/Templates/header/header.vue";
-import ToolsIndex from "@/components/Templates/Tools/index.vue";
-import ResultIndex from "@/components/Templates/Result/Result.vue";
-import AboutIndex from "@/components/organisms/About/About.vue";
 export default {
   name: "Template_ffxiv_index",
   components: {
-    HeaderComponent,
-    ToolsIndex,
-    ResultIndex,
-    AboutIndex
+    HeaderComponent
   }
 };
 </script>

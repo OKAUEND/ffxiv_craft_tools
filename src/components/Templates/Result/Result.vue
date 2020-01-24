@@ -2,14 +2,24 @@
   <div class="Result">
     <nav class="Result__Nav">
       <div class="Result__LeftNav">
-        <atom-back-icon />
+        <router-link to="/">
+          <atom-back-icon />
+        </router-link>
       </div>
       <div class="Result__CenterNav">
-        <atom-list-icon />
-        <atom-list-all-icon />
+        <router-link to="/result/">
+          <atom-list-icon />
+        </router-link>
+        <router-link to="/result/IndividualDetail">
+          <atom-list-all-icon />
+        </router-link>
       </div>
     </nav>
-    <div class="Result__Body"></div>
+    <div class="Result__Body">
+      <transition mode="out-in">
+        <router-view />
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -17,15 +27,12 @@
 import AtomListIcon from "@/components/atoms/Icon/List.vue";
 import AtomListAllIcon from "@/components/atoms/Icon/ListALL.vue";
 import AtomBackIcon from "@/components/atoms/Icon/Back.vue";
-import IndividualDetail from "@/components/organisms/ResultDetail/IndividualDetail.vue";
-import WholeDetail from "@/components/organisms/ResultDetail/WholeDetail.vue";
 export default {
   name: "ResultIndex",
   components: {
     AtomListIcon,
     AtomListAllIcon,
-    AtomBackIcon,
-    WholeDetail
+    AtomBackIcon
   }
 };
 </script>
@@ -69,6 +76,7 @@ export default {
     width: 100%;
     display: flex;
     justify-content: center;
+    flex: 1;
   }
 }
 </style>
