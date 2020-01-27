@@ -102,7 +102,7 @@ export default {
     top: 0px;
     right: -300px;
     background-color: $palette_bright-gray;
-    box-shadow: -4px -4px 4px $palette_gray;
+    box-shadow: -4px -4px 4px $palette_Dark-gray;
     transition: 0.3s ease;
     z-index: 2;
     @media screen and(min-width: 481px) {
