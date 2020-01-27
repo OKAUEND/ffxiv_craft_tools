@@ -56,6 +56,7 @@ export default {
   @media screen and (min-width: 481px) {
     margin-bottom: 0px;
     margin-right: 5px;
+    width: 90px;
   }
 }
 </style>
