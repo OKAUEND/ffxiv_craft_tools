@@ -9,7 +9,9 @@
           <!-- 検索バー -->
         </div>
         <div class="header__items">
-          <cart-items></cart-items>
+          <router-link to="/result">
+            <cart-items></cart-items>
+          </router-link>
         </div>
         <div class="header__none">
           <!-- ABOUT -->
