@@ -113,7 +113,7 @@ export default {
       right: auto;
       width: 100%;
       top: 60px;
-      height: calc(100vh - 60px);
+      height: calc(100vh - 80px);
       box-shadow: 0px 0px 0px;
       scrollbar-width: none;
     }

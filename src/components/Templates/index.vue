@@ -26,7 +26,7 @@ export default {
 .Container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 60px 1fr 30px;
+  grid-template-rows: 60px 1fr 20px;
   background-color: $palette_Dark-gray;
   box-sizing: border-box;
   min-height: 100vh;
@@ -41,16 +41,13 @@ export default {
 
   > .main {
     width: 100%;
-    height: 100%;
     grid-column: 1;
     grid-row: 2 / 4;
-    @media screen and (min-width: 481px) {
-      grid-row: 2 / 5;
-    }
   }
 
   .footer {
     width: 100%;
+    min-height: 20px;
     grid-column: 1;
     grid-row: 4 / 5;
     font-size: 11px;
