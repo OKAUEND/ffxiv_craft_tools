@@ -1,5 +1,5 @@
 <template>
-  <button @click="onClick" class="Atom__Button--green">
+  <button @click="onClick" class="Atom__SmallButton">
     <slot></slot>
   </button>
 </template>
@@ -12,12 +12,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.Atom__Button--green {
-  @include ButtonBaseSize;
-  background-color: $palette_bright-green;
-  color: $palette_white;
+.Atom__SmallButton {
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
   &:hover {
-    background-color: $palette_green;
+    background-color: $palette_orange;
     transition: background-color 500ms;
   }
 }

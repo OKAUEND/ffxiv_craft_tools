@@ -140,7 +140,6 @@ export default {
   background: $palette_translucent-gray;
   @media screen and (min-width: 481px) {
     height: 60px;
-    width: 90px;
     line-height: 60px;
     font-size: $font_Large;
     background-color: $Palette_black;

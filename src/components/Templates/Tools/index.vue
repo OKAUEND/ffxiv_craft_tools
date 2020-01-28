@@ -15,12 +15,19 @@
     ></atom-overlay>
     <article class="Tools__SideDetailBar" :class="isOpend">
       <nav class="Tools__SidebarNav">
+        <atom-button-small @click="switchClickble()">
+          <atom-delete-icon />
+        </atom-button-small>
         <router-link to="/result">
           <cart-items></cart-items>
         </router-link>
       </nav>
-      <cart-list></cart-list>
-      <div class="Tools__ToResultPage"></div>
+      <div class="Tools__SidebarBody"><cart-list></cart-list></div>
+      <div class="Tools__ToResultPage">
+        <router-link to="/result">
+          <atom-button-green>Result</atom-button-green>
+        </router-link>
+      </div>
     </article>
   </article>
 </template>
@@ -28,6 +35,9 @@
 <script>
 import AtomOverlay from "@/components/atoms/Button/OverlayStyle.vue";
 import AtomSemicircularButton from "@/components/atoms/Button/SemiRadius.vue";
+import AtomButtonGreen from "@/components/atoms/Button/ButtonGreen.vue";
+import AtomButtonSmall from "@/components/atoms/Button/AtomSmallButton.vue";
+import AtomDeleteIcon from "@/components/atoms/Icon/DeleteSmall.vue";
 import CraftRecipe from "@/components/organisms/CraftRecipe/index.vue";
 import CartItems from "@/components/molecules/CartItems/CartItems.vue";
 import CartList from "@/components/molecules/CartList/CartList.vue";
@@ -35,7 +45,10 @@ export default {
   name: "ToolsIndex",
   components: {
     AtomOverlay,
+    AtomButtonGreen,
     AtomSemicircularButton,
+    AtomDeleteIcon,
+    AtomButtonSmall,
     CraftRecipe,
     CartItems,
     CartList
@@ -102,7 +115,7 @@ export default {
     top: 0px;
     right: -300px;
     background-color: $palette_bright-gray;
-    box-shadow: -4px -4px 4px $palette_gray;
+    box-shadow: -4px -4px 4px $palette_Dark-gray;
     transition: 0.3s ease;
     z-index: 2;
     @media screen and(min-width: 481px) {
@@ -113,7 +126,7 @@ export default {
       right: auto;
       width: 100%;
       top: 60px;
-      height: calc(100vh - 60px);
+      height: calc(100vh - 80px);
       box-shadow: 0px 0px 0px;
       scrollbar-width: none;
     }
@@ -128,11 +141,10 @@ export default {
   &__SidebarNav {
     width: 100%;
     height: 60px;
-    border-bottom: solid 2px #272727a1;
     display: flex;
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     box-sizing: border-box;
     padding-left: 15px;
     padding-right: 30px;
@@ -141,10 +153,22 @@ export default {
     }
   }
 
+  &__SidebarBody {
+    border-top: solid 2px #272727a1;
+    height: 100%;
+    width: 100%;
+    flex: 1;
+    @media screen and (min-width: 481px) {
+      border-top: none;
+    }
+  }
+
   &__ToResultPage {
     height: 40px;
     width: 100%;
     margin-top: auto;
+    display: flex;
+    justify-content: center;
   }
 
   & > .Atom__ButtonOverlay {
