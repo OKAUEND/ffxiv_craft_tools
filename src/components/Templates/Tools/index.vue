@@ -15,6 +15,9 @@
     ></atom-overlay>
     <article class="Tools__SideDetailBar" :class="isOpend">
       <nav class="Tools__SidebarNav">
+        <atom-button-small @click="switchClickble()">
+          <atom-delete-icon />
+        </atom-button-small>
         <router-link to="/result">
           <cart-items></cart-items>
         </router-link>
@@ -28,6 +31,8 @@
 <script>
 import AtomOverlay from "@/components/atoms/Button/OverlayStyle.vue";
 import AtomSemicircularButton from "@/components/atoms/Button/SemiRadius.vue";
+import AtomButtonSmall from "@/components/atoms/Button/AtomSmallButton.vue";
+import AtomDeleteIcon from "@/components/atoms/Icon/DeleteSmall.vue";
 import CraftRecipe from "@/components/organisms/CraftRecipe/index.vue";
 import CartItems from "@/components/molecules/CartItems/CartItems.vue";
 import CartList from "@/components/molecules/CartList/CartList.vue";
@@ -36,6 +41,8 @@ export default {
   components: {
     AtomOverlay,
     AtomSemicircularButton,
+    AtomDeleteIcon,
+    AtomButtonSmall,
     CraftRecipe,
     CartItems,
     CartList
@@ -102,7 +109,7 @@ export default {
     top: 0px;
     right: -300px;
     background-color: $palette_bright-gray;
-    box-shadow: -4px -4px 4px $palette_gray;
+    box-shadow: -4px -4px 4px $palette_Dark-gray;
     transition: 0.3s ease;
     z-index: 2;
     @media screen and(min-width: 481px) {
@@ -130,9 +137,9 @@ export default {
     height: 60px;
     border-bottom: solid 2px #272727a1;
     display: flex;
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     box-sizing: border-box;
     padding-left: 15px;
     padding-right: 30px;
