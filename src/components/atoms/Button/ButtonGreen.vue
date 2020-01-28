@@ -15,6 +15,7 @@ export default {
 .Atom__Button--green {
   @include ButtonBaseSize;
   background-color: $palette_bright-green;
+  color: $palette_white;
   &:hover {
     background-color: $palette_green;
     transition: background-color 500ms;

@@ -23,7 +23,11 @@
         </router-link>
       </nav>
       <div class="Tools__SidebarBody"><cart-list></cart-list></div>
-      <div class="Tools__ToResultPage"></div>
+      <div class="Tools__ToResultPage">
+        <router-link to="/result">
+          <atom-button-green>Result</atom-button-green>
+        </router-link>
+      </div>
     </article>
   </article>
 </template>
@@ -31,6 +35,7 @@
 <script>
 import AtomOverlay from "@/components/atoms/Button/OverlayStyle.vue";
 import AtomSemicircularButton from "@/components/atoms/Button/SemiRadius.vue";
+import AtomButtonGreen from "@/components/atoms/Button/ButtonGreen.vue";
 import AtomButtonSmall from "@/components/atoms/Button/AtomSmallButton.vue";
 import AtomDeleteIcon from "@/components/atoms/Icon/DeleteSmall.vue";
 import CraftRecipe from "@/components/organisms/CraftRecipe/index.vue";
@@ -40,6 +45,7 @@ export default {
   name: "ToolsIndex",
   components: {
     AtomOverlay,
+    AtomButtonGreen,
     AtomSemicircularButton,
     AtomDeleteIcon,
     AtomButtonSmall,
@@ -161,6 +167,8 @@ export default {
     height: 40px;
     width: 100%;
     margin-top: auto;
+    display: flex;
+    justify-content: center;
   }
 
   & > .Atom__ButtonOverlay {
