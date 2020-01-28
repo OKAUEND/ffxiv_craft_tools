@@ -68,6 +68,11 @@ export default {
   margin: 5px 0 5px 0;
   padding: 5px 10px 5px 10px;
 
+  @media screen and(min-width:$breakpoint_tab_lower_limit ) {
+    box-sizing: border-box;
+    min-width: 250px;
+  }
+
   &__List {
     display: flex;
     flex-direction: row;
