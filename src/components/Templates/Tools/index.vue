@@ -22,7 +22,7 @@
           <cart-items></cart-items>
         </router-link>
       </nav>
-      <cart-list></cart-list>
+      <div class="Tools__SidebarBody"><cart-list></cart-list></div>
       <div class="Tools__ToResultPage"></div>
     </article>
   </article>
@@ -135,7 +135,6 @@ export default {
   &__SidebarNav {
     width: 100%;
     height: 60px;
-    border-bottom: solid 2px #272727a1;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -145,6 +144,16 @@ export default {
     padding-right: 30px;
     @media screen and (min-width: 481px) {
       display: none;
+    }
+  }
+
+  &__SidebarBody {
+    border-top: solid 2px #272727a1;
+    height: 100%;
+    width: 100%;
+    flex: 1;
+    @media screen and (min-width: 481px) {
+      border-top: none;
     }
   }
 
