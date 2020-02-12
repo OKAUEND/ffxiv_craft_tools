@@ -1,5 +1,5 @@
 # FFXIV CRAFT Tools
-This tool assists materials management in production activities within **FFXIV**.
+ファイナルファンタジーXIVにある、製作レシピの素材の必要数を計算するWebアプリです。
 
 ##Build Setup
 >## install dependencies
