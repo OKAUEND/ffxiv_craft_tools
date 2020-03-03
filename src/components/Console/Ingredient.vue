@@ -1,15 +1,32 @@
 <template>
-  <div>
+  <div class="Ingredient" :class="DisabledBorderColor">
     必須素材
     <div>
       有効化<input type="checkbox" v-model="isEnable" @change="EventEmit" />
     </div>
-    <div>value<input type="text" v-model="value" @input="EventEmit" /></div>
     <div>
-      IconPath<input type="text" v-model="IconName" @input="EventEmit" />
+      value<input
+        type="text"
+        :disabled="!isEnable"
+        v-model="value"
+        @input="EventEmit"
+      />
     </div>
     <div>
-      素材のID<input type="text" v-model="ChildDocumentID" @input="EventEmit" />
+      IconPath<input
+        type="text"
+        :disabled="!isEnable"
+        v-model="IconName"
+        @input="EventEmit"
+      />
+    </div>
+    <div>
+      素材のID<input
+        type="text"
+        :disabled="!isEnable"
+        v-model="ChildDocumentID"
+        @input="EventEmit"
+      />
     </div>
     <div>{{ DocumentReference.path }}</div>
   </div>
@@ -18,6 +35,7 @@
 <script>
 import firebase from "@/firebase.js";
 export default {
+  name: "Ingredient",
   data() {
     return {
       isEnable: false,
@@ -43,6 +61,11 @@ export default {
       const DocumentPath = `CraftingLog/${Number(this.ChildDocumentID)}`;
       const Ref = firebase.firestore().doc(DocumentPath);
       return Ref;
+    },
+    DisabledBorderColor() {
+      return {
+        isDisabled: !this.isEnable
+      };
     }
   },
   watch: {
@@ -87,4 +110,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.Ingredient {
+  margin: 5px;
+  padding: 5px;
+  border: solid 2px;
+  border-radius: 5px;
+
+  &.isDisabled {
+    border: solid 2px red;
+  }
+}
+</style>
