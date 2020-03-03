@@ -3,36 +3,37 @@
     <div v-if="isUpadateMode">更新モード</div>
     <div v-else-if="!isUpadateMode">新規追加モード</div>
     <button @click="isUpadateMode = false">新規追加モードへ</button>
-    TEST
     <div>
       <div>名前:<input type="text" v-model="CraftingLog.name" /></div>
-      <div>Icon:<input type="text" v-model="CraftingLog.image" /></div>
-      <ingredient
-        :storeLog="CraftingLog.Ingredients.slot0"
-        @change="setSlot0"
-      />
-      <ingredient
-        :storeLog="CraftingLog.Ingredients.slot1"
-        @change="setSlot1"
-      />
-      <ingredient
-        :storeLog="CraftingLog.Ingredients.slot2"
-        @change="setSlot2"
-      />
-      <ingredient
-        :storeLog="CraftingLog.Ingredients.slot3"
-        @change="setSlot3"
-      />
-      <ingredient
-        :storeLog="CraftingLog.Ingredients.slot4"
-        @change="setSlot4"
-      />
-      <ingredient
-        :storeLog="CraftingLog.Ingredients.slot5"
-        @change="setSlot5"
-      />
-      <button @click="writeInterface()">追加/更新</button>
+      <div>画像パス:<input type="text" v-model="CraftingLog.image" /></div>
+      <div class="LogRegister__Ingredients">
+        <ingredient
+          :storeLog="CraftingLog.Ingredients.slot0"
+          @change="setSlot0"
+        />
+        <ingredient
+          :storeLog="CraftingLog.Ingredients.slot1"
+          @change="setSlot1"
+        />
+        <ingredient
+          :storeLog="CraftingLog.Ingredients.slot2"
+          @change="setSlot2"
+        />
+        <ingredient
+          :storeLog="CraftingLog.Ingredients.slot3"
+          @change="setSlot3"
+        />
+        <ingredient
+          :storeLog="CraftingLog.Ingredients.slot4"
+          @change="setSlot4"
+        />
+        <ingredient
+          :storeLog="CraftingLog.Ingredients.slot5"
+          @change="setSlot5"
+        />
+      </div>
     </div>
+    <button @click="writeInterface()">追加/更新</button>
     <ul>
       <li v-for="(Log, ID) in Logs" :key="ID">
         <button @click="bindLog(Log)">{{ Log.name }}</button>
@@ -291,5 +292,21 @@ export default {
 
 <style lang="scss">
 .LogRegister {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: $palette_white;
+
+  @media screen and (min-width: $breakpoint_pc_lower_limit) {
+    flex-direction: row;
+  }
+
+  &__Ingredients {
+    display: flex;
+    flex-direction: column;
+    @media screen and (min-width: $breakpoint_pc_lower_limit) {
+      flex-direction: row;
+    }
+  }
 }
 </style>
