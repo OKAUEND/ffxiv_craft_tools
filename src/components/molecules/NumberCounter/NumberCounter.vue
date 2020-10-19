@@ -31,10 +31,10 @@ export default {
   },
   methods: {
     Decrement() {
-      return this.$emit("onDecrement");
+      return this.$emit("ondecrement");
     },
     Increment() {
-      return this.$emit("onIncrement");
+      return this.$emit("onincrement");
     },
     InputEvent(value) {
       return this.$emit("input", value);

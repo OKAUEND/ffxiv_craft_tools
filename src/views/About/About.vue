@@ -24,12 +24,10 @@
 
 <script>
 import AtomImage from "@/components/atoms/Image/ImageMedium.vue";
-import AtomSpan from "@/components/atoms/Text/SpanSmall.vue";
 export default {
   name: "AboutIndex",
   components: {
-    AtomImage,
-    AtomSpan
+    AtomImage
   }
 };
 </script>

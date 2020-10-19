@@ -111,7 +111,7 @@ export default {
     emitRecipeDetail() {
       const RecipeDetail = this.RecipeStates.createRecipeObject;
       RecipeDetail["Count"] = this.ProductValue;
-      return this.$emit("Add", RecipeDetail);
+      return this.$emit("add", RecipeDetail);
     }
   }
 };
