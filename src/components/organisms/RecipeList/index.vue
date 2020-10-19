@@ -30,7 +30,7 @@ export default {
   async created() {},
   methods: {
     emitRecipeDetail(RecipeObject) {
-      return this.$emit("Add", RecipeObject);
+      return this.$emit("add", RecipeObject);
     }
   }
 };
