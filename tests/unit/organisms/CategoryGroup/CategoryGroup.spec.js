@@ -1,4 +1,4 @@
-import { mount, shallowMount } from "@vue/test-utils";
+import { mount } from "@vue/test-utils";
 import CategoryGroup from "@/components/organisms/CategoryGroup/CategoryGroup.vue";
 import CategoriesList from "@/components/molecules/CategoriesList/CategoriesList.vue";
 import { Icons } from "@/FFXIV.js";
