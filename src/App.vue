@@ -1,6 +1,6 @@
 <template>
-  <div class="Container">
-    <header-component class="header"></header-component>
+  <article class="Container">
+    <header-component />
     <article class="main">
       <transition mode="out-in">
         <router-view />
@@ -9,10 +9,21 @@
     <article class="footer">
       記載されている会社名・製品名・システム名などは、各社の商標、または登録商標です。
     </article>
-  </div>
+  </article>
 </template>
 
-<script></script>
+<script>
+// import { defineComponent } from "vue";
+import HeaderComponent from "../src/views/header/header.vue";
+
+export default {
+  components: { HeaderComponent },
+
+  setup() {
+    return {};
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 .Container {
