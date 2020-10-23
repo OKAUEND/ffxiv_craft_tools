@@ -1,5 +1,4 @@
-# FFXIV CRAFT Tools
-ファイナルファンタジーXIVにある、製作レシピの素材の必要数を計算するWebアプリです。
+![ffxiv_craft_tools](https://socialify.git.ci/OKAUEND/ffxiv_craft_tools/image?font=KoHo&issues=1&language=1&pattern=Signal&stargazers=1&theme=Dark)
 
 ##Build Setup
 >## install dependencies
