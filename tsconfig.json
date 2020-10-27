@@ -2,12 +2,15 @@
     "compilerOptions": {
     // これは Vue のブラウザサポートに合わせます
     "target": "es6",
-    // これは `this` におけるデータプロパティに対して厳密な推論を可能にします
     "strict": true,
-    // webpack 2 以降 または rollup を使用している場合、ツリーシェイキングを活用するために
     "module": "es2015",
     "moduleResolution": "node",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "experimentalDecorators": true
     },
     "exclude": [
         "node_modules"
@@ -22,5 +25,5 @@
     ],
     "paths": {
         "@/*": ["src/*"]
-      }
+    }
 }
