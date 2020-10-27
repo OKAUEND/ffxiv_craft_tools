@@ -12,17 +12,18 @@
   </article>
 </template>
 
-<script>
-// import { defineComponent } from "vue";
+<script lang="ts">
+import { defineComponent } from "vue";
 import HeaderComponent from "../src/views/header/header.vue";
 
-export default {
+export default defineComponent({
+  name: "App",
   components: { HeaderComponent },
 
   setup() {
     return {};
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>
