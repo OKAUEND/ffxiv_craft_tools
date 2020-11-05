@@ -1,0 +1,52 @@
+{
+    "crafter":[
+        {
+          "type": "Job",
+          "name": "Carpenter",
+          "order": 1,
+          "image": "Carpenter.png"
+        },
+        {
+          "type": "Job",
+          "name": "Blacksmith",
+          "order": 2,
+          "image": "Blacksmith.png"
+        },
+        {
+          "type": "Job",
+          "name": "Armorer",
+          "order": 3,
+          "image": "Armorer.png"
+        },
+        {
+          "type": "Job",
+          "name": "Goldsmith",
+          "order": 4,
+          "image": "Goldsmith.png"
+        },
+        {
+          "type": "Job",
+          "name": "Weaver",
+          "order": 5,
+          "image": "Weaver.png"
+        },
+        {
+          "type": "Job",
+          "name": "Leatherworker",
+          "order": 6,
+          "image": "Leatherworker.png"
+        },
+        {
+          "type": "Job",
+          "name": "Alchemist",
+          "order": 7,
+          "image": "Alchemist.png"
+        },
+        {
+          "type": "Job",
+          "name": "Culinarian",
+          "order": 8,
+          "image": "Culinarian.png"
+        }
+    ]
+}
