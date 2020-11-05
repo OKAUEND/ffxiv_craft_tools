@@ -8,7 +8,7 @@
 import { defineComponent, SetupContext } from "vue";
 
 interface Props {
-  radiusmode: Number;
+  radiusmode: number;
 }
 export default defineComponent({
   props: {

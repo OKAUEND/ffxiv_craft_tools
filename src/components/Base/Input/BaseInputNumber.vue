@@ -6,7 +6,7 @@
 import { defineComponent, computed, SetupContext } from "vue";
 
 interface Input {
-  value: Number;
+  value: number;
 }
 
 export default defineComponent({

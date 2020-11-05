@@ -6,7 +6,7 @@
 import { defineComponent } from "vue";
 
 interface Props {
-  path: String;
+  path: string;
 }
 
 export default defineComponent({
