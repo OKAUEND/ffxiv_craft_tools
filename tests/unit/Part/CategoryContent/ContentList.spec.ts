@@ -38,9 +38,19 @@ describe("ContentList", () => {
     const wrapper = ContentListFactory(props);
     expect(wrapper.props().content).toStrictEqual(testData);
   });
-    it("子からのemitイベントで親へemitを発火するか", () => {
-      const wrapper = ContentListFactory(props);
-      wrapper.findComponent(ChildComponent).vm.$emit("input");
-      expect(wrapper.emitted().click[0]).toHaveLength(1)
+  it("子からのemitイベントで親へemitを発火するか", () => {
+    const wrapper = ContentListFactory(props);
+    wrapper.findComponent(ChildComponent).vm.$emit("input");
+    expect(wrapper.emitted().click).not.toBeUndefined()
+  });
+});
+
+describe("CategoryContent", () => {
+  test("Componentを配列分描画できているか", (): void => {
+
     });
+
+  test("小からのEmitで、stateが更新されているか", (): void => {
+
+  });
 });
