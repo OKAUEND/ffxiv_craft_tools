@@ -1,9 +1,9 @@
 <template>
-  <article class="Expansion">
+  <article class="CategoryContent">
     <!-- <medium-accordion :isResponsiveMode="true"> -->
     <!-- <template v-slot:Text> Expansion </template> -->
     <!-- <template v-slot:Child> -->
-    <div class="Expansion__List">
+    <div class="CategoryContent__List">
       <template v-for="(item, key) in categories" :key="key">
         <content-list :content="item" :value="selectRadioValue" />
       </template>
@@ -30,7 +30,7 @@ interface Content {
 // import MediumAccordion from "@/components/molecules/Accordion/Accordion.vue";
 import ContentList from "./ContentList.vue";
 export default defineComponent({
-  name: "Category",
+  name: "CategoryContent",
   components: {
     // MediumAccordion,
     ContentList,
@@ -57,7 +57,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.Expansion {
+.CategoryContent {
   box-sizing: border-box;
   margin: 5px 0 0px 0;
   padding: 5px 10px 5px 10px;
@@ -67,7 +67,7 @@ export default defineComponent({
     padding: 0;
   }
 
-  &__List {
+  .CategoryContent__List {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
