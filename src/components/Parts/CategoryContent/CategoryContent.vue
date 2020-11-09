@@ -53,29 +53,6 @@ export default defineComponent({
       isAccordionOpen,
     };
   },
-
-  // data() {
-  //   return {
-  //     SelectRadioValue: "Expansion2",
-  //     isLabelClick: false,
-  //   };
-  // },
-  // computed: {
-  //   isOpen() {
-  //     return {
-  //       "--Opend": this.isLabelClick,
-  //     };
-  //   },
-  // },
-  // methods: {
-  //   onExpasionButtomClick(value) {
-  //     this.SelectedValue = value;
-  //     return this.$emit("change", value);
-  //   },
-  //   switchLabelClicked() {
-  //     this.isLabelClick = !this.isLabelClick;
-  //   },
-  // },
 });
 </script>
 
