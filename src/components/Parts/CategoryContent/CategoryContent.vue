@@ -5,7 +5,11 @@
     <!-- <template v-slot:Child> -->
     <div class="CategoryContent__List">
       <template v-for="(item, key) in categories" :key="key">
-        <content-list :content="item" :value="selectRadioValue" />
+        <content-list
+          :content="item"
+          :value="selectRadioValue"
+          @click="onClickChild"
+        />
       </template>
     </div>
     <!-- </template> -->
@@ -43,14 +47,19 @@ export default defineComponent({
   },
 
   setup(props: Props) {
-    console.table(props.categories);
     const selectRadioValue = ref("Expansion2");
 
     const isAccordionOpen = ref(false);
 
+    const onClickChild = (emitvalue: string) => {
+      selectRadioValue.value = emitvalue;
+    };
+
     return {
       selectRadioValue,
       isAccordionOpen,
+      props,
+      onClickChild,
     };
   },
 });

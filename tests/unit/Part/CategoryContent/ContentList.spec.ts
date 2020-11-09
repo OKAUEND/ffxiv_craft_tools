@@ -45,12 +45,38 @@ describe("ContentList", () => {
   });
 });
 
+
+
+import CategoryContent from "@/components/Parts/CategoryContent/CategoryContent.vue"
+
+const categoryContentFactory = (propsData: object) => {
+  return mount(CategoryContent, {
+    propsData: {
+      categories:[],
+      ...propsData,
+    },
+  });
+};
+
+interface CategoryContentProps {
+  categories:crafter[]
+}
+
+const categoryContentProps:CategoryContentProps = {
+  categories:crafterJSON.crafter
+}
+
 describe("CategoryContent", () => {
   test("Componentを配列分描画できているか", (): void => {
-
+    const wrapper = categoryContentFactory(categoryContentProps);
+    const findconpoments =  wrapper.findAllComponents(ContentList);
+    expect(findconpoments.length).toBe(crafterJSON.crafter.length)
     });
 
   test("小からのEmitで、stateが更新されているか", (): void => {
-
+    const wrapper = categoryContentFactory(categoryContentProps);
+    expect(wrapper.vm.selectRadioValue).toBe("Expansion2")
+    wrapper.findComponent(ContentList).vm.$emit("click","TEST");
+    expect(wrapper.vm.selectRadioValue).not.toBe("Expansion2")
   });
 });
