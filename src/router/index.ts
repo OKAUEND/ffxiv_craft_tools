@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
-import ToolsIndex from "../views/Tools/index.vue";
-import AboutIndex from "../views/About/About.vue";
-import ResultIndex from "../views/Result/Result.vue";
+import ToolsIndex from "../views/CraftLog.vue";
+import AboutIndex from "../views/About.vue";
+import ResultIndex from "../views/Result.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
