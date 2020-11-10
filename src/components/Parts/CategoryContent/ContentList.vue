@@ -1,7 +1,7 @@
 <template>
   <div class="ContentList">
     <label class="ContentList__Item">
-      {{ props.value }}
+      {{ props.content.jpname }}
       <base-input-radio
         :id="props.content.order"
         :value="props.content.name"
