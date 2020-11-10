@@ -5,7 +5,7 @@
       <base-input-radio
         :id="props.content.order"
         :value="props.content.name"
-        @input="onRadioClick"
+        @change-radio="onRadioClick"
       ></base-input-radio>
     </label>
   </div>
@@ -45,6 +45,7 @@ export default defineComponent({
     },
   },
 
+  emits: ["change"],
   setup(props: Props, context: SetupContext) {
     // const InputForID = computed(() => {
     //   props.content.name;
@@ -53,7 +54,7 @@ export default defineComponent({
     props.value;
 
     const onRadioClick = () => {
-      context.emit("click", props.value);
+      context.emit("change", props.content);
     };
 
     return {

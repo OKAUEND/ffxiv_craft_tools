@@ -8,7 +8,7 @@
         <content-list
           :content="item"
           :value="selectRadioValue"
-          @click="onClickChild"
+          @change="onClickChild"
         />
       </template>
     </div>
@@ -21,16 +21,26 @@
 import { defineComponent, PropType, ref } from "vue";
 
 interface Props {
-  categories: Content[];
+  categories: CraftContent[];
 }
 
-interface Content {
+interface Crafter {
   name: string;
+  jpname: string;
   type: string;
   order: number;
   imageurl: string;
 }
 
+interface Level {
+  name: string;
+  type: string;
+  order: number;
+  upperlevel: number;
+  lowerlevel: number;
+}
+
+type CraftContent = Crafter | Level;
 // import MediumAccordion from "@/components/molecules/Accordion/Accordion.vue";
 import ContentList from "./ContentList.vue";
 export default defineComponent({
@@ -41,18 +51,17 @@ export default defineComponent({
   },
   props: {
     categories: {
-      type: Array as PropType<Content[]>,
+      type: Array as PropType<CraftContent[]>,
       required: true,
     },
   },
-
   setup(props: Props) {
     const selectRadioValue = ref("Expansion2");
 
     const isAccordionOpen = ref(false);
 
-    const onClickChild = (emitvalue: string) => {
-      selectRadioValue.value = emitvalue;
+    const onClickChild = (emitvalue: CraftContent) => {
+      selectRadioValue.value = emitvalue.name;
     };
 
     return {
