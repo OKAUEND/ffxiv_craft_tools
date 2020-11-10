@@ -7,7 +7,7 @@
     </atom-semicircular-button> -->
     <article class="Tools__SubHeader"></article>
     <article class="Tools__Main">
-      <craft-recipe></craft-recipe>
+      <craft-recipe :categories="ffxivCraftDetail.crafter"></craft-recipe>
     </article>
     <!-- <atom-overlay
       :isOverlayShow="this.isClickbed"
@@ -42,7 +42,8 @@
 // import CartItems from "@/components/molecules/CartItems/CartItems.vue";
 // import CartList from "@/components/molecules/CartList/CartList.vue";
 
-import CraftRecipe from "@/components/Pages/CraftLogList/index.vue";
+import CraftRecipe from "@/components/Parts/CategoryContent/CategoryContent.vue";
+import FFXIV from "@/assets/FFXIV.json";
 
 export default {
   name: "ToolsIndex",
@@ -67,6 +68,9 @@ export default {
       return {
         "--Opend": this.isClickbed,
       };
+    },
+    ffxivCraftDetail() {
+      return FFXIV;
     },
   },
   methods: {
