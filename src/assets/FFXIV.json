@@ -3,48 +3,56 @@
         {
           "type": "Job",
           "name": "Carpenter",
+          "jpname":"木工師",
           "order": 1,
           "image": "Carpenter.png"
         },
         {
           "type": "Job",
           "name": "Blacksmith",
+          "jpname":"鍛冶師",
           "order": 2,
           "image": "Blacksmith.png"
         },
         {
           "type": "Job",
           "name": "Armorer",
+          "jpname":"甲冑師",
           "order": 3,
           "image": "Armorer.png"
         },
         {
           "type": "Job",
           "name": "Goldsmith",
+          "jpname":"彫金師",
           "order": 4,
           "image": "Goldsmith.png"
         },
         {
           "type": "Job",
           "name": "Weaver",
+          "jpname":"裁縫師",
           "order": 5,
           "image": "Weaver.png"
         },
         {
           "type": "Job",
           "name": "Leatherworker",
+          "jpname":"革細工師",
           "order": 6,
           "image": "Leatherworker.png"
         },
         {
           "type": "Job",
           "name": "Alchemist",
+          "jpname":"錬金術師",
           "order": 7,
           "image": "Alchemist.png"
         },
         {
           "type": "Job",
           "name": "Culinarian",
+          "jpname":"調理師",
           "order": 8,
           "image": "Culinarian.png"
         }
