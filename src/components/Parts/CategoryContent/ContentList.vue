@@ -50,9 +50,6 @@ export default defineComponent({
     // const InputForID = computed(() => {
     //   props.content.name;
     // });
-    props.content;
-    props.value;
-
     const onRadioClick = () => {
       context.emit("change", props.content);
     };
