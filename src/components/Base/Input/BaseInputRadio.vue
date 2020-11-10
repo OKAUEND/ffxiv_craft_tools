@@ -29,11 +29,11 @@ export default defineComponent({
       required: true,
     },
   },
-
+  emits: ["change-radio"],
   setup(props: Props, context: SetupContext) {
     props.value;
-    const onInput = (event: string) => {
-      context.emit("input", event);
+    const onInput = () => {
+      context.emit("change-radio");
     };
 
     return {
