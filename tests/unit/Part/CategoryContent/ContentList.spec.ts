@@ -40,8 +40,8 @@ describe("ContentList", () => {
   });
   it("子からのemitイベントで親へemitを発火するか", () => {
     const wrapper = ContentListFactory(props);
-    wrapper.findComponent(ChildComponent).vm.$emit("input");
-    expect(wrapper.emitted().click).not.toBeUndefined()
+    wrapper.findComponent(ChildComponent).vm.$emit("change-radio");
+    expect(wrapper.emitted().change).not.toBeUndefined()
   });
 });
 
@@ -76,7 +76,8 @@ describe("CategoryContent", () => {
   test("小からのEmitで、stateが更新されているか", (): void => {
     const wrapper = categoryContentFactory(categoryContentProps);
     expect(wrapper.vm.selectRadioValue).toBe("Expansion2")
-    wrapper.findComponent(ContentList).vm.$emit("click","TEST");
+    wrapper.findComponent(ContentList).vm.$emit("change",{name:"TEST"});
+    console.log(wrapper.vm.selectRadioValue)
     expect(wrapper.vm.selectRadioValue).not.toBe("Expansion2")
   });
 });
