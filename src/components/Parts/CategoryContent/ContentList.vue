@@ -1,27 +1,29 @@
 <template>
   <div class="ContentList">
-    <label class="ContentList__Item">
-      {{ props.content.jpname }}
-      <base-input-radio
-        :id="props.content.order"
-        :value="props.content.name"
-        @change-radio="onRadioClick"
-      ></base-input-radio>
-    </label>
+    <base-input-radio
+      :id="props.content.order"
+      :value="props.content.name"
+      :selectedvalue="props.selectRadioValue"
+      @change-radio="onRadioClick"
+    >
+      {{ objectName }}</base-input-radio
+    >
   </div>
 </template>
 
 <script lang="ts">
 import BaseInputRadio from "@/components/Base/Input/BaseInputRadio.vue";
-import { defineComponent, PropType, SetupContext } from "vue";
+
+import { computed, defineComponent, PropType, SetupContext } from "vue";
 
 interface Props {
   content: Content;
-  value: string;
+  selectRadioValue: string;
 }
 
 interface Content {
   name: string;
+  jpname: string;
   type: string;
   order: number;
   imageurl: string;
@@ -39,7 +41,7 @@ export default defineComponent({
       type: Object as PropType<Content>,
       required: true,
     },
-    value: {
+    selectRadioValue: {
       type: String,
       required: true,
     },
@@ -54,9 +56,14 @@ export default defineComponent({
       context.emit("change", props.content);
     };
 
+    const objectJapanName = computed(() => {
+      return props.content.jpname;
+    });
+
     return {
       onRadioClick,
       props,
+      objectJapanName,
       // InputForID,
     };
   },

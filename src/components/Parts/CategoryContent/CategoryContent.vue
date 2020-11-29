@@ -7,7 +7,7 @@
       <template v-for="(item, key) in categories" :key="key">
         <content-list
           :content="item"
-          :value="selectRadioValue"
+          :selectRadioValue="selectRadioValue"
           @change="onClickChild"
         />
       </template>

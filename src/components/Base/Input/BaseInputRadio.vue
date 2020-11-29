@@ -1,19 +1,22 @@
 <template>
-  <input
-    :id="props.id"
-    class="Base__InputRadio--hidden"
-    type="radio"
-    :value="props.value"
-    @input="onInput"
-  />
+  <label :for="props.id" class="BaseInputRadio">
+    <input
+      :id="props.id"
+      class="BaseInputRadio__radio"
+      type="radio"
+      :value="props.value"
+      v-model="selected"
+    />
+  </label>
 </template>
 
 <script lang="ts">
-import { defineComponent, SetupContext } from "vue";
+import { computed, defineComponent, SetupContext } from "vue";
 
 interface Props {
   value: string;
   id: number;
+  selectedvalue: string;
 }
 
 export default defineComponent({
@@ -28,15 +31,21 @@ export default defineComponent({
       type: Number,
       required: true,
     },
+    selectedvalue: {
+      type: String,
+      required: true,
+    },
   },
   emits: ["change-radio"],
   setup(props: Props, context: SetupContext) {
-    props.value;
-    const onInput = () => {
-      context.emit("change-radio");
-    };
+    const selected = computed({
+      get: () => {
+        return props.selectedvalue;
+      },
+      set: () => context.emit("change-radio"),
+    });
 
-    return {
+      selected,
       props,
       onInput,
     };
