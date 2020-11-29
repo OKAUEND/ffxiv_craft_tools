@@ -6,7 +6,7 @@
       :selectedvalue="props.selectRadioValue"
       @change-radio="onRadioClick"
     >
-      {{ objectName }}</base-input-radio
+      {{ objectJapanName }}</base-input-radio
     >
   </div>
 </template>
