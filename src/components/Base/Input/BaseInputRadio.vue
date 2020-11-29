@@ -45,9 +45,9 @@ export default defineComponent({
       set: () => context.emit("change-radio"),
     });
 
-      selected,
+    return {
       props,
-      onInput,
+      selected,
     };
   },
 });
