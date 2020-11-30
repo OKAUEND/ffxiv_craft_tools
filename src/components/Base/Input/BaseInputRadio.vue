@@ -15,7 +15,7 @@ import { computed, defineComponent, SetupContext } from "vue";
 
 interface Props {
   value: string;
-  id: number;
+  id: string;
   selectedvalue: string;
 }
 
@@ -28,7 +28,7 @@ export default defineComponent({
       required: true,
     },
     id: {
-      type: Number,
+      type: String,
       required: true,
     },
     selectedvalue: {

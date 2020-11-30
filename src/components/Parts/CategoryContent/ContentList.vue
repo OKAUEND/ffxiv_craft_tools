@@ -1,8 +1,8 @@
 <template>
   <div class="ContentList">
     <base-input-radio
-      :id="props.content.order"
-      :value="props.content.name"
+      :id="props.content.name"
+      :value="RadioName"
       :selectedvalue="props.selectRadioValue"
       @change-radio="onRadioClick"
     >
@@ -27,6 +27,8 @@ interface Content {
   type: string;
   order: number;
   imageurl: string;
+  upperlevel?: number;
+  lowerlevel?: number;
 }
 
 export default defineComponent({
@@ -57,13 +59,23 @@ export default defineComponent({
     };
 
     const objectJapanName = computed(() => {
-      return props.content.jpname;
+      switch (props.content.type) {
+        case "level":
+          return `${props.content.lowerlevel} - ${props.content.upperlevel}`;
+        default:
+          return props.content.jpname;
+      }
+    });
+
+    const RadioName = computed(() => {
+      return props.content.name;
     });
 
     return {
       onRadioClick,
       props,
       objectJapanName,
+      RadioName,
       // InputForID,
     };
   },
