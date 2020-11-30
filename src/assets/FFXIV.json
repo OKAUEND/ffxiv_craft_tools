@@ -1,60 +1,196 @@
 {
     "crafter":[
         {
-          "type": "Job",
+          "type": "image",
           "name": "Carpenter",
           "jpname":"木工師",
           "order": 1,
-          "image": "Carpenter.png"
+          "image": "./assets/crafter/Carpenter.png"
         },
         {
-          "type": "Job",
+          "type": "image",
           "name": "Blacksmith",
           "jpname":"鍛冶師",
           "order": 2,
           "image": "Blacksmith.png"
         },
         {
-          "type": "Job",
+          "type": "image",
           "name": "Armorer",
           "jpname":"甲冑師",
           "order": 3,
           "image": "Armorer.png"
         },
         {
-          "type": "Job",
+          "type": "image",
           "name": "Goldsmith",
           "jpname":"彫金師",
           "order": 4,
           "image": "Goldsmith.png"
         },
         {
-          "type": "Job",
+          "type": "image",
           "name": "Weaver",
           "jpname":"裁縫師",
           "order": 5,
           "image": "Weaver.png"
         },
         {
-          "type": "Job",
+          "type": "image",
           "name": "Leatherworker",
           "jpname":"革細工師",
           "order": 6,
           "image": "Leatherworker.png"
         },
         {
-          "type": "Job",
+          "type": "image",
           "name": "Alchemist",
           "jpname":"錬金術師",
           "order": 7,
           "image": "Alchemist.png"
         },
         {
-          "type": "Job",
+          "type": "image",
           "name": "Culinarian",
           "jpname":"調理師",
           "order": 8,
           "image": "Culinarian.png"
         }
+    ],
+    "level":[
+      {
+        "type": "level",
+        "name": "level1",
+        "jpname":"",
+        "order": 1,
+        "ExpansionCode":2,
+        "upperlevel":1,
+        "lowerlevel":10        
+      },
+      {
+        "type": "level",
+        "name": "level2",
+        "jpname":"",
+        "order": 2,
+        "ExpansionCode":2,
+        "upperlevel":11,
+        "lowerlevel":20        
+      },
+      {
+        "type": "level",
+        "name": "level3",
+        "jpname":"",
+        "order": 3,
+        "ExpansionCode":2,
+        "upperlevel":21,
+        "lowerlevel":30        
+      },
+      {
+        "type": "level",
+        "name": "level4",
+        "jpname":"",
+        "order": 4,
+        "ExpansionCode":2,
+        "upperlevel":31,
+        "lowerlevel":40        
+      },
+      {
+        "type": "level",
+        "name": "level5",
+        "jpname":"",
+        "order": 5,
+        "ExpansionCode":2,
+        "upperlevel":41,
+        "lowerlevel":50        
+      },      {
+        "type": "level",
+        "name": "level6",
+        "jpname":"",
+        "order": 6,
+        "ExpansionCode":3,
+        "upperlevel":51,
+        "lowerlevel":55        
+      },
+      {
+        "type": "level",
+        "name": "level7",
+        "jpname":"",
+        "order": 7,
+        "ExpansionCode":3,
+        "upperlevel":56,
+        "lowerlevel":60        
+      },
+      {
+        "type": "level",
+        "name": "level8",
+        "jpname":"",
+        "order": 8,
+        "ExpansionCode":4,
+        "upperlevel":61,
+        "lowerlevel":65        
+      },
+      {
+        "type": "level",
+        "name": "level9",
+        "jpname":"",
+        "order": 9,
+        "ExpansionCode":4,
+        "upperlevel":66,
+        "lowerlevel":70        
+      },
+      {
+        "type": "level",
+        "name": "level10",
+        "jpname":"",
+        "order": 10,
+        "ExpansionCode":5,
+        "upperlevel":71,
+        "lowerlevel":75        
+      },
+      {
+        "type": "level",
+        "name": "level11",
+        "jpname":"",
+        "order": 11,
+        "ExpansionCode":5,
+        "upperlevel":76,
+        "lowerlevel":80        
+      },
+      {
+        "type": "level",
+        "name": "level12",
+        "jpname":"",
+        "order": 12,
+        "ExpansionCode":6,
+        "upperlevel":81,
+        "lowerlevel":85        
+      },
+      {
+        "type": "level",
+        "name": "level13",
+        "jpname":"",
+        "order": 13,
+        "ExpansionCode":6,
+        "upperlevel":86,
+        "lowerlevel":90        
+      },
+      {
+        "type": "level",
+        "name": "level14",
+        "jpname":"",
+        "order": 14,
+        "ExpansionCode":7,
+        "upperlevel":91,
+        "lowerlevel":95        
+      },
+      {
+        "type": "level",
+        "name": "level15",
+        "jpname":"",
+        "order": 15,
+        "ExpansionCode":7,
+        "upperlevel":96,
+        "lowerlevel":100        
+      }
     ]
 }
