@@ -22,7 +22,7 @@ const ContentListFactory = (propsData: object) => {
   return mount(ContentList, {
     propsData: {
       content: {},
-      value: "",
+      selectRadioValue: "",
       ...propsData,
     },
   });
