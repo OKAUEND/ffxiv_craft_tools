@@ -11,8 +11,12 @@
         <div class="body">
           <category-content
             :categories="ffxivdetail.crafter"
+            @update="updateSelectedCategories"
           ></category-content>
-          <category-content :categories="ffxivdetail.level"></category-content>
+          <category-content
+            :categories="ffxivdetail.level"
+            @update="updateSelectedCategories"
+          ></category-content>
           <!-- <category-content
             :categories="ffxivdetail.crafter"
           ></category-content> -->
@@ -34,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, onUnmounted, ref } from "vue";
+import { defineComponent, computed, onUnmounted, ref, reactive } from "vue";
 
 import CategoryContent from "@/components/Parts/CategoryContent/CategoryContent.vue";
 import BaseIconCross from "@/components/Base/Icon/BaseIconCross.vue";
@@ -43,6 +47,20 @@ import BaseButtonGreen from "@/components/Base/Button/BaseButtonGreen.vue";
 import FFXIV from "@/assets/FFXIV.json";
 
 import { MOBILE_WINDOW_WIDTH } from "@/assets/windowSize.ts";
+
+interface Content {
+  name: string;
+  jpname: string;
+  type: string;
+  order: number;
+  imageurl: string;
+  upperlevel?: number;
+  lowerlevel?: number;
+}
+
+interface StringObjectKey {
+  [key: string]: unknown;
+}
 
 export default defineComponent({
   name: "LogListContent",
@@ -54,7 +72,7 @@ export default defineComponent({
 
   setup() {
     const isMobileMode = ref(false);
-    const isVisible = ref(false);
+    const isVisible = ref(true);
 
     const ffxivdetail = computed(() => {
       return FFXIV;
@@ -65,8 +83,8 @@ export default defineComponent({
      */
     const changeWindowSize = () => {
       MOBILE_WINDOW_WIDTH >= window.innerWidth
-        ? (isMobileMode.value = true)
-        : (isMobileMode.value = false);
+        ? ((isMobileMode.value = true), (isVisible.value = false))
+        : ((isMobileMode.value = false), (isVisible.value = true));
     };
 
     /**
@@ -96,6 +114,7 @@ export default defineComponent({
     };
 
     return {
+      selectedcategory,
       isMobileMode,
       isVisible,
       ffxivdetail,

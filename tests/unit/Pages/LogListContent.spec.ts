@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
 import LogListContent from "@/components/Pages/LogListContent/LogListContent.vue"
 import { MOBILE_WINDOW_WIDTH , PC_WINDOW_WIDTH } from "@/assets/windowSize"
-
+import CategoryContent from "@/components/Parts/CategoryContent/CategoryContent.vue"
 
 const LogListContentFactory = () => {
     return mount(LogListContent);
@@ -29,6 +29,19 @@ describe("LogListContent", () => {
 
         //PCサイズの画面判定なので、mobileモードは真になっているはず
         expect(wrapper.vm.isMobileMode).toEqual(true)
+    });
+
+    test("項目を選択した場合、項目を保持できるか", (): void => {
+        const wrapper = LogListContentFactory();
+
+        //初期インスタンス生成時はどの値も保持していないこと
+        expect(wrapper.vm.selectedcategory).toStrictEqual({})
+
+        //テストデータを流し込んでみる
+        wrapper.findComponent(CategoryContent).vm.$emit("update", { type: "test"});
+
+        //テストデータは正しく状態を持てている？
+        expect(wrapper.vm.selectedcategory["test"]).toEqual({ type: 'test'})
     });
 });
 
