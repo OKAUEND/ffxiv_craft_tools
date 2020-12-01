@@ -69,6 +69,11 @@ export default defineComponent({
         : (isMobileMode.value = false);
     };
 
+    /**
+     * 選択した項目を動的に保持する
+     */
+    const selectedcategory = reactive<StringObjectKey>({});
+
     //画面サイズが変更された時に発火するイベントを登録する
     //Vue3からcreatedは明示的に書かずにsetupに直接コードするためここにかく
     window.addEventListener("resize", changeWindowSize);
@@ -83,11 +88,19 @@ export default defineComponent({
       isVisible.value = !isVisible.value;
     };
 
+    /**
+     * 保持している項目情報を更新する
+     */
+    const updateSelectedCategories = (emitvalue: Content) => {
+      selectedcategory[emitvalue.type] = emitvalue;
+    };
+
     return {
       isMobileMode,
       isVisible,
       ffxivdetail,
       toggleModalVisible,
+      updateSelectedCategories,
     };
   },
 });
