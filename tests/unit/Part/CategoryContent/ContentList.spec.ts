@@ -77,7 +77,6 @@ describe("CategoryContent", () => {
     const wrapper = categoryContentFactory(categoryContentProps);
     expect(wrapper.vm.selectRadioValue).toBe("Expansion2")
     wrapper.findComponent(ContentList).vm.$emit("change",{name:"TEST"});
-    console.log(wrapper.vm.selectRadioValue)
     expect(wrapper.vm.selectRadioValue).not.toBe("Expansion2")
   });
 });
