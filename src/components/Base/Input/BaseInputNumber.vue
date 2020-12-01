@@ -22,7 +22,6 @@ export default defineComponent({
     const propsValue = computed(() => props.value);
 
     const onInput = (event: number) => {
-      console.log(event);
       context.emit("input", event);
     };
 
