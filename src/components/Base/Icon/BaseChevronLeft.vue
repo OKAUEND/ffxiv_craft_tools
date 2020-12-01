@@ -14,7 +14,7 @@
 </template>
 
 <style lang="scss" scoped>
-.svg {
+svg {
   color: $palette_white;
 }
 </style>
