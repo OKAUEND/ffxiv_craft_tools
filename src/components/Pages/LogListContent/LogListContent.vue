@@ -38,7 +38,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, onUnmounted, ref, reactive } from "vue";
+import {
+  defineComponent,
+  computed,
+  onUnmounted,
+  ref,
+  reactive,
+  SetupContext,
+} from "vue";
 
 import CategoryContent from "@/components/Parts/CategoryContent/CategoryContent.vue";
 import BaseIconCross from "@/components/Base/Icon/BaseIconCross.vue";
@@ -69,14 +76,14 @@ export default defineComponent({
     BaseIconCross,
     BaseButtonGreen,
   },
-
-  setup() {
+  emits: ["change"],
+  setup(props, context: SetupContext) {
     const isMobileMode = ref(false);
     const isVisible = ref(true);
 
-    const ffxivdetail = computed(() => {
-      return FFXIV;
-    });
+    const toggleModalVisible = () => {
+      isVisible.value = !isVisible.value;
+    };
 
     /**
      * 画面サイズ変更時に変更イベントを検知しモバイルかどうか判断する
@@ -86,11 +93,6 @@ export default defineComponent({
         ? ((isMobileMode.value = true), (isVisible.value = false))
         : ((isMobileMode.value = false), (isVisible.value = true));
     };
-
-    /**
-     * 選択した項目を動的に保持する
-     */
-    const selectedcategory = reactive<StringObjectKey>({});
 
     //画面サイズが変更された時に発火するイベントを登録する
     //Vue3からcreatedは明示的に書かずにsetupに直接コードするためここにかく
@@ -102,15 +104,21 @@ export default defineComponent({
       window.removeEventListener("resize", changeWindowSize);
     });
 
-    const toggleModalVisible = () => {
-      isVisible.value = !isVisible.value;
-    };
+    const ffxivdetail = computed(() => {
+      return FFXIV;
+    });
+
+    /**
+     * 選択した項目を動的に保持する
+     */
+    const selectedcategory = reactive<StringObjectKey>({});
 
     /**
      * 保持している項目情報を更新する
      */
     const updateSelectedCategories = (emitvalue: Content) => {
       selectedcategory[emitvalue.type] = emitvalue;
+      context.emit("change", selectedcategory);
     };
 
     return {

@@ -68,5 +68,17 @@ describe("LogListContent", () => {
         //テストデータは正しく状態を持てている？
         expect(wrapper.vm.selectedcategory["fuga"]).toEqual({ type: 'fuga'})
     });
+
+    test("値が変更されたときに、親へemitを発火しているか", (): void => {
+        const wrapper = LogListContentFactory();
+
+        //初期インスタンス生成時はどの値も保持していないこと
+        expect(wrapper.vm.selectedcategory).toStrictEqual({})
+
+        //テストデータを流し込んでみる
+        wrapper.findComponent(CategoryContent).vm.$emit("update", { type: "test"});
+
+        expect(wrapper.emitted().change).not.toBeUndefined()
+    });
 });
 
