@@ -13,6 +13,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+#firebase rules
+.rules
+
 # Editor directories and files
 .idea
 .vscode
@@ -21,3 +24,5 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+firebase.rules
+storage.rules

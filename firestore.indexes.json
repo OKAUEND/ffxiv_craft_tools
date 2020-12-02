@@ -1,0 +1,33 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "CraftLog",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "type.job",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "level.itemlevel",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Image",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "ID",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "Type",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
