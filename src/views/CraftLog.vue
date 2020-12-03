@@ -104,6 +104,8 @@ export default defineComponent({
   setup() {
     const isClicked = ref(false);
 
+    const firestoredatas = reactive<FirestoreFetchData>({ value: [] });
+
     const toggleclicked = () => {
       isClicked.value = !isClicked.value;
     };
@@ -123,10 +125,10 @@ export default defineComponent({
         .where("level.level", ">=", emitvalue.level.lowerlevel);
 
       const fetchdata = await documentRef.get().then(queryShapshot => {
-        return queryShapshot.docs.map(doc => doc.data());
+        return queryShapshot.docs.map(doc => doc.data() as FirestoreData);
       });
 
-      console.log(fetchdata);
+      firestoredatas.value = fetchdata;
     };
 
     return {
