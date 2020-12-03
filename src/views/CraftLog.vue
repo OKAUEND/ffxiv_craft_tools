@@ -32,53 +32,111 @@
   </article>
 </template>
 
-<script>
-// import AtomOverlay from "@/components/atoms/Button/OverlayStyle.vue";
-// import AtomSemicircularButton from "@/components/atoms/Button/SemiRadius.vue";
-// import AtomButtonGreen from "@/components/atoms/Button/ButtonGreen.vue";
-// import AtomButtonSmall from "@/components/atoms/Button/AtomSmallButton.vue";
-// import AtomDeleteIcon from "@/components/atoms/Icon/DeleteSmall.vue";
-// import CraftRecipe from "@/components/organisms/CraftRecipe/index.vue";
-// import CartItems from "@/components/molecules/CartItems/CartItems.vue";
-// import CartList from "@/components/molecules/CartList/CartList.vue";
+<script lang="ts">
+import { computed, defineComponent, ref } from "vue";
+import firabase from "@/firebase.ts";
 
-import CraftRecipe from "@/components/Parts/CategoryContent/CategoryContent.vue";
-import FFXIV from "@/assets/FFXIV.json";
+import CraftRecipe from "@/components/Pages/LogListContent/LogListContent.vue";
 
-export default {
+interface Content {
+  name: string;
+  jpname: string;
+  type: string;
+  order: number;
+  imageurl: string;
+  upperlevel?: number;
+  lowerlevel?: number;
+}
+
+interface FirestoreData {
+  Childrenlogs: LogChildren[];
+  gathering: {
+    Xpoint: number;
+    Zpoint: number;
+    collectionarea: string;
+  };
+  imageurl: string;
+  ishighlevel: boolean;
+  level: {
+    itemlevel: number;
+    level: number;
+  };
+  patchversion: number;
+  priority: number;
+  rank: string;
+  starmark: number;
+  text: {
+    engname: string;
+    name: string;
+  };
+  type: {
+    MeisterBookRank: number;
+    category: string;
+    craftcontent: string;
+    job: string;
+  };
+  updateTime: firebase.default.firestore.Timestamp;
+  website: {
+    eriones: string;
+    lodestone: string;
+  };
+}
+
+interface LogChildren {
+  isEnable: boolean;
+  order: number;
+  childrenDocumentRef?: firebase.default.firestore.DocumentReference;
+  name: string;
+  engname?: string;
+  imageurl: string;
+  value: number;
+}
+
+interface StringObjectKey {
+  [key: string]: Content;
+}
+
+export default defineComponent({
   name: "ToolsIndex",
   components: {
-    // AtomOverlay,
-    // AtomButtonGreen,
-    // AtomSemicircularButton,
-    // AtomDeleteIcon,
-    // AtomButtonSmall,
-    // CraftRecipe,
-    // CartItems,
-    // CartList,
     CraftRecipe,
   },
-  data() {
+  setup() {
+    const isClicked = ref(false);
+
+    const toggleclicked = () => {
+      isClicked.value = !isClicked.value;
+    };
+
+    const opendstyleclsss = computed(isClicked => {
+      return {
+        "--Opend": isClicked,
+      };
+    });
+
+    const fetchfirestore = async (emitvalue: StringObjectKey) => {
+      const documentRef: firabase.firestore.Query<firabase.firestore.DocumentData> = firabase
+        .firestore()
+        .collection("CraftLog")
+        .where("type.job", "==", emitvalue.crafter.name)
+        .where("level.level", "<=", emitvalue.level.upperlevel)
+        .where("level.level", ">=", emitvalue.level.lowerlevel);
+
+      const fetchdata = await documentRef.get().then(queryShapshot => {
+        return queryShapshot.docs.map(doc => doc.data());
+      });
+
+      console.log(fetchdata);
+    };
+
     return {
-      isClickbed: false,
+      isClicked,
+      toggleclicked,
+      opendstyleclsss,
+      fetchfirestore,
     };
   },
-  computed: {
-    isOpend() {
-      return {
-        "--Opend": this.isClickbed,
-      };
-    },
-    ffxivCraftDetail() {
-      return FFXIV;
-    },
-  },
-  methods: {
-    switchClickble() {
-      this.isClickbed = !this.isClickbed;
-    },
-  },
-};
+});
 </script>
 
 <style lang="scss" scoped>

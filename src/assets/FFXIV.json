@@ -1,56 +1,56 @@
 {
     "crafter":[
         {
-          "type": "image",
+          "type": "crafter",
           "name": "Carpenter",
           "jpname":"木工師",
           "order": 1,
           "image": "./assets/crafter/Carpenter.png"
         },
         {
-          "type": "image",
+          "type": "crafter",
           "name": "Blacksmith",
           "jpname":"鍛冶師",
           "order": 2,
           "image": "Blacksmith.png"
         },
         {
-          "type": "image",
+          "type": "crafter",
           "name": "Armorer",
           "jpname":"甲冑師",
           "order": 3,
           "image": "Armorer.png"
         },
         {
-          "type": "image",
+          "type": "crafter",
           "name": "Goldsmith",
           "jpname":"彫金師",
           "order": 4,
           "image": "Goldsmith.png"
         },
         {
-          "type": "image",
+          "type": "crafter",
           "name": "Weaver",
           "jpname":"裁縫師",
           "order": 5,
           "image": "Weaver.png"
         },
         {
-          "type": "image",
+          "type": "crafter",
           "name": "Leatherworker",
           "jpname":"革細工師",
           "order": 6,
           "image": "Leatherworker.png"
         },
         {
-          "type": "image",
+          "type": "crafter",
           "name": "Alchemist",
           "jpname":"錬金術師",
           "order": 7,
           "image": "Alchemist.png"
         },
         {
-          "type": "image",
+          "type": "crafter",
           "name": "Culinarian",
           "jpname":"調理師",
           "order": 8,
@@ -64,8 +64,8 @@
         "jpname":"",
         "order": 1,
         "ExpansionCode":2,
-        "upperlevel":1,
-        "lowerlevel":10        
+        "lowerlevel":1,
+        "upperlevel":10        
       },
       {
         "type": "level",
@@ -73,8 +73,8 @@
         "jpname":"",
         "order": 2,
         "ExpansionCode":2,
-        "upperlevel":11,
-        "lowerlevel":20        
+        "lowerlevel":11,
+        "upperlevel":20        
       },
       {
         "type": "level",
@@ -82,8 +82,8 @@
         "jpname":"",
         "order": 3,
         "ExpansionCode":2,
-        "upperlevel":21,
-        "lowerlevel":30        
+        "lowerlevel":21,
+        "upperlevel":30        
       },
       {
         "type": "level",
@@ -91,8 +91,8 @@
         "jpname":"",
         "order": 4,
         "ExpansionCode":2,
-        "upperlevel":31,
-        "lowerlevel":40        
+        "lowerlevel":31,
+        "upperlevel":40        
       },
       {
         "type": "level",
@@ -100,16 +100,16 @@
         "jpname":"",
         "order": 5,
         "ExpansionCode":2,
-        "upperlevel":41,
-        "lowerlevel":50        
+        "lowerlevel":41,
+        "upperlevel":50        
       },      {
         "type": "level",
         "name": "level6",
         "jpname":"",
         "order": 6,
         "ExpansionCode":3,
-        "upperlevel":51,
-        "lowerlevel":55        
+        "lowerlevel":51,
+        "upperlevel":55        
       },
       {
         "type": "level",
@@ -117,8 +117,8 @@
         "jpname":"",
         "order": 7,
         "ExpansionCode":3,
-        "upperlevel":56,
-        "lowerlevel":60        
+        "lowerlevel":56,
+        "upperlevel":60        
       },
       {
         "type": "level",
@@ -126,8 +126,8 @@
         "jpname":"",
         "order": 8,
         "ExpansionCode":4,
-        "upperlevel":61,
-        "lowerlevel":65        
+        "lowerlevel":61,
+        "upperlevel":65        
       },
       {
         "type": "level",
@@ -135,8 +135,8 @@
         "jpname":"",
         "order": 9,
         "ExpansionCode":4,
-        "upperlevel":66,
-        "lowerlevel":70        
+        "lowerlevel":66,
+        "upperlevel":70        
       },
       {
         "type": "level",
@@ -144,8 +144,8 @@
         "jpname":"",
         "order": 10,
         "ExpansionCode":5,
-        "upperlevel":71,
-        "lowerlevel":75        
+        "lowerlevel":71,
+        "upperlevel":75        
       },
       {
         "type": "level",
@@ -153,8 +153,8 @@
         "jpname":"",
         "order": 11,
         "ExpansionCode":5,
-        "upperlevel":76,
-        "lowerlevel":80        
+        "lowerlevel":76,
+        "upperlevel":80        
       },
       {
         "type": "level",
@@ -162,8 +162,8 @@
         "jpname":"",
         "order": 12,
         "ExpansionCode":6,
-        "upperlevel":81,
-        "lowerlevel":85        
+        "lowerlevel":81,
+        "upperlevel":85        
       },
       {
         "type": "level",
@@ -171,8 +171,8 @@
         "jpname":"",
         "order": 13,
         "ExpansionCode":6,
-        "upperlevel":86,
-        "lowerlevel":90        
+        "lowerlevel":86,
+        "upperlevel":90        
       },
       {
         "type": "level",
@@ -180,8 +180,8 @@
         "jpname":"",
         "order": 14,
         "ExpansionCode":7,
-        "upperlevel":91,
-        "lowerlevel":95        
+        "lowerlevel":91,
+        "upperlevel":95        
       },
       {
         "type": "level",
@@ -189,8 +189,8 @@
         "jpname":"",
         "order": 15,
         "ExpansionCode":7,
-        "upperlevel":96,
-        "lowerlevel":100        
+        "lowerlevel":96,
+        "upperlevel":100        
       }
     ]
 }
