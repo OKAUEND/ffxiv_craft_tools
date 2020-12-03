@@ -55,6 +55,8 @@ import FFXIV from "@/assets/FFXIV.json";
 
 import { MOBILE_WINDOW_WIDTH } from "@/assets/windowSize.ts";
 
+import { FirestoreFetchData } from "@/interface/FFXIVLog.ts";
+
 interface Content {
   name: string;
   jpname: string;
@@ -66,7 +68,8 @@ interface Content {
 }
 
 interface StringObjectKey {
-  [key: string]: unknown;
+interface Props {
+  craftlogs: FirestoreFetchData;
 }
 
 export default defineComponent({
@@ -76,8 +79,14 @@ export default defineComponent({
     BaseIconCross,
     BaseButtonGreen,
   },
+  props: {
+    craftlogs: {
+      type: Object as PropType<FirestoreFetchData>,
+      default: [],
+    },
+  },
   emits: ["change"],
-  setup(props, context: SetupContext) {
+  setup(props: Props, context: SetupContext) {
     const isMobileMode = ref(false);
     const isVisible = ref(true);
 
@@ -113,6 +122,9 @@ export default defineComponent({
      */
     const selectedcategory = reactive<StringObjectKey>({});
 
+    const propcraftlogs = computed(() => {
+      return props.craftlogs.value;
+    });
     /**
      * 保持している項目情報を更新する
      */
@@ -122,6 +134,7 @@ export default defineComponent({
     };
 
     return {
+      propcraftlogs,
       selectedcategory,
       isMobileMode,
       isVisible,
