@@ -1,18 +1,12 @@
 <template>
   <article class="Tools">
     <!-- <atom-semicircular-button @click="switchClickble()">
-      <div class="Tools__hamburgerParts"></div>
-      <div class="Tools__hamburgerParts"></div>
-      <div class="Tools__hamburgerParts"></div>
+      //ハンガーバーメニュー
     </atom-semicircular-button> -->
     <article class="Tools__SubHeader"></article>
     <article class="Tools__Main">
-      <craft-recipe :categories="ffxivCraftDetail.crafter"></craft-recipe>
+      <craft-recipe @change="fetchfirestore" />
     </article>
-    <!-- <atom-overlay
-      :isOverlayShow="this.isClickbed"
-      @click="switchClickble"
-    ></atom-overlay> -->
     <article class="Tools__SideDetailBar" :class="isOpend">
       <nav class="Tools__SidebarNav">
         <!-- <atom-button-small @click="switchClickble()">
@@ -29,72 +23,18 @@
         </router-link>
       </div>
     </article>
+    <div id="tools__teleport-modal"></div>
   </article>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent, reactive, ref } from "vue";
 import firabase from "@/firebase.ts";
 
+import { FirestoreData, FirestoreFetchData } from "@/interface/FFXIVLog.ts";
+import { StringObjectKey } from "@/interface/UI.ts";
+
 import CraftRecipe from "@/components/Pages/LogListContent/LogListContent.vue";
-
-interface Content {
-  name: string;
-  jpname: string;
-  type: string;
-  order: number;
-  imageurl: string;
-  upperlevel?: number;
-  lowerlevel?: number;
-}
-
-interface FirestoreData {
-  Childrenlogs: LogChildren[];
-  gathering: {
-    Xpoint: number;
-    Zpoint: number;
-    collectionarea: string;
-  };
-  imageurl: string;
-  ishighlevel: boolean;
-  level: {
-    itemlevel: number;
-    level: number;
-  };
-  patchversion: number;
-  priority: number;
-  rank: string;
-  starmark: number;
-  text: {
-    engname: string;
-    name: string;
-  };
-  type: {
-    MeisterBookRank: number;
-    category: string;
-    craftcontent: string;
-    job: string;
-  };
-  updateTime: firebase.default.firestore.Timestamp;
-  website: {
-    eriones: string;
-    lodestone: string;
-  };
-}
-
-interface LogChildren {
-  isEnable: boolean;
-  order: number;
-  childrenDocumentRef?: firebase.default.firestore.DocumentReference;
-  name: string;
-  engname?: string;
-  imageurl: string;
-  value: number;
-}
-
-interface StringObjectKey {
-  [key: string]: Content;
-}
 
 export default defineComponent({
   name: "ToolsIndex",
@@ -132,6 +72,7 @@ export default defineComponent({
     };
 
     return {
+      firestoredatas,
       isClicked,
       toggleclicked,
       opendstyleclsss,
@@ -143,16 +84,16 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .Tools {
-  height: 100%;
   display: flex;
   flex-direction: column;
+
   @media screen and(min-width: 481px) {
     display: grid;
     grid-template-rows: 50px 1fr;
     grid-template-columns: 2fr 1fr;
   }
 
-  &__SubHeader {
+  .Tools__SubHeader {
     height: 60px;
     width: 100%;
     @media screen and(min-width: 481px) {
@@ -163,14 +104,15 @@ export default defineComponent({
     }
   }
 
-  &__Main {
-    width: 100vw;
-    grid-column: 1 /2;
-    grid-row: 2 / 3;
+  .Tools__Main {
+    height: 100%;
     @media screen and(min-width: 481px) {
       width: 80vw;
       grid-column: 1 / 2;
     }
+  }
+
+  #tools__teleport-modal {
   }
 
   &__SideDetailBar {
