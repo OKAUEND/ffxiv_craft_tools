@@ -1,12 +1,12 @@
 import { mount } from "@vue/test-utils";
 
 import ContentList from "@/components/Parts/CategoryContent/ContentList.vue";
-import ChildComponent from "@/components/Base/Input/BaseInputRadio.vue"
+import ChildComponent from "@/components/Base/Input/BaseInputRadio.vue";
 import crafterJSON from "@/assets/FFXIV.json";
 
-const testData: crafter = crafterJSON.crafter[0];
+const testData: Crafter = crafterJSON.crafter[0];
 
-interface crafter {
+interface Crafter {
   type: string;
   name: string;
   order: number;
@@ -14,7 +14,7 @@ interface crafter {
 }
 
 interface Props {
-  content: crafter;
+  content: Crafter;
   value: string;
 }
 
@@ -41,42 +41,40 @@ describe("ContentList", () => {
   it("子からのemitイベントで親へemitを発火するか", () => {
     const wrapper = ContentListFactory(props);
     wrapper.findComponent(ChildComponent).vm.$emit("change-radio");
-    expect(wrapper.emitted().change).not.toBeUndefined()
+    expect(wrapper.emitted().change).not.toBeUndefined();
   });
 });
 
-
-
-import CategoryContent from "@/components/Parts/CategoryContent/CategoryContent.vue"
+import CategoryContent from "@/components/Parts/CategoryContent/CategoryContent.vue";
 
 const categoryContentFactory = (propsData: object) => {
   return mount(CategoryContent, {
     propsData: {
-      categories:[],
+      categories: [],
       ...propsData,
     },
   });
 };
 
 interface CategoryContentProps {
-  categories:crafter[]
+  categories: Crafter[];
 }
 
-const categoryContentProps:CategoryContentProps = {
-  categories:crafterJSON.crafter
-}
+const categoryContentProps: CategoryContentProps = {
+  categories: crafterJSON.crafter,
+};
 
 describe("CategoryContent", () => {
   test("Componentを配列分描画できているか", (): void => {
     const wrapper = categoryContentFactory(categoryContentProps);
-    const findconpoments =  wrapper.findAllComponents(ContentList);
-    expect(findconpoments.length).toBe(crafterJSON.crafter.length)
-    });
+    const findconpoments = wrapper.findAllComponents(ContentList);
+    expect(findconpoments.length).toBe(crafterJSON.crafter.length);
+  });
 
   test("小からのEmitで、stateが更新されているか", (): void => {
     const wrapper = categoryContentFactory(categoryContentProps);
-    expect(wrapper.vm.selectRadioValue).toBe("Expansion2")
-    wrapper.findComponent(ContentList).vm.$emit("change",{name:"TEST"});
-    expect(wrapper.vm.selectRadioValue).not.toBe("Expansion2")
+    expect(wrapper.vm.selectRadioValue).toBe("Expansion2");
+    wrapper.findComponent(ContentList).vm.$emit("change", { name: "TEST" });
+    expect(wrapper.vm.selectRadioValue).not.toBe("Expansion2");
   });
 });
