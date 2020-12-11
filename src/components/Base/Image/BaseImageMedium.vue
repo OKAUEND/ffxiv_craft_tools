@@ -1,5 +1,5 @@
 <template>
-  <img :src="path" :alt="comment" class="Base__Image--Medium" />
+  <img :src="path" :alt="comment" class="BaseImage--Medium" />
 </template>
 
 <script lang="ts">
@@ -24,8 +24,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.Base__Image--Medium {
-  width: 40px;
-  height: 40px;
+.BaseImage--Medium {
+  width: 88px;
+  height: 88px;
 }
 </style>
