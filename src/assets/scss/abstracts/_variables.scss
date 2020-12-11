@@ -28,3 +28,7 @@ $font_Small: 12px;
 //画面サイズ(メディアクエリ)
 $breakpoint_tab_lower_limit: 481px;
 $breakpoint_pc_lower_limit: 767px;
+
+//縦横サイズ
+$top_footer_height: 5%;
+$mobile_modal_window_size: calc(100% - #{$top_footer_height});
