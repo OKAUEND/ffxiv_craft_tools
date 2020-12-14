@@ -55,13 +55,15 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props: Props) {
+  emits: ["update"],
+  setup(props: Props, context: SetupContext) {
     const selectRadioValue = ref("Expansion2");
 
     const isAccordionOpen = ref(false);
 
     const onClickChild = (emitvalue: CraftContent) => {
       selectRadioValue.value = emitvalue.name;
+      context.emit("update", emitvalue);
     };
 
     return {
