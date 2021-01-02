@@ -1,9 +1,17 @@
 import { InjectionKey } from "vue";
-import { createStore, useStore as baseUsestore, Store } from "vuex";
-import { LayoutState, RootState } from "./types";
-import { cart } from "@/store/module/cart";
+import { createStore } from "vuex";
+import { store as cart, CartStore } from "@/store/module/cart";
+// import { CartStateTypes } from "@/store/module/cart/state";
+import { StoreLog } from "@/interface/FFXIVLog.ts";
 
-export const key: InjectionKey<Store<LayoutState & RootState>> = Symbol();
+export interface RootState {
+  version: string;
+  cart: StoreLog[];
+}
+
+type Store = CartStore<Pick<RootState, "cart">>;
+
+// export const key: InjectionKey<Store<LayoutState & RootState>> = Symbol();
 
 export const store = createStore({
   modules: {
@@ -11,6 +19,6 @@ export const store = createStore({
   },
 });
 
-export function useStore() {
-  return baseUsestore(key);
+export function useStore(): Store {
+  return store as Store;
 }
