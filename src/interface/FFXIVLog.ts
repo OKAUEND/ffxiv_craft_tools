@@ -1,32 +1,32 @@
 interface FirestoreData {
-  Childrenlogs: LogChildren[];
-  gathering: {
+  Childrenlogs?: LogChildren[];
+  gathering?: {
     Xpoint: number;
     Zpoint: number;
     collectionarea: string;
   };
   imageurl: string;
-  ishighlevel: boolean;
-  level: {
+  ishighlevel?: boolean;
+  level?: {
     itemlevel: number;
     level: number;
   };
   patchversion: number;
-  priority: number;
-  rank: string;
-  starmark: number;
+  priority?: number;
+  rank?: string;
+  starmark?: number;
   text: {
     engname: string;
     name: string;
   };
-  type: {
+  type?: {
     MeisterBookRank: number;
     category: string;
     craftcontent: string;
     job: string;
   };
-  updateTime: firebase.default.firestore.Timestamp;
-  website: {
+  updateTime?: firebase.default.firestore.Timestamp;
+  website?: {
     eriones: string;
     lodestone: string;
   };
@@ -46,4 +46,9 @@ interface FirestoreFetchData {
   value: FirestoreData[];
 }
 
-export { FirestoreData, FirestoreFetchData };
+interface StoreLog {
+  log: FirestoreData;
+  value: number;
+}
+
+export { FirestoreData, FirestoreFetchData, StoreLog };
