@@ -1,5 +1,6 @@
 import { mutations } from "@/store/module/cart/mutations";
 import { actions } from "@/store/module/cart/actions";
+import { getters } from "@/store/module/cart/getters";
 import { CartStateTypes } from "@/store/module/cart/state";
 import { StoreLog, FirestoreData } from "@/interface/FFXIVLog.ts";
 
@@ -47,5 +48,17 @@ describe("Store Cart", () => {
     actions.FETCH_CART(actionContext, testlog);
     expect(actionContext.commit).toHaveBeenCalledWith("SET_TO CART", testlog);
     console.log(actionContext.rootState);
+  });
+  test("Getterを実行し値を取得できるか", () => {
+    const testlog: StoreLog = {
+      log: value,
+      value: 1,
+    };
+    const state: CartStateTypes = { cart: [testlog] };
+
+    const result = getters.getCarts(state);
+
+    console.log(result);
+    expect(result[0]).toEqual(testlog);
   });
 });
