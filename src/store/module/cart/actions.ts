@@ -7,7 +7,7 @@ import { Mutations } from "./mutations";
 import { CartMutationTypes } from "./mutation-type";
 import { CartActionTypes } from "./actions-type";
 
-type AugmentedActionContext = {
+export type AugmentedActionContext = {
   commit<K extends keyof Mutations>(
     key: K,
     paylod: Parameters<Mutations[K]>[1]
