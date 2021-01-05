@@ -1,12 +1,13 @@
 import { ActionTree, ActionContext } from "vuex";
 
-import { StoreLog } from "@/interface/FFXIVLog.ts";
+import { StoreLog } from "@/utile/FFXIVLogTypes";
 import { RootState } from "@/store";
-import { CartStateTypes } from "./state";
+import { state, CartStateTypes } from "./state";
 import { Mutations } from "./mutations";
 import { CartMutationTypes } from "./mutation-type";
 import { CartActionTypes } from "./actions-type";
 
+import { includesTargets } from "@/utile/utile";
 export type AugmentedActionContext = {
   commit<K extends keyof Mutations>(
     key: K,
@@ -23,6 +24,7 @@ export interface Actions {
 
 export const actions: ActionTree<CartStateTypes, RootState> & Actions = {
   [CartActionTypes.add]({ commit }, log: StoreLog) {
+    includesTargets(state.cart, log);
     commit(CartMutationTypes.add, log);
   },
 };
