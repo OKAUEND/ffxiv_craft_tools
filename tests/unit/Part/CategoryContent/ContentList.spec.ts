@@ -1,4 +1,4 @@
-import { mount } from "@vue/test-utils";
+import { mount, MountingOptions } from "@vue/test-utils";
 
 import ContentList from "@/components/Parts/CategoryContent/ContentList.vue";
 import ChildComponent from "@/components/Base/Input/BaseInputRadio.vue";
@@ -25,7 +25,7 @@ const ContentListFactory = (propsData: object) => {
       selectRadioValue: "",
       ...propsData,
     },
-  });
+  } as MountingOptions<{}>);
 };
 
 const props: Props = {
@@ -53,7 +53,7 @@ const categoryContentFactory = (propsData: object) => {
       categories: [],
       ...propsData,
     },
-  });
+  } as MountingOptions<{}>);
 };
 
 interface CategoryContentProps {
