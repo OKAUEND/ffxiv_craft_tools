@@ -1,4 +1,4 @@
-import { StoreLog } from "@/interface/FFXIVLog.ts";
+import { StoreLog } from "@/utile/FFXIVLogTypes";
 
 export interface CartStateTypes {
   /**

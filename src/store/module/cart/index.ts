@@ -1,6 +1,6 @@
 import { Store as VuexStore, Module } from "vuex";
 
-import "@/interface/FFXIVLog.ts";
+import "@/utile/FFXIVLogTypes";
 
 import { RootState } from "@/store";
 

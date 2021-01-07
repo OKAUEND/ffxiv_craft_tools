@@ -1,6 +1,6 @@
 import { ComponentCustomProperties } from "vue";
 import { Store } from "vuex";
-import { StoreLog } from "@/interface/FFXIVLog.ts";
+import { StoreLog } from "@/utile/FFXIVLogTypes";
 
 declare module "@vue/runtime-core" {
   interface State {
