@@ -2,7 +2,7 @@ import { mutations } from "@/store/module/cart/mutations";
 import { actions } from "@/store/module/cart/actions";
 import { getters } from "@/store/module/cart/getters";
 import { CartStateTypes } from "@/store/module/cart/state";
-import { StoreLog, FirestoreData } from "@/interface/FFXIVLog.ts";
+import { StoreLog, FirestoreData } from "@/utile/FFXIVLogTypes";
 
 import { ActionContext } from "vuex";
 import { RootState } from "@/store";
@@ -22,6 +22,7 @@ describe("Store Cart", () => {
     const log: StoreLog = {
       log: value,
       value: 1,
+      order: 0,
     };
     expect(state).toEqual({ cart: [] });
     mutations["SET_TO CART"](state, log);
@@ -33,6 +34,7 @@ describe("Store Cart", () => {
     const testlog: StoreLog = {
       log: value,
       value: 1,
+      order: 0,
     };
 
     //Actionのモックを作成する
@@ -47,18 +49,36 @@ describe("Store Cart", () => {
 
     actions.FETCH_CART(actionContext, testlog);
     expect(actionContext.commit).toHaveBeenCalledWith("SET_TO CART", testlog);
-    console.log(actionContext.rootState);
   });
   test("Getterを実行し値を取得できるか", () => {
     const testlog: StoreLog = {
       log: value,
       value: 1,
+      order: 0,
     };
     const state: CartStateTypes = { cart: [testlog] };
 
     const result = getters.getCarts(state);
 
-    console.log(result);
     expect(result[0]).toEqual(testlog);
+  });
+
+  test("重複した値があった場合、valueを合算して再度追加し直すか", () => {
+    const log: StoreLog = {
+      log: value,
+      value: 1,
+      order: 0,
+    };
+    const state: CartStateTypes = { cart: [log] };
+    const result: StoreLog = {
+      log: value,
+      value: 2,
+      order: 0,
+    };
+
+    mutations["SET_TO CART"](state, log);
+    expect(state).toEqual({
+      cart: [result],
+    });
   });
 });
