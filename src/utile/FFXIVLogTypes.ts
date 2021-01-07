@@ -49,6 +49,7 @@ interface FirestoreFetchData {
 interface StoreLog {
   log: FirestoreData;
   value: number;
+  order: number;
 }
 
 export { FirestoreData, FirestoreFetchData, StoreLog };

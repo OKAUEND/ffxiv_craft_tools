@@ -1,13 +1,25 @@
 import { FirestoreData, StoreLog } from "@/utile/FFXIVLogTypes";
 
+export function assertIsDefind<T>(val: T): asserts val is NonNullable<T> {
+  if (val === undefined || val === null) {
+    throw new Error(`対象が存在しません ${val}`);
+  }
+}
+
 /**
  * 選択データをStoreに一時保存する構造を作成する
  * @param data
  * @param value
+ * @param state
  */
-export const makeLog = (data: FirestoreData, value: number): StoreLog => ({
+export const makeLog = (
+  data: FirestoreData,
+  value: number,
+  state: StoreLog[]
+): StoreLog => ({
   log: data,
   value: value,
+  order: state.length,
 });
 
 /**
@@ -21,17 +33,22 @@ export const mergeDuplicateLog = (
 ): StoreLog => ({
   log: args.log,
   value: args.value + args2.value,
+  order: args.order,
 });
 
 /**
  * 配列を生成する
- * @param args
- * @param args2
+ * @param state
+ * @param paylod
  */
-export const createLogs = (args: StoreLog, args2: StoreLog): StoreLog[] => [
-  args,
-  args2,
-];
+export const createLogs = (state: StoreLog[], paylod: StoreLog): StoreLog[] => {
+  const tmp = [...state, paylod];
+  return Array.from(
+    tmp
+      .reduce((map, log) => map.set(log.log.text.engname, log), new Map())
+      .values()
+  );
+};
 
 /**
  * 製作レシピをStoreに追加する
@@ -53,6 +70,25 @@ export const deleteLogs = (targets: StoreLog[], args: StoreLog): StoreLog[] => {
   return targets.filter(
     (target) => target.log.text.engname !== args.log.text.engname
   );
+};
+
+/**
+ * Store上にある重複製作レシピを取り出す
+ * (!!:外部で予め同じデータが存在するのかチェックを行う必要あり!!)
+ * @param targets
+ * @param args
+ * @return StoreLog
+ */
+export const fetchTargetLog = (
+  targets: StoreLog[],
+  args: StoreLog
+): StoreLog => {
+  const temp = targets.find(
+    (target) => target.log.text.engname === args.log.text.engname
+  );
+  //findは戻値にundefinedを含む可能性があるので、nullチェックをしundefinedが返らないように型を制限する
+  assertIsDefind(temp);
+  return temp;
 };
 
 /**
