@@ -10,10 +10,12 @@ import {
   mergeDuplicateLog,
   includesTargets,
   fetchTargetLog,
+  deleteLogs,
 } from "@/utile/utile";
 
 export type Mutations<S = CartStateTypes> = {
   [CartMutationTypes.add](state: S, paylod: StoreLog): void;
+  [CartMutationTypes.del](state: S, target: StoreLog): void;
 };
 
 export const mutations: MutationTree<CartStateTypes> & Mutations = {
@@ -31,5 +33,15 @@ export const mutations: MutationTree<CartStateTypes> & Mutations = {
     const logs = createLogs(state.cart, target);
     //Stateを更新する
     state.cart = logs;
+  },
+  /**
+   * カートから対象の製作レシピを削除する
+   * @param log
+   */
+  [CartMutationTypes.del](state, target: StoreLog) {
+    if (!includesTargets(state.cart, target)) {
+      return;
+    }
+    state.cart = deleteLogs(state.cart, target);
   },
 };

@@ -16,6 +16,24 @@ const value: FirestoreData = {
   },
 };
 
+const value2: FirestoreData = {
+  imageurl: "TEST",
+  patchversion: 1,
+  text: {
+    engname: "TEST2",
+    name: "ユニットテスト",
+  },
+};
+
+const value3: FirestoreData = {
+  imageurl: "TEST",
+  patchversion: 1,
+  text: {
+    engname: "TEST3",
+    name: "ユニットテスト",
+  },
+};
+
 describe("Store Cart", () => {
   test("Mutaionで値を更新できるか", () => {
     const state: CartStateTypes = { cart: [] };
@@ -80,5 +98,73 @@ describe("Store Cart", () => {
     expect(state).toEqual({
       cart: [result],
     });
+  });
+
+  test("Storeの配列の長さを取得する", () => {
+    const state: CartStateTypes = { cart: [] };
+
+    const result1: number = getters.getCartsLength(state);
+
+    expect(result1).toEqual(0);
+
+    const testlog: StoreLog = {
+      log: value,
+      value: 1,
+      order: 0,
+    };
+
+    mutations["SET_TO CART"](state, testlog);
+
+    const value2: FirestoreData = {
+      imageurl: "TEST",
+      patchversion: 1,
+      text: {
+        engname: "TEST2",
+        name: "ユニットテスト",
+      },
+    };
+
+    const testlog2: StoreLog = {
+      log: value2,
+      value: 2,
+      order: 0,
+    };
+
+    mutations["SET_TO CART"](state, testlog2);
+
+    const result3: number = getters.getCartsLength(state);
+
+    //Stateになにもないときは2を
+    expect(result3).toEqual(2);
+  });
+
+  test("任意の製作レシピを削除できるか", () => {
+    const testlog1: StoreLog = {
+      log: value,
+      value: 1,
+      order: 0,
+    };
+    const testlog2: StoreLog = {
+      log: value2,
+      value: 2,
+      order: 1,
+    };
+    const testlog3: StoreLog = {
+      log: value3,
+      value: 3,
+      order: 2,
+    };
+
+    const resultlog3: StoreLog = {
+      log: value3,
+      value: 3,
+      order: 1,
+    };
+
+    const state: CartStateTypes = { cart: [testlog1, testlog2, testlog3] };
+
+    mutations["DEL_TO_CARTITEM"](state, testlog2);
+
+    expect(state).toEqual({ cart: [testlog1, resultlog3] });
   });
 });

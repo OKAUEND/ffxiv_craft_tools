@@ -15,11 +15,11 @@ export function assertIsDefind<T>(val: T): asserts val is NonNullable<T> {
 export const makeLog = (
   data: FirestoreData,
   value: number,
-  state: StoreLog[]
+  order: number
 ): StoreLog => ({
   log: data,
   value: value,
-  order: state.length,
+  order: order,
 });
 
 /**
@@ -67,9 +67,13 @@ export const addLogs = (logs: StoreLog[], args: StoreLog): StoreLog[] => [
  * @returns Array
  */
 export const deleteLogs = (targets: StoreLog[], args: StoreLog): StoreLog[] => {
-  return targets.filter(
+  const tmp = targets.filter(
     (target) => target.log.text.engname !== args.log.text.engname
   );
+
+  return tmp.map((targer, index) => {
+    return makeLog(targer.log, targer.value, index);
+  });
 };
 
 /**
