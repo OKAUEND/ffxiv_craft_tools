@@ -45,6 +45,7 @@ import {
   ref,
   reactive,
   SetupContext,
+  PropType,
 } from "vue";
 
 import CategoryContent from "@/components/Parts/CategoryContent/CategoryContent.vue";
@@ -55,19 +56,9 @@ import FFXIV from "@/assets/FFXIV.json";
 
 import { MOBILE_WINDOW_WIDTH } from "@/assets/windowSize.ts";
 
-import { FirestoreFetchData } from "@/interface/FFXIVLog.ts";
+import { FirestoreFetchData } from "@/utile/FFXIVLogTypes";
+import { Content, StringObjectKey } from "@/utile/UserInterfaceTypes";
 
-interface Content {
-  name: string;
-  jpname: string;
-  type: string;
-  order: number;
-  imageurl: string;
-  upperlevel?: number;
-  lowerlevel?: number;
-}
-
-interface StringObjectKey {
 interface Props {
   craftlogs: FirestoreFetchData;
 }

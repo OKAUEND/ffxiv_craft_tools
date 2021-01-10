@@ -18,29 +18,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from "vue";
+import { defineComponent, PropType, ref, SetupContext } from "vue";
+import { Crafter, Level } from "@/utile/FFXIVLogTypes";
 
 interface Props {
   categories: CraftContent[];
 }
 
-interface Crafter {
-  name: string;
-  jpname: string;
-  type: string;
-  order: number;
-  imageurl: string;
-}
-
-interface Level {
-  name: string;
-  type: string;
-  order: number;
-  upperlevel: number;
-  lowerlevel: number;
-}
-
 type CraftContent = Crafter | Level;
+
 // import MediumAccordion from "@/components/molecules/Accordion/Accordion.vue";
 import ContentList from "./ContentList.vue";
 export default defineComponent({

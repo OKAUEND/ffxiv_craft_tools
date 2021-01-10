@@ -52,4 +52,20 @@ interface StoreLog {
   order: number;
 }
 
-export { FirestoreData, FirestoreFetchData, StoreLog };
+interface Crafter {
+  name: string;
+  jpname: string;
+  type: string;
+  order: number;
+  imageurl: string;
+}
+
+interface Level {
+  name: string;
+  type: string;
+  order: number;
+  upperlevel: number;
+  lowerlevel: number;
+}
+
+export { FirestoreData, FirestoreFetchData, StoreLog, Crafter, Level };
