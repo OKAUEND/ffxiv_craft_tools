@@ -114,7 +114,7 @@ export default defineComponent({
     const selectedcategory = reactive<StringObjectKey>({});
 
     const propcraftlogs = computed(() => {
-      return props.craftlogs.value;
+      return props.craftlogs.logs;
     });
     /**
      * 保持している項目情報を更新する
