@@ -43,7 +43,7 @@ interface LogChildren {
 }
 
 interface FirestoreFetchData {
-  value: FirestoreData[];
+  logs: FirestoreData[];
 }
 
 interface StoreLog {
