@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive, ref } from "vue";
+import { defineComponent, reactive, ref } from "vue";
 import firabase from "@/firebase.ts";
 
 import { FirestoreData, FirestoreFetchData } from "@/utile/FFXIVLogTypes";
@@ -50,12 +50,6 @@ export default defineComponent({
       isClicked.value = !isClicked.value;
     };
 
-    const opendstyleclsss = computed(isClicked => {
-      return {
-        "--Opend": isClicked,
-      };
-    });
-
     const fetchfirestore = async (emitvalue: StringObjectKey) => {
       const documentRef: firabase.firestore.Query<firabase.firestore.DocumentData> = firabase
         .firestore()
@@ -75,7 +69,6 @@ export default defineComponent({
       firestoredatas,
       isClicked,
       toggleclicked,
-      opendstyleclsss,
       fetchfirestore,
     };
   },
