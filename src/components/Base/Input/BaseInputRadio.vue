@@ -7,6 +7,7 @@
       :value="props.value"
       v-model="selected"
     />
+    <slot></slot>
   </label>
 </template>
 
