@@ -7,7 +7,7 @@
     <article class="Tools__Main">
       <craft-recipe @change="fetchfirestore" />
     </article>
-    <article class="Tools__SideDetailBar" :class="isOpend">
+    <article class="Tools__SideDetailBar">
       <nav class="Tools__SidebarNav">
         <!-- <atom-button-small @click="switchClickble()">
           <atom-delete-icon />
