@@ -5,7 +5,7 @@
     </atom-semicircular-button> -->
     <article class="Tools__SubHeader"></article>
     <article class="Tools__Main">
-      <craft-recipe @change="fetchfirestore" />
+      <craft-recipe @change="fetchfirestore" :craftlogs="firestoredatas.logs" />
     </article>
     <article class="Tools__SideDetailBar">
       <nav class="Tools__SidebarNav">
