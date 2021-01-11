@@ -1,9 +1,9 @@
 <template>
-  <div class="loglist-contnt">
-    <div v-if="isVisible" class="loglist-contnt__category">
-      <div v-if="isMobileMode" class="loglist-contnt__category-header">
+  <div class="loglistcontnt">
+    <div v-if="isVisible" class="loglistcontnt__category">
+      <div v-if="isMobileMode" class="loglistcontnt__category-header">
         検索項目
-        <button class="loglist-contnt__category-close">
+        <button class="loglistcontnt__category-close">
           <base-icon-cross @click="toggleModalVisible" />
         </button>
       </div>
@@ -21,18 +21,15 @@
             :categories="ffxivdetail.crafter"
           ></category-content> -->
         </div>
-        <div class="loglist-contnt__category-ui">
-          <base-button-green @click="toggleModalVisible"
-            >検索</base-button-green
-          >
+        <div class="loglistcontnt__category-ui">
+          <base-button-green @click="fetchfirestore">検索</base-button-green>
         </div>
       </div>
     </div>
-    <div class="loglist-contnt__main">
-      <div class="loglist-contnt__main__header" v-if="isMobileMode">
-        <button @click="toggleModalVisible">TEST</button>
-      </div>
-      要素
+    <div class="loglistcontnt__main">
+      <template v-for="(log, key) in craftlogs" :key="key">
+        <log-panel :craftdata="log" />
+      </template>
     </div>
   </div>
 </template>
@@ -138,13 +135,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.loglist-contnt {
+.loglistcontnt {
   @media screen and(min-width: 481px) {
     display: grid;
     grid-template-columns: 0.3fr 0.7fr 2.5fr;
+    height: 100%;
   }
 
-  .loglist-contnt__category {
+  .loglistcontnt__category {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -156,18 +154,19 @@ export default defineComponent({
     background: $palette_bright-gray;
     z-index: 2;
     @media screen and(min-width: 481px) {
+      position: relative;
       grid-column: 2 / 3;
       grid-row: 1;
     }
 
-    .loglist-contnt__category-header {
+    .loglistcontnt__category-header {
       padding: 14px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
 
-      .loglist-contnt__category-close {
+      .loglistcontnt__category-close {
         background-color: transparent;
       }
     }
@@ -182,7 +181,7 @@ export default defineComponent({
         overflow: auto;
       }
 
-      .loglist-contnt__category-ui {
+      .loglistcontnt__category-ui {
         padding: 20px;
         display: flex;
         justify-content: center;
@@ -190,9 +189,12 @@ export default defineComponent({
     }
   }
 
-  .loglist-contnt__main {
+  .loglistcontnt__main {
     display: flex;
     flex-direction: column;
+    grid-column: 3 / 4;
+    grid-row: 1;
+    padding: 0px 10px 0px 10px;
   }
 }
 </style>
