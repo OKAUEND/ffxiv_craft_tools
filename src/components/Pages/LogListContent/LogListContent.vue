@@ -75,7 +75,7 @@ export default defineComponent({
   },
   emits: ["change"],
   setup(props: Props, context: SetupContext) {
-    const isMobileMode = ref(false);
+    const isMobileMode = ref(true);
     const isVisible = ref(true);
 
     const toggleModalVisible = () => {
