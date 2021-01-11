@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, computed } from "vue";
-import { FirestoreData } from "@/interface/FFXIVLog.ts";
+import { FirestoreData } from "@/utile/FFXIVLogTypes";
 
 import BaseImageMedium from "@/components/Base/Image/BaseImageMedium.vue";
 import BaseImageSmall from "@/components/Base/Image/BaseImageSmall.vue";
