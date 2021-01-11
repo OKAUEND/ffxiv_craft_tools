@@ -2,7 +2,7 @@ import { ActionTree, ActionContext } from "vuex";
 
 import { StoreLog } from "@/utile/FFXIVLogTypes";
 import { RootState } from "@/store";
-import { state, CartStateTypes } from "./state";
+import { CartStateTypes } from "./state";
 import { Mutations } from "./mutations";
 import { CartMutationTypes } from "./mutation-type";
 import { CartActionTypes } from "./actions-type";
