@@ -121,6 +121,9 @@ export default defineComponent({
      */
     const updateSelectedCategories = (emitvalue: Content) => {
       selectedcategory[emitvalue.type] = emitvalue;
+    };
+
+    const fetchfirestore = () => {
       context.emit("change", selectedcategory);
     };
 
@@ -132,6 +135,7 @@ export default defineComponent({
       ffxivdetail,
       toggleModalVisible,
       updateSelectedCategories,
+      fetchfirestore,
     };
   },
 });
