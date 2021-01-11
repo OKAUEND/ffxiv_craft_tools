@@ -31,8 +31,8 @@
 import { computed, defineComponent, reactive, ref } from "vue";
 import firabase from "@/firebase.ts";
 
-import { FirestoreData, FirestoreFetchData } from "@/interface/FFXIVLog.ts";
-import { StringObjectKey } from "@/interface/UI.ts";
+import { FirestoreData, FirestoreFetchData } from "@/utile/FFXIVLogTypes";
+import { StringObjectKey } from "@/utile/UserInterfaceTypes";
 
 import CraftRecipe from "@/components/Pages/LogListContent/LogListContent.vue";
 
