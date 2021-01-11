@@ -17,9 +17,9 @@
       >
         <div v-if="child.isEnable">
           <base-image-small :path="child.imageurl" :comment="'child.name'" />
-        <span>{{ child.value }}</span>
+          <span>{{ child.value }}</span>
+        </div>
       </div>
-    </div>
     </div>
     <div class="logpanel__announce">
       <button>追加</button>
