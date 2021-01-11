@@ -2,8 +2,8 @@
   <div class="logpanel">
     <div class="logpanel__leftside">
       <base-image-medium
-        :src="craftlog.imageurl"
-        :commet="craftlog.text.name"
+        :path="craftlog.imageurl"
+        :comment="craftlog.text.name"
       />
     </div>
     <div class="logpanel__topview">
@@ -15,10 +15,11 @@
         :key="order"
         class="logpanel__childItems"
       >
-        <base-image-small :src="child.imageurl" />
-        <img />
+        <div v-if="child.isEnable">
+          <base-image-small :path="child.imageurl" :comment="'child.name'" />
         <span>{{ child.value }}</span>
       </div>
+    </div>
     </div>
     <div class="logpanel__announce">
       <button>追加</button>
