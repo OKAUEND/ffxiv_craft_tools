@@ -7,12 +7,17 @@ import { defineComponent } from "vue";
 
 interface Props {
   path: string;
+  comment: string;
 }
 
 export default defineComponent({
   name: "BaseImageSmall",
   props: {
     path: {
+      type: String,
+      required: true,
+    },
+    comment: {
       type: String,
       required: true,
     },
