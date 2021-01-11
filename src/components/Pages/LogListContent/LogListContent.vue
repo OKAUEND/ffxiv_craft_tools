@@ -46,6 +46,8 @@ import {
 } from "vue";
 
 import CategoryContent from "@/components/Parts/CategoryContent/CategoryContent.vue";
+import LogPanel from "@/components/Parts/LogPanel/LogPanel.vue";
+
 import BaseIconCross from "@/components/Base/Icon/BaseIconCross.vue";
 import BaseButtonGreen from "@/components/Base/Button/BaseButtonGreen.vue";
 
@@ -64,6 +66,7 @@ export default defineComponent({
   name: "LogListContent",
   components: {
     CategoryContent,
+    LogPanel,
     BaseIconCross,
     BaseButtonGreen,
   },
