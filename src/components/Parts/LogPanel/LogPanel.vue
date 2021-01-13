@@ -22,13 +22,13 @@
       </div>
     </div>
     <div class="logpanel__announce">
-      <button>追加</button>
+      <button @click="onClickLog">追加</button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, computed } from "vue";
+import { defineComponent, PropType, computed, SetupContext } from "vue";
 import { FirestoreData } from "@/utile/FFXIVLogTypes";
 
 import BaseImageMedium from "@/components/Base/Image/BaseImageMedium.vue";
@@ -50,14 +50,19 @@ export default defineComponent({
       required: true,
     },
   },
-
-  setup(props: Props) {
+  emits: ["click"],
+  setup(props: Props, context: SetupContext) {
     const craftlog = computed(() => {
       return props.craftdata;
     });
 
+    const onClickLog = () => {
+      context.emit("click", craftlog);
+    };
+
     return {
       craftlog,
+      onClickLog,
     };
   },
 });
