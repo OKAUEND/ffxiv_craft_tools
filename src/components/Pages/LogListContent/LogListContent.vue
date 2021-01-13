@@ -178,6 +178,10 @@ export default defineComponent({
       toggleModalVisible,
       updateSelectedCategories,
       fetchfirestore,
+      onSelectLog,
+      onAddToCart,
+      craftingValue,
+      tempCraftingLog,
     };
   },
 });
