@@ -31,6 +31,11 @@
         <log-panel :craftdata="log" />
       </template>
     </div>
+    <div class="loglistcontent__modal" v-if="showModal">
+      <div class="loglistcontent__modal-overlay" />
+      <div class="loglistcontent__modal-body">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -80,6 +85,7 @@ export default defineComponent({
   setup(props: Props, context: SetupContext) {
     const isMobileMode = ref(true);
     const isVisible = ref(true);
+    const craftingValue = ref(1);
 
     const toggleModalVisible = () => {
       isVisible.value = !isVisible.value;
@@ -132,6 +138,7 @@ export default defineComponent({
       selectedcategory,
       isMobileMode,
       isVisible,
+      showModal,
       ffxivdetail,
       toggleModalVisible,
       updateSelectedCategories,
@@ -143,6 +150,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .loglistcontnt {
+  overflow: hidden;
+  width: 100%;
   @media screen and(min-width: 481px) {
     display: grid;
     grid-template-columns: 0.3fr 0.7fr 2.5fr;
@@ -202,6 +211,30 @@ export default defineComponent({
     grid-column: 3 / 4;
     grid-row: 1;
     padding: 0px 10px 0px 10px;
+  }
+
+  .loglistcontent__modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    box-sizing: border-box;
+    @media screen and(min-width: 481px) {
+    }
+
+    .loglistcontent__modal-overlay {
+      width: 100%;
+      height: 100%;
+      background-color: $palette_Overlay_gray;
+    }
+
+    .loglistcontent__modal-body {
+      position: absolute;
+      top: 20%;
+      background-color: $palette_bright-gray;
+      width: 100%;
+      height: 250px;
+    }
   }
 }
 </style>
