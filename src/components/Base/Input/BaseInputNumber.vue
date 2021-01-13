@@ -1,5 +1,5 @@
 <template>
-  <input :value="propsValue" type="text" maxlength="3" @input="onInput" />
+  <input :value="propsValue" type="number" maxlength="3" @input="onInput" />
 </template>
 
 <script lang="ts">
