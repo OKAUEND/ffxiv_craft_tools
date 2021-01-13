@@ -49,7 +49,7 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    box-shadow: 1px $Palette_black;
+    box-shadow: 1px $palette_black;
     padding-left: 10px;
     box-sizing: border-box;
   }
