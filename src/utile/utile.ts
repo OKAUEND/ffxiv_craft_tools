@@ -10,7 +10,7 @@ export function assertIsDefind<T>(val: T): asserts val is NonNullable<T> {
  * 選択データをStoreに一時保存する構造を作成する
  * @param data
  * @param value
- * @param state
+ * @param order
  */
 export const makeLog = (
   data: FirestoreData,
