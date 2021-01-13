@@ -5,7 +5,11 @@
     </atom-semicircular-button> -->
     <article class="Tools__SubHeader"></article>
     <article class="Tools__Main">
-      <craft-recipe @change="fetchfirestore" :craftlogs="firestoredatas.logs" />
+      <craft-recipe
+        @change="fetchfirestore"
+        :craftlogs="firestoredatas.logs"
+        @addtocart="addCraftLogToCart"
+      />
     </article>
     <article class="Tools__SideDetailBar">
       <nav class="Tools__SidebarNav">
@@ -31,10 +35,16 @@
 import { defineComponent, reactive, ref } from "vue";
 import firabase from "@/firebase.ts";
 
-import { FirestoreData, FirestoreFetchData } from "@/utile/FFXIVLogTypes";
+import {
+  FirestoreData,
+  FirestoreFetchData,
+  StoreLog,
+} from "@/utile/FFXIVLogTypes";
 import { StringObjectKey } from "@/utile/UserInterfaceTypes";
+import { CartActionTypes } from "@/store/module/cart/actions-type";
 
 import CraftRecipe from "@/components/Pages/LogListContent/LogListContent.vue";
+import { useStore } from "@/store";
 
 export default defineComponent({
   name: "ToolsIndex",
@@ -43,6 +53,7 @@ export default defineComponent({
   },
   setup() {
     const isClicked = ref(false);
+    const state = useStore();
 
     const firestoredatas = reactive<FirestoreFetchData>({ logs: [] });
 
@@ -65,11 +76,16 @@ export default defineComponent({
       firestoredatas.logs = fetchdata;
     };
 
+    const addCraftLogToCart = (craftlog: StoreLog) => {
+      state.dispatch(CartActionTypes.add, craftlog);
+    };
+
     return {
       firestoredatas,
       isClicked,
       toggleclicked,
       fetchfirestore,
+      addCraftLogToCart,
     };
   },
 });
