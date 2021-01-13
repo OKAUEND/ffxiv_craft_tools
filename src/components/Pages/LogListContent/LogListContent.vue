@@ -28,12 +28,15 @@
     </div>
     <div class="loglistcontnt__main">
       <template v-for="(log, key) in craftlogs" :key="key">
-        <log-panel :craftdata="log" />
+        <log-panel :craftdata="log" @click="onSelectLog" />
       </template>
     </div>
     <div class="loglistcontent__modal" v-if="showModal">
       <div class="loglistcontent__modal-overlay" />
       <div class="loglistcontent__modal-body">
+        <h5>製作個数を入力してください</h5>
+        <base-input-number :value="craftingValue" v-model="craftingValue" />
+        <button @click="onAddToCart">カートへ追加する</button>
       </div>
     </div>
   </div>
@@ -55,16 +58,26 @@ import LogPanel from "@/components/Parts/LogPanel/LogPanel.vue";
 
 import BaseIconCross from "@/components/Base/Icon/BaseIconCross.vue";
 import BaseButtonGreen from "@/components/Base/Button/BaseButtonGreen.vue";
+import BaseInputNumber from "@/components/Base/Input/BaseInputNumber.vue";
 
 import FFXIV from "@/assets/FFXIV.json";
 
 import { MOBILE_WINDOW_WIDTH } from "@/assets/windowSize.ts";
 
-import { FirestoreFetchData } from "@/utile/FFXIVLogTypes";
+import { FirestoreFetchData, FirestoreData } from "@/utile/FFXIVLogTypes";
 import { Content, StringObjectKey } from "@/utile/UserInterfaceTypes";
+
+import { makeLog } from "@/utile/utile";
+
+import { emptyLog } from "@/utile/FFXIVLog";
+import { useStore } from "vuex";
 
 interface Props {
   craftlogs: FirestoreFetchData;
+}
+
+interface TempSelectLog {
+  temp: FirestoreData;
 }
 
 export default defineComponent({
@@ -74,6 +87,7 @@ export default defineComponent({
     LogPanel,
     BaseIconCross,
     BaseButtonGreen,
+    BaseInputNumber,
   },
   props: {
     craftlogs: {
@@ -81,11 +95,15 @@ export default defineComponent({
       default: [],
     },
   },
-  emits: ["change"],
+  emits: ["change", "addtocart"],
   setup(props: Props, context: SetupContext) {
     const isMobileMode = ref(true);
     const isVisible = ref(true);
+    const showModal = ref(false);
     const craftingValue = ref(1);
+    const tempCraftingLog = reactive<TempSelectLog>({ temp: emptyLog });
+
+    const state = useStore();
 
     const toggleModalVisible = () => {
       isVisible.value = !isVisible.value;
@@ -131,6 +149,23 @@ export default defineComponent({
 
     const fetchfirestore = () => {
       context.emit("change", selectedcategory);
+    };
+
+    const onSelectLog = (log: FirestoreData) => {
+      showModal.value = !showModal.value;
+      tempCraftingLog.temp = log;
+    };
+
+    const onAddToCart = () => {
+      showModal.value = false;
+      context.emit(
+        "addtocart",
+        makeLog(
+          tempCraftingLog.temp,
+          craftingValue.value,
+          state.getters.getCartsLength
+        )
+      );
     };
 
     return {
