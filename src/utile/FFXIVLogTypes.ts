@@ -1,5 +1,5 @@
-interface FirestoreData {
-  Childrenlogs?: LogChildren[];
+export interface CraftLog {
+  Childrenlogs: ChildLogs[];
   gathering?: {
     Xpoint: number;
     Zpoint: number;
@@ -32,7 +32,7 @@ interface FirestoreData {
   };
 }
 
-interface LogChildren {
+export interface ChildLogs {
   isEnable: boolean;
   order: number;
   childrenDocumentRef?: firebase.default.firestore.DocumentReference;
@@ -42,17 +42,17 @@ interface LogChildren {
   value: number;
 }
 
-interface FirestoreFetchData {
-  logs: FirestoreData[];
+export interface CraftLogs {
+  logs: CraftLog[];
 }
 
-interface StoreLog {
-  log: FirestoreData;
+export interface StoreLog {
+  log: CraftLog;
   value: number;
   order: number;
 }
 
-interface Crafter {
+export interface Crafter {
   name: string;
   jpname: string;
   type: string;
@@ -60,12 +60,10 @@ interface Crafter {
   imageurl: string;
 }
 
-interface Level {
+export interface Level {
   name: string;
   type: string;
   order: number;
   upperlevel: number;
   lowerlevel: number;
 }
-
-export { FirestoreData, FirestoreFetchData, StoreLog, Crafter, Level };
