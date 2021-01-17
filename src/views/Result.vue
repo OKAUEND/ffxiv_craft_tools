@@ -1,12 +1,13 @@
 <template>
-  <div class="Result">
-    <nav class="Result__Nav">
-      <div class="Result__LeftNav">
+  <div class="result">
+    <article class="result__progress"></article>
+    <nav class="result__Nav">
+      <div class="result__LeftNav">
         <router-link to="/">
           <!-- <atom-back-icon /> -->
         </router-link>
       </div>
-      <div class="Result__CenterNav">
+      <div class="result__CenterNav">
         <router-link to="/result/">
           <!-- <atom-list-icon /> -->
         </router-link>
@@ -15,7 +16,7 @@
         </router-link>
       </div>
     </nav>
-    <div class="Result__Body">
+    <div class="result__Body">
       <transition mode="out-in">
         <router-view />
       </transition>
@@ -23,22 +24,17 @@
   </div>
 </template>
 
-<script>
-// import AtomListIcon from "@/components/atoms/Icon/List.vue";
-// // import AtomListAllIcon from "@/components/atoms/Icon/ListALL.vue";
-// import AtomBackIcon from "@/components/atoms/Icon/Back.vue";
-export default {
-  name: "ResultIndex",
-  // components: {
-  //   AtomListIcon,
-  //   // AtomListAllIcon,
-  //   AtomBackIcon,
-  // },
-};
+<script lang="ts">
+import { defineComponent, SetupContext } from "vue";
+export default defineComponent({
+  setup(context: SetupContext) {
+    return {};
+  },
+});
 </script>
 
 <style lang="scss" scoped>
-.Result {
+.result {
   height: 100%;
   display: flex;
   flex-direction: column;

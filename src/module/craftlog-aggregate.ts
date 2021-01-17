@@ -1,7 +1,7 @@
 import { ref } from "vue";
 
-import { StoreLog, ChildLogs } from "@/utile/FFXIVLogTypes";
-import { assertIsDefind } from "@/utile/craftlogutiles";
+import { StoreLog, ChildLogs } from "@/@types/FFXIVLogTypes";
+import { assertIsDefind } from "@/module/craftlogutiles";
 
 const progress = ref<number>(0);
 

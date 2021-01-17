@@ -2,7 +2,7 @@ import { mutations } from "@/store/module/cart/mutations";
 import { actions } from "@/store/module/cart/actions";
 import { getters } from "@/store/module/cart/getters";
 import { CartStateTypes } from "@/store/module/cart/state";
-import { StoreLog, FirestoreData } from "@/utile/FFXIVLogTypes";
+import { StoreLog, FirestoreData } from "@/@types/FFXIVLogTypes";
 
 import { ActionContext } from "vuex";
 import { RootState } from "@/store";

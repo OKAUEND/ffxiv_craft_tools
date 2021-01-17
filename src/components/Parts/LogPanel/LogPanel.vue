@@ -29,13 +29,13 @@
 
 <script lang="ts">
 import { defineComponent, PropType, computed, SetupContext } from "vue";
-import { FirestoreData } from "@/utile/FFXIVLogTypes";
+import { CraftLog } from "@/@types/FFXIVLogTypes";
 
 import BaseImageMedium from "@/components/Base/Image/BaseImageMedium.vue";
 import BaseImageSmall from "@/components/Base/Image/BaseImageSmall.vue";
 
 interface Props {
-  craftdata: FirestoreData;
+  craftdata: CraftLog;
 }
 
 export default defineComponent({
@@ -46,7 +46,7 @@ export default defineComponent({
   },
   props: {
     craftdata: {
-      type: Object as PropType<FirestoreData>,
+      type: Object as PropType<CraftLog>,
       required: true,
     },
   },

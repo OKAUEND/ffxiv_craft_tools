@@ -16,14 +16,17 @@
         <!-- <atom-button-small @click="switchClickble()">
           <atom-delete-icon />
         </atom-button-small> -->
-        <router-link to="/result">
-          <!-- <cart-items></cart-items> -->
-        </router-link>
+
+        <router-link to="/result"> </router-link>
       </nav>
-      <div class="Tools__SidebarBody"></div>
+      <div class="Tools__SidebarBody">
+        <template v-for="(item, order) in CartItems" :key="order">
+          <cart-item-panel :item="item" />
+        </template>
+      </div>
       <div class="Tools__ToResultPage">
         <router-link to="/result">
-          <!-- <atom-button-green>Result</atom-button-green> -->
+          <buuton>集計</buuton>
         </router-link>
       </div>
     </article>
@@ -32,34 +35,36 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from "vue";
+import { computed, defineComponent, reactive, ref } from "vue";
 import firabase from "@/firebase.ts";
 
-import {
-  FirestoreData,
-  FirestoreFetchData,
-  StoreLog,
-} from "@/utile/FFXIVLogTypes";
-import { StringObjectKey } from "@/utile/UserInterfaceTypes";
+import { CraftLog, CraftLogs, StoreLog } from "@/@types/FFXIVLogTypes";
+import { StringObjectKey } from "@/@types/UserInterfaceTypes";
 import { CartActionTypes } from "@/store/module/cart/actions-type";
 
 import CraftRecipe from "@/components/Pages/LogListContent/LogListContent.vue";
+import CartItemPanel from "@/components/Parts/CartItemPanel/index.vue";
 import { useStore } from "@/store";
 
 export default defineComponent({
   name: "ToolsIndex",
   components: {
     CraftRecipe,
+    CartItemPanel,
   },
   setup() {
     const isClicked = ref(false);
     const state = useStore();
 
-    const firestoredatas = reactive<FirestoreFetchData>({ logs: [] });
+    const firestoredatas = reactive<CraftLogs>({ logs: [] });
 
     const toggleclicked = () => {
       isClicked.value = !isClicked.value;
     };
+
+    const CartItems = computed(() => {
+      return state.getters.getCarts;
+    });
 
     const fetchfirestore = async (emitvalue: StringObjectKey) => {
       const documentRef: firabase.firestore.Query<firabase.firestore.DocumentData> = firabase
@@ -70,7 +75,7 @@ export default defineComponent({
         .where("level.level", ">=", emitvalue.level.lowerlevel);
 
       const fetchdata = await documentRef.get().then((queryShapshot) => {
-        return queryShapshot.docs.map((doc) => doc.data() as FirestoreData);
+        return queryShapshot.docs.map((doc) => doc.data() as CraftLog);
       });
 
       firestoredatas.logs = fetchdata;
@@ -86,6 +91,7 @@ export default defineComponent({
       toggleclicked,
       fetchfirestore,
       addCraftLogToCart,
+      CartItems,
     };
   },
 });
@@ -95,7 +101,7 @@ export default defineComponent({
 .Tools {
   display: flex;
   flex-direction: column;
-
+  width: 100%;
   @media screen and(min-width: 481px) {
     display: grid;
     grid-template-rows: 50px 1fr;
@@ -115,6 +121,7 @@ export default defineComponent({
 
   .Tools__Main {
     height: 100%;
+    width: 100%;
     @media screen and(min-width: 481px) {
       width: 80vw;
       grid-column: 1 / 2;

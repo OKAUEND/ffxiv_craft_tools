@@ -1,7 +1,7 @@
 import { GetterTree } from "vuex";
 
 import { RootState } from "@/store";
-import { StoreLog } from "@/utile/FFXIVLogTypes";
+import { StoreLog } from "@/@types/FFXIVLogTypes";
 import { CartStateTypes } from "./state";
 
 export type Getters = {

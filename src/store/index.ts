@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
 import { store as cart, CartStore } from "@/store/module/cart";
 // import { CartStateTypes } from "@/store/module/cart/state";
-import { StoreLog } from "@/utile/FFXIVLogTypes";
+import { StoreLog } from "@/@types/FFXIVLogTypes";
 
 export interface RootState {
   version: string;

@@ -1,6 +1,6 @@
 import { ActionTree, ActionContext } from "vuex";
 
-import { StoreLog } from "@/utile/FFXIVLogTypes";
+import { StoreLog } from "@/@types/FFXIVLogTypes";
 import { RootState } from "@/store";
 import { CartStateTypes } from "./state";
 import { Mutations } from "./mutations";
