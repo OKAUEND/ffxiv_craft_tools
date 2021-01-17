@@ -1,4 +1,4 @@
-import { FirestoreData, StoreLog } from "@/utile/FFXIVLogTypes";
+import { CraftLog, StoreLog } from "@/utile/FFXIVLogTypes";
 
 export function assertIsDefind<T>(val: T): asserts val is NonNullable<T> {
   if (val === undefined || val === null) {
@@ -13,7 +13,7 @@ export function assertIsDefind<T>(val: T): asserts val is NonNullable<T> {
  * @param order
  */
 export const makeLog = (
-  data: FirestoreData,
+  data: CraftLog,
   value: number,
   order: number
 ): StoreLog => ({
