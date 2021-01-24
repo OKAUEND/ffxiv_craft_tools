@@ -35,7 +35,7 @@
       <div class="loglistcontent__modal-overlay" />
       <div class="loglistcontent__modal-body">
         <h5>製作個数を入力してください</h5>
-        <base-input-number :value="craftingValue" v-model="craftingValue" />
+        <base-input-number :modelValue="craftCount" @input="changeCount" />
         <button @click="onAddToCart">カートへ追加する</button>
       </div>
     </div>
@@ -67,7 +67,7 @@ import { MOBILE_WINDOW_WIDTH } from "@/assets/windowSize.ts";
 import { FirestoreFetchData, FirestoreData } from "@/utile/FFXIVLogTypes";
 import { Content, StringObjectKey } from "@/utile/UserInterfaceTypes";
 
-import { makeLog } from "@/utile/utile";
+import { useCount } from "@/module/statefull";
 
 import { emptyLog } from "@/utile/FFXIVLog";
 import { useStore } from "vuex";
@@ -100,7 +100,7 @@ export default defineComponent({
     const isMobileMode = ref(true);
     const isVisible = ref(true);
     const showModal = ref(false);
-    const craftingValue = ref(1);
+    const { count: craftCount, changeCount } = useCount();
     const tempCraftingLog = reactive<TempSelectLog>({ temp: emptyLog });
 
     const state = useStore();
@@ -180,7 +180,8 @@ export default defineComponent({
       fetchfirestore,
       onSelectLog,
       onAddToCart,
-      craftingValue,
+      craftCount,
+      changeCount,
       tempCraftingLog,
     };
   },
