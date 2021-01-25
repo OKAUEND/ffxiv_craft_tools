@@ -1,5 +1,5 @@
 export interface CraftLog {
-  Childrenlogs: ChildLogs[];
+  childrenlogs: ChildLogs[];
   gathering?: {
     Xpoint: number;
     Zpoint: number;
