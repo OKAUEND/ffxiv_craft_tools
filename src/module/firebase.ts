@@ -1,7 +1,14 @@
 import firebase from "@/firebase";
 import { CraftLog } from "@/@types/FFXIVLogTypes";
 
-export const fetchCraftLogs = async (
+/**
+ * 条件に一致する製作レシピを取り出す
+ * @param crafter
+ * @param upperlevel
+ * @param lowerlevel
+ * @returns CraftLog[]
+ */
+export const fetchQueryConditionCraftLog = async (
   crafter: string,
   upperlevel: number,
   lowerlevel: number
