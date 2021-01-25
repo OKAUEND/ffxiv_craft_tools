@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, ref, SetupContext } from "vue";
-import { Crafter, Level } from "@/utile/FFXIVLogTypes";
+import { Crafter, Level } from "@/@types/FFXIVLogTypes";
 
 interface Props {
   categories: CraftContent[];
