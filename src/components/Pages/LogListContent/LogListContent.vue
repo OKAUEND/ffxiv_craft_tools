@@ -67,7 +67,7 @@ import { getChildLogDetail } from "@/module/craftlog-aggregate";
 import { useStore } from "vuex";
 
 interface Props {
-  craftlogs: FirestoreFetchData;
+  craftlogs: CraftLogs;
 }
 
 interface TempSelectLog {
@@ -81,11 +81,10 @@ export default defineComponent({
     LogPanel,
     BaseIconCross,
     BaseButtonGreen,
-    BaseInputNumber,
   },
   props: {
     craftlogs: {
-      type: Object as PropType<FirestoreFetchData>,
+      type: Object as PropType<CraftLogs>,
       default: [],
     },
   },
