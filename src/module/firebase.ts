@@ -17,3 +17,16 @@ export const fetchCraftLogs = async (
     return queryShapshot.docs.map((doc) => doc.data() as CraftLog);
   });
 };
+
+/**
+ * 必要素材となる子の製作レシピを取り出す
+ * @param documentRef
+ * @returns CraftLog
+ */
+export const fetchCraftLogFromPath = async (
+  documentRef: firebase.firestore.DocumentReference
+): Promise<CraftLog> => {
+  return await documentRef.get().then((snapshot) => {
+    return snapshot.data() as CraftLog;
+  });
+};
