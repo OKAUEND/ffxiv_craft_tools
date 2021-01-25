@@ -54,14 +54,13 @@ import LogPanel from "@/components/Parts/LogPanel/LogPanel.vue";
 
 import BaseIconCross from "@/components/Base/Icon/BaseIconCross.vue";
 import BaseButtonGreen from "@/components/Base/Button/BaseButtonGreen.vue";
-import BaseInputNumber from "@/components/Base/Input/BaseInputNumber.vue";
 
 import FFXIV from "@/assets/FFXIV.json";
 
 import { MOBILE_WINDOW_WIDTH } from "@/assets/windowSize.ts";
 
-import { FirestoreFetchData, FirestoreData } from "@/utile/FFXIVLogTypes";
-import { Content, StringObjectKey } from "@/utile/UserInterfaceTypes";
+import { CraftLogs, StoreLog } from "@/@types/FFXIVLogTypes";
+import { Content, StringObjectKey } from "@/@types/UserInterfaceTypes";
 
 import { getChildLogDetail } from "@/module/craftlog-aggregate";
 
@@ -72,7 +71,7 @@ interface Props {
 }
 
 interface TempSelectLog {
-  temp: FirestoreData;
+  temp: StoreLog;
 }
 
 export default defineComponent({
@@ -100,6 +99,13 @@ export default defineComponent({
     const toggleModalVisible = () => {
       isVisible.value = !isVisible.value;
     };
+
+    /**
+     * 選択した項目を動的に保持する
+     */
+    const storeTempLogCount = computed(() => {
+      return state.getters.getCartsLength;
+    });
 
     /**
      * 画面サイズ変更時に変更イベントを検知しモバイルかどうか判断する
