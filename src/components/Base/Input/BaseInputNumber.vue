@@ -1,33 +1,35 @@
 <template>
-  <input :value="propsValue" type="number" maxlength="3" @input="onInput" />
+  <input v-model="propsModelValue" type="number" maxlength="3" />
 </template>
 
 <script lang="ts">
 import { defineComponent, computed, SetupContext } from "vue";
 
 interface Input {
-  value: number;
+  modelValue: number;
 }
 
 export default defineComponent({
   name: "BaseInputNumber",
   props: {
-    value: {
+    modelValue: {
       type: Number,
       required: true,
     },
   },
   emits: ["input"],
   setup(props: Input, context: SetupContext) {
-    const propsValue = computed(() => props.value);
-
-    const onInput = (event: number) => {
-      context.emit("input", event);
-    };
+    const propsModelValue = computed({
+      get: () => {
+        return props.modelValue;
+      },
+      set: (inputValue: number) => {
+        context.emit("input", inputValue);
+      },
+    });
 
     return {
-      propsValue,
-      onInput,
+      propsModelValue,
     };
   },
 
