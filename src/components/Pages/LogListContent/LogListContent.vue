@@ -28,16 +28,12 @@
     </div>
     <div class="loglistcontnt__main">
       <template v-for="(log, key) in craftlogs" :key="key">
-        <log-panel :craftdata="log" @click="onSelectLog" />
+        <log-panel
+          :craftdata="log"
+          :statecount="storeTempLogCount"
+          @click="onSelectLog"
+        />
       </template>
-    </div>
-    <div class="loglistcontent__modal" v-if="showModal">
-      <div class="loglistcontent__modal-overlay" />
-      <div class="loglistcontent__modal-body">
-        <h5>製作個数を入力してください</h5>
-        <base-input-number :modelValue="craftCount" @input="changeCount" />
-        <button @click="onAddToCart">カートへ追加する</button>
-      </div>
     </div>
   </div>
 </template>
@@ -67,9 +63,8 @@ import { MOBILE_WINDOW_WIDTH } from "@/assets/windowSize.ts";
 import { FirestoreFetchData, FirestoreData } from "@/utile/FFXIVLogTypes";
 import { Content, StringObjectKey } from "@/utile/UserInterfaceTypes";
 
-import { useCount } from "@/module/statefull";
+import { getChildLogDetail } from "@/module/craftlog-aggregate";
 
-import { emptyLog } from "@/utile/FFXIVLog";
 import { useStore } from "vuex";
 
 interface Props {
@@ -99,9 +94,6 @@ export default defineComponent({
   setup(props: Props, context: SetupContext) {
     const isMobileMode = ref(true);
     const isVisible = ref(true);
-    const showModal = ref(false);
-    const { count: craftCount, changeCount } = useCount();
-    const tempCraftingLog = reactive<TempSelectLog>({ temp: emptyLog });
 
     const state = useStore();
 
@@ -151,21 +143,8 @@ export default defineComponent({
       context.emit("change", selectedcategory);
     };
 
-    const onSelectLog = (log: FirestoreData) => {
-      showModal.value = !showModal.value;
-      tempCraftingLog.temp = log;
-    };
-
-    const onAddToCart = () => {
-      showModal.value = false;
-      context.emit(
-        "addtocart",
-        makeLog(
-          tempCraftingLog.temp,
-          craftingValue.value,
-          state.getters.getCartsLength
-        )
-      );
+    const onSelectLog = (log: StoreLog) => {
+      context.emit("addtocart", log);
     };
 
     return {
@@ -173,16 +152,12 @@ export default defineComponent({
       selectedcategory,
       isMobileMode,
       isVisible,
-      showModal,
       ffxivdetail,
       toggleModalVisible,
       updateSelectedCategories,
       fetchfirestore,
       onSelectLog,
-      onAddToCart,
-      craftCount,
-      changeCount,
-      tempCraftingLog,
+      storeTempLogCount,
     };
   },
 });

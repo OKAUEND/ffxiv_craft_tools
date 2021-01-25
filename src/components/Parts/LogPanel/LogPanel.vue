@@ -22,6 +22,7 @@
       </div>
     </div>
     <div class="logpanel__announce">
+      <base-input-number :modelValue="craftCount" @input="changeCount" />
       <button @click="onClickLog">追加</button>
     </div>
   </div>
@@ -33,9 +34,14 @@ import { CraftLog } from "@/@types/FFXIVLogTypes";
 
 import BaseImageMedium from "@/components/Base/Image/BaseImageMedium.vue";
 import BaseImageSmall from "@/components/Base/Image/BaseImageSmall.vue";
+import BaseInputNumber from "@/components/Base/Input/BaseInputNumber.vue";
+
+import { useCount } from "@/module/statefull";
+import { makeLog } from "@/module/craftlogutiles";
 
 interface Props {
   craftdata: CraftLog;
+  statecount: number;
 }
 
 export default defineComponent({
@@ -43,26 +49,37 @@ export default defineComponent({
   components: {
     BaseImageMedium,
     BaseImageSmall,
+    BaseInputNumber,
   },
   props: {
     craftdata: {
       type: Object as PropType<CraftLog>,
       required: true,
     },
+    statecount: {
+      type: Number,
+      required: true,
+    },
   },
   emits: ["click"],
   setup(props: Props, context: SetupContext) {
+    const { count: craftCount, changeCount } = useCount();
     const craftlog = computed(() => {
       return props.craftdata;
     });
 
     const onClickLog = () => {
-      context.emit("click", craftlog);
+      context.emit(
+        "click",
+        makeLog(craftlog.value, craftCount.value, props.statecount)
+      );
     };
 
     return {
       craftlog,
       onClickLog,
+      craftCount,
+      changeCount,
     };
   },
 });
