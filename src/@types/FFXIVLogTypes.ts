@@ -35,7 +35,7 @@ export interface CraftLog {
 export interface ChildLogs {
   isEnable: boolean;
   order: number;
-  childrenDocumentRef?: firebase.default.firestore.DocumentReference;
+  childrenDocumentRef: firebase.default.firestore.DocumentReference;
   name: string;
   engname?: string;
   imageurl: string;
