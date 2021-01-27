@@ -129,11 +129,6 @@ export default defineComponent({
       return FFXIV;
     });
 
-    /**
-     * 選択した項目を動的に保持する
-     */
-    const selectedcategory = reactive<StringObjectKey>({});
-
     const propcraftlogs = computed(() => {
       return props.craftlogs.logs;
     });
