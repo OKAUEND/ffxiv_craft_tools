@@ -1,5 +1,5 @@
 <template>
-  <input v-model="propsModelValue" type="number" maxlength="3" />
+  <input v-model.number="propsModelValue" type="number" maxlength="3" />
 </template>
 
 <script lang="ts">
@@ -24,7 +24,8 @@ export default defineComponent({
         return props.modelValue;
       },
       set: (inputValue: number) => {
-        context.emit("input", inputValue);
+        const temp = inputValue > 0 ? inputValue : 1;
+        context.emit("input", temp);
       },
     });
 
