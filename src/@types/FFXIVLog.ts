@@ -1,10 +1,17 @@
-import { FirestoreData, FirestoreFetchData } from "./FFXIVLogTypes";
+import { CraftLog, CraftLogs, StoreLog } from "./FFXIVLogTypes";
 
-export const emptyLog: FirestoreData = {
+export const dummyLog: CraftLog = {
   text: {
     name: "empty",
     engname: "empty",
   },
   imageurl: "empty",
   patchversion: 999,
+  childrenlogs: [],
+};
+
+export const dummyStateLog: StoreLog = {
+  log: dummyLog,
+  value: 0,
+  order: 0,
 };
