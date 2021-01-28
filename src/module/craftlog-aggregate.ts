@@ -15,21 +15,23 @@ export const validChildFactorOnlyEnable = (
   return childlogs.filter((childlog) => childlog.isEnable === true);
 };
 
-const fetchCraftLogFromPath = async (childlogs: ChildLogs[]) => {
-  const validChildFactor = validChildFactorOnlyEnable(childlogs);
+const createAggregateLogs = async (craftlog: CraftLog, count: number) => {
+  const validChildFactor = validChildFactorOnlyEnable(craftlog.childrenlogs);
 
-  if (validChildFactor.length === 0) {
-    return;
-  }
+  //子要素の子要素を取り出す
+  return await Promise.all(
+    validChildFactor.map(
+      async (child): Promise<AggregateLog> => {
+        //1つ1つの製作レシピをループで処理する
+        const log = await fetchCraftLogFromPath(child.childrenDocumentRef);
 
-  const details = await Promise.all(
-    validChildFactor.map(async (child) => {
-      //ここでFirestoreからデータを取得する
-      //Firebaseのクエリを発行
-    })
+        //ここで再帰処理を行い、さらに子のノードを探す
+        const childnode = await createAggregateLogs(log, child.value * count);
+
+        return recreateLogStructure(log, child.value * count, childnode);
+      }
+    )
   );
-
-  //再帰呼び出しをし、子要素の子要素を取り出す
 };
 
 export const getCraftLogChildLogDetail = async (cartlogs: StoreLog[]) => {
