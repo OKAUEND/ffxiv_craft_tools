@@ -1,7 +1,14 @@
 import { ref } from "vue";
 
-import { StoreLog, ChildLogs } from "@/@types/FFXIVLogTypes";
-import { assertIsDefind } from "@/module/craftlogutiles";
+import {
+  StoreLog,
+  ChildLogs,
+  CraftLog,
+  AggregateLog,
+} from "@/@types/FFXIVLogTypes";
+
+import { fetchCraftLogFromPath } from "@/module/firebase";
+import { recreateLogStructure } from "@/module/craftlogutiles";
 
 const progress = ref<number>(0);
 

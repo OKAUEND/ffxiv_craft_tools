@@ -42,6 +42,14 @@ export interface ChildLogs {
   value: number;
 }
 
+export interface AggregateLog {
+  childLogs?: AggregateLog[];
+  name: string;
+  engname?: string;
+  imageurl: string;
+  count: number;
+}
+
 export interface CraftLogs {
   logs: CraftLog[];
 }

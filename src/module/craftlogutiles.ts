@@ -1,10 +1,22 @@
-import { CraftLog, StoreLog } from "@/@types/FFXIVLogTypes";
+import { CraftLog, StoreLog, AggregateLog } from "@/@types/FFXIVLogTypes";
 
 export function assertIsDefind<T>(val: T): asserts val is NonNullable<T> {
   if (val === undefined || val === null) {
     throw new Error(`対象が存在しません ${val}`);
   }
 }
+
+export const recreateLogStructure = (
+  log: CraftLog,
+  count: number,
+  childlogs: AggregateLog[]
+): AggregateLog => ({
+  name: log.text.name,
+  engname: log.text.engname,
+  imageurl: log.imageurl,
+  count: count,
+  childLogs: childlogs,
+});
 
 /**
  * 選択データをStoreに一時保存する構造を作成する
