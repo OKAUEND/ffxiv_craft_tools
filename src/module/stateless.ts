@@ -1,0 +1,1 @@
+export const PROGRESSVALUE_IN_DATA_REQUEST = 70;
