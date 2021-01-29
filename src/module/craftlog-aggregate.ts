@@ -9,12 +9,7 @@ import {
 
 import { fetchCraftLogFromPath } from "@/module/firebase";
 import { recreateLogStructure } from "@/module/craftlogutiles";
-
-const progress = ref<number>(0);
-
-export const useProgress = () => {
-  return progress;
-};
+import { useProgress } from "@/module/statefull";
 
 export const validChildFactorOnlyEnable = (
   childlogs: ChildLogs[]
@@ -42,12 +37,20 @@ const createAggregateLogs = async (craftlog: CraftLog) => {
   );
 };
 
-export const getCraftLogChildLogDetail = async (cartlogs: StoreLog[]) => {
-  const temp = await Promise.all(
-    cartlogs.map(async (craftlog) => {
-      const temp = await fetchCraftLogFromPath(craftlog.log.Childrenlogs);
+export const getChildLogDetail = async (cartlogs: StoreLog[]) => {
+  const { forwardProgress, calculateOnceProgressValue } = useProgress();
 
+  calculateOnceProgressValue(cartlogs.length);
+
+  return await Promise.all(
+    cartlogs.map(async (craftlog) => {
+      const temp = await createAggregateLogs(craftlog.log);
+
+      const logs = recreateLogStructure(craftlog.log, craftlog.value, temp);
       //処理が終わったら進捗度を上げる
+      forwardProgress();
+
+      return logs;
     })
   );
 };
