@@ -22,7 +22,7 @@ export const validChildFactorOnlyEnable = (
   return childlogs.filter((childlog) => childlog.isEnable === true);
 };
 
-const createAggregateLogs = async (craftlog: CraftLog, count: number) => {
+const createAggregateLogs = async (craftlog: CraftLog) => {
   const validChildFactor = validChildFactorOnlyEnable(craftlog.childrenlogs);
 
   //子要素の子要素を取り出す
@@ -33,9 +33,10 @@ const createAggregateLogs = async (craftlog: CraftLog, count: number) => {
         const log = await fetchCraftLogFromPath(child.childrenDocumentRef);
 
         //ここで再帰処理を行い、さらに子のノードを探す
-        const childnode = await createAggregateLogs(log, child.value * count);
+        //親の製作個数を乗算しないようにしておき、元の製作個数を消失させないようにする
+        const childnode = await createAggregateLogs(log);
 
-        return recreateLogStructure(log, child.value * count, childnode);
+        return recreateLogStructure(log, child.value, childnode);
       }
     )
   );
