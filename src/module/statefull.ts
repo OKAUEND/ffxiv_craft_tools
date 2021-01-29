@@ -1,4 +1,5 @@
 import { readonly, Ref, ref } from "vue";
+import { PROGRESSVALUE_IN_DATA_REQUEST } from "./stateless";
 
 const changeCount = (count: Ref<number>) => (value: number) => {
   count.value = value;
