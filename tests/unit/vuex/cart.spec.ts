@@ -2,36 +2,39 @@ import { mutations } from "@/store/module/cart/mutations";
 import { actions } from "@/store/module/cart/actions";
 import { getters } from "@/store/module/cart/getters";
 import { CartStateTypes } from "@/store/module/cart/state";
-import { StoreLog, FirestoreData } from "@/@types/FFXIVLogTypes";
+import { StoreLog, CraftLog } from "@/@types/FFXIVLogTypes";
 
 import { ActionContext } from "vuex";
 import { RootState } from "@/store";
 
-const value: FirestoreData = {
+const value: CraftLog = {
   imageurl: "TEST",
   patchversion: 1,
   text: {
     engname: "TEST",
     name: "ユニットテスト",
   },
+  childrenlogs: [],
 };
 
-const value2: FirestoreData = {
+const value2: CraftLog = {
   imageurl: "TEST",
   patchversion: 1,
   text: {
     engname: "TEST2",
     name: "ユニットテスト",
   },
+  childrenlogs: [],
 };
 
-const value3: FirestoreData = {
+const value3: CraftLog = {
   imageurl: "TEST",
   patchversion: 1,
   text: {
     engname: "TEST3",
     name: "ユニットテスト",
   },
+  childrenlogs: [],
 };
 
 describe("Store Cart", () => {
@@ -114,15 +117,6 @@ describe("Store Cart", () => {
     };
 
     mutations["SET_TO CART"](state, testlog);
-
-    const value2: FirestoreData = {
-      imageurl: "TEST",
-      patchversion: 1,
-      text: {
-        engname: "TEST2",
-        name: "ユニットテスト",
-      },
-    };
 
     const testlog2: StoreLog = {
       log: value2,
