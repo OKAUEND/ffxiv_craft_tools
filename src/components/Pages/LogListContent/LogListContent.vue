@@ -93,6 +93,11 @@ export default defineComponent({
     const isMobileMode = ref(true);
     const isVisible = ref(true);
 
+    /**
+     * 選択した項目を動的に保持する
+     */
+    const selectedcategory = reactive<StringObjectKey>({});
+
     const state = useStore();
 
     const toggleModalVisible = () => {
