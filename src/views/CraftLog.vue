@@ -25,9 +25,9 @@
         </template>
       </div>
       <div class="Tools__ToResultPage">
-        <router-link to="/result">
-          <buuton>集計</buuton>
-        </router-link>
+        <button :disabled="!isSelectLogInStore" @click="moveResultPage">
+          必要個数集計
+        </button>
       </div>
     </article>
     <div id="tools__teleport-modal"></div>
@@ -37,6 +37,7 @@
 <script lang="ts">
 import { computed, defineComponent, reactive, ref } from "vue";
 import firabase from "@/firebase.ts";
+import { useRoute, useRouter } from "vue-router";
 
 import { CraftLog, CraftLogs, StoreLog } from "@/@types/FFXIVLogTypes";
 import { StringObjectKey } from "@/@types/UserInterfaceTypes";
@@ -55,6 +56,8 @@ export default defineComponent({
   setup() {
     const isClicked = ref(false);
     const state = useStore();
+    const router = useRouter();
+    const route = useRoute();
 
     const firestoredatas = reactive<CraftLogs>({ logs: [] });
 
@@ -64,6 +67,10 @@ export default defineComponent({
 
     const CartItems = computed(() => {
       return state.getters.getCarts;
+    });
+
+    const isSelectLogInStore = computed(() => {
+      return state.getters.getCartsLength > 0;
     });
 
     const fetchfirestore = async (emitvalue: StringObjectKey) => {
@@ -85,13 +92,19 @@ export default defineComponent({
       state.dispatch(CartActionTypes.add, craftlog);
     };
 
+    const moveResultPage = () => {
+      router.push("/result");
+    };
+
     return {
       firestoredatas,
       isClicked,
+      isSelectLogInStore,
       toggleclicked,
       fetchfirestore,
       addCraftLogToCart,
       CartItems,
+      moveResultPage,
     };
   },
 });
