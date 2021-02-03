@@ -30,7 +30,6 @@
         </button>
       </div>
     </article>
-    <div id="tools__teleport-modal"></div>
   </article>
 </template>
 
