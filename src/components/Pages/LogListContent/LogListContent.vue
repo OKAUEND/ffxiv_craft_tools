@@ -62,8 +62,6 @@ import { MOBILE_WINDOW_WIDTH } from "@/assets/windowSize.ts";
 import { CraftLogs, StoreLog } from "@/@types/FFXIVLogTypes";
 import { Content, StringObjectKey } from "@/@types/UserInterfaceTypes";
 
-import { getChildLogDetail } from "@/module/craftlog-aggregate";
-
 import { useStore } from "vuex";
 
 interface Props {
