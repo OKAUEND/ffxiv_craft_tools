@@ -1,34 +1,43 @@
 <template>
   <div class="result">
-    <article class="result__progress"></article>
-    <nav class="result__Nav">
-      <div class="result__LeftNav">
-        <router-link to="/">
-          <!-- <atom-back-icon /> -->
-        </router-link>
-      </div>
-      <div class="result__CenterNav">
-        <router-link to="/result/">
-          <!-- <atom-list-icon /> -->
-        </router-link>
-        <router-link to="/result/IndividualDetail">
-          <!-- <atom-list-all-icon /> -->
-        </router-link>
-      </div>
-    </nav>
-    <div class="result__Body">
-      <transition mode="out-in">
+    <template v-if="isSelectedCraftLog">
+      <component :is="NoSelectedMsgComponent" />
+    </template>
+    <template v-else>
+      <article class="result__progress"></article>
+      <nav class="result__Nav">
+        <div class="result__LeftNav">
+          <router-link to="/">
+            <!-- <atom-back-icon /> -->
+          </router-link>
+        </div>
+        <div class="result__CenterNav"></div>
+      </nav>
+      <div class="result__Body">
+        <!-- <transition mode="out-in">
         <router-view />
-      </transition>
-    </div>
+      </transition> -->
+      </div>
+    </template>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, SetupContext } from "vue";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+
+import NoSelectedMsg from "@/components/Pages/ErrorAnnounce/NoSelectedItem.vue";
 export default defineComponent({
+  component: {
+    NoSelectedMsg,
+  },
   setup(context: SetupContext) {
-    return {};
+    const router = useRouter();
+    const state = useStore();
+
+    const NoSelectedMsgComponent = NoSelectedMsg;
+    return { NoSelectedMsgComponent };
   },
 });
 </script>
