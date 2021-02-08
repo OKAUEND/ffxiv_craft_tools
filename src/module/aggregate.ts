@@ -52,3 +52,11 @@ export const getChildLogDetail = async (cartlogs: StoreLog[]) => {
     })
   );
 };
+
+export const aggregateLogCount = (logs:AggregateLog[],targetRank:string) => {
+  const acc = [];
+  logs.reduce((log,current) =>{
+    return log;
+  })
+
+};
