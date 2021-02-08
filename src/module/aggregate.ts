@@ -53,10 +53,25 @@ export const getChildLogDetail = async (cartlogs: StoreLog[]) => {
   );
 };
 
-export const aggregateLogCount = (logs:AggregateLog[],targetRank:string) => {
+export const aggregateLogCount = (logs: AggregateLog[], targetRank: string) => {
   const acc = [];
-  logs.reduce((log,current) =>{
+  return logs.reduce((log, current) => {
+    log.childLogs.reduce((child, temp) => {});
     return log;
-  })
+  });
+};
 
+const findTreeTerminalLog = (
+  targetLog: AggregateLog,
+  targetRank: string,
+  acc: []
+): AggregateLog => {
+  return targetLog.childLogs.reduce(
+    (child, current): AggregateLog => {
+      if (child.childLogs.length === 0 && child.rank === targetRank) {
+        return targetLog;
+      }
+      return findTreeTerminalLog(targetLog, targetRank, acc);
+    }
+  );
 };
