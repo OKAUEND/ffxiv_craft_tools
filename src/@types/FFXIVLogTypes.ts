@@ -43,11 +43,12 @@ export interface ChildLogs {
 }
 
 export interface AggregateLog {
-  childLogs?: AggregateLog[];
+  childLogs: AggregateLog[];
   name: string;
   engname?: string;
   imageurl: string;
   count: number;
+  rank: string;
 }
 
 export interface CraftLogs {
