@@ -1,4 +1,9 @@
-import { CraftLog, StoreLog, AggregateLog } from "@/@types/FFXIVLogTypes";
+import {
+  CraftLog,
+  StoreLog,
+  CartHoldLog,
+  Aggregate,
+} from "@/@types/FFXIVLogTypes";
 
 export function assertIsDefind<T>(val: T): asserts val is NonNullable<T> {
   if (val === undefined || val === null) {
