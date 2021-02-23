@@ -51,6 +51,16 @@ export interface CartHoldLog {
   rank: string;
 }
 
+export interface Aggregate {
+  parent: CartHoldLog | Aggregate;
+  name: string;
+  engname?: string;
+  imageurl: string;
+  baseCount: number;
+  requiredCount: number;
+  rank: string;
+}
+
 export interface CraftLogs {
   logs: CraftLog[];
 }
