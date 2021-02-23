@@ -75,17 +75,11 @@ export const findTreeTerminalLog = (
   }, [] as Aggregate[]);
 };
 
-const findTreeTerminalLog = (
-  targetLog: AggregateLog,
-  targetRank: string,
-  acc: []
-): AggregateLog => {
-  return targetLog.childLogs.reduce(
-    (child, current): AggregateLog => {
-      if (child.childLogs.length === 0 && child.rank === targetRank) {
-        return targetLog;
-      }
-      return findTreeTerminalLog(targetLog, targetRank, acc);
-    }
-  );
+export const CartHoldLogCount = (logs: CartHoldLog[], targetRank: string) => {
+  const acc: Aggregate[] = [];
+  return logs.forEach((log) => {
+    const temp = findTreeTerminalLog(log, targetRank);
+    [...acc, ...temp];
+    return temp;
+  });
 };
