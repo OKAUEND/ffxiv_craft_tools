@@ -2,7 +2,8 @@ import {
   StoreLog,
   ChildLogs,
   CraftLog,
-  AggregateLog,
+  CartHoldLog,
+  Aggregate,
 } from "@/@types/FFXIVLogTypes";
 
 import { fetchCraftLogFromPath } from "@/module/firebase";
@@ -18,19 +19,19 @@ export const validChildFactorOnlyEnable = (
   return childlogs.filter((childlog) => childlog.isEnable === true);
 };
 
-const createAggregateLogs = async (craftlog: CraftLog) => {
+const createCartHoldLogs = async (craftlog: CraftLog) => {
   const validChildFactor = validChildFactorOnlyEnable(craftlog.childrenlogs);
 
   //子要素の子要素を取り出す
   return await Promise.all(
     validChildFactor.map(
-      async (child): Promise<AggregateLog> => {
+      async (child): Promise<CartHoldLog> => {
         //1つ1つの製作レシピをループで処理する
         const log = await fetchCraftLogFromPath(child.childrenDocumentRef);
 
         //ここで再帰処理を行い、さらに子のノードを探す
         //親の製作個数を乗算しないようにしておき、元の製作個数を消失させないようにする
-        const childnode = await createAggregateLogs(log);
+        const childnode = await createCartHoldLogs(log);
 
         return makeCartTempLogStructure(log, child.value, childnode);
       }
@@ -45,7 +46,7 @@ export const getChildLogDetail = async (cartlogs: StoreLog[]) => {
 
   return await Promise.all(
     cartlogs.map(async (craftlog) => {
-      const temp = await createAggregateLogs(craftlog.log);
+      const temp = await createCartHoldLogs(craftlog.log);
 
       const logs = makeCartTempLogStructure(craftlog.log, craftlog.value, temp);
       //処理が終わったら進捗度を上げる
