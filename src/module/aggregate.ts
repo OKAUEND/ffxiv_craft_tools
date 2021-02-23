@@ -6,7 +6,10 @@ import {
 } from "@/@types/FFXIVLogTypes";
 
 import { fetchCraftLogFromPath } from "@/module/firebase";
-import { recreateLogStructure } from "@/module/craftlogutiles";
+import {
+  makeCartTempLogStructure,
+  makeAggregate,
+} from "@/module/craftlogutiles";
 import { useProgress } from "@/module/statefull";
 
 export const validChildFactorOnlyEnable = (
@@ -29,7 +32,7 @@ const createAggregateLogs = async (craftlog: CraftLog) => {
         //親の製作個数を乗算しないようにしておき、元の製作個数を消失させないようにする
         const childnode = await createAggregateLogs(log);
 
-        return recreateLogStructure(log, child.value, childnode);
+        return makeCartTempLogStructure(log, child.value, childnode);
       }
     )
   );
@@ -44,7 +47,7 @@ export const getChildLogDetail = async (cartlogs: StoreLog[]) => {
     cartlogs.map(async (craftlog) => {
       const temp = await createAggregateLogs(craftlog.log);
 
-      const logs = recreateLogStructure(craftlog.log, craftlog.value, temp);
+      const logs = makeCartTempLogStructure(craftlog.log, craftlog.value, temp);
       //処理が終わったら進捗度を上げる
       forwardProgress();
 

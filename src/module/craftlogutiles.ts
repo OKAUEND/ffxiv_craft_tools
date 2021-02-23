@@ -11,7 +11,7 @@ export function assertIsDefind<T>(val: T): asserts val is NonNullable<T> {
   }
 }
 
-export const recreateLogStructure = (
+export const makeCartTempLogStructure = (
   log: CraftLog,
   count: number,
   childlogs: AggregateLog[]
