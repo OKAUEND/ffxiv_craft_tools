@@ -23,6 +23,22 @@ export const recreateLogStructure = (
   childLogs: childlogs,
 });
 
+export const makeAggregate = (
+  currentLog: CartHoldLog,
+  parentLog: CartHoldLog,
+  cacalculatedLod: Aggregate
+): Aggregate => ({
+  name: currentLog.name,
+  engname: currentLog.engname,
+  baseCount: currentLog.count,
+  requiredCount:
+    currentLog.count *
+    (cacalculatedLod.requiredCount > 0 ? cacalculatedLod.requiredCount : 1),
+  imageurl: currentLog.imageurl,
+  parent: cacalculatedLod,
+  rank: currentLog.rank,
+});
+
 /**
  * 選択データをStoreに一時保存する構造を作成する
  * @param data
