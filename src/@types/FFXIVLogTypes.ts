@@ -42,8 +42,8 @@ export interface ChildLogs {
   value: number;
 }
 
-export interface AggregateLog {
-  childLogs: AggregateLog[];
+export interface CartHoldLog {
+  childLogs: CartHoldLog[];
   name: string;
   engname?: string;
   imageurl: string;
