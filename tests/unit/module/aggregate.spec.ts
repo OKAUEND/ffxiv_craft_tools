@@ -13,16 +13,22 @@ const makeTESTCartHoldLog = (value: number, rank: string): CartHoldLog => ({
   rank: `${rank}`,
 });
 
+/**
+ *テスト用の製作レシピの木構造オブジェクトを生成する
+ */
 const makeTestLogFactory = () => {
-  const tops = [...Array(HORIZONTAL_VALUE)].map((count) => {
-    return makeTESTCartHoldLog(count, "TOP");
+  //最上位のノードを作成する
+  return [...Array(HORIZONTAL_VALUE)].map((topCount) => {
+    //中層のノードとそれの子にあたる低層のノードを作成する
+    const middle = [...Array(HORIZONTAL_VALUE)].map((middleCount) => {
+      //最下層のノードを作成する
+      const raw = [...Array(CHILD_COUNT)].map((childCount) => {
+        return makeTESTCartHoldLog(childCount, `raw`);
+      });
+      return makeTESTCartHoldLog(middleCount, "middle", raw);
+    });
+    return makeTESTCartHoldLog(topCount, "TOP", middle);
   });
-
-  const middle = [...Array(HORIZONTAL_VALUE * CHILD_COUNT)].map((count) => {
-    const raw =
-    return makeTESTCartHoldLog(count, "middle");
-  });
-
 };
 
 describe("Module : 集計関数", () => {});
