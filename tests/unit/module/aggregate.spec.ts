@@ -5,9 +5,13 @@ const HORIZONTAL_VALUE = 4;
 const CHILD_COUNT = 2;
 const NODE_DEPTH = 4;
 
-const makeTESTCartHoldLog = (value: number, rank: string): CartHoldLog => ({
+const makeTESTCartHoldLog = (
+  value: number,
+  rank: string,
+  childs: CartHoldLog[] = [] as CartHoldLog[]
+): CartHoldLog => ({
   name: `TEST${value}`,
-  childLogs: [] as CartHoldLog[],
+  childLogs: childs,
   imageurl: `TEST${value}.com`,
   count: 1,
   rank: `${rank}`,
