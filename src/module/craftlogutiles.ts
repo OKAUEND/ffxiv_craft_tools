@@ -26,8 +26,7 @@ export const makeCartTempLogStructure = (
 
 export const makeAggregate = (
   currentLog: CartHoldLog,
-  parentLog: CartHoldLog,
-  cacalculatedLod: Aggregate
+  cacalculatedLod: Aggregate = {} as Aggregate
 ): Aggregate => ({
   name: currentLog.name,
   engname: currentLog.engname,
