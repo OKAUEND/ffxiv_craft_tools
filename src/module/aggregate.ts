@@ -66,7 +66,7 @@ export const findTreeTerminalLog = (
   return targetLog.childLogs.reduce((acc, current): Aggregate[] => {
     //子と親の関係を逆転させ、同時に必要個数も親の個数と子の個数で乗算させて新しい値を作る
     //関係性を逆転させることで、表示画面で必要素材の下に製作先のアイテムを表示させれるようにする
-    const aggregateLog = makeAggregate(current, targetLog, calculatedLod);
+    const aggregateLog = makeAggregate(current, calculatedLod);
 
     //子が存在していないか、もしくは表示させたい製作段階なら再帰処理をやめる
     //中間段階での製作個数表示があった場合のため、制作段階のでも判断する
