@@ -21,16 +21,16 @@ const makeTESTCartHoldLog = (
  */
 const makeTestLogFactory = () => {
   //最上位のノードを作成する
-  return [...Array(HORIZONTAL_VALUE)].map((topCount) => {
+  return [...Array(HORIZONTAL_VALUE)].map((_, topIndex) => {
     //中層のノードとそれの子にあたる低層のノードを作成する
-    const middle = [...Array(HORIZONTAL_VALUE)].map((middleCount) => {
+    const middle = [...Array(HORIZONTAL_VALUE)].map((_, middleIndex) => {
       //最下層のノードを作成する
-      const raw = [...Array(CHILD_COUNT)].map((childCount) => {
-        return makeTESTCartHoldLog(childCount, `raw`);
+      const raw = [...Array(CHILD_COUNT)].map((_, childIndex) => {
+        return makeTESTCartHoldLog(childIndex, `raw`);
       });
-      return makeTESTCartHoldLog(middleCount, "middle", raw);
+      return makeTESTCartHoldLog(middleIndex, "middle", raw);
     });
-    return makeTESTCartHoldLog(topCount, "TOP", middle);
+    return makeTESTCartHoldLog(topIndex, "TOP", middle);
   });
 };
 
