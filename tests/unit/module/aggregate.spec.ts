@@ -34,4 +34,13 @@ const makeTestLogFactory = () => {
   });
 };
 
-describe("Module : 集計関数", () => {});
+describe("Module : 集計関数", () => {
+  test("木構造の最下層のノードを引っ張り出せるか", () => {
+    const testNodeObject = makeTestLogFactory();
+    // console.log(testNodeObject);
+    testNodeObject.forEach((log) => {
+      console.log(log, findTreeTerminalLog(log, "raw"));
+    });
+  });
+
+});
