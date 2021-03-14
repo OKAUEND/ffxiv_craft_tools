@@ -13,7 +13,7 @@ export interface CraftLog {
   };
   patchversion: number;
   priority?: number;
-  rank?: string;
+  rank: string;
   starmark?: number;
   text: {
     engname: string;
