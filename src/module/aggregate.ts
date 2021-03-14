@@ -79,7 +79,10 @@ export const findTreeTerminalLog = (
   }, [] as Aggregate[]);
 };
 
-export const CartHoldLogCount = (logs: CartHoldLog[], targetRank: string) => {
+export const makeTargetRankObjectToUpper = (
+  logs: CartHoldLog[],
+  targetRank: string
+) => {
   const acc: Aggregate[] = [];
   return logs.forEach((log) => {
     const temp = findTreeTerminalLog(log, targetRank);
