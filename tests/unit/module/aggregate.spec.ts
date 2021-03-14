@@ -60,6 +60,18 @@ describe("Module : 集計関数", () => {
     expect(result.length).toEqual(1);
     expect(result[0]).toEqual(match);
   });
-  test("重複しているログ同士の製作個数を合算する", () => {});
-  test("子の順番が、重複しているログの順番を引き継いでいるか", () => {});
+  test("重複しているログ同士の製作個数を合算する", () => {
+    const childs = [...Array(2)].map((_, index) => {
+      return makeTESTCartHoldLog(index, "middle");
+    });
+
+    const test = [...Array(2)].map(() => {
+      return makeTESTCartHoldLog(1, "raw", childs);
+    });
+
+    const result = mergeDuplicateNameObject(test);
+
+    const match = makeTESTCartHoldLog(1, "raw", [...childs, ...childs], 2);
+    expect(result[0].count).toEqual(2);
+  });
 });
