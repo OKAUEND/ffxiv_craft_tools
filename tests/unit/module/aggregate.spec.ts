@@ -7,12 +7,14 @@ const CHILD_COUNT = 2;
 const makeTESTCartHoldLog = (
   value: number,
   rank: string,
-  childs: CartHoldLog[] = [] as CartHoldLog[]
+  childs: CartHoldLog[] = [] as CartHoldLog[],
+  count: number = 1 as number
 ): CartHoldLog => ({
-  name: `TEST${value}`,
+  name: `TEST${value}${rank}`,
+  engname: `TEST${value}${rank}`,
   childLogs: childs,
   imageurl: `TEST${value}.com`,
-  count: 1,
+  count: count,
   rank: `${rank}`,
 });
 
