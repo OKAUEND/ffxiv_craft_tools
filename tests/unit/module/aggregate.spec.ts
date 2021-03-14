@@ -74,4 +74,5 @@ describe("Module : 集計関数", () => {
     const match = makeTESTCartHoldLog(1, "raw", [...childs, ...childs], 2);
     expect(result[0].count).toEqual(2);
   });
+  test("子の順番が、個数の多い順になっているか", () => {});
 });
