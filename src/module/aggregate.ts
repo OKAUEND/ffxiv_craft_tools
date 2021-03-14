@@ -85,7 +85,8 @@ export const makeTargetRankObjectToUpper = (
 ) => {
   const acc: Aggregate[] = [];
   return logs.forEach((log) => {
-    const temp = findTreeTerminalLog(log, targetRank);
+    const aggregateLog = makeAggregate(log);
+    const temp = findTreeTerminalLog(log, targetRank, aggregateLog);
     [...acc, ...temp];
     return temp;
   });
