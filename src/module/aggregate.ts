@@ -91,3 +91,7 @@ export const makeTargetRankObjectToUpper = (
     return temp;
   });
 };
+
+export const mergeDuplicateNameObject = (logs: Aggregate[]): Aggregate[] => {
+  return logs;
+};
