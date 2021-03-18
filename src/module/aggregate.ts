@@ -93,5 +93,22 @@ export const makeTargetRankObjectToUpper = (
 };
 
 export const mergeDuplicateNameObject = (logs: Aggregate[]): Aggregate[] => {
-  return logs;
+  logs.reduce((acc, log) => {
+    //重複しているログを抽出する
+    const targetLog = logs.filter(
+      (targetLog) => targetLog.engname === log.engname
+    );
+
+    //抽出し重複している製作ログを1つにする
+    return (acc = targetLog.reduce((acc, log) => {
+      //1つにしたい内容は製作個数を加算し、親を配列にしたいので、
+      //2つのキーだけを新しく作りそれを置き換える
+      const temp = {
+        requiredCount: acc.requiredCount + log.requiredCount,
+        parent: [acc.parent, log.parent],
+      };
+
+      return (acc = Object.assign(log, temp));
+    }, {} as Aggregate));
+  }, [] as Aggregate[]);
 };
