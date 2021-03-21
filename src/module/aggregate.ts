@@ -119,3 +119,32 @@ export const mergeDuplicateNameObject = (logs: Aggregate[]): Aggregate[] => {
     return [...acc, mergeLog];
   }, [] as Aggregate[]);
 };
+
+interface AggregateState {
+  aggregateLogs: Aggregate[];
+  selectedLogs: CartHoldLog[];
+  tartgetRank: string;
+}
+
+export const useAggregateLogs = () => {
+  const state = reactive<AggregateState>({
+    aggregateLogs: [],
+    selectedLogs: [],
+    tartgetRank: "TEST",
+  });
+
+  const changeRank = (selectedRank: string) =>
+    (state.tartgetRank = selectedRank);
+
+  watch(
+    () => state.tartgetRank,
+    (tartgetRank) => {
+      makeTargetRankObjectToUpper(state.selectedLogs, tartgetRank);
+    }
+  );
+
+  return {
+    state: readonly(state),
+    changeRank: changeRank,
+  };
+};
