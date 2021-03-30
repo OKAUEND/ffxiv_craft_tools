@@ -57,7 +57,7 @@ export const getChildLogDetail = async (cartlogs: StoreLog[]) => {
   );
 };
 
-export const findTreeTerminalLog = (
+export const filteringPreOrderRecursive = (
   targetLog: CartHoldLog,
   targetRank: string,
   calculatedLod: Aggregate = {} as Aggregate,
@@ -75,7 +75,7 @@ export const findTreeTerminalLog = (
       const useAcc = acc.length > 0 ? acc : callerAccumulator;
       return [...useAcc, aggregateLog];
     }
-    return findTreeTerminalLog(current, targetRank, aggregateLog, acc);
+    return filteringPreOrderRecursive(current, targetRank, aggregateLog, acc);
   }, [] as Aggregate[]);
 };
 
@@ -86,7 +86,7 @@ export const filterTargetRankObject = (
   const acc: Aggregate[] = [];
   return logs.forEach((log) => {
     const aggregateLog = makeAggregate(log);
-    const temp = findTreeTerminalLog(log, targetRank, aggregateLog);
+    const temp = filteringPreOrderRecursive(log, targetRank, aggregateLog);
     [...acc, ...temp];
     return temp;
   });
