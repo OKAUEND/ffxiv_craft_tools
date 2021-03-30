@@ -79,7 +79,7 @@ export const findTreeTerminalLog = (
   }, [] as Aggregate[]);
 };
 
-export const makeTargetRankObjectToUpper = (
+export const filterTargetRankObject = (
   logs: CartHoldLog[],
   targetRank: string
 ) => {
@@ -142,7 +142,7 @@ export const useAggregateLogs = () => {
   watch(
     () => state.tartgetRank,
     (tartgetRank) => {
-      makeTargetRankObjectToUpper(state.selectedLogs, tartgetRank);
+      filterTargetRankObject(state.selectedLogs, tartgetRank);
     }
   );
 
