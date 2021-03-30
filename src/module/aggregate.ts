@@ -136,6 +136,9 @@ export const useAggregateLogs = () => {
   const changeRank = (selectedRank: string) =>
     (state.tartgetRank = selectedRank);
 
+  /**
+   * 段階の変数が変更された時にターゲットの段階のオブジェクトを絞り込む
+   */
   watch(
     () => state.tartgetRank,
     (tartgetRank) => {
