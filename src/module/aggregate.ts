@@ -98,13 +98,11 @@ export const filterTargetRankObject = (
   logs: CartHoldLog[],
   targetRank: string
 ) => {
-  const acc: Aggregate[] = [];
-  return logs.forEach((log) => {
+  return logs.reduce((acc, log) => {
     const aggregateLog = makeAggregate(log);
     const temp = filteringPreOrderRecursive(log, targetRank, aggregateLog);
-    [...acc, ...temp];
-    return temp;
-  });
+    return [...acc, ...temp];
+  }, [] as Aggregate[]);
 };
 
 /**
