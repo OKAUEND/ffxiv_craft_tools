@@ -1,3 +1,4 @@
+import { reactive, watch, readonly } from "vue";
 import {
   StoreLog,
   ChildLogs,
@@ -142,7 +143,10 @@ export const useAggregateLogs = () => {
   watch(
     () => state.tartgetRank,
     (tartgetRank) => {
-      filterTargetRankObject(state.selectedLogs, tartgetRank);
+      state.aggregateLogs = filterTargetRankObject(
+        state.selectedLogs,
+        tartgetRank
+      );
     }
   );
 
