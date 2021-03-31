@@ -58,6 +58,14 @@ export const getChildLogDetail = async (cartlogs: StoreLog[]) => {
   );
 };
 
+/**
+ * 目的の製作段階に該当する製作ログを絞り込むための再帰関数
+ * @param targetLog
+ * @param targetRank
+ * @param calculatedLod
+ * @param callerAccumulator
+ * @returns @Aggregate[]
+ */
 export const filteringPreOrderRecursive = (
   targetLog: CartHoldLog,
   targetRank: string,
@@ -80,6 +88,12 @@ export const filteringPreOrderRecursive = (
   }, [] as Aggregate[]);
 };
 
+/**
+ * 目的の製作段階に該当する製作ログを絞り込む
+ * @param logs
+ * @param targetRank
+ * @returns
+ */
 export const filterTargetRankObject = (
   logs: CartHoldLog[],
   targetRank: string
@@ -93,6 +107,11 @@ export const filterTargetRankObject = (
   });
 };
 
+/**
+ * 重複名の製作ログを1つに統合する
+ * @param logs
+ * @returns
+ */
 export const mergeDuplicateNameObject = (logs: Aggregate[]): Aggregate[] => {
   return logs.reduce((acc, log) => {
     //すでにマージされた内容だったら、処理せず次のへ進む
@@ -127,6 +146,10 @@ interface AggregateState {
   tartgetRank: string;
 }
 
+/**
+ * 集計画面の製作ログを管理するhook関数
+ * @returns
+ */
 export const useAggregateLogs = () => {
   const state = reactive<AggregateState>({
     aggregateLogs: [],
