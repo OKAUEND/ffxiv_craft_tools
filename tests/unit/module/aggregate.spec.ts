@@ -50,29 +50,27 @@ describe("Module : 集計関数", () => {
       return makeTESTCartHoldLog(index, "middle");
     });
 
-    const test = [...Array(2)].map(() => {
-      return makeTESTCartHoldLog(1, "raw", childs);
-    });
+    const temp = makeTESTCartHoldLog(1, "raw", childs);
+    const test = makeAggregate(temp);
 
-    const result = mergeDuplicateNameObject(test);
+    const result = mergeDuplicateNameObject([test, test]);
 
-    const match = makeTESTCartHoldLog(1, "raw", [...childs, ...childs], 2);
-    expect(result.length).toEqual(1);
-    expect(result[0]).toEqual(match);
+    //1つにまとまったか
+    expect(result.length).toBe(1);
   });
-  test("重複しているログ同士の製作個数を合算する", () => {
+  test("重複しているログ同士の製作個数を合算しているか", () => {
     const childs = [...Array(2)].map((_, index) => {
       return makeTESTCartHoldLog(index, "middle");
     });
 
-    const test = [...Array(2)].map(() => {
-      return makeTESTCartHoldLog(1, "raw", childs);
-    });
+    const temp = makeTESTCartHoldLog(1, "raw", childs);
+    const test = makeAggregate(temp);
 
-    const result = mergeDuplicateNameObject(test);
+    const result = mergeDuplicateNameObject([test, test]);
 
-    const match = makeTESTCartHoldLog(1, "raw", [...childs, ...childs], 2);
-    expect(result[0].count).toEqual(2);
+    const count = temp.count + temp.count;
+
+    expect(result[0].requiredCount).toEqual(count);
   });
   test("子の順番が、個数の多い順になっているか", () => {});
 });
