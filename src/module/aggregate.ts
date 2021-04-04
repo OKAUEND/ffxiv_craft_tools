@@ -100,6 +100,11 @@ export const filterTargetRankObject = (
 ) => {
   return logs.reduce((acc, log) => {
     const aggregateLog = makeAggregate(log);
+
+    if (targetRank === log.rank) {
+      return [...acc, ...[aggregateLog]];
+    }
+
     const temp = filteringPreOrderRecursive(log, targetRank, aggregateLog);
     return [...acc, ...temp];
   }, [] as Aggregate[]);
