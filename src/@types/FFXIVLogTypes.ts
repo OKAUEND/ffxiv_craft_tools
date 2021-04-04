@@ -52,7 +52,7 @@ export interface CartHoldLog {
 }
 
 export interface Aggregate {
-  parent: CartHoldLog | Aggregate;
+  parent: Aggregate | Aggregate[];
   name: string;
   engname?: string;
   imageurl: string;
