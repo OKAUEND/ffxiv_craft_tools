@@ -162,6 +162,12 @@ export const useAggregateLogs = (
 
   const setRank = (changedRank: string) => (state.tartgetRank = changedRank);
 
+  //初期生成時に対象段階の製作ログをフィルタリングできるようにする
+  state.aggregateLogs = filterTargetRankObject(
+    state.selectedLogs,
+    state.tartgetRank
+  );
+
   /**
    * 段階の変数が変更された時にターゲットの段階のオブジェクトを絞り込む
    */
