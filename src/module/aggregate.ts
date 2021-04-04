@@ -1,4 +1,4 @@
-import { reactive, watch, readonly } from "vue";
+import { reactive, readonly } from "vue";
 import {
   StoreLog,
   ChildLogs,
