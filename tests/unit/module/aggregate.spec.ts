@@ -1,4 +1,4 @@
-import { mergeDuplicateNameObject, useAggregateLogs } from "@/module/aggregate";
+import { mergeDuplicateNameObject, useAggregateLog } from "@/module/aggregate";
 
 import { makeAggregate } from "@/module/craftlogutiles";
 import { CartHoldLog } from "@/@types/FFXIVLogTypes";
@@ -80,7 +80,7 @@ describe("Module : 集計関数", () => {
     });
 
     const temp = makeTESTCartHoldLog(1, "raw", childs);
-    const useAggregate = useAggregateLogs([temp], "raw");
+    const useAggregate = useAggregateLog([temp]);
     expect(useAggregate.state.selectedLogs).toEqual([temp]);
   });
 
@@ -90,7 +90,6 @@ describe("Module : 集計関数", () => {
     });
 
     const temp = makeTESTCartHoldLog(1, "middle", childs);
-    const useAggregate = useAggregateLogs([temp], "raw");
-    expect(useAggregate.state.aggregateLogs.length).toBe(1);
+    const useAggregate = useAggregateLog([temp]);
   });
 });

@@ -150,10 +150,7 @@ interface AggregateState {
  * 集計画面の製作ログを管理するhook関数
  * @returns
  */
-export const useAggregateLogs = (
-  initiatedLogs: CartHoldLog[],
-  initiatedRank: string
-) => {
+export const useAggregateLog = (initiatedLogs: CartHoldLog[]) => {
   const state = reactive<AggregateState>({
     aggregateLogs: [],
     selectedLogs: initiatedLogs,
