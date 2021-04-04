@@ -143,7 +143,6 @@ export const mergeDuplicateNameObject = (logs: Aggregate[]): Aggregate[] => {
 interface AggregateState {
   aggregateLogs: Aggregate[];
   selectedLogs: CartHoldLog[];
-  tartgetRank: string;
 }
 
 /**
