@@ -126,13 +126,14 @@ export const mergeDuplicateNameObject = (logs: Aggregate[]): Aggregate[] => {
     const mergeLog = targetLog.reduce((acc, log) => {
       //1つにしたい内容は製作個数を加算し、親を配列にしたいので、
       //2つのキーだけを新しく作りそれを置き換える
-      const temp = {
+
+      const updatePropertie = {
         requiredCount:
           (acc.requiredCount > 0 ? acc.requiredCount : 0) + log.requiredCount,
         parent: [acc.parent, log.parent],
       };
 
-      return (acc = Object.assign(log, temp));
+      return (acc = Object.assign(log, updatePropertie));
     }, {} as Aggregate);
 
     return [...acc, mergeLog];
@@ -149,15 +150,17 @@ interface AggregateState {
  * 集計画面の製作ログを管理するhook関数
  * @returns
  */
-export const useAggregateLogs = (logs: CartHoldLog[]) => {
+export const useAggregateLogs = (
+  initiatedLogs: CartHoldLog[],
+  initiatedRank: string
+) => {
   const state = reactive<AggregateState>({
     aggregateLogs: [],
-    selectedLogs: logs,
-    tartgetRank: "TEST",
+    selectedLogs: initiatedLogs,
+    tartgetRank: initiatedRank,
   });
 
-  const changeRank = (selectedRank: string) =>
-    (state.tartgetRank = selectedRank);
+  const setRank = (changedRank: string) => (state.tartgetRank = changedRank);
 
   /**
    * 段階の変数が変更された時にターゲットの段階のオブジェクトを絞り込む
@@ -174,6 +177,6 @@ export const useAggregateLogs = (logs: CartHoldLog[]) => {
 
   return {
     state: readonly(state),
-    changeRank: changeRank,
+    setRank,
   };
 };
