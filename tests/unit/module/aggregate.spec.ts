@@ -86,10 +86,10 @@ describe("Module : 集計関数", () => {
 
   test("hooks関数で初期値を設定したときに、watchメソッドが感知し、対象オブジェクトを抽出しているか", () => {
     const childs = [...Array(2)].map((_, index) => {
-      return makeTESTCartHoldLog(index, "middle");
+      return makeTESTCartHoldLog(index, "raw");
     });
 
-    const temp = makeTESTCartHoldLog(1, "raw", childs);
+    const temp = makeTESTCartHoldLog(1, "middle", childs);
     const useAggregate = useAggregateLogs([temp], "raw");
     expect(useAggregate.state.aggregateLogs.length).toBe(1);
   });
