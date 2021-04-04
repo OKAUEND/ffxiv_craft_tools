@@ -145,6 +145,8 @@ interface AggregateState {
   selectedLogs: CartHoldLog[];
 }
 
+type TargetRank = "top" | "middle" | "raw";
+
 /**
  * 集計画面の製作ログを管理するhook関数
  * @returns
@@ -153,32 +155,16 @@ export const useAggregateLog = (initiatedLogs: CartHoldLog[]) => {
   const state = reactive<AggregateState>({
     aggregateLogs: [],
     selectedLogs: initiatedLogs,
-    tartgetRank: initiatedRank,
   });
 
-  const setRank = (changedRank: string) => (state.tartgetRank = changedRank);
-
-  //初期生成時に対象段階の製作ログをフィルタリングできるようにする
-  state.aggregateLogs = filterTargetRankObject(
-    state.selectedLogs,
-    state.tartgetRank
-  );
-
-  /**
-   * 段階の変数が変更された時にターゲットの段階のオブジェクトを絞り込む
-   */
-  watch(
-    () => state.tartgetRank,
-    (tartgetRank) => {
-      state.aggregateLogs = filterTargetRankObject(
-        state.selectedLogs,
-        tartgetRank
-      );
-    }
-  );
+  const fiterTargetRankLogs = (targetRank: TargetRank) =>
+    (state.aggregateLogs = filterTargetRankObject(
+      state.selectedLogs,
+      targetRank
+    ));
 
   return {
     state: readonly(state),
-    setRank,
+    fiterTargetRankLogs,
   };
 };
