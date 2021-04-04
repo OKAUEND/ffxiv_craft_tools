@@ -1,4 +1,6 @@
-import { findTreeTerminalLog } from "@/module/aggregate";
+import { mergeDuplicateNameObject, useAggregateLog } from "@/module/aggregate";
+
+import { makeAggregate } from "@/module/craftlogutiles";
 import { CartHoldLog } from "@/@types/FFXIVLogTypes";
 
 const HORIZONTAL_VALUE = 4;
@@ -40,9 +42,7 @@ describe("Module : 集計関数", () => {
   test("木構造の最下層のノードを引っ張り出せるか", () => {
     const testNodeObject = makeTestLogFactory();
     // console.log(testNodeObject);
-    testNodeObject.forEach((log) => {
-      console.log(log, findTreeTerminalLog(log, "raw"));
-    });
+    // testNodeObject.forEach((log) => {});
   });
 
   test("重複しているログを1つにまとめる", () => {
@@ -50,16 +50,47 @@ describe("Module : 集計関数", () => {
       return makeTESTCartHoldLog(index, "middle");
     });
 
-    const test = [...Array(2)].map(() => {
-      return makeTESTCartHoldLog(1, "raw", childs);
+    const temp = makeTESTCartHoldLog(1, "raw", childs);
+    const test = makeAggregate(temp);
+
+    const result = mergeDuplicateNameObject([test, test]);
+
+    //1つにまとまったか
+    expect(result.length).toBe(1);
+  });
+  test("重複しているログ同士の製作個数を合算しているか", () => {
+    const childs = [...Array(2)].map((_, index) => {
+      return makeTESTCartHoldLog(index, "middle");
     });
 
-    const result = mergeDuplicateNameObject(test);
+    const temp = makeTESTCartHoldLog(1, "raw", childs);
+    const test = makeAggregate(temp);
 
-    const match = makeTESTCartHoldLog(1, "raw", [...childs, ...childs], 2);
-    expect(result.length).toEqual(1);
-    expect(result[0]).toEqual(match);
+    const result = mergeDuplicateNameObject([test, test]);
+
+    const count = temp.count + temp.count;
+
+    expect(result[0].requiredCount).toEqual(count);
   });
-  test("重複しているログ同士の製作個数を合算する", () => {});
-  test("子の順番が、重複しているログの順番を引き継いでいるか", () => {});
+  test("hooks関数で初期値を代入できているか", () => {
+    const childs = [...Array(2)].map((_, index) => {
+      return makeTESTCartHoldLog(index, "middle");
+    });
+
+    const temp = makeTESTCartHoldLog(1, "raw", childs);
+    const useAggregate = useAggregateLog([temp]);
+    expect(useAggregate.state.selectedLogs).toEqual([temp]);
+  });
+
+  test("製作ランクを指定したときに抽出された内容を取得できるか", () => {
+    const childs = [...Array(2)].map((_, index) => {
+      return makeTESTCartHoldLog(index, "raw");
+    });
+
+    const temp = makeTESTCartHoldLog(1, "middle", childs);
+    const useAggregate = useAggregateLog([temp]);
+
+    useAggregate.fiterTargetRankLogs("middle");
+    expect(useAggregate.state.aggregateLogs[0].rank).toMatch("middle");
+  });
 });
