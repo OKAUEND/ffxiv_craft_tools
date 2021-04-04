@@ -1,4 +1,6 @@
-import { findTreeTerminalLog } from "@/module/aggregate";
+import { mergeDuplicateNameObject, useAggregateLogs } from "@/module/aggregate";
+
+import { makeAggregate } from "@/module/craftlogutiles";
 import { CartHoldLog } from "@/@types/FFXIVLogTypes";
 
 const HORIZONTAL_VALUE = 4;
