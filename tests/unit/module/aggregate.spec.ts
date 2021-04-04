@@ -72,5 +72,23 @@ describe("Module : 集計関数", () => {
 
     expect(result[0].requiredCount).toEqual(count);
   });
-  test("子の順番が、個数の多い順になっているか", () => {});
+  test("hooks関数で初期値を代入できているか", () => {
+    const childs = [...Array(2)].map((_, index) => {
+      return makeTESTCartHoldLog(index, "middle");
+    });
+
+    const temp = makeTESTCartHoldLog(1, "raw", childs);
+    const useAggregate = useAggregateLogs([temp], "raw");
+    expect(useAggregate.state.selectedLogs).toEqual([temp]);
+  });
+
+  test("hooks関数で初期値を設定したときに、watchメソッドが感知し、対象オブジェクトを抽出しているか", () => {
+    const childs = [...Array(2)].map((_, index) => {
+      return makeTESTCartHoldLog(index, "middle");
+    });
+
+    const temp = makeTESTCartHoldLog(1, "raw", childs);
+    const useAggregate = useAggregateLogs([temp], "raw");
+    expect(useAggregate.state.aggregateLogs.length).toBe(1);
+  });
 });
