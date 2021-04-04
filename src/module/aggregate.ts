@@ -127,7 +127,8 @@ export const mergeDuplicateNameObject = (logs: Aggregate[]): Aggregate[] => {
       //1つにしたい内容は製作個数を加算し、親を配列にしたいので、
       //2つのキーだけを新しく作りそれを置き換える
       const temp = {
-        requiredCount: acc.requiredCount + log.requiredCount,
+        requiredCount:
+          (acc.requiredCount > 0 ? acc.requiredCount : 0) + log.requiredCount,
         parent: [acc.parent, log.parent],
       };
 
