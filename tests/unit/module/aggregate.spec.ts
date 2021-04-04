@@ -84,12 +84,15 @@ describe("Module : 集計関数", () => {
     expect(useAggregate.state.selectedLogs).toEqual([temp]);
   });
 
-  test("hooks関数で初期値を設定したときに、watchメソッドが感知し、対象オブジェクトを抽出しているか", () => {
+  test("製作ランクを指定したときに抽出された内容を取得できるか", () => {
     const childs = [...Array(2)].map((_, index) => {
       return makeTESTCartHoldLog(index, "raw");
     });
 
     const temp = makeTESTCartHoldLog(1, "middle", childs);
     const useAggregate = useAggregateLog([temp]);
+
+    useAggregate.fiterTargetRankLogs("middle");
+    expect(useAggregate.state.aggregateLogs[0].rank).toMatch("middle");
   });
 });
