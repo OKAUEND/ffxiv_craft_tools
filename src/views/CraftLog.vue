@@ -35,7 +35,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, reactive, ref } from "vue";
-import firabase from "@/firebase.ts";
+import firabase from "@/firebase";
 import { useStore } from "@/store";
 import { useRoute, useRouter } from "vue-router";
 
