@@ -18,8 +18,11 @@ export default defineComponent({
     const router = useRouter();
     const state = useStore();
 
-    const NoSelectedMsgComponent = NoSelectedMsg;
-    return { NoSelectedMsgComponent };
+    const hasSelectLog = state.getters.getCartsLength === 0;
+
+    const showComponent = hasSelectLog ? "" : NoSelectedMsg;
+
+    return { showComponent };
   },
 });
 </script>
