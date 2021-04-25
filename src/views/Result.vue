@@ -1,24 +1,6 @@
 <template>
   <div class="result">
-    <template v-if="isSelectedCraftLog">
-      <component :is="NoSelectedMsgComponent" />
-    </template>
-    <template v-else>
-      <article class="result__progress"></article>
-      <nav class="result__Nav">
-        <div class="result__LeftNav">
-          <router-link to="/">
-            <!-- <atom-back-icon /> -->
-          </router-link>
-        </div>
-        <div class="result__CenterNav"></div>
-      </nav>
-      <div class="result__Body">
-        <!-- <transition mode="out-in">
-        <router-view />
-      </transition> -->
-      </div>
-    </template>
+    <component :is="showComponent" />
   </div>
 </template>
 
