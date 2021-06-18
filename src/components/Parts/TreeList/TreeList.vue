@@ -1,14 +1,14 @@
 <template>
   <ul class="treelist">
-    <li class="treelist__parent">
+    <li class="treelist__parent" v-for="parent in props" :key="parent.order">
       <div class="treelist__body">
         <img class="treelist__icon" />
-        {{ props.Parent.name }}
-        <div class="treelist__body--value">{{ props.Parent.value }}</div>
+        {{ parent.name }}
+        <div class="treelist__body--value">{{ parent.value }}</div>
       </div>
       <ul class="treelsit__list">
         <li
-          v-for="item in treeChilds"
+          v-for="item in parent.childs"
           :key="item.order"
           class="treelist__list-item"
         >
