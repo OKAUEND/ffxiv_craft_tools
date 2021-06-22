@@ -25,7 +25,20 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-export default defineComponent({});
+import BaseImageMedium from "@/components/Base/Image/BaseImageMedium.vue";
+export default defineComponent({
+  components: {
+    BaseImageMedium,
+  },
+  props: {
+    parent: {
+      type: Object,
+    },
+  },
+  setup() {
+    return {};
+  },
+});
 </script>
 
 <style lang="scss" module>
