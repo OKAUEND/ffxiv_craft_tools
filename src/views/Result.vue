@@ -5,16 +5,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, SetupContext } from "vue";
+import { defineComponent } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
 import NoSelectedMsg from "@/components/Pages/ErrorAnnounce/NoSelectedItem.vue";
 export default defineComponent({
-  component: {
-    NoSelectedMsg,
-  },
-  setup(context: SetupContext) {
+  setup() {
     const router = useRouter();
     const state = useStore();
 
