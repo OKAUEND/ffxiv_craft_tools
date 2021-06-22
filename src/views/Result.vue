@@ -16,9 +16,8 @@ export default defineComponent({
     const router = useRouter();
     const state = useStore();
 
-    const hasSelectLog = state.getters.getCartsLength === 0;
-
-    const showComponent = hasSelectLog ? "" : NoSelectedMsg;
+    const showComponent =
+      state.getters.getCartsLength === 0 ? TreeList : NoSelectedMsgComponent;
 
     return { showComponent };
   },
