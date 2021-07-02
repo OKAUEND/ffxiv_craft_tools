@@ -1,8 +1,8 @@
 import {
-  CraftLog,
-  StoreLog,
-  CartHoldLog,
   Aggregate,
+  CartHoldLog,
+  CraftLog,
+  StoreLog
 } from "@/@types/FFXIVLogTypes";
 
 export function assertIsDefind<T>(val: T): asserts val is NonNullable<T> {
@@ -17,9 +17,9 @@ export const makeAggregate = (
 ): Aggregate => ({
   name: currentLog.name,
   engname: currentLog.engname,
-  baseCount: currentLog.count,
+  baseCount: currentLog.value,
   requiredCount:
-    currentLog.count *
+    currentLog.value *
     (cacalculatedLod.requiredCount > 0 ? cacalculatedLod.requiredCount : 1),
   imageurl: currentLog.imageurl,
   parent: cacalculatedLod,
