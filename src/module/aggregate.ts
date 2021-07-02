@@ -1,13 +1,10 @@
-import { reactive, readonly } from "vue";
 import {
   Aggregate,
-  CartHoldLog, CraftLog, SimpleCraftLogs, StoreLog
+  CartHoldLog
 } from "@/@types/FFXIVLogTypes";
-
-import { fetchCraftLogFromPath } from "@/module/firebase";
+import { TargetRank } from "@/@types/UserInterfaceTypes";
 import {
-  makeCartTempLogStructure,
-  makeAggregate,
+  makeAggregate
 } from "@/module/craftlogutiles";
 import { reactive, readonly } from "vue";
 
