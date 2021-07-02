@@ -1,5 +1,5 @@
 export interface CraftLog {
-  childrenlogs: ChildLogs[];
+  simplechildlogs: SimpleCraftLogs[];
   gathering?: {
     Xpoint: number;
     Zpoint: number;
@@ -32,7 +32,7 @@ export interface CraftLog {
   };
 }
 
-export interface ChildLogs {
+export interface SimpleCraftLogs {
   isEnable: boolean;
   order: number;
   childrenDocumentRef: firebase.default.firestore.DocumentReference;

@@ -1,10 +1,7 @@
 import { reactive, readonly } from "vue";
 import {
-  StoreLog,
-  ChildLogs,
-  CraftLog,
-  CartHoldLog,
   Aggregate,
+  CartHoldLog, CraftLog, SimpleCraftLogs, StoreLog
 } from "@/@types/FFXIVLogTypes";
 
 import { fetchCraftLogFromPath } from "@/module/firebase";
