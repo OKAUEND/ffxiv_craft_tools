@@ -1,5 +1,13 @@
-export interface CraftLog {
-  simplechildlogs: SimpleCraftLogs[];
+export interface SimpleCraftLog {
+  isEnable: boolean;
+  order: number;
+  relationDocumentRef: firebase.default.firestore.DocumentReference;
+  name: string;
+  engname?: string;
+  imageurl: string;
+  value: number;
+}
+interface BaseCraftLog {
   gathering?: {
     Xpoint: number;
     Zpoint: number;
@@ -32,14 +40,12 @@ export interface CraftLog {
   };
 }
 
-export interface SimpleCraftLogs {
-  isEnable: boolean;
-  order: number;
-  childrenDocumentRef: firebase.default.firestore.DocumentReference;
-  name: string;
-  engname?: string;
-  imageurl: string;
-  value: number;
+export interface ChildSimplifiedCraftLog extends BaseCraftLog {
+  simplechildlogs: SimpleCraftLog[];
+}
+
+export interface FullCraftLog extends BaseCraftLog {
+  childlogs: FullCraftLog[];
 }
 
 export interface CartHoldLog {
