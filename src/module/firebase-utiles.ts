@@ -28,28 +28,28 @@ export const fetchQueryConditionCraftLog = async (
 /**
  * 必要素材となる子の製作レシピを取り出す
  * @param documentRef
- * @returns CraftLog
+ * @returns ChildSimplifiedCraftLog
  */
 export const fetchCraftLogFromPath = async (
   documentRef: firebase.firestore.DocumentReference
-): Promise<CraftLog> => {
+): Promise<ChildSimplifiedCraftLog> => {
   return await documentRef.get().then((snapshot) => {
-    return snapshot.data() as CraftLog;
+    return snapshot.data() as ChildSimplifiedCraftLog;
   });
 };
 
-type ValidChildOnlyEnable = (a:SimpleCraftLogs[] ) => SimpleCraftLogs[]
+type ValidChildOnlyEnable = (a: SimpleCraftLog[]) => SimpleCraftLog[];
 
-const validChildOnlyEnable:ValidChildOnlyEnable = (param) =>{
-  return param.filter(item => item.isEnable === true)
-}
+const validChildOnlyEnable: ValidChildOnlyEnable = (param) => {
+  return param.filter((item) => item.isEnable === true);
+};
 
-const fetchAllValidChildFactor = async (craftlog: CraftLog) => {
+const fetchAllValidChildFactor = async (craftlog: ChildSimplifiedCraftLog) => {
   //有効な子要素のみに絞り込む
   const validChildFactor = validChildOnlyEnable(craftlog.simplechildlogs);
 
   return await Promise.all(
-    validChildFactor.map(async (child): Promise<CraftLog> => {
+    validChildFactor.map(async (child): Promise<FullCraftLog> => {
       //1つ1つの製作レシピをループで処理する
       const log = await fetchCraftLogFromPath(child.relationDocumentRef);
 
@@ -58,9 +58,10 @@ const fetchAllValidChildFactor = async (craftlog: CraftLog) => {
       const childnode = await fetchAllValidChildFactor(log);
 
       //全データ版である素材情報の配列を専用のプロパティに入れる。
-      log.childlogs = childnode;
-      
-      return log;
+      // log.childlogs = childnode;
+      const { simplechildlogs, ...testlog } = log;
+
+      return { ...testlog, childlogs: childnode };
     })
   );
 };
