@@ -1,4 +1,4 @@
-interface Content {
+export interface Content {
   name: string;
   jpname: string;
   type: string;
@@ -7,8 +7,8 @@ interface Content {
   upperlevel?: number;
   lowerlevel?: number;
 }
-interface StringObjectKey {
+export interface StringObjectKey {
   [key: string]: Content;
 }
 
-export { Content, StringObjectKey };
+export type TargetRank = "Top" | "Middle" | "Raw";

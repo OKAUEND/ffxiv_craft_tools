@@ -95,8 +95,6 @@ interface AggregateState {
   selectedLogs: CartHoldLog[];
 }
 
-type TargetRank = "top" | "middle" | "raw";
-
 /**
  * 集計画面の製作ログを管理するhook関数
  * @returns
