@@ -1,4 +1,9 @@
-import { CraftLog, SimpleCraftLogs, StoreLog } from "@/@types/FFXIVLogTypes";
+import {
+  ChildSimplifiedCraftLog,
+  FullCraftLog,
+  SimpleCraftLog,
+  StoreLog,
+} from "@/@types/FFXIVLogTypes";
 import firebase from "@/firebase";
 
 /**

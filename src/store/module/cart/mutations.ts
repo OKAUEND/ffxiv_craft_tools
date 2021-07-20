@@ -1,17 +1,14 @@
-import { MutationTree } from "vuex";
-
-import { CartMutationTypes } from "./mutation-type";
 import { StoreLog } from "@/@types/FFXIVLogTypes";
-
-import { CartStateTypes } from "./state";
-
 import {
   createLogs,
-  mergeDuplicateLog,
-  includesTargets,
-  fetchTargetLog,
   deleteLogs,
-} from "@/module/craftlogutiles";
+  fetchTargetLog,
+  includesTargets,
+  mergeDuplicateLog,
+} from "@/module/craftlog-utiles";
+import { MutationTree } from "vuex";
+import { CartMutationTypes } from "./mutation-type";
+import { CartStateTypes } from "./state";
 
 export type Mutations<S = CartStateTypes> = {
   [CartMutationTypes.add](state: S, paylod: StoreLog): void;

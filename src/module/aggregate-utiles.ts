@@ -1,13 +1,7 @@
-import {
-  Aggregate,
-  CartHoldLog
-} from "@/@types/FFXIVLogTypes";
+import { Aggregate, CartHoldLog } from "@/@types/FFXIVLogTypes";
 import { TargetRank } from "@/@types/UserInterfaceTypes";
-import {
-  makeAggregate
-} from "@/module/craftlogutiles";
+import { makeAggregate } from "@/module/craftlog-utiles";
 import { reactive, readonly } from "vue";
-
 
 /**
  * 目的の製作段階に該当する製作ログを絞り込むための再帰関数
