@@ -53,7 +53,7 @@ export interface CartHoldLog {
   name: string;
   engname?: string;
   imageurl: string;
-  count: number;
+  value: number;
   rank: string;
 }
 
@@ -73,6 +73,7 @@ export interface CraftLogs {
 
 export interface ScheduleData {
   log: ChildSimplifiedCraftLog;
+  baseorder: number;
   order: number;
 }
 

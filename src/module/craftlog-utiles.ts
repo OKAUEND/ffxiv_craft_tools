@@ -38,7 +38,7 @@ export const makeLog = (
   order: number
 ): ScheduleData => ({
   log: data,
-  value: value,
+  baseorder: value,
   order: order,
 });
 
@@ -52,8 +52,8 @@ export const mergeDuplicateLog = (
   args2: ScheduleData
 ): ScheduleData => ({
   log: args.log,
-  value: args.value + args2.value,
-  order: args.order,
+  order: args.order + args2.order,
+  baseorder: args.baseorder,
 });
 
 /**
@@ -98,7 +98,7 @@ export const deleteLogs = (
   );
 
   return tmp.map((targer, index) => {
-    return makeLog(targer.log, targer.value, index);
+    return makeLog(targer.log, targer.order, index);
   });
 };
 
