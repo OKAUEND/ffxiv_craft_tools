@@ -68,12 +68,11 @@ export interface Aggregate {
 }
 
 export interface CraftLogs {
-  logs: CraftLog[];
+  logs: ChildSimplifiedCraftLog[];
 }
 
-export interface StoreLog {
-  log: CraftLog;
-  value: number;
+export interface ScheduleData {
+  log: ChildSimplifiedCraftLog;
   order: number;
 }
 

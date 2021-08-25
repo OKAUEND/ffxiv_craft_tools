@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, computed, SetupContext } from "vue";
-import { CraftLog } from "@/@types/FFXIVLogTypes";
+import { ChildSimplifiedCraftLog } from "@/@types/FFXIVLogTypes";
 
 import BaseImageMedium from "@/components/Base/Image/BaseImageMedium.vue";
 import BaseImageSmall from "@/components/Base/Image/BaseImageSmall.vue";
@@ -40,7 +40,7 @@ import { useCount } from "@/module/statefull";
 import { makeLog } from "@/module/craftlogutiles";
 
 interface Props {
-  craftdata: CraftLog;
+  craftdata: ChildSimplifiedCraftLog;
   statecount: number;
 }
 

@@ -39,7 +39,11 @@ import firabase from "@/firebase";
 import { useStore } from "@/store";
 import { useRoute, useRouter } from "vue-router";
 
-import { CraftLog, CraftLogs, StoreLog } from "@/@types/FFXIVLogTypes";
+import {
+  ChildSimplifiedCraftLog,
+  CraftLogs,
+  ScheduleData,
+} from "@/@types/FFXIVLogTypes";
 import { StringObjectKey } from "@/@types/UserInterfaceTypes";
 import { CartActionTypes } from "@/store/module/cart/actions-type";
 
@@ -73,21 +77,22 @@ export default defineComponent({
     });
 
     const fetchfirestore = async (emitvalue: StringObjectKey) => {
-      const documentRef: firabase.firestore.Query<firabase.firestore.DocumentData> = firabase
-        .firestore()
-        .collection("CraftLog")
-        .where("type.job", "==", emitvalue.crafter.name)
-        .where("level.level", "<=", emitvalue.level.upperlevel)
-        .where("level.level", ">=", emitvalue.level.lowerlevel);
+      const documentRef: firabase.firestore.Query<firabase.firestore.DocumentData> =
+        firabase
+          .firestore()
+          .collection("CraftLog")
+          .where("type.job", "==", emitvalue.crafter.name)
+          .where("level.level", "<=", emitvalue.level.upperlevel)
+          .where("level.level", ">=", emitvalue.level.lowerlevel);
 
-      const fetchdata = await documentRef.get().then((queryShapshot) => {
-        return queryShapshot.docs.map((doc) => doc.data() as CraftLog);
+      firestoredatas.logs = await documentRef.get().then((queryShapshot) => {
+        return queryShapshot.docs.map(
+          (doc) => doc.data() as ChildSimplifiedCraftLog
+        );
       });
-
-      firestoredatas.logs = fetchdata;
     };
 
-    const addCraftLogToCart = (craftlog: StoreLog) => {
+    const addCraftLogToCart = (craftlog: ScheduleData) => {
       state.dispatch(CartActionTypes.add, craftlog);
     };
 

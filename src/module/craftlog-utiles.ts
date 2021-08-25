@@ -1,8 +1,8 @@
 import {
   Aggregate,
   CartHoldLog,
-  CraftLog,
-  StoreLog
+  ChildSimplifiedCraftLog,
+  ScheduleData,
 } from "@/@types/FFXIVLogTypes";
 
 export function assertIsDefind<T>(val: T): asserts val is NonNullable<T> {
@@ -33,10 +33,10 @@ export const makeAggregate = (
  * @param order
  */
 export const makeLog = (
-  data: CraftLog,
+  data: ChildSimplifiedCraftLog,
   value: number,
   order: number
-): StoreLog => ({
+): ScheduleData => ({
   log: data,
   value: value,
   order: order,
@@ -48,9 +48,9 @@ export const makeLog = (
  * @param args2
  */
 export const mergeDuplicateLog = (
-  args: StoreLog,
-  args2: StoreLog
-): StoreLog => ({
+  args: ScheduleData,
+  args2: ScheduleData
+): ScheduleData => ({
   log: args.log,
   value: args.value + args2.value,
   order: args.order,
@@ -61,7 +61,10 @@ export const mergeDuplicateLog = (
  * @param state
  * @param paylod
  */
-export const createLogs = (state: StoreLog[], paylod: StoreLog): StoreLog[] => {
+export const createLogs = (
+  state: ScheduleData[],
+  paylod: ScheduleData
+): ScheduleData[] => {
   const tmp = [...state, paylod];
   return Array.from(
     tmp
@@ -75,10 +78,10 @@ export const createLogs = (state: StoreLog[], paylod: StoreLog): StoreLog[] => {
  * @param logs
  * @param args
  */
-export const addLogs = (logs: StoreLog[], args: StoreLog): StoreLog[] => [
-  ...logs,
-  args,
-];
+export const addLogs = (
+  logs: ScheduleData[],
+  args: ScheduleData
+): ScheduleData[] => [...logs, args];
 
 /**
  * 対象の製作レシピをStoreから削除する
@@ -86,7 +89,10 @@ export const addLogs = (logs: StoreLog[], args: StoreLog): StoreLog[] => [
  * @param args
  * @returns Array
  */
-export const deleteLogs = (targets: StoreLog[], args: StoreLog): StoreLog[] => {
+export const deleteLogs = (
+  targets: ScheduleData[],
+  args: ScheduleData
+): ScheduleData[] => {
   const tmp = targets.filter(
     (target) => target.log.text.engname !== args.log.text.engname
   );
@@ -104,9 +110,9 @@ export const deleteLogs = (targets: StoreLog[], args: StoreLog): StoreLog[] => {
  * @return StoreLog
  */
 export const fetchTargetLog = (
-  targets: StoreLog[],
-  args: StoreLog
-): StoreLog => {
+  targets: ScheduleData[],
+  args: ScheduleData
+): ScheduleData => {
   const temp = targets.find(
     (target) => target.log.text.engname === args.log.text.engname
   );
@@ -122,8 +128,8 @@ export const fetchTargetLog = (
  * @returns boolean
  */
 export const includesTargets = (
-  targets: StoreLog[],
-  args: StoreLog
+  targets: ScheduleData[],
+  args: ScheduleData
 ): boolean => {
   return targets.some(
     (target) => target.log.text.engname === args.log.text.engname
