@@ -74,7 +74,7 @@ const fetchAllValidChildFactor = async (craftlog: ChildSimplifiedCraftLog) => {
   );
 };
 
-export const getAllRequiredCraftLogs = async (cartlogs: StoreLog[]) => {
+export const getAllRequiredCraftLogs = async (cartlogs: ScheduleData[]) => {
   return await Promise.all(
     cartlogs.map(async (craftlog) => {
       return await fetchAllValidChildFactor(craftlog.log);
